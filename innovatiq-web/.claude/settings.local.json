@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(sed -i \"s|import { \\\\\\(.*\\\\\\), Download } from ''lucide-react'';|import { \\\\1 } from ''lucide-react'';\\\\nimport ExcelIcon from ''@/components/ExcelIcon'';|\" \"$f\")",
+      "Bash(sed -i \"s|<Download size={18} />|<ExcelIcon size={20} />|g\" \"$f\")",
+      "Bash(done)"
+    ]
+  }
+}

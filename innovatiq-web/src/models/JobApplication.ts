@@ -10,5 +10,6 @@ const JobApplicationSchema = new mongoose.Schema({
   status: { type: String, enum: ['pending', 'reviewed', 'shortlisted', 'rejected'], default: 'pending' },
 }, { timestamps: true });
 
-if (mongoose.models.JobApplication) delete (mongoose.models as Record<string, unknown>).JobApplication;
-export default mongoose.model('JobApplication', JobApplicationSchema);
+JobApplicationSchema.index({ careerId: 1, createdAt: -1 });
+
+export default mongoose.models.JobApplication || mongoose.model('JobApplication', JobApplicationSchema);

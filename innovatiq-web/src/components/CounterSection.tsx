@@ -53,7 +53,7 @@ export default function CounterSection() {
       {/* Illustration */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/images/aboutUs/AdobeExpress1.svg" alt="" aria-hidden="true"
-        className="absolute right-0 top-0 h-full max-h-[400px] w-auto opacity-[0.05] pointer-events-none select-none object-contain" />
+        className="absolute right-0 top-0 h-full max-h-[400px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">

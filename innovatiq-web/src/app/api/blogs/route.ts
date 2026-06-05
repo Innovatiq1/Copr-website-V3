@@ -1,24 +1,36 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Blog from '@/models/Blog';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 
+function getCachedBlogs(page: number, limit: number) {
+  return unstable_cache(
+    async () => {
+      await connectDB();
+      const skip = (page - 1) * limit;
+      const [blogs, total] = await Promise.all([
+        Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Blog.countDocuments(),
+      ]);
+      return { blogs, total, page, pages: Math.ceil(total / limit) };
+    },
+    [`blogs-list-${page}-${limit}`],
+    { revalidate: 120, tags: ['blogs'] }
+  )();
+}
+
 export async function GET(req: NextRequest) {
   try {
-    await connectDB();
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    const skip = (page - 1) * limit;
-
-    const [blogs, total] = await Promise.all([
-      Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit),
-      Blog.countDocuments(),
-    ]);
-
-    return NextResponse.json({ blogs, total, page, pages: Math.ceil(total / limit) });
+    const data = await getCachedBlogs(page, limit);
+    return NextResponse.json(data, {
+      headers: { 'Cache-Control': 'public, max-age=120, stale-while-revalidate=60' },
+    });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });
   }
@@ -49,13 +61,12 @@ export async function POST(req: NextRequest) {
         imagePath = `/uploads/blogs/${filename}`;
       }
 
-      const tagsRaw = formData.getAll('tags[]');
       blogData = {
         title: formData.get('title'),
         shortDescription: formData.get('shortDescription'),
         description: formData.get('description'),
         author: formData.get('author'),
-        tags: tagsRaw,
+        tags: formData.getAll('tags[]'),
         image: imagePath || undefined,
       };
     } else {
@@ -63,6 +74,7 @@ export async function POST(req: NextRequest) {
     }
 
     const blog = await Blog.create(blogData);
+    revalidateTag('blogs', {});
     return NextResponse.json(blog, { status: 201 });
   } catch (err) {
     console.error(err);

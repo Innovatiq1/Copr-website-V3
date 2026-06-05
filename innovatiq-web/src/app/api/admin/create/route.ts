@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     await connectDB();
     const { email, password, name } = await req.json();
 
-    const exists = await Admin.findOne({ email });
+    const exists = await Admin.findOne({ email }).lean();
     if (exists) return NextResponse.json({ message: 'Admin already exists' }, { status: 400 });
 
     const hashedPassword = await bcrypt.hash(password, 10);

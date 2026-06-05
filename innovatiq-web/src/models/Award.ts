@@ -11,4 +11,6 @@ const AwardSchema = new mongoose.Schema({
   organization: { type: String },
 }, { timestamps: true, strict: false });
 
+AwardSchema.index({ createdAt: -1 });
+
 export default mongoose.models.Award || mongoose.model('Award', AwardSchema);

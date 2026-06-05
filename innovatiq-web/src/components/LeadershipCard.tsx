@@ -3,10 +3,16 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Linkedin, Twitter, ChevronDown, ChevronUp } from 'lucide-react';
 
+interface LeaderSection {
+  heading?: string;
+  text: string;
+}
+
 interface Leader {
   name: string;
   role: string;
   bio: string;
+  sections?: LeaderSection[];
   expertise: string[];
   photo: string;
   accent: string;
@@ -82,14 +88,26 @@ export default function LeadershipCard({ m }: { m: Leader }) {
         {/* Bio with smooth expand */}
         <div className="mb-4">
           <div
-            className="text-slate-500 text-[13px] leading-relaxed"
             style={{
-              maxHeight: expanded ? '300px' : '84px',
+              maxHeight: expanded ? '1600px' : '84px',
               overflow: 'hidden',
-              transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+              transition: 'max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
-            {m.bio}
+            {m.sections ? m.sections.map((section, i) => (
+              <div key={i} className="mb-2 last:mb-0">
+                {section.heading && (
+                  <h4 className="text-[11px] font-bold uppercase tracking-wide mb-0.5" style={{ color: m.accent }}>
+                    {section.heading}
+                  </h4>
+                )}
+                <p className="text-slate-500 text-[13px] leading-relaxed">{section.text}</p>
+              </div>
+            )) : m.bio.split('\n\n').map((para, i) => (
+              <p key={i} className="text-slate-500 text-[13px] leading-relaxed mb-2 last:mb-0">
+                {para}
+              </p>
+            ))}
           </div>
           <button
             onClick={() => setExpanded((v) => !v)}

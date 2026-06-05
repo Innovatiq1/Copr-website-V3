@@ -18,4 +18,6 @@ const CareerSchema = new mongoose.Schema({
   active: { type: Boolean, default: true },
 }, { timestamps: true, strict: false });
 
+CareerSchema.index({ active: 1, createdAt: -1 });
+
 export default mongoose.models.Career || mongoose.model('Career', CareerSchema);

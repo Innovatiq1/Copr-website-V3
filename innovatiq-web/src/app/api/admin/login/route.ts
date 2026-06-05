@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     await connectDB();
     const { email, password } = await req.json();
 
-    const admin = await Admin.findOne({ email });
+    const admin = await Admin.findOne({ email }).lean();
     if (!admin) return NextResponse.json({ message: 'Admin not found' }, { status: 400 });
 
     const isMatch = await bcrypt.compare(password, admin.password);

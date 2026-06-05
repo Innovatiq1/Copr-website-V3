@@ -1,23 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Career from '@/models/Career';
 
+function getCachedCareers(page: number, limit: number) {
+  return unstable_cache(
+    async () => {
+      await connectDB();
+      const skip = (page - 1) * limit;
+      const filter = { active: { $ne: false } };
+      const [careers, total] = await Promise.all([
+        Career.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Career.countDocuments(filter),
+      ]);
+      return { careers, total, page, pages: Math.ceil(total / limit) };
+    },
+    [`careers-list-${page}-${limit}`],
+    { revalidate: 120, tags: ['careers'] }
+  )();
+}
+
 export async function GET(req: NextRequest) {
   try {
-    await connectDB();
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    const skip = (page - 1) * limit;
-
-    const filter = { active: { $ne: false } };
-    const [careers, total] = await Promise.all([
-      Career.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
-      Career.countDocuments(filter),
-    ]);
-
-    return NextResponse.json({ careers, total, page, pages: Math.ceil(total / limit) });
+    const data = await getCachedCareers(page, limit);
+    return NextResponse.json(data, {
+      headers: { 'Cache-Control': 'public, max-age=120, stale-while-revalidate=60' },
+    });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });
   }
@@ -31,6 +43,7 @@ export async function POST(req: NextRequest) {
     await connectDB();
     const body = await req.json();
     const career = await Career.create(body);
+    revalidateTag('careers', {});
     return NextResponse.json(career, { status: 201 });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

@@ -9,7 +9,28 @@ const leadership = [
   {
     name: 'Krishna Das',
     role: 'CEO',
-    bio: 'Krishna is a seasoned professional with 30 years of extensive experience in the IT industry, specializing in sales and business development. With a proven track record of success, Krishna has held pivotal roles in renowned companies such as HP, IBM, and Fujitsu. Driven by a passion for innovation, he founded Innovatiq with a commitment to excellence, customer-centricity, and technological innovation.',
+    bio: '',
+    sections: [
+      {
+        text: 'Krishna is a seasoned professional with 30 years of extensive experience in the IT industry, specializing in sales and business development. With a proven track record of success, Krishna has held pivotal roles in renowned companies such as HP, IBM, and Fujitsu. His journey in the corporate world has equipped him with a profound understanding of industry dynamics, market trends, and customer needs.',
+      },
+      {
+        heading: 'Entrepreneurial Journey',
+        text: 'Driven by a passion for innovation and a vision for transforming the IT services landscape, Krishna ventured into entrepreneurship and founded Innovatiq — a company built on excellence, customer-centricity, and technological innovation. Under his leadership, the company has flourished, delivering cutting-edge solutions and exceptional value to clients across diverse industries.',
+      },
+      {
+        heading: 'Leadership Style',
+        text: 'Krishna is a visionary leader known for his strategic foresight, charismatic leadership, and unwavering commitment to organizational success. He fosters a culture of collaboration, empowerment, and continuous learning, enabling teams to unleash their full potential and drive impactful results.',
+      },
+      {
+        heading: 'Philosophy',
+        text: 'Krishna believes in the power of innovation, integrity, and customer satisfaction as the cornerstone of business success. He is deeply committed to delivering value-driven solutions that exceed client expectations and drive sustainable growth.',
+      },
+      {
+        heading: 'Future Outlook',
+        text: 'As the CEO of his IT services company, Krishna remains steadfast in his commitment to driving innovation, fostering strategic partnerships, and delivering unparalleled value to clients. With his extensive industry expertise and entrepreneurial spirit, he is poised to lead the company towards greater heights of success and establish it as a leading player in the global IT services market.',
+      },
+    ],
     expertise: ['Sales & Business Development', 'Enterprise IT', 'Strategic Leadership'],
     photo: '/images/aboutUs/ourTeam/Krishna.jpeg',
     accent: '#D4174A',
@@ -17,7 +38,7 @@ const leadership = [
   {
     name: 'Prashanth',
     role: 'Director',
-    bio: 'Prashanth is one of the Directors of Innovatiq Technologies, leading the Delivery and Technical teams. Drawing from a career spanning over 30 years at MNCs including Wipro, he brings deep expertise in project delivery, technical implementation, and team leadership, guiding the team towards excellence.',
+    bio: 'Prashanth is one of the Directors of Innovatiq Technologies, leading the Delivery and Technical teams. Drawing from a career spanning over 30 years at prominent multinational corporations including Wipro, he brings a wealth of expertise in project delivery, technical implementation, and team leadership.\n\nHis diverse experience across different corporate environments has equipped him with valuable insights into client needs, industry best practices, and the intricacies of managing complex, large-scale projects. Having navigated through varied roles across MNCs, Prashanth possesses a deep understanding of how to align technical execution with business goals.\n\nIn his role at Innovatiq, Prashanth leverages this rich background to drive innovation, streamline delivery processes, and ensure the technical excellence of the team\'s output. His leadership is instrumental in guiding teams towards consistently delivering superior results for clients.',
     expertise: ['IT Strategy', 'Program Management', 'Team Leadership'],
     photo: '/images/aboutUs/ourTeam/prashanth-removebg-preview-1.png',
     accent: '#D97706',
@@ -25,7 +46,7 @@ const leadership = [
   {
     name: 'Srinivas Rao',
     role: 'Business Head India',
-    bio: 'An established and proven Leader for a large German based & NYSE Listed company with over 28+ years of experience. Business focused professional and thought leader in Management, Sales and Business consulting. Strategist & executioner with demonstrated ability by leveraging competence of the organization and aligning delivery with business objectives of the customer.',
+    bio: 'An established and proven leader with over 28+ years of experience, including a significant tenure at a large German-based NYSE-listed company. A business-focused professional and thought leader in Management, Sales, and Business Consulting, Srinivas has built a career at the intersection of strategy and execution.\n\nHe has extensive experience managing company operations, P&L responsibilities, and driving cross-functional teams across the globe. His approach combines the strategic clarity of a seasoned consultant with the hands-on discipline of an executioner — consistently leveraging organizational competencies to align delivery with the business objectives of customers.\n\nAs Business Head India, Srinivas brings this global perspective and deep domain expertise to accelerate Innovatiq\'s growth, strengthen client relationships, and build a high-performing delivery engine in the Indian market.',
     expertise: ['Business Development', 'P&L Management', 'Strategic Leadership'],
     photo: '/images/aboutUs/ourTeam/Srinivash.PNG',
     accent: '#3B82F6',
@@ -33,7 +54,7 @@ const leadership = [
   {
     name: 'Sujatha',
     role: 'HR Manager',
-    bio: 'Sujatha is an accomplished professional with a wealth of experience in the managed resources business. Currently serving as the Head of Resources Business at Innovatiq, she brings a combination of strategic vision, operational expertise, and leadership acumen. With an MBA degree and 18 years of diverse experience, she has a proven track record of delivering results in challenging environments.',
+    bio: 'Sujatha is an accomplished professional with a wealth of experience in the managed resources business. Currently serving as the Head of Resources Business at Innovatiq, she brings a powerful combination of strategic vision, operational expertise, and leadership acumen to drive business growth and achieve organizational objectives.\n\nWith an MBA degree and 18 years of diverse industry experience, Sujatha possesses a deep understanding of resource management dynamics, talent acquisition, and workforce planning. Her proven track record of delivering results in challenging environments reflects her ability to balance people-first values with sharp business focus.\n\nSujatha champions a culture of inclusivity and professional growth at Innovatiq, ensuring the organization attracts, develops, and retains the best talent to support its ambitious growth goals.',
     expertise: ['Resource Management', 'HR Strategy', 'Operational Excellence'],
     photo: '/images/aboutUs/ourTeam/Sujatha.jpg',
     accent: '#10B981',
@@ -41,14 +62,6 @@ const leadership = [
 ];
 
 const teamMembers = [
-  {
-    name: 'George',
-    role: 'Senior Consultant',
-    bio: 'An experienced technology consultant with deep expertise in enterprise IT advisory and solution design, helping clients navigate complex digital transformation journeys across Asia Pacific.',
-    expertise: ['IT Consulting', 'Solution Architecture', 'Digital Strategy'],
-    photo: '/images/aboutUs/ourTeam/Our Team George.jpg',
-    accent: '#D4174A',
-  },
   {
     name: 'Abhishek',
     role: 'Regional Sales Head - North',
@@ -263,9 +276,9 @@ export default function TeamPage() {
             <p className="text-slate-500 mt-2">100+ certified professionals delivering excellence daily.</p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-start justify-items-center sm:justify-items-stretch">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-center sm:justify-items-stretch max-w-4xl mx-auto w-full">
             {teamMembers.map((m, i) => (
-              <AnimatedSection key={m.name} delay={i * 80} className="w-full max-w-xs sm:max-w-none">
+              <AnimatedSection key={m.name} delay={i * 80} className="w-full max-w-xs sm:max-w-none h-full">
                 <TeamMemberCard m={m} />
               </AnimatedSection>
             ))}

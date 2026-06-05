@@ -11,7 +11,7 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     await connectDB();
     const { id } = await params;
     const body = await req.json();
-    const application = await JobApplication.findByIdAndUpdate(id, body, { new: true });
+    const application = await JobApplication.findByIdAndUpdate(id, body, { new: true }).lean();
     return NextResponse.json(application);
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

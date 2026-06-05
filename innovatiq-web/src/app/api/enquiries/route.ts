@@ -15,6 +15,8 @@ const EnquirySchema = new mongoose.Schema({
   read: { type: Boolean, default: false },
 }, { timestamps: true, strict: false });
 
+EnquirySchema.index({ createdAt: -1 });
+
 const Enquiry = mongoose.models.Enquiry || mongoose.model('Enquiry', EnquirySchema);
 
 export async function GET(req: NextRequest) {
@@ -23,7 +25,7 @@ export async function GET(req: NextRequest) {
 
   try {
     await connectDB();
-    const enquiries = await Enquiry.find().sort({ createdAt: -1 });
+    const enquiries = await Enquiry.find().sort({ createdAt: -1 }).lean();
     return NextResponse.json(enquiries);
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

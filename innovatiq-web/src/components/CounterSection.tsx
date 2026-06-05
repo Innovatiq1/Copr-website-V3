@@ -6,7 +6,7 @@ import TiltCard from '@/components/TiltCard';
 
 const stats = [
   { val: 100, suffix: '+', label: 'Successful Projects', icon: '🏆', color: '#D4174A', glow: 'rgba(212,23,74,0.3)' },
-  { val: 15, suffix: '+', label: 'Years of Excellence', icon: '⚡', color: '#F59E0B', glow: 'rgba(245,158,11,0.3)' },
+  { val: 15, suffix: '+', label: 'Ongoing Projects', icon: '⚡', color: '#F59E0B', glow: 'rgba(245,158,11,0.3)' },
   { val: 100, suffix: '+', label: 'Skilled Experts', icon: '👥', color: '#3B82F6', glow: 'rgba(59,130,246,0.3)' },
   { val: 200, suffix: '+', label: 'Happy Clients', icon: '🌟', color: '#10B981', glow: 'rgba(16,185,129,0.3)' },
 ];
@@ -42,13 +42,13 @@ function Counter({ target, suffix, color }: { target: number; suffix: string; co
 
 export default function CounterSection() {
   return (
-    <section className="relative py-20 overflow-hidden" style={{ background: '#0A1225' }}>
+    <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
 
       {/* Large ambient blobs */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at left, rgba(212,23,74,0.1) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at left, rgba(212,23,74,0.05) 0%, transparent 70%)' }} />
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at right, rgba(59,130,246,0.08) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at right, rgba(59,130,246,0.04) 0%, transparent 70%)' }} />
 
       {/* Illustration */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -64,27 +64,29 @@ export default function CounterSection() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A] animate-pulse" />
               Our Impact
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
               Numbers That<br />
               <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">
                 Speak for Themselves
               </span>
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md">
-              Over 15 years of delivering enterprise technology solutions across Asia Pacific,
-              building trust one project at a time.
+            <p className="text-slate-500 text-base leading-relaxed mb-8 max-w-md">
+              At Innovatiq, we believe in the power of innovation to transform businesses and elevate their digital presence — building trust one project at a time.
             </p>
 
             {/* Certifications */}
             <div className="flex flex-wrap gap-3">
               {[
-                { src: '/images/SME-2024-25-Logo-TM-01.png', alt: 'SME 2024-25' },
-                { src: '/images/TBSQ-2024-25-Logo-TM-01-copy-2-1536x1326.png', alt: 'TBSQ 2024-25' },
+                { src: '/images/image004-preview-1.png', alt: 'ISO 27001:2022' },
+                { src: '/logo/image003-preview (1).png', alt: 'ISO 9001:2015' },
+                { src: '/images/SME-2024-25-Logo-TM-01.png', alt: 'SME Excellence 2024-25' },
+                { src: '/images/TBSQ-2024-25-Logo-TM-01-copy-2-1536x1326.png', alt: 'Top Business Service & Quality' },
+                { src: '/images/image005-preview.png', alt: 'bizSAFE3' },
                 { src: '/images/Data-Protection-Trustmark-Logo_Horizontal_Colour.png', alt: 'Data Protection' },
               ].map(c => (
                 <div key={c.alt}
                   className="bg-white rounded-xl px-4 py-2.5 flex items-center transition-transform hover:scale-105"
-                  style={{ boxShadow: '0 4px 16px rgba(0,0,0,0.3)' }}>
+                  style={{ border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06)' }}>
                   <Image src={c.src} alt={c.alt} width={90} height={35} style={{ objectFit: 'contain', height: '30px', width: 'auto' }} />
                 </div>
               ))}
@@ -95,20 +97,18 @@ export default function CounterSection() {
           <div className="grid grid-cols-2 gap-4">
             {stats.map((s, i) => (
               <TiltCard key={i} intensity={20}>
-                <div
-                  className="rounded-2xl p-6 text-center group"
+                <div className="rounded-2xl p-6 text-center"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-                    border: '1px solid rgba(255,255,255,0.14)',
-                    boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(0,0,0,0.09)',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06)',
                   }}>
-                  {/* Top colored line */}
                   <div className="h-[2px] w-12 rounded-full mx-auto mb-4" style={{ background: s.color }} />
                   <div className="text-3xl mb-3 depth-pop">{s.icon}</div>
                   <div className="mb-1 depth-mid">
                     <Counter target={s.val} suffix={s.suffix} color={s.color} />
                   </div>
-                  <p className="text-gray-400 text-xs font-medium depth-low">{s.label}</p>
+                  <p className="text-slate-400 text-xs font-medium depth-low">{s.label}</p>
                 </div>
               </TiltCard>
             ))}

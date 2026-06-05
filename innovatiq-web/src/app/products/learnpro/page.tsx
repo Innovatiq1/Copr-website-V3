@@ -5,29 +5,30 @@ export default function LearnProPage() {
     <ProductPageTemplate
       name="LearnPro"
       subtitle="Learning Management System"
-      tagline="Next-Gen LMS Platform for Modern Organizations."
-      description="LearnPro is a powerful Learning Management System that enables organizations to create, manage, and deliver engaging online training programs at scale. With an intuitive course builder, rich media support, and detailed analytics, LearnPro makes corporate learning effective and measurable."
+      tagline="Inspire. Engage. Achieve."
+      description="Deliver impactful training experiences with a platform designed to engage learners, track performance, and simplify management. Innovatiq LMS empowers organizations to upskill teams effortlessly and achieve measurable learning outcomes. Traditional training methods can be time-consuming and hard to track — our LMS centralizes learning into a single, easy-to-use platform where organizations can design, deliver, and monitor training programs with efficiency."
       highlights={[
-        'Drag-and-drop course builder with rich media support',
-        'Blended learning — online, virtual, and in-person',
-        'Automated certification and renewal management',
-        'Social learning features for collaborative development',
-        'Detailed learner analytics and progress tracking',
-        'SCORM/xAPI compliant content library',
+        'Comprehensive Customization — tailor the platform to your unique needs and branding',
+        'Advanced Analytics — insights into learner progress, engagement, and performance',
+        'Mobile Accessibility — access training anytime, anywhere, on any device',
+        'Enhanced Learning Experience with interactive features and personalized paths',
+        'Scalability & Flexibility to adapt to changing business needs',
+        'SCORM Compliance and multi-format dynamic content support',
       ]}
       features={[
-        { title: 'Course Builder', description: 'Intuitive drag-and-drop course builder with support for videos, quizzes, and interactive content.', icon: '✏️' },
-        { title: 'Progress Tracking', description: 'Real-time visibility into learner progress, completion rates, and assessment scores.', icon: '📈' },
-        { title: 'Certifications', description: 'Automated certificate generation and management with expiry tracking and renewal reminders.', icon: '🎓' },
-        { title: 'Social Learning', description: 'Discussion forums, peer reviews, and collaborative learning features to boost engagement.', icon: '💬' },
-        { title: 'Assessments', description: 'Multiple assessment types including quizzes, assignments, and practical evaluations.', icon: '📝' },
-        { title: 'Blended Learning', description: 'Combine online, virtual classroom, and in-person training in a unified learning journey.', icon: '🔀' },
-        { title: 'Content Library', description: 'Centralized content library with version control and SCORM/xAPI compliance.', icon: '📚' },
-        { title: 'White Labeling', description: 'Fully customizable interface with your branding, colors, and domain.', icon: '🎨' },
-        { title: 'Multi-Language', description: 'Support for multiple languages to serve your global workforce effectively.', icon: '🌍' },
+        { title: 'Comprehensive Customization', description: 'Our LMS offers unparalleled customization options, allowing businesses to tailor the platform to their unique needs and branding with logo, theme, and white-label options.', icon: '🎨' },
+        { title: 'Advanced Analytics', description: 'Gain valuable insights into learner progress, engagement, and performance with our robust analytics and reporting tools.', icon: '📊' },
+        { title: 'AI-Powered Recommendations', description: 'Suggests personalized courses to each learner based on their role, progress, and goals — ensuring relevant and timely learning.', icon: '🧠' },
+        { title: 'Smart Proctoring System', description: 'Ensure exam integrity with automated online invigilation tools and a dynamic certificate builder for course completions.', icon: '🔍' },
+        { title: 'Assessments & Quizzes', description: 'Measure learner progress with customizable tests and evaluations, including SCORM-compliant interactive content delivery.', icon: '📝' },
+        { title: 'Multi-Channel Support', description: 'Connect with learners through email, SMS, and in-app messaging with customizable branded email templates for every learning milestone.', icon: '💬' },
+        { title: 'Video & Virtual Conference', description: 'Deliver live and recorded sessions with dynamic content support for PDF, Doc, Audio, and Video formats for flexible learning.', icon: '🎬' },
+        { title: 'Multi-Tenant Support', description: 'Serve multiple clients or departments from one centralized platform with role-based permissions and flexible system configuration.', icon: '🏢' },
+        { title: 'Third-Party Integration', description: 'Connect seamlessly with CRMs, ERPs, and other business tools with integrated payment gateways and multicurrency support.', icon: '🔗' },
       ]}
       gradient="linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)"
       color="#1e40af"
+      productType="lms"
     />
   );
 }

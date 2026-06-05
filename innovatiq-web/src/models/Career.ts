@@ -10,12 +10,12 @@ const CareerSchema = new mongoose.Schema({
   employmentType: { type: String },
   shortDescription: { type: String },
   description: { type: String },
-  primarySkills: { type: String },
+  primarySkills: { type: [String], default: [] },
   requirements: [{ type: String }],
   experience: { type: String },
+  experienceLevel: { type: String },
   salary: { type: String },
   active: { type: Boolean, default: true },
 }, { timestamps: true, strict: false });
 
-if (mongoose.models.Career) delete (mongoose.models as Record<string, unknown>).Career;
-export default mongoose.model('Career', CareerSchema);
+export default mongoose.models.Career || mongoose.model('Career', CareerSchema);

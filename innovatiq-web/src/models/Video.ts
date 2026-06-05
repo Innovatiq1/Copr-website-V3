@@ -18,5 +18,4 @@ const VideoSchema = new mongoose.Schema({
   active: { type: Boolean, default: true },
 }, { timestamps: true, strict: false });
 
-if (mongoose.models.Video) delete (mongoose.models as Record<string, unknown>).Video;
-export default mongoose.model('Video', VideoSchema);
+export default mongoose.models.Video || mongoose.model('Video', VideoSchema);

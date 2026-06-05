@@ -6,7 +6,7 @@ import Video from '@/models/Video';
 export async function GET() {
   try {
     await connectDB();
-    const videos = await Video.find({ active: true }).sort({ createdAt: -1 });
+    const videos = await Video.find({ active: { $ne: false } }).sort({ createdAt: -1 });
     return NextResponse.json(videos);
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

@@ -4,23 +4,23 @@ export default function CyberSecurityPage() {
   return (
     <ServicePageTemplate
       badge="Cyber Security"
-      title="Cyber Security Solutions"
-      subtitle="Protect your business from evolving cyber threats with comprehensive security solutions built for the modern threat landscape."
-      overview="In today's digital world, cyber threats are more sophisticated and frequent than ever. Innovatiq's Cyber Security team provides end-to-end protection — from vulnerability assessments and penetration testing to 24/7 security operations and incident response — keeping your business safe and compliant."
+      title="Advanced Cybersecurity Solutions"
+      subtitle="Our Cyber Security services offer comprehensive protection against evolving cyber threats, safeguarding businesses from data breaches, malware attacks, and other cyber risks."
+      overview="With our proactive approach to cybersecurity, advanced threat detection, and incident response capabilities, we help organizations build resilience and defend against cyber threats effectively. Our comprehensive protection covers everything from vulnerability management to 24/7 security operations."
       overviewPoints={[
-        'Comprehensive security assessments and audits',
-        'Security Operations Center (SOC) services',
-        'Penetration testing and vulnerability management',
-        'Zero-trust architecture implementation',
-        'Regulatory compliance (PDPA, ISO 27001, SOC 2)',
+        'Proactive threat detection and continuous monitoring',
+        'Advanced incident response and recovery capabilities',
+        'Data protection, encryption, and access control',
+        'Regulatory compliance (PDPA, ISO 27001, GDPR)',
+        'Security risk assessment and mitigation strategies',
       ]}
       benefits={[
-        { title: 'Threat Detection', description: 'Real-time monitoring and AI-powered threat detection across all environments.', icon: '🔍' },
-        { title: 'Incident Response', description: 'Rapid response team to contain, analyze, and remediate security incidents.', icon: '🚨' },
-        { title: 'Compliance', description: 'Meet PDPA, GDPR, ISO 27001, and industry-specific regulatory requirements.', icon: '📋' },
-        { title: 'Identity Security', description: 'Zero-trust identity and access management to prevent unauthorized access.', icon: '🔑' },
-        { title: 'Data Protection', description: 'Encryption, DLP, and backup solutions protecting your critical business data.', icon: '🛡️' },
-        { title: 'Security Training', description: 'Employee awareness training to build a security-first culture.', icon: '🎓' },
+        { title: 'Proactive Threat Detection', description: 'Our Cloud Services offer unparalleled monitoring capabilities, allowing businesses to identify and neutralize threats before they escalate into larger problems.', icon: '🔍' },
+        { title: 'Enhanced Data Protection', description: 'By securing sensitive data, preventing unauthorized access, and mitigating cyber threats, we help businesses protect their valuable assets and maintain regulatory compliance.', icon: '🛡️' },
+        { title: 'Risk Mitigation', description: 'Invest in our Cyber Security services to mitigate cyber risks and protect your business from potential financial, reputational, and legal damages.', icon: '⚠️' },
+        { title: 'Incident Response', description: 'Rapid response team to contain, analyze, and remediate security incidents — minimizing downtime and business impact.', icon: '🚨' },
+        { title: 'Compliance Assurance', description: 'Meet PDPA, GDPR, ISO 27001, and industry-specific regulatory requirements with confidence and audit readiness.', icon: '📋' },
+        { title: 'Security Awareness', description: 'Employee awareness training and security culture building to make your people your strongest security asset.', icon: '🎓' },
       ]}
       processSteps={[
         { step: '1', title: 'Assess', description: 'Identify vulnerabilities and security gaps across your environment.' },
@@ -29,6 +29,7 @@ export default function CyberSecurityPage() {
         { step: '4', title: 'Monitor', description: 'Ongoing 24/7 monitoring, threat hunting, and incident response.' },
       ]}
       color="#D4174A"
+      serviceType="cyber"
     />
   );
 }

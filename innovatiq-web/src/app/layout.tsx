@@ -33,10 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable}>
       <body className="antialiased font-[family-name:var(--font-poppins)]">
-        {/* Global persistent ambient light — gives entire site a vivid glow */}
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
-          <div style={{ position: 'absolute', top: 0, right: 0, width: '60vw', height: '50vh', background: 'radial-gradient(ellipse at top right, rgba(212,23,74,0.10) 0%, transparent 65%)', }} />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50vw', height: '50vh', background: 'radial-gradient(ellipse at bottom left, rgba(59,130,246,0.08) 0%, transparent 65%)', }} />
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '60vw', height: '50vh', background: 'radial-gradient(ellipse at top right, rgba(212,23,74,0.04) 0%, transparent 65%)', }} />
+          <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50vw', height: '50vh', background: 'radial-gradient(ellipse at bottom left, rgba(59,130,246,0.03) 0%, transparent 65%)', }} />
         </div>
         <SiteShell>{children}</SiteShell>
       </body>

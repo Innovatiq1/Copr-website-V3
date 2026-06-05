@@ -11,9 +11,10 @@ export async function GET(req: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '9');
     const skip = (page - 1) * limit;
 
+    const filter = { active: { $ne: false } };
     const [careers, total] = await Promise.all([
-      Career.find({ active: true }).sort({ createdAt: -1 }).skip(skip).limit(limit),
-      Career.countDocuments({ active: true }),
+      Career.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
+      Career.countDocuments(filter),
     ]);
 
     return NextResponse.json({ careers, total, page, pages: Math.ceil(total / limit) });

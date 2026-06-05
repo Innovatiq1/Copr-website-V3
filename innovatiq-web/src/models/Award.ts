@@ -11,5 +11,4 @@ const AwardSchema = new mongoose.Schema({
   organization: { type: String },
 }, { timestamps: true, strict: false });
 
-if (mongoose.models.Award) delete (mongoose.models as Record<string, unknown>).Award;
-export default mongoose.model('Award', AwardSchema);
+export default mongoose.models.Award || mongoose.model('Award', AwardSchema);

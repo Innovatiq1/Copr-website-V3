@@ -4,23 +4,23 @@ export default function FieldServicePage() {
   return (
     <ServicePageTemplate
       badge="Field Services"
-      title="Professional Field Services"
-      subtitle="On-site technical expertise delivered by certified professionals wherever you need it across the region."
-      overview="Innovatiq's Field Services team provides on-site technical support, installation, maintenance, and repair services across Singapore, Malaysia, and India. Our certified field engineers are equipped with the tools and expertise to handle everything from equipment installation to complex infrastructure projects."
+      title="Professional IT Field Services"
+      subtitle="At Innovatiq, we understand the critical importance of maintaining uninterrupted operations in today's fast-paced digital landscape. That's why we offer comprehensive breakfix support services."
+      overview="Our dedicated team of skilled technicians is equipped with the expertise and tools necessary to diagnose, troubleshoot, and resolve a wide range of software, hardware, and network-related issues. Our technicians are available around the clock to provide timely assistance and minimize downtime — whether it's resolving software glitches, replacing hardware, or restoring network connectivity."
       overviewPoints={[
-        'Hardware installation and configuration',
-        'On-site break-fix and maintenance support',
-        'Network cabling and structured cabling',
-        'Equipment refresh and lifecycle management',
-        'Multi-site rollout and deployment projects',
+        'Troubleshooting and L1 support for all IT issues',
+        'Seamless vendor support and coordination',
+        'Comprehensive service desk management',
+        'Warehousing and component replacement services',
+        'Breakfix support with 24/7 technician dispatch',
       ]}
       benefits={[
-        { title: 'Rapid Response', description: 'Certified field engineers deployed quickly to minimize downtime.', icon: '🚀' },
-        { title: 'Expert Technicians', description: 'Factory-certified technicians for major hardware and network vendors.', icon: '👷' },
-        { title: 'Regional Coverage', description: 'Field service coverage across Singapore, Malaysia, and India.', icon: '🗺️' },
-        { title: 'Project Management', description: 'Dedicated project managers ensuring on-time, on-budget delivery.', icon: '📊' },
-        { title: 'Spare Parts Logistics', description: 'Managed spare parts inventory for rapid hardware replacement.', icon: '📦' },
-        { title: 'Compliance Documentation', description: 'Detailed service reports and documentation for audit and compliance.', icon: '📋' },
+        { title: 'Local Support', description: 'We manage a wide array of field services, catering to diverse needs. Whether you require a break/fix solution nearby, we swiftly dispatch a technician with the necessary qualifications to your site.', icon: '📍' },
+        { title: 'Technician Management', description: 'Our dispatch services encompass everything from site evaluation to technician preparation, check-in, check-out, and ticket closure — ensuring a seamless process from start to finish.', icon: '👷' },
+        { title: 'Highly Qualified Technicians', description: 'Utilizing our Partner Alliance, rigorously screened talent pool, and advanced ticketing technology, we deploy skilled field technicians around the clock to swiftly restore your operations.', icon: '🏆' },
+        { title: 'Swift Problem Resolution', description: 'Our support services assure swift and effective resolution of issues. Our technicians are committed to promptly diagnosing issues, devising effective solutions, and implementing fixes efficiently.', icon: '🚀' },
+        { title: 'Customized Solutions', description: 'We understand that each business has distinct characteristics and technology obstacles that demand individualized care. Our break-fix support services are crafted to meet your particular requirements.', icon: '🎯' },
+        { title: 'Cost Effective & Transparent Pricing', description: 'We provide cost-effective and transparent pricing for our break-fix support services, furnishing comprehensive quotes in advance so you can make well-informed decisions for your business.', icon: '💰' },
       ]}
       processSteps={[
         { step: '1', title: 'Request', description: 'Submit service request through portal, phone, or email.' },
@@ -29,6 +29,7 @@ export default function FieldServicePage() {
         { step: '4', title: 'Report', description: 'Detailed service report and sign-off with quality check.' },
       ]}
       color="#06B6D4"
+      serviceType="field"
     />
   );
 }

@@ -38,8 +38,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
     setCaptcha({ a, b, answer: '' });
 
     // Fetch job
-    const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-    fetch(`${BASE}/careers/${params.id}`)
+    fetch(`/api/careers/${params.id}`)
       .then(r => r.json())
       .then(d => setJob(d?.career || d?.data || d))
       .catch(() => setJob({
@@ -68,16 +67,14 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
     }
 
     const fd = new FormData();
-    fd.append('full_name', formData.fullName);
-    fd.append('phone_no', formData.phone);
+    fd.append('name', formData.fullName);
+    fd.append('phone', formData.phone);
     fd.append('email', formData.email);
-    fd.append('resumefile', resume);
-    fd.append('Portfolio_link', formData.portfolioLink);
-    fd.append('describe_statement', formData.statement);
+    fd.append('resume', resume);
+    fd.append('coverLetter', formData.statement);
 
     try {
-      const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-      const res = await fetch(`${BASE}/job-applications/${params.id}/apply`, { method: 'POST', body: fd });
+      const res = await fetch(`/api/job-applications/${params.id}/apply`, { method: 'POST', body: fd });
       if (res.ok) {
         setSubmitted(true);
       } else {
@@ -143,7 +140,10 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                 <AnimatedSection>
                   <h3 className="font-bold text-gray-900 text-lg mb-3">Required Skills</h3>
                   <div className="flex flex-wrap gap-2">
-                    {job.primarySkills.split(',').map(s => (
+                    {(Array.isArray(job.primarySkills)
+                      ? job.primarySkills
+                      : job.primarySkills.split(',')
+                    ).map((s: string) => (
                       <span key={s.trim()} className="px-3 py-1.5 rounded-full text-sm font-medium"
                         style={{ background: 'rgba(212,23,74,0.22)', color: '#D4174A' }}>
                         {s.trim()}

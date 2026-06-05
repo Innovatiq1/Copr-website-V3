@@ -1,14 +1,15 @@
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
-import { MapPin, Briefcase, Clock, ChevronRight } from 'lucide-react';
+import VideoSection from '@/components/VideoSection';
+import { MapPin, Briefcase, Clock, ChevronRight, Users } from 'lucide-react';
 import Link from 'next/link';
-import { getCareers } from '@/lib/api';
+import { getCareersDirect } from '@/lib/server-data';
 
 export default async function CareersPage() {
-  const data = await getCareers(1, 50);
+  const data = await getCareersDirect(1, 50);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const careers: any[] = (data as any)?.careers || [];
+  const careers: any[] = data?.careers || [];
 
   return (
     <>
@@ -19,39 +20,75 @@ export default async function CareersPage() {
       />
 
       {/* Why Join Us */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#080F20' }}>
+      <section className="relative py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(212,23,74,0.1) 0%, transparent 60%)' }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/Carrer%20Image.svg" alt="" aria-hidden="true"
-          className="absolute right-0 top-1/2 -translate-y-1/2 h-[90%] max-h-[480px] w-auto opacity-[0.07] pointer-events-none select-none object-contain" />
+          style={{ background: 'radial-gradient(circle at top right, rgba(212,23,74,0.05) 0%, transparent 60%)' }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.03) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white">
-              Why Work at{' '}
-              <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Innovatiq?</span>
-            </h2>
-          </AnimatedSection>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Two-column top: heading left, image right */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
+            <AnimatedSection>
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-[#D4174A] uppercase tracking-widest bg-[#D4174A]/8 border border-[#D4174A]/15 px-4 py-1.5 rounded-full mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A]" />
+                Perks & Culture
+              </span>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Why Work at{' '}
+                <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Innovatiq?</span>
+              </h2>
+              <p className="text-slate-500 mb-3 leading-relaxed">
+                At Innovatiq we treasure our people as they are our most important assets. We encourage a diverse and inclusive culture working together in an open minded environment.
+              </p>
+              <p className="text-slate-500 leading-relaxed">
+                Are you enthusiastic and passionate about innovation and technology? You are a perfect match and we have the right challenges to help you grow, upskill to nurture your career.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={120}>
+              <div className="relative rounded-2xl overflow-hidden"
+                style={{ boxShadow: '0 4px 32px rgba(0,0,0,0.12)' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/aboutUs/medium-shot-people-working-desk.jpg"
+                  alt="Team collaborating at Innovatiq"
+                  className="w-full h-72 object-cover object-center" />
+                {/* Brand colour overlay */}
+                <div className="absolute inset-0 pointer-events-none"
+                  style={{ background: 'linear-gradient(135deg, rgba(212,23,74,0.12) 0%, transparent 60%)' }} />
+                {/* Bottom caption strip */}
+                <div className="absolute bottom-0 left-0 right-0 px-5 py-3"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55), transparent)' }}>
+                  <p className="text-white text-sm font-medium">People-first culture · Asia Pacific</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
             {[
               { icon: '🚀', title: 'Challenging Work', description: 'Work on complex, high-impact projects for enterprise clients across the region.', color: '#D4174A' },
               { icon: '📚', title: 'Continuous Learning', description: 'Generous training and certification budgets to keep your skills current.', color: '#3B82F6' },
               { icon: '🌍', title: 'Global Exposure', description: 'Work with international clients and teams across Asia Pacific.', color: '#10B981' },
               { icon: '💡', title: 'Innovation Culture', description: 'We encourage experimentation, creative thinking, and bold ideas.', color: '#F59E0B' },
             ].map((b, i) => (
-              <AnimatedSection key={b.title} delay={i * 80}>
-                <div className="relative text-center p-6 rounded-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              <AnimatedSection key={b.title} delay={i * 80} className="h-full">
+                <div className="text-center p-7 hover:-translate-y-1 transition-all duration-300 h-full"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-                    border: '1px solid rgba(255,255,255,0.14)',
-                    boxShadow: '0 4px 28px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.08) inset',
+                    background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${b.color} 0%, ${b.color} 20%, ${b.color}CC 45%, ${b.color}55 70%, transparent 90%) border-box`,
+                    borderStyle: 'solid',
+                    borderColor: 'transparent',
+                    borderTopWidth: '4px',
+                    borderLeftWidth: '0',
+                    borderRightWidth: '0',
+                    borderBottomWidth: '0',
+                    borderRadius: '16px',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
-                  <div className="absolute top-0 left-0 right-0 h-[2px]"
-                    style={{ background: `linear-gradient(90deg, ${b.color}, transparent)` }} />
-                  <div className="text-4xl mb-3">{b.icon}</div>
-                  <h3 className="font-semibold text-white mb-2">{b.title}</h3>
-                  <p className="text-gray-500 text-sm">{b.description}</p>
+                  <div className="text-4xl mb-4">{b.icon}</div>
+                  <h3 className="font-semibold text-gray-800 mb-2">{b.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -60,68 +97,101 @@ export default async function CareersPage() {
       </section>
 
       {/* Job Listings */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#07101E' }}>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[400px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at bottom left, rgba(212,23,74,0.18) 0%, transparent 60%)' }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/Design.svg" alt="" aria-hidden="true"
-          className="absolute right-0 top-0 h-full max-h-[500px] w-auto opacity-[0.04] pointer-events-none select-none object-contain" />
+      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F9FAFE 100%)' }}>
+        {/* Background treatments */}
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/Carrer%20Hero%20Section%20Background%201.svg" alt="" aria-hidden="true"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[800px] h-auto opacity-[0.04] object-contain" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[400px]"
+            style={{ background: 'radial-gradient(ellipse at bottom left, rgba(212,23,74,0.05) 0%, transparent 60%)' }} />
+          <div className="absolute top-0 right-0 w-[400px] h-[400px]"
+            style={{ background: 'radial-gradient(ellipse at top right, rgba(59,130,246,0.04) 0%, transparent 60%)' }} />
+          {/* Subtle dot grid */}
+          <div className="absolute inset-0 opacity-[0.018]"
+            style={{ backgroundImage: 'radial-gradient(circle, #D4174A 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-10">
-            <h2 className="text-3xl font-bold text-white mb-2">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">
               Open{' '}
               <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Positions</span>
             </h2>
-            <p className="text-gray-500">{careers.length > 0 ? `${careers.length} opportunities available across our offices.` : 'New opportunities coming soon.'}</p>
+            <p className="text-slate-500">{careers.length > 0 ? `${careers.length} opportunities available across our offices.` : 'New opportunities coming soon.'}</p>
           </AnimatedSection>
 
           {careers.length === 0 && (
             <div className="flex flex-col items-center justify-center py-16 text-center rounded-2xl mb-6"
-              style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
+              style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.07)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                style={{ background: 'rgba(212,23,74,0.1)', border: '1px solid rgba(212,23,74,0.2)' }}>
+                style={{ background: 'rgba(212,23,74,0.08)', border: '1px solid rgba(212,23,74,0.15)' }}>
                 <Briefcase size={28} className="text-[#D4174A]" />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">No open positions right now</h3>
-              <p className="text-gray-500 text-sm">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">No open positions right now</h3>
+              <p className="text-slate-500 text-sm">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
             </div>
           )}
 
           <div className="space-y-4">
             {careers.map((job, i) => (
               <AnimatedSection key={job._id} delay={i * 60}>
-                <div className="relative rounded-2xl p-6 hover:-translate-y-0.5 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-4 overflow-hidden"
+                <div className="p-5 pl-6 hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-5"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-                    border: '1px solid rgba(255,255,255,0.14)',
-                    boxShadow: '0 4px 28px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.08) inset',
+                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to bottom, #D4174A 0%, #D4174A 20%, #D4174ACC 45%, #D4174A55 70%, transparent 90%) border-box',
+                    borderStyle: 'solid',
+                    borderColor: 'transparent',
+                    borderTopWidth: '0',
+                    borderLeftWidth: '4px',
+                    borderRightWidth: '0',
+                    borderBottomWidth: '0',
+                    borderRadius: '16px',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08)',
                   }}>
-                  <div className="absolute left-0 top-0 bottom-0 w-[2px]"
-                    style={{ background: 'linear-gradient(to bottom, #D4174A, transparent)' }} />
-                  <div className="flex-1 pl-2">
-                    <h3 className="font-bold text-white text-lg mb-1">{job.jobTitle}</h3>
+
+                  {/* Icon anchor */}
+                  <div className="shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center self-start sm:self-center"
+                    style={{ background: 'linear-gradient(135deg, rgba(212,23,74,0.12), rgba(212,23,74,0.05))', border: '1px solid rgba(212,23,74,0.18)' }}>
+                    <Briefcase size={22} style={{ color: '#D4174A' }} />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h3 className="font-bold text-gray-900 text-lg">{job.jobTitle || job.title}</h3>
+                      {job.employmentType && (
+                        <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold"
+                          style={{ background: 'rgba(212,23,74,0.08)', color: '#D4174A', border: '1px solid rgba(212,23,74,0.15)' }}>
+                          {job.employmentType}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-sm font-medium mb-3" style={{ color: '#D4174A' }}>{job.companyName}</p>
-                    <div className="flex flex-wrap gap-3 text-sm text-gray-500">
+                    <div className="flex flex-wrap gap-4 text-sm text-slate-500">
                       <span className="flex items-center gap-1.5"><MapPin size={13} style={{ color: '#D4174A' }} />{job.location}</span>
-                      <span className="flex items-center gap-1.5"><Briefcase size={13} style={{ color: '#D4174A' }} />{job.experience}</span>
+                      <span className="flex items-center gap-1.5"><Briefcase size={13} style={{ color: '#D4174A' }} />{job.experienceLevel || job.experience}</span>
                       <span className="flex items-center gap-1.5"><Clock size={13} style={{ color: '#D4174A' }} />{job.employmentType}</span>
                     </div>
                     {job.primarySkills && (
                       <div className="flex flex-wrap gap-2 mt-3">
-                        {job.primarySkills.split(',').slice(0, 4).map((skill: string) => (
+                        {(Array.isArray(job.primarySkills)
+                          ? job.primarySkills
+                          : job.primarySkills.split(',')
+                        ).slice(0, 4).map((skill: string) => (
                           <span key={skill.trim()} className="text-xs px-2.5 py-1 rounded-full font-medium"
-                            style={{ background: 'rgba(212,23,74,0.1)', color: '#D4174A', border: '1px solid rgba(212,23,74,0.2)' }}>
+                            style={{ background: '#F8FAFC', color: '#475569', border: '1px solid rgba(0,0,0,0.10)' }}>
                             {skill.trim()}
                           </span>
                         ))}
                       </div>
                     )}
                   </div>
-                  <div className="flex gap-3 flex-shrink-0">
+
+                  {/* Right: apply */}
+                  <div className="shrink-0 flex flex-col items-end gap-3 self-center">
                     <Link href={`/careers/${job._id}`}
-                      className="inline-flex items-center gap-2 py-2.5 px-5 text-sm text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                      style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 12px rgba(212,23,74,0.35)' }}>
+                      className="inline-flex items-center gap-2 py-2.5 px-6 text-sm text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                      style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 12px rgba(212,23,74,0.30)' }}>
                       Apply Now <ChevronRight size={14} />
                     </Link>
                   </div>
@@ -130,28 +200,48 @@ export default async function CareersPage() {
             ))}
           </div>
 
+          {/* CTA card — two-column: content left, visible image right */}
           <AnimatedSection className="mt-10">
-            <div className="relative text-center p-10 rounded-2xl overflow-hidden"
+            <div className="relative overflow-hidden rounded-2xl flex flex-col sm:flex-row items-stretch"
               style={{
-                background: 'linear-gradient(135deg, rgba(212,23,74,0.12) 0%, rgba(10,18,37,0.8) 100%)',
-                border: '1px solid rgba(212,23,74,0.2)',
+                background: 'linear-gradient(135deg, #FFF5F7 0%, #FFF9F5 60%, #FFFBF5 100%)',
+                border: '1.5px solid rgba(212,23,74,0.18)',
+                boxShadow: '0 4px 24px rgba(212,23,74,0.08)',
               }}>
-              <div className="absolute top-0 left-0 right-0 h-[2px]"
-                style={{ background: 'linear-gradient(90deg, #D4174A, #FF8C42, transparent)' }} />
-              <h3 className="text-xl font-bold text-white mb-3">Don&apos;t See a Role That Fits?</h3>
-              <p className="text-gray-400 mb-6 max-w-md mx-auto">
-                We&apos;re always looking for exceptional talent. Submit your profile and we&apos;ll reach out when the right opportunity arises.
-              </p>
-              <Link href="/join-us"
-                className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)' }}>
-                Submit Your Profile
-              </Link>
+              {/* Ambient glow top-left */}
+              <div className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+                style={{ background: 'radial-gradient(circle, rgba(212,23,74,0.07) 0%, transparent 70%)' }} />
+
+              {/* Left: content */}
+              <div className="relative z-10 flex-1 px-8 py-12">
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                  style={{ background: 'rgba(212,23,74,0.09)', border: '1px solid rgba(212,23,74,0.18)' }}>
+                  <Users size={26} className="text-[#D4174A]" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Don&apos;t See a Role That Fits?</h3>
+                <p className="text-slate-500 mb-7 max-w-sm leading-relaxed">
+                  We&apos;re always looking for exceptional talent. Submit your profile and we&apos;ll reach out when the right opportunity arises.
+                </p>
+                <Link href="/join-us"
+                  className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+                  style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 8px 24px rgba(212,23,74,0.30)' }}>
+                  Submit Your Profile <ChevronRight size={16} />
+                </Link>
+              </div>
+
+              {/* Right: visible career image */}
+              <div className="hidden sm:flex items-end justify-center w-64 shrink-0 overflow-hidden"
+                style={{ background: 'linear-gradient(to left, rgba(212,23,74,0.06), transparent)' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/Carrer%20Image.svg" alt="" aria-hidden="true"
+                  className="h-[95%] max-h-64 w-auto object-contain opacity-30 select-none pointer-events-none" />
+              </div>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
+      <VideoSection filterType="career" />
       <CtaSection />
     </>
   );

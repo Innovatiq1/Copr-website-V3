@@ -15,8 +15,7 @@ export default function BlogContentPage({ params }: { params: { id: string } }) 
   const [dislikes, setDislikes] = useState(0);
 
   useEffect(() => {
-    const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
-    fetch(`${BASE}/blogs/${params.id}`)
+    fetch(`/api/blogs/${params.id}`)
       .then(r => r.json())
       .then(d => {
         const b = d?.blog || d?.data || d;

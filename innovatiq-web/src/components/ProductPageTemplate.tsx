@@ -1,6 +1,7 @@
 import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
+import VideoSection from './VideoSection';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -20,6 +21,7 @@ interface Props {
   gradient: string;
   color: string;
   badge?: string;
+  productType?: string;
 }
 
 export default function ProductPageTemplate({
@@ -32,75 +34,95 @@ export default function ProductPageTemplate({
   gradient,
   color,
   badge,
+  productType,
 }: Props) {
   return (
     <>
       <PageHero badge={subtitle} title={name} subtitle={tagline} />
 
       {/* Overview */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#080F20' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-          style={{ background: `radial-gradient(circle at top right, ${color}15 0%, transparent 60%)` }} />
+          style={{ background: `radial-gradient(circle at top right, ${color}08 0%, transparent 60%)` }} />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.04) 0%, transparent 60%)' }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/Design.svg" alt="" aria-hidden="true"
-          className="absolute right-0 top-1/2 -translate-y-1/2 h-[80%] max-h-[480px] w-auto opacity-[0.06] pointer-events-none select-none object-contain" />
+          className="absolute right-0 bottom-0 h-[65%] max-h-105 w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
               {badge && (
                 <span className="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                  style={{ color: '#F59E0B', borderColor: 'rgba(245,158,11,0.3)', background: 'rgba(245,158,11,0.08)' }}>
+                  style={{ color: '#D97706', borderColor: 'rgba(245,158,11,0.25)', background: 'rgba(245,158,11,0.08)' }}>
                   {badge}
                 </span>
               )}
-              <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
+              <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 {name} —{' '}
-                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}99)` }}>
                   {subtitle}
                 </span>
               </h2>
-              <p className="text-gray-400 leading-relaxed mb-8">{description}</p>
+              <p className="text-slate-500 leading-relaxed mb-8">{description}</p>
               <div className="space-y-3 mb-8">
                 {highlights.map(h => (
                   <div key={h} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: `${color}20` }}>
+                      style={{ background: `${color}15` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-gray-300 text-sm">{h}</span>
+                    <span className="text-slate-600 text-sm">{h}</span>
                   </div>
                 ))}
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link href="/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: `linear-gradient(135deg, ${color}, ${color}80)`, boxShadow: `0 8px 24px ${color}40` }}>
+                  style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 8px 24px ${color}35` }}>
                   Start Free Trial <ArrowRight size={16} />
                 </Link>
                 <Link href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ border: `1px solid ${color}40`, color, background: `${color}08` }}>
+                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
+                  style={{ border: `1px solid ${color}35`, color, background: 'transparent' }}>
                   Request Demo
                 </Link>
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div
-                className="rounded-2xl p-10 text-white relative overflow-hidden"
-                style={{ background: gradient, boxShadow: `0 20px 60px ${color}20` }}
-              >
-                <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full opacity-10"
-                  style={{ background: 'radial-gradient(circle, white, transparent)' }} />
-                <div className="text-6xl mb-4">🚀</div>
-                <h3 className="text-2xl font-bold mb-2">{name}</h3>
-                <p className="text-white/70 mb-6">{subtitle}</p>
-                <div className="space-y-3">
+              <div className="rounded-3xl overflow-hidden text-white relative"
+                style={{ background: gradient, boxShadow: `0 28px 70px ${color}35` }}>
+
+                {/* Background orbs */}
+                <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none"
+                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.20) 0%, transparent 65%)' }} />
+                <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full pointer-events-none"
+                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 65%)' }} />
+
+                {/* Header */}
+                <div className="relative px-7 pt-7 pb-5">
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"
+                      style={{ background: 'rgba(255,255,255,0.22)' }}>
+                      🚀
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">{name}</h3>
+                      <p className="text-white/65 text-xs mt-0.5">{subtitle}</p>
+                    </div>
+                  </div>
+                  <div className="h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
+                </div>
+
+                {/* Feature pills */}
+                <div className="relative px-5 pb-7 space-y-2.5">
                   {features.slice(0, 4).map(f => (
-                    <div key={f.title} className="flex items-center gap-3">
+                    <div key={f.title} className="flex items-center gap-3 rounded-xl px-4 py-3"
+                      style={{ background: 'rgba(255,255,255,0.22)' }}>
                       <span className="text-xl">{f.icon}</span>
-                      <span className="font-medium text-sm">{f.title}</span>
+                      <span className="font-medium text-sm text-white">{f.title}</span>
                     </div>
                   ))}
                 </div>
@@ -111,40 +133,49 @@ export default function ProductPageTemplate({
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#07101E' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at center, ${color}08 0%, transparent 70%)` }} />
+          style={{ background: `radial-gradient(ellipse at center, ${color}06 0%, transparent 70%)` }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
-          className="absolute left-0 bottom-0 h-[60%] max-h-[350px] w-auto opacity-[0.05] pointer-events-none select-none object-contain" />
+          className="absolute left-0 bottom-0 h-[60%] max-h-[350px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+              style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+              Core Features
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">
               Powerful{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}99)` }}>
                 Features
               </span>
             </h2>
-            <p className="text-gray-500 mt-3 max-w-xl mx-auto">
+            <p className="text-slate-500 mt-3 max-w-xl mx-auto">
               Everything you need to {tagline.toLowerCase()}
             </p>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
             {features.map((f, i) => (
-              <AnimatedSection key={f.title} delay={i * 80}>
-                <div className="relative p-7 rounded-2xl group hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              <AnimatedSection key={f.title} delay={i * 80} className="h-full">
+                <div className="p-7 group hover:-translate-y-1 transition-all duration-300 h-full"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-                    border: '1px solid rgba(255,255,255,0.14)',
-                    boxShadow: '0 4px 28px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.08) inset',
+                    background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${color} 0%, ${color} 20%, ${color}CC 45%, ${color}55 70%, transparent 90%) border-box`,
+                    borderStyle: 'solid',
+                    borderColor: 'transparent',
+                    borderTopWidth: '4px',
+                    borderLeftWidth: '0',
+                    borderRightWidth: '0',
+                    borderBottomWidth: '0',
+                    borderRadius: '16px',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
-                  <div className="absolute top-0 left-0 right-0 h-[2px]"
-                    style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
                   <div className="text-4xl mb-4">{f.icon}</div>
-                  <h3 className="font-semibold text-white mb-2">{f.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{f.description}</p>
+                  <h3 className="font-semibold text-gray-800 mb-2">{f.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -152,30 +183,37 @@ export default function ProductPageTemplate({
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative py-16 overflow-hidden" style={{ background: '#080F20' }}>
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
-          style={{ background: `radial-gradient(circle at top right, ${color}08 0%, transparent 60%)` }} />
+      {/* Product CTA */}
+      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse at center, ${color}05 0%, transparent 65%)` }} />
+        <div className="absolute top-0 left-0 right-0 h-px"
+          style={{ background: `linear-gradient(90deg, transparent, ${color}20, transparent)` }} />
+
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border"
+              style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+              Get Started Today
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Ready to Experience{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}99)` }}>
                 {name}?
               </span>
             </h2>
-            <p className="text-gray-400 mb-8">
+            <p className="text-slate-500 mb-10 text-lg">
               Start your free trial today — no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: `linear-gradient(135deg, ${color}, ${color}80)`, boxShadow: `0 8px 24px ${color}40` }}>
+                style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 8px 24px ${color}35` }}>
                 Start Free Trial <ArrowRight size={16} />
               </Link>
               <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{ border: `1px solid ${color}40`, color, background: `${color}08` }}>
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
+                style={{ border: `1px solid ${color}35`, color }}>
                 Schedule Demo
               </Link>
             </div>
@@ -183,6 +221,7 @@ export default function ProductPageTemplate({
         </div>
       </section>
 
+      {productType && <VideoSection filterType="products" filterKey={productType} />}
       <CtaSection />
     </>
   );

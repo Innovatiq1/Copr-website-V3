@@ -14,7 +14,7 @@ function getCachedCareers(page: number, limit: number) {
         Career.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
         Career.countDocuments(filter),
       ]);
-      return { careers, total, page, pages: Math.ceil(total / limit) };
+      return JSON.parse(JSON.stringify({ careers, total, page, pages: Math.ceil(total / limit) }));
     },
     [`careers-list-${page}-${limit}`],
     { revalidate: 120, tags: ['careers'] }
@@ -26,9 +26,24 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    const data = await getCachedCareers(page, limit);
+    
+    const authHeader = req.headers.get('Authorization');
+    let data;
+    if (authHeader) {
+      await connectDB();
+      const skip = (page - 1) * limit;
+      const filter = { active: { $ne: false } };
+      const [careers, total] = await Promise.all([
+        Career.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Career.countDocuments(filter),
+      ]);
+      data = JSON.parse(JSON.stringify({ careers, total, page, pages: Math.ceil(total / limit) }));
+    } else {
+      data = await getCachedCareers(page, limit);
+    }
+
     return NextResponse.json(data, {
-      headers: { 'Cache-Control': 'public, max-age=120, stale-while-revalidate=60' },
+      headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

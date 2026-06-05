@@ -7,17 +7,26 @@ import Video from '@/models/Video';
 const getCachedVideos = unstable_cache(
   async () => {
     await connectDB();
-    return Video.find({ active: { $ne: false } }).sort({ createdAt: -1 }).lean();
+    const videos = await Video.find({ active: { $ne: false } }).sort({ createdAt: -1 }).lean();
+    return JSON.parse(JSON.stringify(videos));
   },
   ['videos-list'],
   { revalidate: 300, tags: ['videos'] }
 );
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const videos = await getCachedVideos();
+    const authHeader = req.headers.get('Authorization');
+    let videos;
+    if (authHeader) {
+      await connectDB();
+      const rawVideos = await Video.find({ active: { $ne: false } }).sort({ createdAt: -1 }).lean();
+      videos = JSON.parse(JSON.stringify(rawVideos));
+    } else {
+      videos = await getCachedVideos();
+    }
     return NextResponse.json(videos, {
-      headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=60' },
+      headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

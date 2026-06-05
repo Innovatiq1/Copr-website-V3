@@ -10,7 +10,8 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     const getCachedVideo = unstable_cache(
       async () => {
         await connectDB();
-        return Video.findById(id).lean();
+        const video = await Video.findById(id).lean();
+        return video ? JSON.parse(JSON.stringify(video)) : null;
       },
       [`video-${id}`],
       { revalidate: 600, tags: ['videos', `video-${id}`] }
@@ -18,7 +19,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     const video = await getCachedVideo();
     if (!video) return NextResponse.json({ message: 'Not found' }, { status: 404 });
     return NextResponse.json(video, {
-      headers: { 'Cache-Control': 'public, max-age=600, stale-while-revalidate=60' },
+      headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

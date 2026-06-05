@@ -52,7 +52,7 @@ export default function CareerEditPage() {
         if (typeof primarySkills === 'string') {
           setSkills(primarySkills.split(',').map((s: string) => s.trim()).filter(Boolean));
         } else if (Array.isArray(primarySkills)) {
-          setSkills(primarySkills);
+          setSkills(primarySkills.map((s: any) => String(s).trim()).filter(Boolean));
         }
         setExperience(career.experience || career.experienceLevel || '');
         setEmploymentType(career.employmentType || EMPLOYMENT_TYPES[0]);
@@ -66,8 +66,13 @@ export default function CareerEditPage() {
   }, [id]);
 
   const addSkill = () => {
-    const s = skillInput.trim();
-    if (s && !skills.includes(s)) setSkills([...skills, s]);
+    const newSkills = skillInput
+      .split(',')
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0 && !skills.includes(s));
+    if (newSkills.length > 0) {
+      setSkills([...skills, ...newSkills]);
+    }
     setSkillInput('');
   };
 

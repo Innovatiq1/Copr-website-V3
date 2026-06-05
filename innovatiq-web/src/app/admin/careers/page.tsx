@@ -35,14 +35,16 @@ export default function CareersPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this career posting?')) return;
     try {
-      const token = getToken();
-      await fetch(`${API}/careers/${id}`, {
+      const res = await authFetch(`${API}/careers/${id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
       });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || 'Failed to delete career posting');
+      }
       setCareers((prev) => prev.filter((c) => c._id !== id));
-    } catch {
-      alert('Failed to delete career');
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : 'Failed to delete career posting');
     }
   };
 

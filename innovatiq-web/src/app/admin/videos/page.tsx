@@ -34,14 +34,16 @@ export default function VideosPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this video?')) return;
     try {
-      const token = getToken();
-      await fetch(`${API}/videos/${id}`, {
+      const res = await authFetch(`${API}/videos/${id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
       });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || 'Failed to delete video');
+      }
       setVideos((prev) => prev.filter((v) => v._id !== id));
-    } catch {
-      alert('Failed to delete video');
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : 'Failed to delete video');
     }
   };
 

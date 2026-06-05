@@ -34,14 +34,16 @@ export default function AwardsPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this award?')) return;
     try {
-      const token = getToken();
-      await fetch(`${API}/awards/${id}`, {
+      const res = await authFetch(`${API}/awards/${id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
       });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || 'Failed to delete award');
+      }
       setAwards((prev) => prev.filter((a) => a._id !== id));
-    } catch {
-      alert('Failed to delete award');
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : 'Failed to delete award');
     }
   };
 

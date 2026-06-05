@@ -10,7 +10,8 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     const getCachedCareer = unstable_cache(
       async () => {
         await connectDB();
-        return Career.findById(id).lean();
+        const career = await Career.findById(id).lean();
+        return career ? JSON.parse(JSON.stringify(career)) : null;
       },
       [`career-${id}`],
       { revalidate: 300, tags: ['careers', `career-${id}`] }
@@ -18,7 +19,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     const career = await getCachedCareer();
     if (!career) return NextResponse.json({ message: 'Not found' }, { status: 404 });
     return NextResponse.json(career, {
-      headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=60' },
+      headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

@@ -35,8 +35,13 @@ export default function CareerCreatePage() {
   const [error, setError] = useState('');
 
   const addSkill = () => {
-    const s = skillInput.trim();
-    if (s && !skills.includes(s)) setSkills([...skills, s]);
+    const newSkills = skillInput
+      .split(',')
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0 && !skills.includes(s));
+    if (newSkills.length > 0) {
+      setSkills([...skills, ...newSkills]);
+    }
     setSkillInput('');
   };
 

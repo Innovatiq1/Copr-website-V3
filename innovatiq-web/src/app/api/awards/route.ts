@@ -25,7 +25,7 @@ function getCachedAwards(page: number, limit: number) {
         Award.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
         Award.countDocuments(),
       ]);
-      return { awards, total, page, pages: Math.ceil(total / limit) };
+      return JSON.parse(JSON.stringify({ awards, total, page, pages: Math.ceil(total / limit) }));
     },
     [`awards-list-${page}-${limit}`],
     { revalidate: 300, tags: ['awards'] }
@@ -37,9 +37,23 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    const data = await getCachedAwards(page, limit);
+    
+    const authHeader = req.headers.get('Authorization');
+    let data;
+    if (authHeader) {
+      await connectDB();
+      const skip = (page - 1) * limit;
+      const [awards, total] = await Promise.all([
+        Award.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Award.countDocuments(),
+      ]);
+      data = JSON.parse(JSON.stringify({ awards, total, page, pages: Math.ceil(total / limit) }));
+    } else {
+      data = await getCachedAwards(page, limit);
+    }
+
     return NextResponse.json(data, {
-      headers: { 'Cache-Control': 'public, max-age=300, stale-while-revalidate=60' },
+      headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

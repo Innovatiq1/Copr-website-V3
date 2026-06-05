@@ -15,7 +15,7 @@ function getCachedBlogs(page: number, limit: number) {
         Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
         Blog.countDocuments(),
       ]);
-      return { blogs, total, page, pages: Math.ceil(total / limit) };
+      return JSON.parse(JSON.stringify({ blogs, total, page, pages: Math.ceil(total / limit) }));
     },
     [`blogs-list-${page}-${limit}`],
     { revalidate: 120, tags: ['blogs'] }
@@ -27,9 +27,23 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    const data = await getCachedBlogs(page, limit);
+    
+    const authHeader = req.headers.get('Authorization');
+    let data;
+    if (authHeader) {
+      await connectDB();
+      const skip = (page - 1) * limit;
+      const [blogs, total] = await Promise.all([
+        Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Blog.countDocuments(),
+      ]);
+      data = JSON.parse(JSON.stringify({ blogs, total, page, pages: Math.ceil(total / limit) }));
+    } else {
+      data = await getCachedBlogs(page, limit);
+    }
+
     return NextResponse.json(data, {
-      headers: { 'Cache-Control': 'public, max-age=120, stale-while-revalidate=60' },
+      headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

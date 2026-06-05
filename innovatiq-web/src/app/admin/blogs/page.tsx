@@ -35,14 +35,16 @@ export default function BlogsPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this blog?')) return;
     try {
-      const token = getToken();
-      await fetch(`${API}/blogs/${id}`, {
+      const res = await authFetch(`${API}/blogs/${id}`, {
         method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
       });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || 'Failed to delete blog');
+      }
       setBlogs((prev) => prev.filter((b) => b._id !== id));
-    } catch {
-      alert('Failed to delete blog');
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : 'Failed to delete blog');
     }
   };
 

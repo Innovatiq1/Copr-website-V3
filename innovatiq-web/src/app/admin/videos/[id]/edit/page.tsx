@@ -101,14 +101,16 @@ export default function VideoEditPage() {
     label, checked, onChange, children,
   }: { label: string; checked: boolean; onChange: () => void; children?: React.ReactNode }) => (
     <div className="space-y-3">
-      <label className="flex items-center gap-3 cursor-pointer group">
+      <div
+        className="flex items-center gap-3 cursor-pointer group"
+        onClick={onChange}
+      >
         <div
           className="w-5 h-5 rounded flex items-center justify-center transition-all flex-shrink-0"
           style={{
             background: checked ? '#D4174A' : 'rgba(255,255,255,0.05)',
             border: checked ? '1px solid #D4174A' : '1px solid rgba(255,255,255,0.2)',
           }}
-          onClick={onChange}
         >
           {checked && (
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
@@ -116,8 +118,8 @@ export default function VideoEditPage() {
             </svg>
           )}
         </div>
-        <span className="text-sm text-gray-300 group-hover:text-white transition-colors" onClick={onChange}>{label}</span>
-      </label>
+        <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{label}</span>
+      </div>
       {checked && children && (
         <div className="ml-8 space-y-2">{children}</div>
       )}
@@ -125,14 +127,16 @@ export default function VideoEditPage() {
   );
 
   const SubCheckbox = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
-    <label className="flex items-center gap-3 cursor-pointer group">
+    <div
+      className="flex items-center gap-3 cursor-pointer group"
+      onClick={onChange}
+    >
       <div
         className="w-4 h-4 rounded flex items-center justify-center transition-all flex-shrink-0"
         style={{
           background: checked ? 'rgba(212,23,74,0.7)' : 'rgba(255,255,255,0.05)',
           border: checked ? '1px solid rgba(212,23,74,0.7)' : '1px solid rgba(255,255,255,0.2)',
         }}
-        onClick={onChange}
       >
         {checked && (
           <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
@@ -140,8 +144,8 @@ export default function VideoEditPage() {
           </svg>
         )}
       </div>
-      <span className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors" onClick={onChange}>{label}</span>
-    </label>
+      <span className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">{label}</span>
+    </div>
   );
 
   if (fetching) {

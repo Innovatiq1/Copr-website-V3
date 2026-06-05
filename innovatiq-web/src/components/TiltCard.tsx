@@ -50,7 +50,7 @@ export default function TiltCard({ children, className, style, intensity = 22 }:
       rawY = -ny * intensity;
       tarScale = 1.05;
 
-      wrap.style.filter = `drop-shadow(${-nx * 32}px ${ny * 32}px 48px rgba(0,0,0,0.58))`;
+      wrap.style.filter = `drop-shadow(${-nx * 8}px ${ny * 8}px 20px rgba(0,0,0,0.08))`;
 
       if (glare) {
         glare.style.background = `radial-gradient(circle at ${(nx + 0.5) * 100}% ${(ny + 0.5) * 100}%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.05) 40%, transparent 70%)`;
@@ -98,7 +98,7 @@ export default function TiltCard({ children, className, style, intensity = 22 }:
             opacity: 0,
             transition: 'opacity 0.35s ease',
             zIndex: 50,
-            borderRadius: '16px',
+            borderRadius: '20px',
             mixBlendMode: 'overlay',
           }}
         />

@@ -6,5 +6,4 @@ const AdminSchema = new mongoose.Schema({
   name: { type: String },
 }, { timestamps: true });
 
-if (mongoose.models.Admin) delete (mongoose.models as Record<string, unknown>).Admin;
-export default mongoose.model('Admin', AdminSchema);
+export default mongoose.models.Admin || mongoose.model('Admin', AdminSchema);

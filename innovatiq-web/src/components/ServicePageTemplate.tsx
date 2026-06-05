@@ -1,12 +1,18 @@
 import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
+import VideoSection from './VideoSection';
 import { CheckCircle2 } from 'lucide-react';
 
 interface Benefit {
   title: string;
   description: string;
   icon: string;
+}
+
+interface DetailCard {
+  title: string;
+  description: string;
 }
 
 interface Props {
@@ -18,6 +24,9 @@ interface Props {
   benefits: Benefit[];
   processSteps?: { step: string; title: string; description: string }[];
   color?: string;
+  detailCards?: DetailCard[];
+  investmentCards?: Benefit[];
+  serviceType?: string;
 }
 
 export default function ServicePageTemplate({
@@ -29,58 +38,58 @@ export default function ServicePageTemplate({
   benefits,
   processSteps,
   color = '#D4174A',
+  detailCards,
+  investmentCards,
+  serviceType,
 }: Props) {
   return (
     <>
       <PageHero badge={badge} title={title} subtitle={subtitle} />
 
       {/* Overview */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#080F20' }}>
-        {/* Ambient glows */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-          style={{ background: `radial-gradient(circle at top right, ${color}15 0%, transparent 60%)` }} />
-        {/* Illustration */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/Service%20Hero%20section%201.svg" alt="" aria-hidden="true"
-          className="absolute right-0 top-1/2 -translate-y-1/2 h-[90%] max-h-[500px] w-auto opacity-[0.06] pointer-events-none select-none object-contain" />
+      <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
               <span className="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                style={{ color, background: `${color}12`, borderColor: `${color}30` }}>
+                style={{ color, background: `${color}08`, borderColor: `${color}25` }}>
                 Overview
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">{title}</h2>
-              <p className="text-gray-400 leading-relaxed mb-8">{overview}</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{title}</h2>
+              <p className="text-slate-500 leading-relaxed mb-8">{overview}</p>
               <div className="space-y-3">
                 {overviewPoints.map(point => (
                   <div key={point} className="flex items-start gap-3">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                      style={{ background: `${color}20` }}>
+                      style={{ background: `${color}12` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-gray-300 text-sm">{point}</span>
+                    <span className="text-slate-600 text-sm">{point}</span>
                   </div>
                 ))}
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div className="rounded-2xl p-10 relative overflow-hidden"
+              <div className="rounded-2xl p-8"
                 style={{
-                  background: 'linear-gradient(145deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.05) 100%)',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  boxShadow: `0 0 60px ${color}15`,
+                  background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${color} 0%, ${color} 20%, ${color}CC 45%, ${color}55 70%, transparent 90%) border-box`,
+                  borderStyle: 'solid',
+                  borderColor: 'transparent',
+                  borderTopWidth: '4px',
+                  borderLeftWidth: '0',
+                  borderRightWidth: '0',
+                  borderBottomWidth: '0',
+                  borderRadius: '16px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                 }}>
-                <div className="absolute top-0 left-0 right-0 h-[2px]"
-                  style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
                 <div className="grid grid-cols-2 gap-6">
                   {benefits.slice(0, 4).map(b => (
-                    <div key={b.title}>
+                    <div key={b.title} className="p-4 rounded-xl" style={{ background: `${color}06` }}>
                       <div className="text-3xl mb-3">{b.icon}</div>
-                      <h4 className="font-semibold text-white mb-1 text-sm">{b.title}</h4>
-                      <p className="text-gray-500 text-xs leading-relaxed">{b.description}</p>
+                      <h4 className="font-semibold text-gray-800 mb-1 text-sm">{b.title}</h4>
+                      <p className="text-slate-500 text-xs leading-relaxed">{b.description}</p>
                     </div>
                   ))}
                 </div>
@@ -91,40 +100,51 @@ export default function ServicePageTemplate({
       </section>
 
       {/* All Benefits */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#07101E' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: `radial-gradient(ellipse at bottom left, ${color}10 0%, transparent 70%)` }} />
+          style={{ background: `radial-gradient(ellipse at bottom left, ${color}05 0%, transparent 70%)` }} />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at top right, rgba(59,130,246,0.04) 0%, transparent 70%)' }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/Design.svg" alt="" aria-hidden="true"
-          className="absolute right-0 bottom-0 h-[70%] max-h-[400px] w-auto opacity-[0.05] pointer-events-none select-none object-contain" />
+          className="absolute right-0 bottom-0 h-[70%] max-h-[400px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-white">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+              style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+              What We Deliver
+            </span>
+            <h2 className="text-4xl font-bold text-gray-900">
               Key{' '}
               <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
                 Benefits
               </span>
             </h2>
-            <p className="text-gray-500 mt-3 max-w-xl mx-auto">
+            <p className="text-slate-500 mt-3 max-w-xl mx-auto">
               Discover how our {title} expertise transforms your business outcomes.
             </p>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch">
             {benefits.map((b, i) => (
-              <AnimatedSection key={b.title} delay={i * 80}>
-                <div className="relative p-7 rounded-2xl group hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              <AnimatedSection key={b.title} delay={i * 80} className="h-full">
+                <div className="p-7 group hover:-translate-y-1 transition-all duration-300 h-full"
                   style={{
-                    background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-                    border: '1px solid rgba(255,255,255,0.14)',
-                    boxShadow: '0 4px 28px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.08) inset',
+                    background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${color} 0%, ${color} 20%, ${color}CC 45%, ${color}55 70%, transparent 90%) border-box`,
+                    borderStyle: 'solid',
+                    borderColor: 'transparent',
+                    borderTopWidth: '4px',
+                    borderLeftWidth: '0',
+                    borderRightWidth: '0',
+                    borderBottomWidth: '0',
+                    borderRadius: '16px',
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
-                  <div className="absolute top-0 left-0 right-0 h-[2px]"
-                    style={{ background: `linear-gradient(90deg, ${color}, transparent)` }} />
                   <div className="text-4xl mb-4">{b.icon}</div>
-                  <h3 className="font-semibold text-white mb-2">{b.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{b.description}</p>
+                  <h3 className="font-semibold text-gray-800 mb-2">{b.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed">{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -134,16 +154,21 @@ export default function ServicePageTemplate({
 
       {/* Process Steps */}
       {processSteps && (
-        <section className="relative py-24 overflow-hidden" style={{ background: '#080F20' }}>
+        <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
           <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-            style={{ background: `radial-gradient(circle at top right, ${color}08 0%, transparent 60%)` }} />
+            style={{ background: `radial-gradient(circle at top right, ${color}05 0%, transparent 60%)` }} />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
-            className="absolute left-0 top-1/2 -translate-y-1/2 h-[80%] max-h-[400px] w-auto opacity-[0.05] pointer-events-none select-none object-contain" />
+            className="absolute left-0 top-1/2 -translate-y-1/2 h-[80%] max-h-[400px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+                style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                How We Work
+              </span>
+              <h2 className="text-4xl font-bold text-gray-900">
                 Our{' '}
                 <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
                   Approach
@@ -157,19 +182,18 @@ export default function ServicePageTemplate({
                   <div className="text-center relative">
                     {i < processSteps.length - 1 && (
                       <div className="hidden lg:block absolute top-5 left-full w-full h-0.5 -translate-y-0.5"
-                        style={{ background: `linear-gradient(90deg, ${color}50, transparent)` }} />
+                        style={{ background: `linear-gradient(90deg, ${color}40, transparent)` }} />
                     )}
                     <div
                       className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm mx-auto mb-4"
                       style={{
-                        background: `linear-gradient(135deg, ${color}, ${color}80)`,
-                        boxShadow: `0 8px 24px ${color}40`,
-                      }}
-                    >
+                        background: `linear-gradient(135deg, ${color}, ${color}cc)`,
+                        boxShadow: `0 8px 24px ${color}35`,
+                      }}>
                       {step.step}
                     </div>
-                    <h3 className="font-semibold text-white mb-2">{step.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
+                    <h3 className="font-semibold text-gray-800 mb-2">{step.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -178,6 +202,89 @@ export default function ServicePageTemplate({
         </section>
       )}
 
+      {/* Detail Cards */}
+      {detailCards && detailCards.length > 0 && (
+        <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
+            style={{ background: `radial-gradient(ellipse at top left, ${color}04 0%, transparent 70%)` }} />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+                style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                Our Expertise
+              </span>
+              <h2 className="text-4xl font-bold text-gray-900">
+                Service{' '}
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+                  Capabilities
+                </span>
+              </h2>
+            </AnimatedSection>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {detailCards.map((card, i) => (
+                <AnimatedSection key={card.title} delay={i * 80}>
+                  <div className="p-7 h-full hover:-translate-y-1 transition-all duration-300"
+                    style={{
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(0,0,0,0.07)',
+                      borderRadius: '16px',
+                      boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05)',
+                      borderLeft: `3px solid ${color}`,
+                    }}>
+                    <h3 className="font-semibold text-gray-800 mb-3" style={{ color }}>{card.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{card.description}</p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Protect Your Investments */}
+      {investmentCards && investmentCards.length > 0 && (
+        <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
+            style={{ background: `radial-gradient(ellipse at bottom right, ${color}05 0%, transparent 70%)` }} />
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+                style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                ROI & Value
+              </span>
+              <h2 className="text-4xl font-bold text-gray-900">
+                Protect Your{' '}
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+                  Investments
+                </span>
+              </h2>
+              <p className="text-slate-500 mt-3 max-w-xl mx-auto">
+                Our managed services deliver measurable return on investment while protecting your business assets.
+              </p>
+            </AnimatedSection>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {investmentCards.map((card, i) => (
+                <AnimatedSection key={card.title} delay={i * 100}>
+                  <div className="p-8 text-center rounded-2xl h-full hover:-translate-y-1 transition-all duration-300"
+                    style={{
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(0,0,0,0.07)',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06)',
+                    }}>
+                    <div className="text-4xl mb-4">{card.icon}</div>
+                    <h3 className="font-bold text-gray-800 mb-3 text-lg">{card.title}</h3>
+                    <p className="text-slate-500 text-sm leading-relaxed">{card.description}</p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {serviceType && <VideoSection filterType="services" filterKey={serviceType} />}
       <CtaSection />
     </>
   );

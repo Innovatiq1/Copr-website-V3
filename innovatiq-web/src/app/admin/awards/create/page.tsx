@@ -153,7 +153,7 @@ export default function AwardCreatePage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}>
             {loading ? 'Creating...' : 'Create Award'}
           </button>
           <Link href="/admin/awards"

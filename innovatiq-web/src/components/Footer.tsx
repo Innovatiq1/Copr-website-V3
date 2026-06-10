@@ -9,7 +9,7 @@ const NAVY2   = '#881337';
 
 export default function Footer() {
   return (
-    <footer style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #172554 50%, ${NAVY} 100%)`, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <footer style={{ background: `linear-gradient(135deg, #3A0F1E 0%, #2C1510 50%, #3A0F1E 100%)`, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
 

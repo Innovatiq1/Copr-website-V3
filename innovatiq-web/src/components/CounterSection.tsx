@@ -66,10 +66,12 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
           ? 'opacity 0.4s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, background 0.35s ease'
           : `opacity 0.6s ease ${index * 120}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
         background: hovered
-          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 20%, rgba(190,18,60,0.80) 45%, rgba(190,18,60,0.33) 70%, transparent 90%) border-box`
-          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 20%, rgba(190,18,60,0.80) 45%, rgba(190,18,60,0.33) 70%, transparent 90%) border-box`,
-        borderRadius: '24px',
-        padding: '28px 22px 24px',
+          ? `linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,250,251,0.90) 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.70) 50%, transparent 90%) border-box`
+          : `linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,250,251,0.82) 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.70) 50%, transparent 90%) border-box`,
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        borderRadius: '20px',
+        padding: '24px 20px 22px',
         textAlign: 'left' as const,
         position: 'relative' as const,
         overflow: 'hidden',
@@ -80,57 +82,48 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         borderRightWidth: '1px',
         borderBottomWidth: '1px',
         boxShadow: hovered
-          ? `0 24px 60px ${stat.color}22, 0 4px 16px rgba(0,0,0,0.06)`
-          : '0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)',
+          ? `0 20px 44px rgba(190,18,60,0.16), 0 8px 20px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,1)`
+          : `0 4px 20px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.95)`,
         cursor: 'default',
       }}
     >
-      {/* Diagonal color slice — bottom right */}
+      {/* Glass sheen */}
       <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '24px',
-        background: `linear-gradient(148deg, transparent 55%, ${stat.color}10 55%)`,
-        opacity: hovered ? 1 : 0.6,
-        transition: 'opacity 0.4s ease',
+        position: 'absolute', top: 0, left: 0, right: 0, height: '45%',
+        pointerEvents: 'none',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.50) 0%, transparent 100%)',
       }} />
 
-      {/* Top-left accent glow */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '24px',
-        background: `linear-gradient(148deg, ${stat.color}08 0%, transparent 38%)`,
-      }} />
-
-      {/* Icon */}
-      <div style={{ marginBottom: '16px', position: 'relative', display: 'inline-flex' }}>
+      {/* Icon row */}
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <div style={{
-          width: '52px', height: '52px', borderRadius: '15px',
+          width: '46px', height: '46px', borderRadius: '13px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          background: `linear-gradient(148deg, ${stat.color}22, ${stat.color}0C)`,
-          border: `1.5px solid ${stat.color}35`,
-          boxShadow: hovered ? `0 8px 24px ${stat.color}30` : `0 4px 14px ${stat.color}18`,
-          transform: hovered ? 'rotate(-6deg) scale(1.12)' : 'rotate(0) scale(1)',
-          transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
+          background: `rgba(255,255,255,0.90)`,
+          border: `1.5px solid rgba(190,18,60,0.18)`,
+          boxShadow: `0 2px 12px rgba(190,18,60,0.12)`,
+          transform: hovered ? 'scale(1.10)' : 'scale(1)',
+          transition: 'transform 0.3s ease',
         }}>
-          <stat.Icon size={22} style={{ color: stat.color }} strokeWidth={1.7} />
+          <stat.Icon size={20} style={{ color: stat.color }} strokeWidth={1.8} />
         </div>
       </div>
 
       {/* Number */}
-      <div style={{ marginBottom: '6px' }}>
-        <Counter target={stat.val} suffix={stat.suffix} color={stat.color} visible={visible} />
-      </div>
+      <Counter target={stat.val} suffix={stat.suffix} color={stat.color} visible={visible} />
 
-      {/* Expanding underline */}
+      {/* Divider */}
       <div style={{
-        height: '2px', borderRadius: '2px', marginBottom: '8px',
-        width: hovered ? '48px' : '28px',
-        background: `linear-gradient(90deg, ${stat.color}, ${stat.color}30)`,
-        transition: 'width 0.35s ease',
+        height: '2px', borderRadius: '2px', margin: '10px 0 10px',
+        width: hovered ? '44px' : '24px',
+        background: `linear-gradient(90deg, ${stat.color}, rgba(190,18,60,0.20))`,
+        transition: 'width 0.3s ease',
       }} />
 
       {/* Label */}
       <p style={{
-        fontSize: '12px', fontWeight: 800, letterSpacing: '0.09em',
-        textTransform: 'uppercase', color: '#475569', margin: 0,
+        fontSize: '11px', fontWeight: 700, letterSpacing: '0.10em',
+        textTransform: 'uppercase', color: '#334155', margin: 0,
       }}>
         {stat.label}
       </p>
@@ -141,16 +134,9 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 export default function CounterSection() {
   return (
     <section className="relative py-24 overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #FFFAFB 0%, #FFF1F2 35%, #FFE8EC 65%, #FFFAFB 100%)'
+      background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF5F6 40%, #FFF8F9 70%, #FFFFFF 100%)'
     }}>
 
-      {/* Premium ambient decorative radial glows */}
-      <div className="absolute top-0 left-0 w-[45%] h-full pointer-events-none opacity-40" style={{
-        background: 'radial-gradient(circle at 10% 20%, rgba(190,18,60,0.05) 0%, transparent 60%)',
-      }} />
-      <div className="absolute bottom-0 left-[20%] w-[35%] h-[60%] pointer-events-none opacity-40" style={{
-        background: 'radial-gradient(circle at 50% 80%, rgba(244,63,94,0.05) 0%, transparent 65%)',
-      }} />
 
       {/* Image panel — slanted left edge via clip-path */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
@@ -169,18 +155,11 @@ export default function CounterSection() {
 
       {/* Top/bottom fade to blend with section bg */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(180deg, #FFFAFB 0%, transparent 12%, transparent 88%, #FFFAFB 100%)',
+        background: 'linear-gradient(180deg, #FFFFFF 0%, transparent 12%, transparent 88%, #FFFFFF 100%)',
         clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
         zIndex: 2,
       }} />
 
-      {/* Slant edge soft glow — sits right at the diagonal join */}
-      <div className="absolute inset-y-0 pointer-events-none" style={{
-        left: 'calc(45% - 60px)',
-        width: '120px',
-        background: 'linear-gradient(90deg, transparent 0%, rgba(190,18,60,0.07) 50%, transparent 100%)',
-        zIndex: 3,
-      }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -213,9 +192,13 @@ export default function CounterSection() {
                 { src: '/images/Data-Protection-Trustmark-Logo_Horizontal_Colour.png', alt: 'Data Protection' },
               ].map(c => (
                 <div key={c.alt}
-                  className="rounded-xl px-3 py-2 flex items-center transition-all duration-200 hover:scale-105 hover:shadow-md"
-                  style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(0,0,0,0.07)', backdropFilter: 'blur(8px)', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-                  <Image src={c.src} alt={c.alt} width={80} height={30} style={{ objectFit: 'contain', height: '28px', width: 'auto' }} />
+                  className="rounded-xl px-3 py-2.5 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1.5px solid rgba(190,18,60,0.14)',
+                    boxShadow: '0 2px 12px rgba(190,18,60,0.08), 0 1px 4px rgba(0,0,0,0.05)',
+                  }}>
+                  <Image src={c.src} alt={c.alt} width={60} height={28} style={{ objectFit: 'contain', height: '28px', maxWidth: '60px', width: 'auto' }} />
                 </div>
               ))}
             </div>

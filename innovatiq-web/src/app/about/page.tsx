@@ -88,13 +88,13 @@ export default function AboutPage() {
                     border: '1px solid rgba(0,0,0,0.07)',
                     boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
                   }}>
-                  <div className="relative h-52 overflow-hidden" style={{ background: '#FFFBEB' }}>
-                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-amber-400 opacity-70" />
+                  <div className="relative h-52 overflow-hidden" style={{ background: '#EEF2FF' }}>
+                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-indigo-400 opacity-70" />
                     <Image src="/images/aboutUs/missionImg.svg" alt="Mission" fill style={{ objectFit: 'contain', padding: '24px' }} />
                   </div>
                   <div className="p-8">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-4 text-xs font-semibold"
-                      style={{ background: 'rgba(245,158,11,0.08)', color: '#D97706', border: '1px solid rgba(245,158,11,0.18)' }}>
+                      style={{ background: 'rgba(79,70,229,0.08)', color: '#4F46E5', border: '1px solid rgba(79,70,229,0.18)' }}>
                       🚀 Our Mission
                     </div>
                     <p className="text-slate-500 leading-relaxed text-base font-medium">

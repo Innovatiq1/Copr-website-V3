@@ -26,8 +26,8 @@ export default function LearnProPage() {
         { title: 'Multi-Tenant Support', description: 'Serve multiple clients or departments from one centralized platform with role-based permissions and flexible system configuration.', icon: '🏢' },
         { title: 'Third-Party Integration', description: 'Connect seamlessly with CRMs, ERPs, and other business tools with integrated payment gateways and multicurrency support.', icon: '🔗' },
       ]}
-      gradient="linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)"
-      color="#1e40af"
+      gradient="linear-gradient(135deg, #881337 0%, #BE123C 50%, #E11D48 100%)"
+      color="#BE123C"
       productType="lms"
     />
   );

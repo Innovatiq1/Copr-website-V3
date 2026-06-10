@@ -37,7 +37,7 @@ export default function WhyUsSection() {
 
   return (
     <section className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #FFF1F2 0%, #FFF5F6 40%, #FFFFFF 100%)' }}>
+      style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 40%, #FFFFFF 100%)' }}>
 
       {/* ── Color blobs ── */}
       <div className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none"
@@ -125,7 +125,7 @@ export default function WhyUsSection() {
                 <div className="absolute bottom-3 left-3 lg:-bottom-4 lg:-left-4 float rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
                   style={{ background:'#FFFFFF', border:'1.5px solid rgba(190,18,60,0.18)', boxShadow:'0 6px 28px rgba(190,18,60,0.14), 0 2px 8px rgba(0,0,0,0.08)' }}>
                   <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background:'linear-gradient(135deg, #FFF1F2, #FFE4E6)', border:'1.5px solid rgba(190,18,60,0.22)' }}>
+                    style={{ background:'linear-gradient(135deg, #FFF5F6, #FFF1F2)', border:'1.5px solid rgba(190,18,60,0.22)' }}>
                     <Clock size={16} style={{ color:'#BE123C' }} />
                   </div>
                   <div>
@@ -212,7 +212,7 @@ export default function WhyUsSection() {
 
                   {/* Icon — left */}
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-4deg] relative z-10"
-                    style={{ background: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)', border: '1.5px solid rgba(190,18,60,0.20)', boxShadow: '0 2px 8px rgba(190,18,60,0.12)' }}>
+                    style={{ background: 'linear-gradient(135deg, #FFF5F6, #FFF1F2)', border: '1.5px solid rgba(190,18,60,0.20)', boxShadow: '0 2px 8px rgba(190,18,60,0.12)' }}>
                     <r.Icon size={19} style={{ color: '#BE123C' }} strokeWidth={1.75} />
                   </div>
 
@@ -228,7 +228,7 @@ export default function WhyUsSection() {
             {/* CTA */}
             <Link href="/about"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5"
-              style={{ background:'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow:'0 8px 32px rgba(190,18,60,0.35)' }}>
+              style={{ background:'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow:'0 8px 32px rgba(190,18,60,0.35)' }}>
               Learn More About Us <ArrowRight size={16} />
             </Link>
           </div>

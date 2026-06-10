@@ -89,7 +89,7 @@ export default function ServicesSection() {
     <section
       className="relative pt-12 sm:pt-14 pb-16 sm:pb-28 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #FFE4E6 0%, #FFF1F2 20%, #FFF8F9 55%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 22%, #FFFEFE 55%, #FFFFFF 100%)',
         borderRadius: '28px 28px 0 0',
         marginTop: '-40px',
         zIndex: 10,
@@ -150,10 +150,15 @@ export default function ServicesSection() {
             <Link href={s.href} className="group block h-full">
                 <div className="relative h-full flex flex-col overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                   style={{
-                    background: '#FFFFFF',
+                    background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${s.clr} 0%, ${s.clr} 20%, ${s.clr}CC 45%, ${s.clr}55 70%, transparent 90%) border-box`,
+                    borderStyle: 'solid',
+                    borderColor: 'transparent',
+                    borderTopWidth: '4px',
+                    borderLeftWidth: '0',
+                    borderRightWidth: '0',
+                    borderBottomWidth: '0',
                     borderRadius: '20px',
-                    borderTop: `4px solid ${s.clr}`,
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.07), 0 6px 20px rgba(0,0,0,0.06)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.07)',
                   }}
                   onMouseEnter={e => {
                     (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 32px ${s.shadow}, 0 12px 32px rgba(0,0,0,0.08)`;
@@ -168,7 +173,7 @@ export default function ServicesSection() {
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3"
                       style={{
-                        background: `linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%)`,
+                        background: `linear-gradient(135deg, #FFF5F6 0%, #FFF1F2 100%)`,
                         border: `1.5px solid rgba(190,18,60,0.18)`,
                         boxShadow: `0 4px 12px rgba(190,18,60,0.10)`,
                       }}>
@@ -201,17 +206,17 @@ export default function ServicesSection() {
               <div className="relative h-full rounded-2xl p-7 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                 style={{
                   background: 'linear-gradient(145deg, rgba(190,18,60,0.04) 0%, rgba(255,140,66,0.03) 100%)',
-                  border: '1.5px dashed rgba(190,18,60,0.22)',
+                  border: '1.5px dashed rgba(190,18,60,0.50)',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
                   minHeight: '260px',
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 48px rgba(190,18,60,0.12)';
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(190,18,60,0.40)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(190,18,60,0.70)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(190,18,60,0.22)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(190,18,60,0.50)';
                 }}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
@@ -232,7 +237,7 @@ export default function ServicesSection() {
 
                 <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[12px] font-bold text-white uppercase tracking-wide transition-all duration-300 group-hover:-translate-y-0.5"
                   style={{
-                    background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                    background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
                     boxShadow: '0 4px 14px rgba(190,18,60,0.30)',
                   }}>
                   Talk to an Expert <ArrowRight size={12} />

@@ -342,7 +342,7 @@ export default function ContactPage() {
 
                       <button type="submit" disabled={loading}
                         className="inline-flex items-center justify-center gap-2 w-full py-3.5 text-base text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
-                        style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 16px rgba(190,18,60,0.30)' }}>
+                        style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 16px rgba(190,18,60,0.30)' }}>
                         {loading ? 'Sending...' : 'Send Message'} <Send size={16} />
                       </button>
                     </form>

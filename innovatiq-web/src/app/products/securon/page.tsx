@@ -26,8 +26,8 @@ export default function SecurOnPage() {
         { title: 'Multi-Tenant Management', description: 'Enables centralized management of multiple clients or departments securely, with an overview dashboard of all tenant details and patch status.', icon: '🏢' },
         { title: 'Role-Based Security', description: 'Secure login with 2FA and role-based permissions provide granular access control to protect sensitive data and operations.', icon: '🔒' },
       ]}
-      gradient="linear-gradient(135deg, #065f46 0%, #064e3b 100%)"
-      color="#065f46"
+      gradient="linear-gradient(135deg, #881337 0%, #BE123C 50%, #E11D48 100%)"
+      color="#BE123C"
       productType="pms"
     />
   );

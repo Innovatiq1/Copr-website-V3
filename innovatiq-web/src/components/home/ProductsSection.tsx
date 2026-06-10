@@ -17,9 +17,9 @@ const products = [
     logo: '/images/Skillera-png-logo.png',
     heroImg: '/images/SkillEra Hero Section.svg',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Ready'],
-    imgBg: 'linear-gradient(135deg, #881337 0%, #BE123C 28%, #D4174A 52%, #F43F5E 75%, #FB923C 100%)',
-    clr: '#D4174A',
-    clrLight: '#FFF0F3',
+    imgBg: 'linear-gradient(135deg, #881337 0%, #BE123C 35%, #E11D48 70%, #F43F5E 100%)',
+    clr: '#BE123C',
+    clrLight: '#FFF1F2',
     badge: 'Most Popular',
   },
   {
@@ -31,9 +31,9 @@ const products = [
     logo: '/images/Learnpro-png-logo.png',
     heroImg: '/images/LMS Hero Screen.svg',
     features: ['Course Builder', 'Certifications', 'Social Learning', 'Progress Tracking'],
-    imgBg: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
-    clr: '#4F46E5',
-    clrLight: '#EEF2FF',
+    imgBg: 'linear-gradient(135deg, #9F1239 0%, #BE123C 35%, #E11D48 70%, #F43F5E 100%)',
+    clr: '#BE123C',
+    clrLight: '#FFF1F2',
     badge: null,
   },
   {
@@ -45,9 +45,9 @@ const products = [
     logo: '/images/Securon-png-logo.png',
     heroImg: '/images/PMS Hero Section.svg',
     features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts'],
-    imgBg: 'linear-gradient(135deg, #047857 0%, #10B981 50%, #34D399 100%)',
-    clr: '#10B981',
-    clrLight: '#ECFDF5',
+    imgBg: 'linear-gradient(135deg, #881337 0%, #BE123C 35%, #E11D48 70%, #F43F5E 100%)',
+    clr: '#BE123C',
+    clrLight: '#FFF1F2',
     badge: null,
   },
   {
@@ -59,9 +59,9 @@ const products = [
     logo: null,
     heroImg: '/images/LMP Hero Section.svg',
     features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics'],
-    imgBg: 'linear-gradient(135deg, #C2410C 0%, #EA580C 50%, #F97316 100%)',
-    clr: '#EA580C',
-    clrLight: '#FFF7ED',
+    imgBg: 'linear-gradient(135deg, #9F1239 0%, #BE123C 35%, #E11D48 70%, #F43F5E 100%)',
+    clr: '#BE123C',
+    clrLight: '#FFF1F2',
     badge: null,
   },
 ];
@@ -84,7 +84,7 @@ export default function ProductsSection() {
   return (
     <section
       className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #FFF1F2 0%, #FFF5F6 50%, #FFFFFF 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 50%, #FFFFFF 100%)' }}
     >
 
       {/* Background — single radial gradient only (no expensive tiled CSS grid) */}
@@ -194,7 +194,7 @@ export default function ProductsSection() {
                     {/* Most popular badge — solid bg instead of backdrop-filter */}
                     {p.badge && (
                       <span className="absolute top-4 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
-                        style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
+                        style={{ background: 'rgba(255,255,255,0.95)', color: '#9F1239', border: '1px solid rgba(255,255,255,0.60)', boxShadow: '0 2px 10px rgba(0,0,0,0.25)' }}>
                         ⭐ {p.badge}
                       </span>
                     )}

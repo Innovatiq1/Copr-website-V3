@@ -79,7 +79,7 @@ export default function VideosPage() {
           <Link
             href="/admin/videos/create"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
-            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}
+            style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}
           >
             <Plus size={16} /> Add Video
           </Link>

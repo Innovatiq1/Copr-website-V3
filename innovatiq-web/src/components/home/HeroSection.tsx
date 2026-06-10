@@ -287,7 +287,7 @@ export default function HeroSection() {
     <section
       className="relative overflow-hidden min-h-screen pt-[104px] sm:pt-[108px] pb-16 sm:pb-20 flex items-start lg:items-center"
       style={{
-        background: 'linear-gradient(135deg, #FFFFFF 0%, #FFF8F9 30%, #FFF0F2 60%, #FFFAFB 100%)',
+        background: 'linear-gradient(135deg, #FFFFFF 0%, #FFFCFD 30%, #FFF7F8 60%, #FFFCFD 100%)',
       }}
     >
 
@@ -413,7 +413,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-4">
               <Link href="/contact"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}>
+                style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}>
                 Get Free Demo <ArrowRight size={16} />
               </Link>
               <Link href="/services/cloud"
@@ -486,7 +486,7 @@ export default function HeroSection() {
                 <div className="absolute top-1/2 -right-10 -translate-y-1/2 float-d" style={{ animationDelay: '1s' }}>
                   <div className="rounded-2xl px-5 py-4 text-white text-center"
                     style={{
-                      background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                      background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
                       boxShadow: '0 8px 40px rgba(190,18,60,0.40)',
                     }}>
                     <p className="text-[32px] font-black">200+</p>

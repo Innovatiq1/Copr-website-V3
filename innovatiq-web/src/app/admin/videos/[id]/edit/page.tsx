@@ -212,7 +212,7 @@ export default function VideoEditPage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(251,113,133,0.30)' }}>
+            style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.30)' }}>
             {loading ? 'Saving...' : 'Save Changes'}
           </button>
           <Link href="/admin/videos"

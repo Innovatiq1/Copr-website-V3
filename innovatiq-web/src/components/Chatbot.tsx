@@ -137,7 +137,7 @@ export default function Chatbot() {
           style={{ border: '1px solid rgba(0,0,0,0.10)', maxHeight: '520px', background: '#fff' }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}>
+          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}>
             <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
               <MessageSquare size={17} className="text-white" />
             </div>
@@ -164,7 +164,7 @@ export default function Chatbot() {
                 <div
                   className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed"
                   style={m.role === 'user'
-                    ? { background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
+                    ? { background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
                     : { background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
                 >
                   {m.text}
@@ -213,7 +213,7 @@ export default function Chatbot() {
                   onClick={handleSubmit}
                   disabled={!form.name.trim() || !form.email.trim() || submitting}
                   className="w-full py-2.5 rounded-lg text-sm font-semibold text-white flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
                 >
                   {submitting ? 'Sending...' : <><Send size={14} /> Send Message</>}
                 </button>
@@ -240,7 +240,7 @@ export default function Chatbot() {
               <button
                 onClick={sendMessage}
                 className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
                 aria-label="Send"
               >
                 <ChevronRight size={18} />

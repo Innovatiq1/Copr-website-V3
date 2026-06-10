@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
               <div
                 className="relative w-16 h-16 rounded-2xl flex items-center justify-center"
                 style={{
-                  background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                  background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
                   boxShadow: '0 8px 32px rgba(190,18,60,0.35)',
                 }}
               >
@@ -188,7 +188,7 @@ export default function AdminLoginPage() {
               disabled={loading}
               className="relative w-full py-3.5 rounded-xl text-white font-semibold text-sm transition-all mt-2 overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               style={{
-                background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
                 boxShadow: '0 8px 32px rgba(190,18,60,0.3)',
               }}
               onMouseEnter={e => !loading && (e.currentTarget.style.boxShadow = '0 12px 40px rgba(190,18,60,0.45)')}

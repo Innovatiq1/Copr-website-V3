@@ -204,7 +204,7 @@ export default async function CareersPage() {
                   <div className="shrink-0 flex flex-col items-end gap-3 self-center">
                     <Link href={`/careers/${job._id}`}
                       className="inline-flex items-center gap-2 py-2.5 px-6 text-sm text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                      style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 12px rgba(190,18,60,0.30)' }}>
+                      style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 12px rgba(190,18,60,0.30)' }}>
                       Apply Now <ChevronRight size={14} />
                     </Link>
                   </div>
@@ -237,7 +237,7 @@ export default async function CareersPage() {
                 </p>
                 <Link href="/join-us"
                   className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 8px 24px rgba(190,18,60,0.30)' }}>
+                  style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 8px 24px rgba(190,18,60,0.30)' }}>
                   Submit Your Profile <ChevronRight size={16} />
                 </Link>
               </div>

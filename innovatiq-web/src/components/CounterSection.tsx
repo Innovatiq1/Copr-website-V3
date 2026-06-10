@@ -107,13 +107,6 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         background: `linear-gradient(90deg, transparent, ${stat.color}30, transparent)`,
       }} />
 
-      {/* Corner accent — top-right sparkle */}
-      <div style={{
-        position: 'absolute', top: '14px', right: '14px', width: '28px', height: '28px',
-        pointerEvents: 'none', borderRadius: '50%',
-        background: `radial-gradient(circle, ${stat.color}14 0%, transparent 70%)`,
-      }} />
-
       {/* Icon row */}
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <div style={{

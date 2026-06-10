@@ -32,8 +32,8 @@ const products = [
     heroImg: '/images/LMS Hero Screen.svg',
     features: ['Course Builder', 'Certifications', 'Social Learning', 'Progress Tracking'],
     imgBg: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
-    clr: '#D4174A',
-    clrLight: '#FFF5F7',
+    clr: '#4F46E5',
+    clrLight: '#EEF2FF',
     badge: null,
   },
   {
@@ -46,8 +46,8 @@ const products = [
     heroImg: '/images/PMS Hero Section.svg',
     features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts'],
     imgBg: 'linear-gradient(135deg, #047857 0%, #10B981 50%, #34D399 100%)',
-    clr: '#D4174A',
-    clrLight: '#FFF5F7',
+    clr: '#10B981',
+    clrLight: '#ECFDF5',
     badge: null,
   },
   {
@@ -60,8 +60,8 @@ const products = [
     heroImg: '/images/LMP Hero Section.svg',
     features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics'],
     imgBg: 'linear-gradient(135deg, #C2410C 0%, #EA580C 50%, #F97316 100%)',
-    clr: '#D4174A',
-    clrLight: '#FFF5F7',
+    clr: '#EA580C',
+    clrLight: '#FFF7ED',
     badge: null,
   },
 ];
@@ -81,7 +81,7 @@ export default function ProductsSection() {
 
       {/* Background — single radial gradient only (no expensive tiled CSS grid) */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,23,74,0.04) 0%, transparent 60%)' }} />
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.05) 0%, transparent 60%)' }} />
 
       {/* Decorative blob */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -93,7 +93,7 @@ export default function ProductsSection() {
         {/* Header — static, no entrance animation */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#BE123C', background: 'rgba(190,18,60,0.09)', border: '1px solid rgba(190,18,60,0.22)' }}>
+            style={{ color: '#0284C7', background: 'rgba(2,132,199,0.10)', border: '1px solid rgba(2,132,199,0.22)' }}>
             <Sparkles size={11} />
             Our Products
           </span>
@@ -101,7 +101,7 @@ export default function ProductsSection() {
             Purpose-Built{' '}
             <span className="relative inline-block">
               <span style={{
-                backgroundImage: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 45%, #881337 100%)',
+                backgroundImage: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 45%, #7C3AED 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -112,9 +112,9 @@ export default function ProductsSection() {
                 <path d="M2 7 Q75 2 150 6 Q225 10 298 4" stroke="url(#ug)" strokeWidth="3" strokeLinecap="round" fill="none" />
                 <defs>
                   <linearGradient id="ug" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#F43F5E" />
-                    <stop offset="50%" stopColor="#E11D48" />
-                    <stop offset="100%" stopColor="#881337" />
+                    <stop offset="0%" stopColor="#0EA5E9" />
+                    <stop offset="50%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#7C3AED" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -184,7 +184,7 @@ export default function ProductsSection() {
                     {/* Most popular badge — solid bg instead of backdrop-filter */}
                     {p.badge && (
                       <span className="absolute top-4 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
-                        style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
+                        style={{ background: 'linear-gradient(135deg, #C2410C, #EA580C)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
                         ⭐ {p.badge}
                       </span>
                     )}

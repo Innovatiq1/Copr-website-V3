@@ -14,9 +14,9 @@ const words: React.ReactNode[] = [
 
 const STATS = [
   { v: '100+', l: 'Successful Projects', c: '#D4174A', bg: '#FFFFFF', icon: Trophy },
-  { v: '200+', l: 'Happy Clients',       c: '#D4174A', bg: '#FFFFFF', icon: Users },
-  { v: '100+', l: 'Skilled Experts',     c: '#D4174A', bg: '#FFFFFF', icon: GraduationCap },
-  { v: '15+',  l: 'Ongoing Projects',    c: '#D4174A', bg: '#FFFFFF', icon: Rocket },
+  { v: '200+', l: 'Happy Clients',       c: '#F59E0B', bg: '#FFFFFF', icon: Users },
+  { v: '100+', l: 'Skilled Experts',     c: '#3B82F6', bg: '#FFFFFF', icon: GraduationCap },
+  { v: '15+',  l: 'Ongoing Projects',    c: '#10B981', bg: '#FFFFFF', icon: Rocket },
 ];
 
 function CardDecor({ index, c }: { index: number; c: string }) {
@@ -321,6 +321,40 @@ export default function HeroSection() {
           contain: 'strict',
         }} />
 
+      {/* ── Aurora blob 2 — Lavender — BOTTOM-RIGHT (adds depth to image side) ── */}
+      <div className="absolute rounded-full pointer-events-none blob-drift-alt"
+        style={{
+          width: '820px', height: '820px',
+          bottom: '-200px', right: '-150px',
+          background: 'radial-gradient(circle at 45% 45%, rgba(59,130,246,0.05) 0%, rgba(99,102,241,0.02) 45%, transparent 70%)',
+          filter: 'blur(90px)',
+          animationDelay: '4s',
+          contain: 'strict',
+        }} />
+
+      {/* ── Aurora blob 3 — Amber — mid-center-left ── */}
+      <div className="absolute rounded-full pointer-events-none blob-drift"
+        style={{
+          width: '580px', height: '580px',
+          top: '25%', left: '18%',
+          background: 'radial-gradient(circle, rgba(245,158,11,0.04) 0%, rgba(251,191,36,0.02) 50%, transparent 70%)',
+          filter: 'blur(65px)',
+          animationDelay: '7s',
+          animationDuration: '19s',
+          contain: 'strict',
+        }} />
+
+      {/* ── Aurora blob 4 — Sky blue — bottom-center ── */}
+      <div className="absolute rounded-full pointer-events-none blob-drift-alt"
+        style={{
+          width: '650px', height: '650px',
+          bottom: '5%', left: '35%',
+          background: 'radial-gradient(circle, rgba(59,130,246,0.04) 0%, rgba(96,165,250,0.02) 50%, transparent 70%)',
+          filter: 'blur(75px)',
+          animationDelay: '2s',
+          animationDuration: '14s',
+          contain: 'strict',
+        }} />
 
       {/* ── Grid line overlay (tech depth, masked at edges) ── */}
       <div className="absolute inset-0 pointer-events-none"
@@ -334,38 +368,48 @@ export default function HeroSection() {
           WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%)',
         }} />
 
+      {/* ── Diagonal tinted strip (right half, very subtle) ── */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute"
+          style={{
+            top: '-10%', right: '-5%', width: '52%', height: '130%',
+            background: 'linear-gradient(135deg, transparent 0%, rgba(139,92,246,0.025) 50%, rgba(59,130,246,0.018) 100%)',
+            transform: 'skewX(-8deg)',
+            borderLeft: '1px solid rgba(139,92,246,0.07)',
+          }} />
+      </div>
 
       {/* ── Geometric decorations — hidden on mobile so they don't overlap text ── */}
       <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
         <div className="spin-s absolute"
           style={{ top: '8%', left: '1.5%', width: '160px', height: '160px', border: '1.5px solid rgba(212,23,74,0.15)', borderRadius: '20px', transform: 'rotate(12deg)' }} />
         <div className="absolute"
-          style={{ bottom: '14%', right: '2.5%', width: '90px', height: '90px', border: '1.5px solid rgba(100,116,139,0.14)', borderRadius: '18px', transform: 'rotate(25deg)', animation: 'spin-slow 22s linear infinite reverse' }} />
+          style={{ bottom: '14%', right: '2.5%', width: '90px', height: '90px', border: '1.5px solid rgba(99,102,241,0.18)', borderRadius: '18px', transform: 'rotate(25deg)', animation: 'spin-slow 22s linear infinite reverse' }} />
         <div className="float-d absolute"
-          style={{ top: '14%', right: '7%', width: '56px', height: '56px', background: 'rgba(100,116,139,0.04)', border: '1px solid rgba(100,116,139,0.14)', transform: 'rotate(45deg)', borderRadius: '8px' }} />
+          style={{ top: '14%', right: '7%', width: '56px', height: '56px', background: 'rgba(139,92,246,0.05)', border: '1px solid rgba(139,92,246,0.20)', transform: 'rotate(45deg)', borderRadius: '8px' }} />
         <div className="float absolute rounded-full"
-          style={{ top: '5%', left: '35%', width: '72px', height: '72px', background: 'rgba(100,116,139,0.04)', border: '1px solid rgba(100,116,139,0.13)' }} />
+          style={{ top: '5%', left: '35%', width: '72px', height: '72px', background: 'rgba(139,92,246,0.05)', border: '1px solid rgba(139,92,246,0.18)' }} />
         <div className="float-d absolute"
-          style={{ top: '42%', left: '7%', width: '32px', height: '32px', border: '1px solid rgba(100,116,139,0.18)', borderRadius: '6px', transform: 'rotate(30deg)' }} />
+          style={{ top: '42%', left: '7%', width: '32px', height: '32px', border: '1px solid rgba(16,185,129,0.26)', borderRadius: '6px', transform: 'rotate(30deg)' }} />
         <div className="float absolute"
-          style={{ top: '65%', left: '43%', width: '28px', height: '28px', border: '1px solid rgba(100,116,139,0.18)', borderRadius: '5px', transform: 'rotate(20deg)' }} />
+          style={{ top: '65%', left: '43%', width: '28px', height: '28px', border: '1px solid rgba(245,158,11,0.26)', borderRadius: '5px', transform: 'rotate(20deg)' }} />
 
         <svg className="float absolute" style={{ top: '36%', left: '4.5%' }} width="38" height="38">
           <polygon points="19,2 34,11 34,28 19,36 4,28 4,11" fill="none" stroke="rgba(212,23,74,0.22)" strokeWidth="1.5" />
         </svg>
         <svg className="float absolute" style={{ top: '13%', right: '17%' }} width="46" height="46">
-          <polygon points="23,2 42,12 42,33 23,44 4,33 4,12" fill="none" stroke="rgba(100,116,139,0.14)" strokeWidth="1.5" />
+          <polygon points="23,2 42,12 42,33 23,44 4,33 4,12" fill="none" stroke="rgba(139,92,246,0.20)" strokeWidth="1.5" />
         </svg>
         <svg className="float-d absolute" style={{ top: '57%', right: '4.5%' }} width="34" height="34">
-          <polygon points="17,2 31,10 31,24 17,32 3,24 3,10" fill="none" stroke="rgba(100,116,139,0.15)" strokeWidth="1.5" />
+          <polygon points="17,2 31,10 31,24 17,32 3,24 3,10" fill="none" stroke="rgba(59,130,246,0.22)" strokeWidth="1.5" />
         </svg>
 
         <div className="float absolute rounded-full"
-          style={{ top: '52%', left: '7%', width: '10px', height: '10px', background: 'rgba(212,23,74,0.22)' }} />
+          style={{ top: '52%', left: '7%', width: '10px', height: '10px', background: 'rgba(212,23,74,0.26)' }} />
         <div className="float-d absolute rounded-full"
-          style={{ top: '9%', right: '34%', width: '8px', height: '8px', background: 'rgba(100,116,139,0.20)' }} />
+          style={{ top: '9%', right: '34%', width: '8px', height: '8px', background: 'rgba(245,158,11,0.30)' }} />
         <div className="float absolute rounded-full"
-          style={{ top: '80%', left: '50%', width: '9px', height: '9px', background: 'rgba(100,116,139,0.18)' }} />
+          style={{ top: '80%', left: '50%', width: '9px', height: '9px', background: 'rgba(59,130,246,0.26)' }} />
       </div>
 
       {/* ══ Main content ══ */}
@@ -490,10 +534,10 @@ export default function HeroSection() {
                 {/* Floating card — Asia Pacific */}
                 <div className="absolute -bottom-2 -left-8 float">
                   <div className="rounded-2xl px-4 py-3 flex items-center gap-3"
-                    style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
+                    style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(245,158,11,0.15)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.09)' }}>
-                      <Globe size={18} className="text-slate-500" />
+                      style={{ background: 'rgba(245,158,11,0.10)', border: '1px solid rgba(245,158,11,0.22)' }}>
+                      <Globe size={18} className="text-amber-500" />
                     </div>
                     <div>
                       <p className="text-[13px] font-extrabold text-gray-900">Asia Pacific</p>

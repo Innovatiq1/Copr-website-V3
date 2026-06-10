@@ -19,7 +19,7 @@ const testimonials = [
     quote: 'Innovatiq\'s business development team understood our goals from day one. Their tailored IT roadmap and seamless cloud migration strategy positioned us for scalability and growth across Southeast Asia. Truly impressed by their commitment and expertise.',
     rating: 5,
     avatar: 'KA',
-    color: '#D4174A',
+    color: '#3B82F6',
   },
   {
     name: 'Thomas',
@@ -27,7 +27,7 @@ const testimonials = [
     quote: 'Innovatiq brought clarity and structure to our digital transformation journey. Their ability to align technology with our business objectives was exceptional. Every milestone was met with transparency and professionalism.',
     rating: 5,
     avatar: 'TH',
-    color: '#D4174A',
+    color: '#10B981',
   },
   {
     name: 'James',
@@ -35,7 +35,7 @@ const testimonials = [
     quote: 'Our experience with Innovatiq has been outstanding. They helped us align technology with our growth plans, ensuring smooth operations and enhanced productivity. Their clear communication, quick response, and dependable service make them an invaluable partner for any organization.',
     rating: 5,
     avatar: 'JA',
-    color: '#D4174A',
+    color: '#8B5CF6',
   },
   {
     name: 'Anna Scott',
@@ -43,7 +43,7 @@ const testimonials = [
     quote: 'The Innovatiq team consistently goes above and beyond. They brought structure, vision, and innovation to our IT processes, helping us scale our business with confidence. Their genuine dedication to client success sets them apart in today\'s fast-changing digital world.',
     rating: 5,
     avatar: 'AS',
-    color: '#D4174A',
+    color: '#F59E0B',
   },
   {
     name: 'Clarke',
@@ -51,7 +51,7 @@ const testimonials = [
     quote: 'Innovatiq\'s business development team combines deep technical expertise with a clear understanding of business needs. They provided us with scalable solutions that improved performance across all departments. We admire their commitment, professionalism, and ability to deliver beyond expectations.',
     rating: 5,
     avatar: 'CL',
-    color: '#D4174A',
+    color: '#06B6D4',
   },
 ];
 
@@ -83,7 +83,9 @@ export default function TestimonialsSection() {
 
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(212,23,74,0.04) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center, rgba(245,158,11,0.04) 0%, transparent 70%)' }} />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(212,23,74,0.04) 0%, transparent 70%)' }} />
 
       {/* Illustration */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -95,15 +97,15 @@ export default function TestimonialsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#BE123C', background: 'rgba(190,18,60,0.09)', border: '1px solid rgba(190,18,60,0.22)' }}>
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D4174A' }} />
+            style={{ color: '#D97706', background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.25)' }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D97706' }} />
             Client Stories
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 leading-tight">
             What Our{' '}
             <span className="relative inline-block">
               <span style={{
-                backgroundImage: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 45%, #881337 100%)',
+                backgroundImage: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #D4174A 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -114,9 +116,9 @@ export default function TestimonialsSection() {
                 <path d="M2 5 Q70 1 140 5 Q210 9 278 3" stroke="url(#tg)" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
                 <defs>
                   <linearGradient id="tg" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#F43F5E"/>
-                    <stop offset="50%" stopColor="#E11D48"/>
-                    <stop offset="100%" stopColor="#881337"/>
+                    <stop offset="0%" stopColor="#F59E0B"/>
+                    <stop offset="50%" stopColor="#EF4444"/>
+                    <stop offset="100%" stopColor="#D4174A"/>
                   </linearGradient>
                 </defs>
               </svg>

@@ -3,16 +3,20 @@ import Image from 'next/image';
 import { ArrowRight, Phone, Mail, Shield, Clock, Award, Globe } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 
-const CTA_GRAD = 'linear-gradient(135deg, #D4174A 0%, #A8102E 100%)';
-const CTA_CLR  = '#D4174A';
+const CTA_GRAD = 'linear-gradient(135deg, #D4174A 0%, #9333EA 100%)';
+const CTA_CLR  = '#9333EA';
 
 export default function CtaSection() {
   return (
     <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
 
-      {/* Ambient glow */}
+      {/* Ambient glows — red + blue + purple matching the gradient */}
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at center, rgba(212,23,74,0.05) 0%, transparent 65%)' }} />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at top left, rgba(59,130,246,0.05) 0%, transparent 70%)' }} />
+      <div className="absolute bottom-0 right-0 w-150 h-150 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(147,51,234,0.06) 0%, transparent 70%)' }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -84,7 +88,7 @@ export default function CtaSection() {
                 <div key={label} className="flex items-center gap-3 rounded-xl p-3.5"
                   style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(212,23,74,0.08)', border: '1px solid rgba(212,23,74,0.18)' }}>
+                    style={{ background: 'rgba(147,51,234,0.10)', border: '1px solid rgba(147,51,234,0.18)' }}>
                     <Icon size={17} style={{ color: CTA_CLR }} />
                   </div>
                   <div>
@@ -119,12 +123,12 @@ export default function CtaSection() {
                     <div key={label} className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-200 hover:bg-gray-50"
                       style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                        style={{ background: 'rgba(212,23,74,0.07)' }}>
+                        style={{ background: 'rgba(147,51,234,0.07)' }}>
                         <Icon size={16} style={{ color: CTA_CLR }} />
                       </div>
                       <div>
                         <p className="text-xs text-slate-600 font-semibold mb-0.5">{label}</p>
-                        <a href={href} className="font-semibold text-gray-800 text-sm transition-colors hover:text-[#D4174A]">
+                        <a href={href} className="font-semibold text-gray-800 text-sm transition-colors hover:text-[#9333EA]">
                           {value}
                         </a>
                       </div>

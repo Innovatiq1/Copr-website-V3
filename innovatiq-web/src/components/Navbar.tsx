@@ -209,7 +209,7 @@ export default function Navbar() {
           </Link>
           <button
             onClick={closeDrawer}
-            className="p-2 rounded-xl text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-all"
+            className="p-2 rounded-xl text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all"
           >
             <X size={20} />
           </button>
@@ -226,7 +226,7 @@ export default function Navbar() {
               <button onClick={() => setMob(v => v === m.k ? null : m.k)}
                 className="flex items-center justify-between w-full px-3 py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gray-50 transition-all">
                 {m.label}
-                <ChevronDown size={14} className={`transition-transform duration-200 text-gray-400 ${mob === m.k ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`transition-transform duration-200 text-gray-600 ${mob === m.k ? 'rotate-180' : ''}`} />
               </button>
               <div
                 style={{

@@ -84,7 +84,7 @@ export default function ProductsSection() {
   return (
     <section
       className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #EFF6FF 0%, #F0F9FF 50%, #FFFFFF 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #F5F9FF 0%, #F8FBFF 50%, #FFFFFF 100%)' }}
     >
 
       {/* Background — single radial gradient only (no expensive tiled CSS grid) */}

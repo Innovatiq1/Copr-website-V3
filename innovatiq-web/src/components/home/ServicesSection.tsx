@@ -89,7 +89,7 @@ export default function ServicesSection() {
     <section
       className="relative pt-12 sm:pt-14 pb-16 sm:pb-28 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #DBEAFE 0%, #EFF6FF 20%, #F5F9FF 55%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #EEF5FF 0%, #F5F9FF 20%, #FAFCFF 55%, #FFFFFF 100%)',
         borderRadius: '28px 28px 0 0',
         marginTop: '-40px',
         zIndex: 10,

@@ -37,7 +37,7 @@ export default function WhyUsSection() {
 
   return (
     <section className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #EFF6FF 0%, #F0F9FF 40%, #FFFFFF 100%)' }}>
+      style={{ background: 'linear-gradient(180deg, #F5F9FF 0%, #F8FBFF 40%, #FFFFFF 100%)' }}>
 
       {/* ── Color blobs ── */}
       <div className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none"

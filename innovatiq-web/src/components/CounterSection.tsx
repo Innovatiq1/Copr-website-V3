@@ -154,7 +154,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 export default function CounterSection() {
   return (
     <section className="relative py-24 overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #F8FBFF 0%, #EFF6FF 35%, #E8F4FF 65%, #F8FBFF 100%)'
+      background: 'linear-gradient(180deg, #FFFFFF 0%, #EFF6FF 30%, #E8F4FF 60%, #EFF6FF 85%, #FFFFFF 100%)'
     }}>
 
       {/* Premium ambient decorative radial glows */}
@@ -182,17 +182,17 @@ export default function CounterSection() {
 
       {/* Top/bottom fade to blend with section bg */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(180deg, #F8FBFF 0%, transparent 12%, transparent 88%, #F8FBFF 100%)',
+        background: 'linear-gradient(180deg, #FFFFFF 0%, transparent 12%, transparent 88%, #FFFFFF 100%)',
         clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
         zIndex: 2,
       }} />
 
-      {/* Slant edge soft glow — sits right at the diagonal join */}
+      {/* Slant edge feather — wide soft gradient to hide the clip-path seam */}
       <div className="absolute inset-y-0 pointer-events-none" style={{
-        left: 'calc(45% - 60px)',
-        width: '120px',
-        background: 'linear-gradient(90deg, transparent 0%, rgba(29,78,216,0.07) 50%, transparent 100%)',
-        zIndex: 3,
+        left: '42%',
+        width: '140px',
+        background: 'linear-gradient(to right, #EFF6FF 0%, rgba(239,246,255,0.6) 40%, transparent 100%)',
+        zIndex: 4,
       }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">

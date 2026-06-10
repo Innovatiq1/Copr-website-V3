@@ -8,7 +8,7 @@ const CTA_CLR  = '#1D4ED8';
 
 export default function CtaSection() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F5F9FF 30%, #EEF4FF 55%, #F5F9FF 80%, #FFFFFF 100%)' }}>
+    <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F8FBFF 30%, #F3F7FF 55%, #F8FBFF 80%, #FFFFFF 100%)' }}>
 
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none"

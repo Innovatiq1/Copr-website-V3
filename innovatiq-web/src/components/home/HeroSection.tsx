@@ -14,7 +14,7 @@ const words: React.ReactNode[] = [
 
 const STATS = [
   { v: '100+', l: 'Successful Projects', c: '#D4174A', bg: '#FFFFFF', icon: Trophy },
-  { v: '200+', l: 'Happy Clients',       c: '#F59E0B', bg: '#FFFFFF', icon: Users },
+  { v: '200+', l: 'Happy Clients',       c: '#F97316', bg: '#FFFFFF', icon: Users },
   { v: '100+', l: 'Skilled Experts',     c: '#3B82F6', bg: '#FFFFFF', icon: GraduationCap },
   { v: '15+',  l: 'Ongoing Projects',    c: '#10B981', bg: '#FFFFFF', icon: Rocket },
 ];
@@ -234,9 +234,9 @@ function StatCard({
           <div style={{
             width: '52px', height: '52px', borderRadius: '15px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: `linear-gradient(135deg, ${c}40, ${c}22)`,
-            border: `1.5px solid ${c}60`,
-            boxShadow: hovered ? `0 8px 24px ${c}40` : `0 4px 14px ${c}28`,
+            background: `linear-gradient(135deg, ${c}30, ${c}16)`,
+            border: `1.5px solid ${c}45`,
+            boxShadow: hovered ? `0 8px 24px ${c}35` : `0 4px 14px ${c}20`,
             transform: hovered ? 'rotate(-5deg) scale(1.1)' : 'rotate(0deg) scale(1)',
             transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
           }}>

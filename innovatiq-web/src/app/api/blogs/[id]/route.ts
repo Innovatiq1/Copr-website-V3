@@ -60,8 +60,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     }
 
     const blog = await Blog.findByIdAndUpdate(id, blogData, { new: true }).lean();
-    revalidateTag('blogs');
-    revalidateTag(`blog-${id}`);
+    revalidateTag('blogs', {});
+    revalidateTag(`blog-${id}`, {});
     return NextResponse.json(JSON.parse(JSON.stringify(blog)));
   } catch (err) {
     console.error('[Blog PUT]', err);
@@ -82,8 +82,8 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     } else {
       blog = await Blog.findByIdAndUpdate(id, body, { new: true }).lean();
     }
-    revalidateTag('blogs');
-    revalidateTag(`blog-${id}`);
+    revalidateTag('blogs', {});
+    revalidateTag(`blog-${id}`, {});
     return NextResponse.json(JSON.parse(JSON.stringify(blog)));
   } catch (err) {
     console.error('[Blog PATCH]', err);
@@ -99,8 +99,8 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
     await connectDB();
     const { id } = await params;
     await Blog.findByIdAndDelete(id);
-    revalidateTag('blogs');
-    revalidateTag(`blog-${id}`);
+    revalidateTag('blogs', {});
+    revalidateTag(`blog-${id}`, {});
     return NextResponse.json({ message: 'Deleted' });
   } catch (err) {
     console.error('[Blog DELETE]', err);

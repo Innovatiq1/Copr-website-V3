@@ -159,7 +159,7 @@ function StatCard({
       function step(now: number) {
         const p = Math.min((now - start) / 1800, 1);
         // Write directly to DOM — no React setState in the RAF loop
-        countEl.textContent = `${Math.round((1 - Math.pow(1 - p, 3)) * num)}${suffix}`;
+        if (countEl) countEl.textContent = `${Math.round((1 - Math.pow(1 - p, 3)) * num)}${suffix}`;
         if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);

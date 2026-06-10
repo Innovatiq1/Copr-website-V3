@@ -151,7 +151,7 @@ export default function AboutPage() {
                       <Image src={v.icon} alt={v.title} width={40} height={40} style={{ objectFit: 'contain' }} />
                     </div>
                     <h3 className="font-bold text-gray-800 text-lg mb-2">{v.title}</h3>
-                    <p className="text-slate-500 text-sm font-medium leading-relaxed">{v.desc}</p>
+                    <p className="text-slate-500 text-[15px] font-medium leading-relaxed">{v.desc}</p>
                   </div>
                 </TiltCard>
               </AnimatedSection>
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 Who We{' '}
                 <span className="bg-gradient-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Are</span>
               </h2>
-              <p className="text-slate-500 font-medium leading-relaxed mb-6">
+              <p className="text-slate-500 font-medium leading-relaxed mb-6 text-[15px]">
                 Empowering digital transformations through a fusion of collaboration, excellence, and customer-centricity,
                 we elevate standards, unite diverse perspectives, and place our clients at the heart of innovation.
                 At the heart of Innovatiq, you&apos;ll find a team of dedicated professionals who are passionate about
@@ -197,7 +197,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(212,23,74,0.10)' }}>
                       <CheckCircle2 size={13} style={{ color: '#D4174A' }} />
                     </div>
-                    <span className="text-slate-600 text-sm font-medium">{p}</span>
+                    <span className="text-slate-600 text-[15px] font-medium">{p}</span>
                   </div>
                 ))}
               </div>
@@ -296,7 +296,7 @@ export default function AboutPage() {
                       </span>
                     </div>
                     <h3 className="font-bold text-gray-900 text-lg mb-3">{item.title}</h3>
-                    <p className="text-slate-500 text-sm font-medium leading-relaxed">{item.description}</p>
+                    <p className="text-slate-500 text-[15px] font-medium leading-relaxed">{item.description}</p>
                   </div>
                 </AnimatedSection>
               );

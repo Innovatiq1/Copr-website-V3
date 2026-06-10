@@ -85,15 +85,15 @@ export default function CtaSection() {
                 { icon: Award,  label: 'PDPA Compliant', sub: 'Data Protected' },
                 { icon: Globe,  label: 'SLA Guaranteed', sub: 'Performance Assured' },
               ].map(({ icon: Icon, label, sub }) => (
-                <div key={label} className="flex items-center gap-3 rounded-xl p-3"
+                <div key={label} className="flex items-center gap-3 rounded-xl p-3.5"
                   style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(147,51,234,0.08)' }}>
-                    <Icon size={14} style={{ color: CTA_CLR }} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(147,51,234,0.10)', border: '1px solid rgba(147,51,234,0.18)' }}>
+                    <Icon size={17} style={{ color: CTA_CLR }} />
                   </div>
                   <div>
-                    <p className="text-gray-800 text-xs font-semibold">{label}</p>
-                    <p className="text-slate-500 text-[10px] font-semibold">{sub}</p>
+                    <p className="text-gray-800 text-sm font-semibold">{label}</p>
+                    <p className="text-slate-500 text-xs font-semibold">{sub}</p>
                   </div>
                 </div>
               ))}

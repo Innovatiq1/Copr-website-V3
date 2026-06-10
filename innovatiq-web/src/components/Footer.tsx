@@ -125,8 +125,8 @@ export default function Footer() {
                 <a key={label} href={href}
                   className="flex items-center gap-3 group transition-all">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
-                    style={{ background: NAVY2, border: '1px solid rgba(255,255,255,0.10)' }}>
-                    <Icon size={16} style={{ color: CRIMSON }} />
+                    style={{ background: NAVY2, border: '1px solid rgba(255,107,138,0.40)', boxShadow: '0 0 14px rgba(255,107,138,0.35), inset 0 0 8px rgba(255,107,138,0.12)' }}>
+                    <Icon size={16} style={{ color: '#FF6B8A', filter: 'drop-shadow(0 0 5px rgba(255,107,138,0.90))' }} />
                   </div>
                   <div>
                     <p className="text-xs font-bold" style={{ color: '#fff' }}>{label}:</p>

@@ -238,7 +238,7 @@ export default function Navbar() {
                 <div className="ml-3 pb-1">
                   {m.items.map((l: { label: string; href: string; sub?: string }) => (
                     <Link key={l.href} href={l.href} onClick={closeDrawer}
-                      className="block px-3 py-2.5 text-sm text-gray-500 hover:text-[#D4174A] rounded-xl hover:bg-[rgba(212,23,74,0.06)] transition-all">
+                      className="block px-3 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#D4174A] rounded-xl hover:bg-[rgba(212,23,74,0.06)] transition-all">
                       {l.label}{l.sub ? ` — ${l.sub}` : ''}
                     </Link>
                   ))}

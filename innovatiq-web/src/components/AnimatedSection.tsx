@@ -25,6 +25,22 @@ export default function AnimatedSection({ children, className = '', delay = 0, d
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Respect reduced-motion preference — snap visible immediately
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible(true);
+      setSettled(true);
+      return;
+    }
+
+    // Already in or above the viewport on mount (above-fold content) — show without animating
+    // This prevents the blank-flash caused by initial opacity:0 during hydration
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -32,7 +48,7 @@ export default function AnimatedSection({ children, className = '', delay = 0, d
           observer.unobserve(entry.target);
         }
       },
-      { rootMargin: '0px 0px 200px 0px', threshold: 0 }
+      { rootMargin: '0px 0px 80px 0px', threshold: 0 }
     );
     observer.observe(el);
     return () => observer.disconnect();

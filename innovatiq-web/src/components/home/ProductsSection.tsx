@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import TiltCard from '@/components/TiltCard';
@@ -68,6 +68,18 @@ const products = [
 
 export default function ProductsSection() {
   const gridRef = useRef<HTMLDivElement>(null);
+  const [gridVisible, setGridVisible] = useState(false);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setGridVisible(true); observer.disconnect(); } },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -128,7 +140,9 @@ export default function ProductsSection() {
         {/* Cards grid — single observer on the parent, CSS animation per card */}
         <div ref={gridRef} className="grid lg:grid-cols-2 gap-6">
           {products.map((p, i) => (
-            <div key={p.name}>
+            <div key={p.name}
+              className={gridVisible ? 'product-card-enter' : ''}
+              style={{ opacity: gridVisible ? undefined : 0, animationDelay: `${i * 100}ms` }}>
               <TiltCard intensity={14} className="h-full">
                 <div className="group h-full flex flex-col rounded-2xl overflow-hidden"
                   style={{

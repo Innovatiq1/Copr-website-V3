@@ -482,7 +482,7 @@ export default function HeroSection() {
               </Link>
               <Link href="/services/cloud"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-gray-700 rounded-xl transition-all duration-300 hover:-translate-y-1"
-                style={{ border: '1px solid rgba(0,0,0,0.12)', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)' }}>
+                style={{ border: '1.5px solid rgba(0,0,0,0.28)', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)' }}>
                 Explore Services
               </Link>
             </div>

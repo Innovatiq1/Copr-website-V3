@@ -227,12 +227,10 @@ export default function WhyUsSection() {
                         style={{ background: r.clr + '20', border: `1.5px solid ${r.clr}35` }}>
                         <r.Icon size={17} style={{ color: r.clr }} strokeWidth={1.75} />
                       </div>
-                      <span className="text-[10px] font-black tracking-widest px-1.5 py-0.5 rounded-md"
-                        style={{ color: r.clr, background: r.clr + '18', border: `1px solid ${r.clr}30` }}>{r.num}</span>
                     </div>
 
                     <p className="font-extrabold text-gray-800 text-[15px] mb-1 relative z-10">{r.title}</p>
-                    <p className="text-slate-500 text-[13px] font-semibold leading-relaxed relative z-10">{r.desc}</p>
+                    <p className="text-slate-500 text-[13px] font-medium leading-relaxed relative z-10">{r.desc}</p>
                   </div>
                 </TiltCard>
               ))}

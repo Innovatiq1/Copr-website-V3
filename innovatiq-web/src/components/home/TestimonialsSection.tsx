@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
@@ -95,8 +95,8 @@ export default function TestimonialsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#D97706', background: '#FFFFFF', border: '1.5px solid rgba(217,119,6,0.50)', boxShadow: '0 2px 10px rgba(217,119,6,0.12)' }}>
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D97706' }} />
+            style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#1D4ED8' }} />
             Client Stories
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 leading-tight">

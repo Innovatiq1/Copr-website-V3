@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import { ThumbsUp, ThumbsDown, ArrowRight, FileText } from 'lucide-react';

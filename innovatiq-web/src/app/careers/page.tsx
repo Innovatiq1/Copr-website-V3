@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';

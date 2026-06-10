@@ -49,7 +49,7 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50">
         {/* Promo bar — single line on all screen sizes */}
         <div className="py-2 sm:py-2.5 overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #881337 0%, #BE123C 50%, #881337 100%)', color: '#FFFFFF' }}>
+          style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #1E3A8A 100%)', color: '#FFFFFF' }}>
           <div className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 whitespace-nowrap text-[11px] sm:text-[13px] font-medium tracking-wide">
             <span className="shrink-0">🚀</span>
             {/* Mobile: condensed */}
@@ -62,7 +62,7 @@ export default function Navbar() {
             <span className="hidden sm:inline">Trusted by <strong>200+ Enterprises</strong></span>
             <Link href="/contact"
               className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:scale-105 ml-0.5"
-              style={{ background: '#FFFFFF', color: '#BE123C', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}>
+              style={{ background: '#FFFFFF', color: '#1D4ED8', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}>
               Get Demo <ArrowRight size={11} strokeWidth={2.5} />
             </Link>
           </div>
@@ -100,7 +100,7 @@ export default function Navbar() {
                     onMouseLeave={() => setDrop(null)}>
                     <button
                       className="flex items-center gap-1.5 px-4 py-2 rounded-lg capitalize transition-all duration-200 cursor-pointer"
-                      style={{ color: drop === k ? '#BE123C' : '#374151', background: drop === k ? 'rgba(190,18,60,0.08)' : 'transparent' }}>
+                      style={{ color: drop === k ? '#1D4ED8' : '#374151', background: drop === k ? 'rgba(29,78,216,0.08)' : 'transparent' }}>
                       {k === 'about' ? 'About Us' : k.charAt(0).toUpperCase() + k.slice(1)}
                       <ChevronDown size={13} className={`transition-transform duration-200 ${drop === k ? 'rotate-180' : ''}`} />
                     </button>
@@ -117,23 +117,23 @@ export default function Navbar() {
                         {k === 'products'
                           ? NAV.products.map(p => (
                             <Link key={p.href} href={p.href} onClick={() => setDrop(null)}
-                              className="flex items-center gap-3 px-4 py-3 transition-all group hover:bg-[rgba(190,18,60,0.06)]"
+                              className="flex items-center gap-3 px-4 py-3 transition-all group hover:bg-[rgba(29,78,216,0.06)]"
                               style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                                 style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.08)' }}>
                                 {p.logo
                                   ? <Image src={p.logo} alt={p.label} width={26} height={26} className="object-contain" />
-                                  : <span className="text-[9px] font-black text-[#BE123C]">LMP</span>}
+                                  : <span className="text-[9px] font-black text-[#1D4ED8]">LMP</span>}
                               </div>
                               <div>
-                                <p className="font-semibold text-gray-800 text-sm group-hover:text-[#BE123C] transition-colors">{p.label}</p>
+                                <p className="font-semibold text-gray-800 text-sm group-hover:text-[#1D4ED8] transition-colors">{p.label}</p>
                                 <p className="text-xs text-gray-400">{p.sub}</p>
                               </div>
                             </Link>
                           ))
                           : (NAV[k] as { label: string; href: string }[]).map(l => (
                             <Link key={l.href} href={l.href} onClick={() => setDrop(null)}
-                              className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.05)] transition-all">
+                              className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#1D4ED8] hover:bg-[rgba(29,78,216,0.05)] transition-all">
                               {l.label}
                             </Link>
                           ))
@@ -143,8 +143,8 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                <Link href="/careers" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200">Careers</Link>
-                <Link href="/contact" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200">Contact</Link>
+                <Link href="/careers" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#1D4ED8] hover:bg-[rgba(29,78,216,0.08)] transition-all duration-200">Careers</Link>
+                <Link href="/contact" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#1D4ED8] hover:bg-[rgba(29,78,216,0.08)] transition-all duration-200">Contact</Link>
               </div>
 
               {/* CTAs */}
@@ -156,7 +156,7 @@ export default function Navbar() {
                 </Link>
                 <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 18px rgba(190,18,60,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
+                  style={{ background: 'linear-gradient(to right, #3B82F6 0%, #2563EB 60%, #1D4ED8 100%)', boxShadow: '0 4px 18px rgba(14,165,233,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
                   Get Demo <ArrowRight size={14} />
                 </Link>
               </div>
@@ -209,7 +209,7 @@ export default function Navbar() {
           </Link>
           <button
             onClick={closeDrawer}
-            className="p-2 rounded-xl text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-all"
+            className="p-2 rounded-xl text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-all"
           >
             <X size={20} />
           </button>
@@ -226,7 +226,7 @@ export default function Navbar() {
               <button onClick={() => setMob(v => v === m.k ? null : m.k)}
                 className="flex items-center justify-between w-full px-3 py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gray-50 transition-all">
                 {m.label}
-                <ChevronDown size={14} className={`transition-transform duration-200 text-gray-400 ${mob === m.k ? 'rotate-180' : ''}`} />
+                <ChevronDown size={14} className={`transition-transform duration-200 text-gray-600 ${mob === m.k ? 'rotate-180' : ''}`} />
               </button>
               <div
                 style={{
@@ -238,7 +238,7 @@ export default function Navbar() {
                 <div className="ml-3 pb-1">
                   {m.items.map((l: { label: string; href: string; sub?: string }) => (
                     <Link key={l.href} href={l.href} onClick={closeDrawer}
-                      className="block px-3 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#BE123C] rounded-xl hover:bg-[rgba(190,18,60,0.06)] transition-all">
+                      className="block px-3 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#1D4ED8] rounded-xl hover:bg-[rgba(29,78,216,0.06)] transition-all">
                       {l.label}{l.sub ? ` — ${l.sub}` : ''}
                     </Link>
                   ))}
@@ -264,7 +264,7 @@ export default function Navbar() {
             </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
-              style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}>
+              style={{ background: 'linear-gradient(to right, #3B82F6 0%, #2563EB 60%, #1D4ED8 100%)' }}>
               Get Demo <ArrowRight size={14} />
             </Link>
           </div>

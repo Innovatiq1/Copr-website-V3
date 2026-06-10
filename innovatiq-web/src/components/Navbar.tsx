@@ -47,13 +47,25 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        {/* Promo bar */}
-        <div className="py-2 text-center text-xs text-white font-medium tracking-wide"
-          style={{ background: 'linear-gradient(90deg, #D4174A, #A8102E)' }}>
-          🚀 AI-Powered Digital Transformation — Trusted by 200+ Enterprises&ensp;
-          <Link href="/contact" className="underline underline-offset-2 font-bold hover:text-yellow-200 transition-colors">
-            Get Demo →
-          </Link>
+        {/* Promo bar — single line on all screen sizes */}
+        <div className="py-2 sm:py-2.5 overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #FFCDD8 0%, #FFE8C8 50%, #FFCDD8 100%)', color: '#7C1030' }}>
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 whitespace-nowrap text-[11px] sm:text-[13px] font-medium tracking-wide">
+            <span className="shrink-0">🚀</span>
+            {/* Mobile: condensed */}
+            <span className="font-semibold sm:hidden">AI-Powered IT</span>
+            <span className="opacity-50 sm:hidden">·</span>
+            <span className="sm:hidden">200+ Clients</span>
+            {/* sm+: full text */}
+            <span className="font-semibold hidden sm:inline">AI-Powered Digital Transformation</span>
+            <span className="opacity-60 hidden sm:inline">—</span>
+            <span className="hidden sm:inline">Trusted by <strong>200+ Enterprises</strong></span>
+            <Link href="/contact"
+              className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:opacity-90 ml-0.5"
+              style={{ background: '#D4174A', color: '#fff' }}>
+              Get Demo <ArrowRight size={11} strokeWidth={2.5} />
+            </Link>
+          </div>
         </div>
 
         {/* Nav */}
@@ -81,7 +93,7 @@ export default function Navbar() {
               </Link>
 
               {/* Desktop nav */}
-              <div className="hidden lg:flex items-center gap-0.5 text-sm font-medium">
+              <div className="hidden lg:flex items-center gap-0.5 text-sm font-bold">
                 {(['about', 'products', 'services'] as NonNullable<Key>[]).map(k => (
                   <div key={k} className="relative"
                     onMouseEnter={() => setDrop(k)}
@@ -131,8 +143,8 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                <Link href="/careers" className="px-4 py-2 rounded-lg text-gray-700 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.08)] transition-all duration-200">Careers</Link>
-                <Link href="/contact" className="px-4 py-2 rounded-lg text-gray-700 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.08)] transition-all duration-200">Contact</Link>
+                <Link href="/careers" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.08)] transition-all duration-200">Careers</Link>
+                <Link href="/contact" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.08)] transition-all duration-200">Contact</Link>
               </div>
 
               {/* CTAs */}
@@ -144,7 +156,7 @@ export default function Navbar() {
                 </Link>
                 <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 16px rgba(212,23,74,0.4)' }}>
+                  style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
                   Get Demo <ArrowRight size={14} />
                 </Link>
               </div>
@@ -252,7 +264,7 @@ export default function Navbar() {
             </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
-              style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 16px rgba(212,23,74,0.35)' }}>
+              style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
               Get Demo <ArrowRight size={14} />
             </Link>
           </div>

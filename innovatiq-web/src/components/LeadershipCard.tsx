@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { Linkedin, Twitter, ChevronDown, ChevronUp } from 'lucide-react';
+import { LinkedinIcon, Instagram, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface LeaderSection {
   heading?: string;
@@ -47,15 +47,9 @@ export default function LeadershipCard({ m }: { m: Leader }) {
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(to right, transparent 50%, rgba(248,250,252,0.3) 100%), linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.55) 100%)',
+              'linear-gradient(to right, transparent 50%, rgba(248,250,252,0.3) 100%), linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.45) 100%)',
           }}
         />
-        <div
-          className="absolute bottom-4 left-4 px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider"
-          style={{ background: m.accent, color: '#fff', boxShadow: `0 4px 12px ${m.accent}55` }}
-        >
-          {m.role}
-        </div>
       </div>
 
       {/* Info */}
@@ -73,45 +67,52 @@ export default function LeadershipCard({ m }: { m: Leader }) {
               className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
               style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}
             >
-              <Linkedin size={13} />
+              <LinkedinIcon size={13} />
             </a>
             <a
               href="#"
               className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
               style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}
             >
-              <Twitter size={13} />
+              <Instagram size={13} />
             </a>
           </div>
         </div>
 
-        {/* Bio with smooth expand */}
-        <div className="mb-4">
-          <div
-            style={{
-              maxHeight: expanded ? '1600px' : '84px',
-              overflow: 'hidden',
-              transition: 'max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-          >
-            {m.sections ? m.sections.map((section, i) => (
-              <div key={i} className="mb-2 last:mb-0">
-                {section.heading && (
-                  <h4 className="text-[11px] font-bold uppercase tracking-wide mb-0.5" style={{ color: m.accent }}>
-                    {section.heading}
-                  </h4>
-                )}
-                <p className="text-slate-500 text-[13px] leading-relaxed">{section.text}</p>
-              </div>
-            )) : m.bio.split('\n\n').map((para, i) => (
-              <p key={i} className="text-slate-500 text-[13px] leading-relaxed mb-2 last:mb-0">
-                {para}
-              </p>
-            ))}
+        {/* Bio — more preview shown now that tags are removed */}
+        <div>
+          <div className="relative">
+            <div
+              style={{
+                maxHeight: expanded ? '1600px' : '120px',
+                overflow: 'hidden',
+                transition: 'max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+            >
+              {m.sections ? m.sections.map((section, i) => (
+                <div key={i} className="mb-2 last:mb-0">
+                  {section.heading && (
+                    <h4 className="text-[11px] font-bold uppercase tracking-wide mb-0.5" style={{ color: m.accent }}>
+                      {section.heading}
+                    </h4>
+                  )}
+                  <p className="text-slate-500 text-[15px] leading-relaxed">{section.text}</p>
+                </div>
+              )) : m.bio.split('\n\n').map((para, i) => (
+                <p key={i} className="text-slate-500 text-[15px] leading-relaxed mb-2 last:mb-0">
+                  {para}
+                </p>
+              ))}
+            </div>
+            {/* Fade mask — only visible when collapsed */}
+            {!expanded && (
+              <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
+                style={{ background: 'linear-gradient(to bottom, transparent, #FFFFFF)' }} />
+            )}
           </div>
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="flex items-center gap-1 mt-2 text-[11px] font-semibold transition-colors"
+            className="flex items-center gap-1 mt-2 text-[13px] font-semibold transition-colors cursor-pointer"
             style={{ color: m.accent }}
           >
             {expanded ? (
@@ -120,18 +121,6 @@ export default function LeadershipCard({ m }: { m: Leader }) {
               <><ChevronDown size={12} /> Read more</>
             )}
           </button>
-        </div>
-
-        <div className="flex flex-wrap gap-2 mt-auto">
-          {m.expertise.map((e) => (
-            <span
-              key={e}
-              className="text-[11px] px-3 py-1 rounded-full font-semibold"
-              style={{ background: `${m.accent}15`, color: m.accent, border: `1px solid ${m.accent}25` }}
-            >
-              {e}
-            </span>
-          ))}
         </div>
       </div>
     </div>

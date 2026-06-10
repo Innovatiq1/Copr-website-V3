@@ -9,30 +9,40 @@ interface Props {
   direction?: 'up' | 'left' | 'right' | 'fade';
 }
 
+const transforms: Record<string, string> = {
+  up: 'translateY(32px)',
+  left: 'translateX(-32px)',
+  right: 'translateX(32px)',
+  fade: 'none',
+};
+
 export default function AnimatedSection({ children, className = '', delay = 0, direction = 'up' }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  // Keep will-change active until after the transition fully completes, then release the GPU layer
+  const [settled, setSettled] = useState(false);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
+          setVisible(true);
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1 }
+      { rootMargin: '0px 0px 200px 0px', threshold: 0 }
     );
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(el);
     return () => observer.disconnect();
-  }, [delay]);
+  }, []);
 
-  const transforms: Record<string, string> = {
-    up: 'translateY(40px)',
-    left: 'translateX(-40px)',
-    right: 'translateX(40px)',
-    fade: 'translateY(0)',
-  };
+  useEffect(() => {
+    if (!visible) return;
+    const timer = setTimeout(() => setSettled(true), delay + 700);
+    return () => clearTimeout(timer);
+  }, [visible, delay]);
 
   return (
     <div
@@ -40,8 +50,9 @@ export default function AnimatedSection({ children, className = '', delay = 0, d
       className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translate(0)' : transforms[direction],
-        transition: `opacity 0.7s ease, transform 0.7s ease`,
+        transform: visible ? 'none' : transforms[direction],
+        transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
+        willChange: settled ? 'auto' : 'opacity, transform',
       }}
     >
       {children}

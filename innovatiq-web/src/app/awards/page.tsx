@@ -1,10 +1,10 @@
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
-import Image from 'next/image';
 import { getAwardImageUrl } from '@/lib/api';
 import { getAwardsDirect } from '@/lib/server-data';
-import { Trophy, Star } from 'lucide-react';
+import { Trophy } from 'lucide-react';
+import AwardCard from '@/components/AwardCard';
 
 const awardColors = ['#D4174A', '#F59E0B', '#3B82F6', '#8B5CF6', '#10B981', '#F59E0B'];
 
@@ -106,7 +106,7 @@ export default async function AwardsPage() {
                 Awards
               </span>
             </h2>
-            <p className="text-slate-500 mt-3 max-w-xl mx-auto">
+            <p className="text-slate-500 font-medium mt-3 max-w-xl mx-auto">
               Recognized by industry leaders for innovation, excellence, and commitment to client success.
             </p>
           </AnimatedSection>
@@ -118,7 +118,7 @@ export default async function AwardsPage() {
                 <Trophy size={32} style={{ color: '#F59E0B' }} />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">No awards added yet</h3>
-              <p className="text-gray-500 text-sm">Check back soon for our latest awards and recognitions.</p>
+              <p className="text-gray-500 font-medium text-sm">Check back soon for our latest awards and recognitions.</p>
             </div>
           )}
 
@@ -133,75 +133,7 @@ export default async function AwardsPage() {
 
               return (
                 <AnimatedSection key={award._id} delay={i * 60} className="h-full">
-                  <div className="group hover:-translate-y-1 transition-all duration-300 h-full flex flex-col overflow-hidden"
-                    style={{
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(0,0,0,0.07)',
-                      borderRadius: '16px',
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 28px rgba(0,0,0,0.07)',
-                    }}>
-
-                    {/* Image / trophy section */}
-                    <div className="relative h-52 flex items-center justify-center overflow-hidden"
-                      style={{ background: 'linear-gradient(160deg, #F8FAFC 0%, #EEF2F7 100%)' }}>
-                      {/* Faint watermark */}
-                      <Trophy size={100} className="absolute right-2 bottom-0 pointer-events-none"
-                        style={{ color, opacity: 0.07 }} />
-                      {/* Subtle top-left color accent */}
-                      <div className="absolute top-0 left-0 w-28 h-28 pointer-events-none"
-                        style={{ background: `radial-gradient(circle at top left, ${color}18 0%, transparent 70%)` }} />
-
-                      {imageUrl ? (
-                        <Image src={imageUrl} alt={award.title} fill
-                          className="object-contain p-8 group-hover:scale-105 transition-transform duration-500" />
-                      ) : (
-                        <div className="flex flex-col items-center gap-3 relative z-10">
-                          <div className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                            style={{ background: `${color}12`, border: `1.5px solid ${color}28` }}>
-                            <Trophy size={36} style={{ color }} />
-                          </div>
-                          {award.year && (
-                            <span className="text-xs font-bold px-3 py-1 rounded-full"
-                              style={{ background: color, color: '#fff', boxShadow: `0 2px 8px ${color}55` }}>
-                              {award.year}
-                            </span>
-                          )}
-                        </div>
-                      )}
-
-                      {award.year && imageUrl && (
-                        <div className="absolute bottom-3 right-3 px-3 py-1 rounded-lg text-xs font-bold z-10"
-                          style={{ background: color, color: '#fff', boxShadow: `0 2px 8px ${color}55` }}>
-                          {award.year}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Color gradient divider */}
-                    <div className="h-[2px] w-full shrink-0"
-                      style={{ background: `linear-gradient(to right, ${color}, ${color}60, transparent)` }} />
-
-                    {/* Content */}
-                    <div className="p-6 flex flex-col flex-1">
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <Star size={12} style={{ color, fill: color }} />
-                        <Star size={10} style={{ color, fill: color, opacity: 0.6 }} />
-                        <Star size={8} style={{ color, fill: color, opacity: 0.3 }} />
-                      </div>
-                      <h3 className="font-bold text-gray-900 mb-3 leading-snug text-lg">{award.title}</h3>
-                      <p className="text-slate-500 text-sm leading-relaxed flex-1">{award.shortDescription}</p>
-                      {award.description && award.description !== award.shortDescription && (
-                        <details className="mt-4">
-                          <summary className="text-sm font-semibold cursor-pointer select-none"
-                            style={{ color }}>
-                            Read more
-                          </summary>
-                          <div className="mt-3 text-slate-500 text-sm leading-relaxed"
-                            dangerouslySetInnerHTML={{ __html: award.description }} />
-                        </details>
-                      )}
-                    </div>
-                  </div>
+                  <AwardCard award={award} color={color} imageUrl={imageUrl} />
                 </AnimatedSection>
               );
             })}
@@ -242,7 +174,7 @@ export default async function AwardsPage() {
               Our{' '}
               <span className="bg-linear-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Certifications</span>
             </h2>
-            <p className="text-slate-500 mb-12 max-w-lg mx-auto">Industry certifications validating our commitment to quality and excellence.</p>
+            <p className="text-slate-500 font-medium mb-12 max-w-lg mx-auto">Industry certifications validating our commitment to quality and excellence.</p>
             <div className="flex flex-wrap justify-center gap-5">
               {[
                 { label: 'ISO 9001:2015', sub: 'Quality Management', icon: '🏆' },
@@ -268,7 +200,7 @@ export default async function AwardsPage() {
                   <div className="text-3xl mb-3">{cert.icon}</div>
                   <div className="w-10 h-0.5 rounded-full mb-3" style={{ background: 'rgba(245,158,11,0.40)' }} />
                   <p className="font-bold text-gray-800 text-sm text-center leading-snug">{cert.label}</p>
-                  <p className="text-slate-500 text-xs text-center mt-1">{cert.sub}</p>
+                  <p className="text-slate-500 font-medium text-xs text-center mt-1">{cert.sub}</p>
                 </div>
               ))}
             </div>

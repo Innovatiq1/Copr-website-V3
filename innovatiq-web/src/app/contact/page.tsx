@@ -23,7 +23,7 @@ const offices = [
     address: 'Level 1, Unit 2, Salarpuria Sattva Knowledge City, Inorbit Mall Road, Raidurg Village, Hytech City, Hyderabad',
     phone: '+91-9000534494',
     email: 'info@innovatiqconsulting.com',
-    color: '#F59E0B',
+    color: '#0891B2',
   },
   {
     flag: '🇲🇾',
@@ -114,7 +114,7 @@ export default function ContactPage() {
             </span>
             <h2 className="text-3xl font-bold text-gray-900">
               Our{' '}
-              <span className="bg-linear-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Offices</span>
+              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Offices</span>
             </h2>
           </AnimatedSection>
           <div className="grid sm:grid-cols-3 gap-6">
@@ -138,15 +138,15 @@ export default function ContactPage() {
                     <p className="text-sm font-medium" style={{ color: office.color }}>{office.role}</p>
                   </div>
                   <div className="space-y-3 text-sm">
-                    <div className="flex gap-3 text-slate-500">
+                    <div className="flex gap-3 text-slate-600 font-medium">
                       <MapPin size={15} className="shrink-0 mt-0.5" style={{ color: office.color }} />
                       <span className="leading-relaxed">{office.address}</span>
                     </div>
-                    <div className="flex gap-3 text-slate-500">
+                    <div className="flex gap-3 text-slate-600 font-medium">
                       <Phone size={15} className="shrink-0" style={{ color: office.color }} />
                       <a href={`tel:${office.phone}`} className="hover:text-gray-900 transition-colors">{office.phone}</a>
                     </div>
-                    <div className="flex gap-3 text-slate-500">
+                    <div className="flex gap-3 text-slate-600 font-medium">
                       <Mail size={15} className="shrink-0" style={{ color: office.color }} />
                       <a href={`mailto:${office.email}`} className="hover:text-gray-900 transition-colors break-all">{office.email}</a>
                     </div>
@@ -178,7 +178,7 @@ export default function ContactPage() {
                   Something{' '}
                   <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Great</span>
                 </h2>
-                <p className="text-slate-500 text-sm leading-relaxed max-w-sm">
+                <p className="text-slate-600 font-medium text-sm leading-relaxed max-w-sm">
                   Have a question or a project in mind? Complete the form and our expert team will respond within 24 business hours.
                 </p>
               </AnimatedSection>
@@ -187,15 +187,15 @@ export default function ContactPage() {
               <div className="space-y-4">
                 {[
                   { label: 'Singapore & Malaysia HQ', email: 'info@innovatiq.com.sg', desc: 'General & regional inquiries', color: '#D4174A', bg: 'rgba(212,23,74,0.04)', border: 'rgba(212,23,74,0.1)' },
-                  { label: 'India Development Center', email: 'info@innovatiqconsulting.com', desc: 'Development & general consulting', color: '#F59E0B', bg: 'rgba(245,158,11,0.04)', border: 'rgba(245,158,11,0.1)' },
+                  { label: 'India Development Center', email: 'info@innovatiqconsulting.com', desc: 'Development & general consulting', color: '#0891B2', bg: 'rgba(8,145,178,0.04)', border: 'rgba(8,145,178,0.1)' },
                 ].map(channel => (
                   <AnimatedSection key={channel.label}>
                     <div className="p-4 rounded-2xl border transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex items-center justify-between"
                       style={{ background: '#FFFFFF', borderColor: 'rgba(0,0,0,0.06)' }}>
                       <div className="space-y-0.5">
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{channel.label}</p>
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{channel.label}</p>
                         <a href={`mailto:${channel.email}`} className="text-sm font-bold text-slate-800 hover:text-[#D4174A] transition-colors">{channel.email}</a>
-                        <p className="text-[11px] text-slate-400">{channel.desc}</p>
+                        <p className="text-[11px] text-slate-500 font-medium">{channel.desc}</p>
                       </div>
                       <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
                         style={{ background: channel.bg, border: `1px solid ${channel.border}` }}>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                     <div className="text-center py-12">
                       <div className="text-6xl mb-4">✅</div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-3">Message Sent!</h3>
-                      <p className="text-slate-500 max-w-sm mx-auto">
+                      <p className="text-slate-600 font-medium max-w-sm mx-auto">
                         Thank you for reaching out. Our team will contact you within 24 business hours.
                       </p>
                     </div>
@@ -246,12 +246,12 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-5">
                       <div className="grid sm:grid-cols-2 gap-5">
                         {[
-                          { name: 'firstName', label: 'First Name', type: 'text' },
-                          { name: 'lastName', label: 'Last Name', type: 'text' },
+                          { name: 'firstName', label: 'First Name', type: 'text', placeholder: 'John' },
+                          { name: 'lastName', label: 'Last Name', type: 'text', placeholder: 'Doe' },
                         ].map(f => (
                           <div key={f.name}>
                             <label className="block text-sm font-medium text-gray-600 mb-1.5">{f.label} *</label>
-                            <input type={f.type} required
+                            <input type={f.type} required placeholder={f.placeholder}
                               value={formData[f.name as keyof typeof formData]}
                               onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
                               className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors placeholder-slate-400"
@@ -265,12 +265,12 @@ export default function ContactPage() {
 
                       <div className="grid sm:grid-cols-2 gap-5">
                         {[
-                          { name: 'phone', label: 'Phone Number', type: 'tel' },
-                          { name: 'email', label: 'Email Address', type: 'email' },
+                          { name: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+65 6000 0000' },
+                          { name: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
                         ].map(f => (
                           <div key={f.name}>
                             <label className="block text-sm font-medium text-gray-600 mb-1.5">{f.label} *</label>
-                            <input type={f.type} required
+                            <input type={f.type} required placeholder={f.placeholder}
                               value={formData[f.name as keyof typeof formData]}
                               onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
                               className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors placeholder-slate-400"

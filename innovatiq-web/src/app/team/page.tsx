@@ -3,7 +3,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import Link from 'next/link';
 import LeadershipCard from '@/components/LeadershipCard';
-import TeamMemberCard from '@/components/TeamMemberCard';
+import ExpertTeamGrid from '@/components/ExpertTeamGrid';
 
 const leadership = [
   {
@@ -210,9 +210,9 @@ export default function TeamPage() {
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Visionary{' '}
-              <span className="bg-linear-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Leaders</span>
+              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Leaders</span>
             </h2>
-            <p className="text-slate-500 max-w-xl mx-auto text-sm leading-relaxed">
+            <p className="text-slate-500 font-medium max-w-xl mx-auto text-base leading-relaxed">
               Decades of combined experience driving digital transformation across Asia Pacific and beyond.
             </p>
           </AnimatedSection>
@@ -271,18 +271,12 @@ export default function TeamPage() {
           <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
               Our{' '}
-              <span className="bg-linear-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Expert Team</span>
+              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Expert Team</span>
             </h2>
-            <p className="text-slate-500 mt-2">100+ certified professionals delivering excellence daily.</p>
+            <p className="text-slate-500 font-medium mt-2">100+ certified professionals delivering excellence daily.</p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-center sm:justify-items-stretch max-w-4xl mx-auto w-full">
-            {teamMembers.map((m, i) => (
-              <AnimatedSection key={m.name} delay={i * 80} className="w-full max-w-xs sm:max-w-none h-full">
-                <TeamMemberCard m={m} />
-              </AnimatedSection>
-            ))}
-          </div>
+          <ExpertTeamGrid members={teamMembers} />
         </div>
       </section>
 
@@ -293,7 +287,7 @@ export default function TeamPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Want to Join Our Team?
             </h2>
-            <p className="text-slate-500 mb-8 max-w-md mx-auto">
+            <p className="text-slate-500 font-medium mb-8 max-w-md mx-auto">
               We&apos;re always looking for talented individuals passionate about technology and innovation.
             </p>
             <Link href="/careers"

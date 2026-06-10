@@ -1,10 +1,9 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { API, authFetch, getToken } from '@/lib/adminApi';
-import { Plus, Pencil, Trash2, Search } from 'lucide-react';
-import ExcelIcon from '@/components/ExcelIcon';
+import { API, authFetch } from '@/lib/adminApi';
+import { Plus, Pencil, Trash2, Search, Download } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -35,9 +34,7 @@ export default function BlogsPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Delete this blog?')) return;
     try {
-      const res = await authFetch(`${API}/blogs/${id}`, {
-        method: 'DELETE',
-      });
+      const res = await authFetch(`${API}/blogs/${id}`, { method: 'DELETE' });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.message || 'Failed to delete blog');
@@ -53,12 +50,12 @@ export default function BlogsPage() {
   );
 
   return (
-    <div className="min-h-screen" style={{ background: '#07101E' }}>
+    <div className="min-h-screen">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-white">Blogs</h1>
-          <p className="text-gray-400 text-sm mt-1">Manage your blog posts</p>
+          <h1 className="text-2xl font-bold text-slate-900">Blogs</h1>
+          <p className="text-slate-500 text-sm mt-1">Manage your blog posts</p>
         </div>
         <div className="flex items-center gap-3">
           <button
@@ -73,15 +70,15 @@ export default function BlogsPage() {
               })),
               'blogs'
             )}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold"
-            style={{ background: 'rgba(16,185,129,0.15)', color: '#10B981', border: '1px solid rgba(16,185,129,0.3)' }}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold cursor-pointer"
+            style={{ background: 'rgba(16,185,129,0.1)', color: '#059669', border: '1px solid rgba(16,185,129,0.25)' }}
           >
-            <ExcelIcon size={20} />
+            <Download size={16} /> Export Excel
           </button>
           <Link
             href="/admin/blogs/create"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
-            style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.3)' }}
+            style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}
           >
             <Plus size={16} /> Create Blog
           </Link>
@@ -91,20 +88,20 @@ export default function BlogsPage() {
       {/* Search */}
       <div
         className="flex items-center gap-3 px-4 py-2.5 rounded-xl mb-6 max-w-sm"
-        style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
+        style={{ background: '#FFFFFF', border: '1px solid #E2E8F0' }}
       >
-        <Search size={16} className="text-gray-500" />
+        <Search size={16} className="text-slate-400" />
         <input
           type="text"
           placeholder="Search blogs..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 bg-transparent text-white text-sm outline-none placeholder-gray-600"
+          className="flex-1 bg-transparent text-slate-800 text-sm outline-none placeholder-slate-400"
         />
       </div>
 
       {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.2)', color: '#EF4444' }}>
+        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
           {error}
         </div>
       )}
@@ -112,17 +109,14 @@ export default function BlogsPage() {
       {/* Table */}
       <div
         className="rounded-2xl overflow-hidden"
-        style={{
-          background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-          border: '1px solid rgba(255,255,255,0.14)',
-        }}
+        style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
       >
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
+              <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
                 {['Title', 'Author', 'Tags', 'Likes / Dislikes', 'Date', 'Actions'].map((h) => (
-                  <th key={h} className="text-left px-5 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                  <th key={h} className="text-left px-5 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
                     {h}
                   </th>
                 ))}
@@ -131,62 +125,62 @@ export default function BlogsPage() {
             <tbody>
               {loading ? (
                 Array.from({ length: 5 }).map((_, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <tr key={i} style={{ borderBottom: '1px solid #F1F5F9' }}>
                     {Array.from({ length: 6 }).map((__, j) => (
                       <td key={j} className="px-5 py-4">
-                        <div className="h-4 rounded animate-pulse" style={{ background: 'rgba(255,255,255,0.07)', width: j === 0 ? '60%' : '40%' }} />
+                        <div className="h-4 rounded animate-pulse" style={{ background: '#F1F5F9', width: j === 0 ? '60%' : '40%' }} />
                       </td>
                     ))}
                   </tr>
                 ))
               ) : filtered.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-10 text-center text-gray-500">No blogs found</td>
+                  <td colSpan={6} className="px-5 py-10 text-center text-slate-400">No blogs found</td>
                 </tr>
               ) : (
                 filtered.map((blog) => (
                   <tr
                     key={blog._id}
-                    style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
+                    style={{ borderBottom: '1px solid #F1F5F9' }}
                     className="transition-colors"
-                    onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = '#F8FAFC')}
                     onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                   >
-                    <td className="px-5 py-4 text-gray-300 text-sm max-w-xs">
+                    <td className="px-5 py-4 text-slate-800 text-sm font-medium max-w-xs">
                       <div className="truncate">{blog.title}</div>
                     </td>
-                    <td className="px-5 py-4 text-gray-400 text-sm whitespace-nowrap">{blog.author || '-'}</td>
+                    <td className="px-5 py-4 text-slate-500 text-sm whitespace-nowrap">{blog.author || '-'}</td>
                     <td className="px-5 py-4 text-sm">
-                      <div className="flex flex-wrap gap-1 max-w-[180px]">
+                      <div className="flex flex-wrap gap-1 max-w-45">
                         {(blog.tags || []).slice(0, 3).map((tag: string, i: number) => (
-                          <span key={i} className="px-2 py-0.5 rounded-full text-xs text-gray-400" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                          <span key={i} className="px-2 py-0.5 rounded-full text-xs text-slate-600" style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>
                             {tag}
                           </span>
                         ))}
-                        {(blog.tags || []).length > 3 && <span className="text-xs text-gray-500">+{blog.tags.length - 3}</span>}
+                        {(blog.tags || []).length > 3 && <span className="text-xs text-slate-400">+{blog.tags.length - 3}</span>}
                       </div>
                     </td>
                     <td className="px-5 py-4 text-sm">
-                      <span className="text-green-400">{blog.likes ?? 0}</span>
-                      <span className="text-gray-600 mx-1">/</span>
-                      <span className="text-red-400">{blog.dislikes ?? 0}</span>
+                      <span className="text-green-600">{blog.likes ?? 0}</span>
+                      <span className="text-slate-300 mx-1">/</span>
+                      <span className="text-red-500">{blog.dislikes ?? 0}</span>
                     </td>
-                    <td className="px-5 py-4 text-gray-400 text-sm whitespace-nowrap">
+                    <td className="px-5 py-4 text-slate-500 text-sm whitespace-nowrap">
                       {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : '-'}
                     </td>
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-2">
                         <Link
                           href={`/admin/blogs/${blog._id}/edit`}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-300 transition-all"
-                          style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)' }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 transition-all hover:bg-slate-100 cursor-pointer"
+                          style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}
                         >
                           <Pencil size={12} /> Edit
                         </Link>
                         <button
                           onClick={() => handleDelete(blog._id)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
-                          style={{ background: 'rgba(220,38,38,0.15)', color: '#EF4444', border: '1px solid rgba(220,38,38,0.2)' }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer"
+                          style={{ background: 'rgba(220,38,38,0.08)', color: '#DC2626', border: '1px solid rgba(220,38,38,0.18)' }}
                         >
                           <Trash2 size={12} /> Delete
                         </button>

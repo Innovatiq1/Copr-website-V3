@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -11,11 +11,11 @@ type Applicant = any;
 
 const STATUS_OPTIONS = ['Reviewed', 'Shortlisted', 'Rejected'];
 
-const statusColors: Record<string, { bg: string; color: string }> = {
-  Reviewed: { bg: 'rgba(59,130,246,0.1)', color: '#60A5FA' },
-  Shortlisted: { bg: 'rgba(16,185,129,0.1)', color: '#10B981' },
-  Rejected: { bg: 'rgba(220,38,38,0.1)', color: '#EF4444' },
-  Pending: { bg: 'rgba(245,158,11,0.1)', color: '#F59E0B' },
+const statusColors: Record<string, { bg: string; color: string; border: string }> = {
+  Reviewed:   { bg: 'rgba(59,130,246,0.08)',  color: '#2563EB', border: 'rgba(59,130,246,0.2)' },
+  Shortlisted:{ bg: 'rgba(16,185,129,0.08)',  color: '#059669', border: 'rgba(16,185,129,0.2)' },
+  Rejected:   { bg: 'rgba(220,38,38,0.08)',   color: '#DC2626', border: 'rgba(220,38,38,0.2)' },
+  Pending:    { bg: 'rgba(245,158,11,0.08)',  color: '#D97706', border: 'rgba(245,158,11,0.2)' },
 };
 
 export default function ApplicantsPage() {
@@ -32,8 +32,7 @@ export default function ApplicantsPage() {
       try {
         const res = await authFetch(`${API}/job-applications/${careerId}`);
         const data = await res.json();
-        const list = Array.isArray(data) ? data : [];
-        setApplicants(list);
+        setApplicants(Array.isArray(data) ? data : []);
       } catch {
         setError('Failed to load applicants');
       } finally {
@@ -53,9 +52,7 @@ export default function ApplicantsPage() {
         body: JSON.stringify({ status }),
       });
       if (!res.ok) throw new Error('Failed to update status');
-      setApplicants((prev) =>
-        prev.map((a) => (a._id === applicationId ? { ...a, status } : a))
-      );
+      setApplicants((prev) => prev.map((a) => (a._id === applicationId ? { ...a, status } : a)));
     } catch {
       alert('Failed to update status');
     } finally {
@@ -64,36 +61,31 @@ export default function ApplicantsPage() {
   };
 
   return (
-    <div className="min-h-screen" style={{ background: '#07101E' }}>
+    <div className="min-h-screen">
       <div className="flex items-center gap-3 mb-8">
-        <Link href="/admin/careers" className="text-gray-400 hover:text-white transition-colors">
+        <Link href="/admin/careers" className="text-slate-400 hover:text-slate-700 transition-colors cursor-pointer">
           <ArrowLeft size={20} />
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-white">Applicants</h1>
-          <p className="text-gray-400 text-sm mt-1">{applicants.length} applicant{applicants.length !== 1 ? 's' : ''} for this position</p>
+          <h1 className="text-2xl font-bold text-slate-900">Applicants</h1>
+          <p className="text-slate-500 text-sm mt-1">{applicants.length} applicant{applicants.length !== 1 ? 's' : ''} for this position</p>
         </div>
       </div>
 
       {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.2)', color: '#EF4444' }}>
+        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
           {error}
         </div>
       )}
 
-      <div
-        className="rounded-2xl overflow-hidden"
-        style={{
-          background: 'linear-gradient(145deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%)',
-          border: '1px solid rgba(255,255,255,0.14)',
-        }}
-      >
+      <div className="rounded-2xl overflow-hidden"
+        style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
+              <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
                 {['Name', 'Email', 'Phone', 'Status', 'Applied', 'Update Status'].map((h) => (
-                  <th key={h} className="text-left px-5 py-4 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                  <th key={h} className="text-left px-5 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
                     {h}
                   </th>
                 ))}
@@ -102,40 +94,37 @@ export default function ApplicantsPage() {
             <tbody>
               {loading ? (
                 Array.from({ length: 5 }).map((_, i) => (
-                  <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                  <tr key={i} style={{ borderBottom: '1px solid #F1F5F9' }}>
                     {Array.from({ length: 6 }).map((__, j) => (
                       <td key={j} className="px-5 py-4">
-                        <div className="h-4 rounded animate-pulse" style={{ background: 'rgba(255,255,255,0.07)', width: j === 0 ? '60%' : '40%' }} />
+                        <div className="h-4 rounded animate-pulse" style={{ background: '#F1F5F9', width: j === 0 ? '60%' : '40%' }} />
                       </td>
                     ))}
                   </tr>
                 ))
               ) : applicants.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-10 text-center text-gray-500">No applicants yet</td>
+                  <td colSpan={6} className="px-5 py-10 text-center text-slate-400">No applicants yet</td>
                 </tr>
               ) : (
                 applicants.map((applicant) => {
-                  const statusStyle = statusColors[applicant.status] || statusColors['Pending'];
+                  const s = statusColors[applicant.status] || statusColors['Pending'];
                   return (
-                    <tr
-                      key={applicant._id}
-                      style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.02)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-                    >
-                      <td className="px-5 py-4 text-gray-300 text-sm font-medium">
+                    <tr key={applicant._id} style={{ borderBottom: '1px solid #F1F5F9' }}
+                      onMouseEnter={(e) => (e.currentTarget.style.background = '#F8FAFC')}
+                      onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}>
+                      <td className="px-5 py-4 text-slate-800 text-sm font-medium">
                         {applicant.name || applicant.fullName || '-'}
                       </td>
-                      <td className="px-5 py-4 text-gray-400 text-sm">{applicant.email || '-'}</td>
-                      <td className="px-5 py-4 text-gray-400 text-sm">{applicant.phone || applicant.phoneNumber || '-'}</td>
+                      <td className="px-5 py-4 text-slate-500 text-sm">{applicant.email || '-'}</td>
+                      <td className="px-5 py-4 text-slate-500 text-sm">{applicant.phone || applicant.phoneNumber || '-'}</td>
                       <td className="px-5 py-4">
                         <span className="px-2.5 py-1 rounded-full text-xs font-medium"
-                          style={{ background: statusStyle.bg, color: statusStyle.color }}>
+                          style={{ background: s.bg, color: s.color, border: `1px solid ${s.border}` }}>
                           {applicant.status || 'Pending'}
                         </span>
                       </td>
-                      <td className="px-5 py-4 text-gray-400 text-sm whitespace-nowrap">
+                      <td className="px-5 py-4 text-slate-500 text-sm whitespace-nowrap">
                         {applicant.createdAt ? new Date(applicant.createdAt).toLocaleDateString() : '-'}
                       </td>
                       <td className="px-5 py-4">
@@ -144,15 +133,13 @@ export default function ApplicantsPage() {
                             value={applicant.status || 'Pending'}
                             disabled={updating === applicant._id}
                             onChange={(e) => updateStatus(applicant._id, e.target.value)}
-                            className="appearance-none pl-3 pr-8 py-1.5 rounded-lg text-xs text-gray-300 outline-none cursor-pointer disabled:opacity-60"
-                            style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)' }}
+                            className="appearance-none pl-3 pr-8 py-1.5 rounded-lg text-xs text-slate-700 outline-none cursor-pointer disabled:opacity-60"
+                            style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}
                           >
-                            <option value="Pending" style={{ background: '#0A1225' }}>Pending</option>
-                            {STATUS_OPTIONS.map((s) => (
-                              <option key={s} value={s} style={{ background: '#0A1225' }}>{s}</option>
-                            ))}
+                            <option value="Pending">Pending</option>
+                            {STATUS_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
                           </select>
-                          <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+                          <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
                         </div>
                       </td>
                     </tr>

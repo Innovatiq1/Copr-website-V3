@@ -40,11 +40,11 @@ export default async function BlogsPage() {
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Expert{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #D4174A, #FF4D7C)' }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)' }}>
                 Perspectives
               </span>
             </h2>
-            <p className="text-slate-500 mt-3 max-w-xl mx-auto">
+            <p className="text-slate-500 font-medium mt-3 max-w-xl mx-auto">
               Stay ahead with insights on digital transformation, cloud computing, and enterprise technology.
             </p>
           </AnimatedSection>
@@ -56,7 +56,7 @@ export default async function BlogsPage() {
                 <FileText size={32} className="text-[#D4174A]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">No blogs published yet</h3>
-              <p className="text-gray-500 text-sm">Check back soon for the latest insights from Innovatiq.</p>
+              <p className="text-gray-500 font-medium text-sm">Check back soon for the latest insights from Innovatiq.</p>
             </div>
           )}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
@@ -100,12 +100,12 @@ export default async function BlogsPage() {
                         <h3 className="font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#D4174A] transition-colors line-clamp-2">
                           {blog.title}
                         </h3>
-                        <p className="text-slate-500 text-sm leading-relaxed flex-1 line-clamp-3">
+                        <p className="text-slate-500 font-medium text-sm leading-relaxed flex-1 line-clamp-3">
                           {blog.shortDescription}
                         </p>
                         <div className="flex items-center justify-between mt-5 pt-4"
                           style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                          <div className="flex items-center gap-3 text-sm text-slate-500">
+                          <div className="flex items-center gap-3 text-sm text-slate-500 font-medium">
                             <span className="flex items-center gap-1.5"><ThumbsUp size={13} /> {blog.likes || 0}</span>
                             <span className="flex items-center gap-1.5"><ThumbsDown size={13} /> {blog.dislikes || 0}</span>
                           </div>

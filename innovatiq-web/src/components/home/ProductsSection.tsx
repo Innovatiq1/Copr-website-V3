@@ -1,179 +1,265 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { useRef } from 'react';
+import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import TiltCard from '@/components/TiltCard';
 
 const products = [
   {
+    num: '01',
     name: 'SkillEra',
     sub: 'Training Management System',
     desc: 'AI-powered training lifecycle management with intelligent recommendations and advanced analytics.',
     href: '/products/skillera',
     logo: '/images/Skillera-png-logo.png',
     heroImg: '/images/SkillEra Hero Section.svg',
-    features: ['AI Recommendations', 'Analytics', 'Workflows', 'Mobile'],
-    gradient: 'linear-gradient(160deg, #FFF0F2 0%, #FFE4E8 100%)',
+    features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Ready'],
+    imgBg: 'linear-gradient(135deg, #881337 0%, #BE123C 28%, #D4174A 52%, #F43F5E 75%, #FB923C 100%)',
     clr: '#D4174A',
+    clrLight: '#FFF0F3',
     badge: 'Most Popular',
   },
   {
+    num: '02',
     name: 'LearnPro',
     sub: 'Learning Management System',
     desc: 'Comprehensive platform for creating, managing, and delivering engaging training programs at scale.',
     href: '/products/learnpro',
     logo: '/images/Learnpro-png-logo.png',
-    heroImg: '/images/LMS Hero section.svg',
-    features: ['Course Builder', 'Certifications', 'Social Learning'],
-    gradient: 'linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 100%)',
-    clr: '#3B82F6',
+    heroImg: '/images/LMS Hero Screen.svg',
+    features: ['Course Builder', 'Certifications', 'Social Learning', 'Progress Tracking'],
+    imgBg: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
+    clr: '#4F46E5',
+    clrLight: '#EEF2FF',
     badge: null,
   },
   {
+    num: '03',
     name: 'SecurOn',
     sub: 'Patch Management System',
-    desc: 'Enterprise-grade patch management ensuring your infrastructure stays secure and compliant.',
+    desc: 'Enterprise-grade patch management ensuring your infrastructure stays secure and compliant 24/7.',
     href: '/products/securon',
     logo: '/images/Securon-png-logo.png',
     heroImg: '/images/PMS Hero Section.svg',
-    features: ['Auto Patching', 'Compliance', 'Vulnerability Scan'],
-    gradient: 'linear-gradient(160deg, #ECFDF5 0%, #D1FAE5 100%)',
+    features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts'],
+    imgBg: 'linear-gradient(135deg, #047857 0%, #10B981 50%, #34D399 100%)',
     clr: '#10B981',
+    clrLight: '#ECFDF5',
     badge: null,
   },
   {
+    num: '04',
     name: 'LMP',
     sub: 'Learning Motivational Platform',
-    desc: 'Gamification-powered platform that drives learner engagement and improves training completion.',
+    desc: 'Gamification-powered platform that drives learner engagement and improves training completion rates.',
     href: '/products/lmp',
     logo: null,
     heroImg: '/images/LMP Hero Section.svg',
-    features: ['Gamification', 'Leaderboards', 'Rewards'],
-    gradient: 'linear-gradient(160deg, #F5F3FF 0%, #EDE9FE 100%)',
-    clr: '#8B5CF6',
+    features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics'],
+    imgBg: 'linear-gradient(135deg, #C2410C 0%, #EA580C 50%, #F97316 100%)',
+    clr: '#EA580C',
+    clrLight: '#FFF7ED',
     badge: null,
   },
 ];
 
 export default function ProductsSection() {
+  const gridRef = useRef<HTMLDivElement>(null);
+
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+    <section
+      className="relative py-24 overflow-hidden"
+      style={{
+        background: '#FFFFFF',
+        contentVisibility: 'auto',
+        containIntrinsicSize: '0 1400px',
+      }}
+    >
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(212,23,74,0.07) 0%, rgba(139,92,246,0.05) 50%, transparent 70%)' }} />
+      {/* Background — single radial gradient only (no expensive tiled CSS grid) */}
+      <div className="absolute inset-0 pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139,92,246,0.05) 0%, transparent 60%)' }} />
 
+      {/* Decorative blob */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/images/Group%2041156.svg" alt="" aria-hidden="true"
-        className="absolute right-0 top-0 h-[60%] max-h-[400px] w-auto opacity-[0.05] pointer-events-none select-none object-contain" />
+        className="absolute right-0 top-0 h-[55%] w-auto opacity-[0.04] pointer-events-none select-none object-contain" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
 
-        <AnimatedSection className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#8B5CF6] uppercase tracking-widest bg-[#8B5CF6]/10 border border-[#8B5CF6]/20 px-4 py-1.5 rounded-full mb-5">
+        {/* Header — static, no entrance animation */}
+        <div className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+            style={{ color: '#0284C7', background: 'rgba(2,132,199,0.10)', border: '1px solid rgba(2,132,199,0.22)' }}>
             <Sparkles size={11} />
             Our Products
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-5 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 mb-5 leading-tight">
             Purpose-Built{' '}
-            <span className="bg-gradient-to-r from-[#8B5CF6] via-[#A78BFA] to-[#D4174A] bg-clip-text text-transparent">
-              SaaS Products
+            <span className="relative inline-block">
+              <span style={{
+                backgroundImage: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 45%, #7C3AED 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                SaaS Products
+              </span>
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 10" fill="none" preserveAspectRatio="none" style={{ height: '8px' }}>
+                <path d="M2 7 Q75 2 150 6 Q225 10 298 4" stroke="url(#ug)" strokeWidth="3" strokeLinecap="round" fill="none" />
+                <defs>
+                  <linearGradient id="ug" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#0EA5E9" />
+                    <stop offset="50%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#7C3AED" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </span>
           </h2>
-          <p className="text-slate-500 text-lg max-w-xl mx-auto">
+          <p className="text-slate-600 text-lg font-medium max-w-xl mx-auto leading-relaxed">
             Innovative platforms designed to transform how enterprises learn, secure, and grow.
           </p>
-        </AnimatedSection>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-5">
+        {/* Cards grid — single observer on the parent, CSS animation per card */}
+        <div ref={gridRef} className="grid lg:grid-cols-2 gap-6">
           {products.map((p, i) => (
-            <AnimatedSection key={p.name} delay={i * 80}>
-              <TiltCard intensity={18} className="h-full">
-              <div className="group overflow-hidden flex flex-col"
-                style={{
-                  background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${p.clr} 0%, ${p.clr} 20%, ${p.clr}CC 45%, ${p.clr}55 70%, transparent 90%) border-box`,
-                  borderStyle: 'solid',
-                  borderColor: 'transparent',
-                  borderTopWidth: '4px',
-                  borderLeftWidth: '0',
-                  borderRightWidth: '0',
-                  borderBottomWidth: '0',
-                  borderRadius: '20px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
-                }}>
+            <div key={p.name}>
+              <TiltCard intensity={14} className="h-full">
+                <div className="group h-full flex flex-col rounded-2xl overflow-hidden"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.05)',
+                    transition: 'box-shadow 0.3s ease',
+                  }}
+                  onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = `0 16px 56px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06)`}
+                  onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.05)'}
+                >
+                  {/* Image area — split: left overlay + right image */}
+                  <div className="relative overflow-hidden" style={{ height: '240px', background: p.imgBg }}>
+                    {/* Ambient light blobs */}
+                    <div className="absolute inset-0 pointer-events-none" style={{
+                      backgroundImage: `radial-gradient(circle at 10% 90%, rgba(255,255,255,0.18) 0%, transparent 45%), radial-gradient(circle at 85% 15%, rgba(255,255,255,0.10) 0%, transparent 40%)`,
+                    }} />
 
-                <div className="relative h-48 overflow-hidden flex items-center justify-center" style={{ background: p.gradient }}>
-                  <Image src={p.heroImg} alt={p.name} fill style={{ objectFit: 'contain', padding: '20px' }}
-                    className="group-hover:scale-[1.04] transition-transform duration-500" />
-                  {/* bottom fade into card */}
-                  <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
-                    style={{ background: 'linear-gradient(to bottom, transparent, #FFFFFF)' }} />
-                  {p.badge && (
-                    <span className="absolute top-3 right-3 text-[10px] font-bold px-2.5 py-1 rounded-full text-white"
-                      style={{ background: p.clr, boxShadow: `0 2px 8px ${p.clr}40` }}>
-                      {p.badge}
-                    </span>
-                  )}
-                </div>
+                    {/* Product image — right-biased, drop-shadow only on hover via CSS */}
+                    <Image src={p.heroImg} alt={p.name} fill
+                      style={{ objectFit: 'contain', objectPosition: 'right center', paddingTop: '14px', paddingBottom: '14px', paddingRight: '12px', paddingLeft: '38%' }}
+                      className="group-hover:scale-[1.04] transition-transform duration-500" />
 
-                <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-3 mb-4">
-                    {p.logo ? (
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                        style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-                        <Image src={p.logo} alt={p.name} width={28} height={28} style={{ objectFit: 'contain' }} />
+                    {/* Left panel overlay */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[45%] flex flex-col justify-between p-5 pointer-events-none z-10"
+                      style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.28) 70%, transparent 100%)' }}>
+                      {/* Number pill */}
+                      <div className="inline-flex items-center gap-1.5 shrink-0 self-start">
+                        <span className="inline-flex items-center justify-center font-black text-white shrink-0"
+                          style={{
+                            width: '36px', height: '36px', borderRadius: '10px',
+                            background: 'rgba(0,0,0,0.40)',
+                            border: '1.5px solid rgba(255,255,255,0.50)',
+                            fontSize: '13px',
+                            letterSpacing: '-0.02em',
+                            boxShadow: '0 2px 12px rgba(0,0,0,0.30)',
+                          }}>
+                          {p.num}
+                        </span>
                       </div>
-                    ) : (
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-xs font-bold shrink-0"
-                        style={{ background: `linear-gradient(135deg, ${p.clr}, ${p.clr}CC)` }}>LMP</div>
+                      {/* Name block at bottom */}
+                      <div>
+                        <p className="text-white text-[10px] font-bold uppercase tracking-widest mb-1"
+                          style={{ opacity: 0.85, textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}>{p.sub}</p>
+                        <h3 className="text-white font-black text-[22px] leading-tight" style={{ textShadow: '0 2px 16px rgba(0,0,0,0.45)' }}>{p.name}</h3>
+                      </div>
+                    </div>
+
+                    {/* Bottom fade to white */}
+                    <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
+                      style={{ background: 'linear-gradient(to bottom, transparent, #FFFFFF)' }} />
+
+                    {/* Most popular badge — solid bg instead of backdrop-filter */}
+                    {p.badge && (
+                      <span className="absolute top-4 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
+                        style={{ background: 'linear-gradient(135deg, #C2410C, #EA580C)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
+                        ⭐ {p.badge}
+                      </span>
                     )}
-                    <div>
-                      <h3 className="font-bold text-gray-800 text-lg leading-none depth-mid">{p.name}</h3>
-                      <p className="text-xs mt-0.5 font-medium depth-low" style={{ color: p.clr }}>{p.sub}</p>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+
+                    {/* Logo + subtitle row */}
+                    <div className="flex items-center gap-3 mb-4">
+                      {p.logo ? (
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                          style={{ background: p.clrLight, border: `1.5px solid ${p.clr}20` }}>
+                          <Image src={p.logo} alt={p.name} width={28} height={28} style={{ objectFit: 'contain' }} />
+                        </div>
+                      ) : (
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-[10px] font-black shrink-0"
+                          style={{ background: p.imgBg }}>LMP</div>
+                      )}
+                      <div>
+                        <h3 className="font-bold text-gray-900 text-[17px] leading-none">{p.name}</h3>
+                        <p className="text-[11.5px] mt-0.5 font-semibold" style={{ color: p.clr }}>{p.sub}</p>
+                      </div>
+                    </div>
+
+                    <p className="text-slate-500 text-[15px] font-medium leading-relaxed mb-5 flex-1">{p.desc}</p>
+
+                    {/* Features */}
+                    <div className="grid grid-cols-2 gap-y-2 gap-x-3 mb-5">
+                      {p.features.map(f => (
+                        <div key={f} className="flex items-center gap-1.5">
+                          <CheckCircle2 size={13} style={{ color: p.clr, flexShrink: 0 }} strokeWidth={2} />
+                          <span className="text-[13px] text-slate-600 font-semibold">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Footer CTAs */}
+                    <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                      <Link href={p.href}
+                        className="flex items-center gap-1.5 text-[13px] font-bold transition-all duration-200 group/link"
+                        style={{ color: p.clr }}>
+                        Explore {p.name}
+                        <ArrowRight size={13} className="group-hover/link:translate-x-1 transition-transform" />
+                      </Link>
+                      <Link href="/contact"
+                        className="ml-auto text-[12px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                        style={{
+                          background: p.clrLight,
+                          color: p.clr,
+                          border: `1px solid ${p.clr}30`,
+                        }}>
+                        Free Trial
+                      </Link>
                     </div>
                   </div>
-
-                  <p className="text-slate-500 text-sm leading-relaxed mb-4 flex-1">{p.desc}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-5 depth-low">
-                    {p.features.map(f => (
-                      <span key={f} className="text-xs px-2.5 py-1 rounded-full font-medium"
-                        style={{ background: `${p.clr}15`, color: p.clr, border: `1px solid ${p.clr}25` }}>
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-3 pt-4"
-                    style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                    <Link href={p.href}
-                      className="flex items-center gap-1.5 text-sm font-semibold group-hover:gap-2.5 transition-all"
-                      style={{ color: p.clr }}>
-                      Explore {p.name} <ArrowRight size={14} />
-                    </Link>
-                    <Link href="/contact"
-                      className="ml-auto text-xs font-semibold px-4 py-2 rounded-lg transition-all hover:bg-gray-50"
-                      style={{ border: `1px solid ${p.clr}40`, color: p.clr }}>
-                      Free Trial
-                    </Link>
-                  </div>
                 </div>
-              </div>
               </TiltCard>
-            </AnimatedSection>
+            </div>
           ))}
         </div>
 
-        <AnimatedSection className="mt-12 text-center">
-          <p className="text-slate-400 mb-5 text-sm">Unsure which product fits your needs?</p>
+        {/* Talk to Expert CTA */}
+        <AnimatedSection className="mt-14 text-center">
+          <p className="text-slate-500 mb-5 text-sm font-semibold">Unsure which product fits your needs?</p>
           <Link href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2.5 px-8 py-4 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
             style={{
-              background: 'linear-gradient(135deg, #8B5CF6, #D4174A)',
-              boxShadow: '0 8px 32px rgba(139,92,246,0.3)',
+              background: 'linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #E11D48 100%)',
+              boxShadow: '0 8px 32px rgba(212,23,74,0.35), 0 2px 8px rgba(212,23,74,0.20)',
             }}>
             Talk to a Product Expert <ArrowRight size={15} />
           </Link>
         </AnimatedSection>
+
       </div>
     </section>
   );

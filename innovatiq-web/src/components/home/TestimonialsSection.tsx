@@ -70,11 +70,13 @@ export default function TestimonialsSection() {
   const prev = () => { setAutoPlay(false); setCurrent(i => (i - 1 + testimonials.length) % testimonials.length); };
   const next = () => { setAutoPlay(false); setCurrent(i => (i + 1) % testimonials.length); };
 
-  const visible = [
-    testimonials[(current - 1 + testimonials.length) % testimonials.length],
-    testimonials[current],
-    testimonials[(current + 1) % testimonials.length],
+  // Stable indices so TiltCard keeps the same DOM node across rotations
+  const visibleIndices = [
+    (current - 1 + testimonials.length) % testimonials.length,
+    current,
+    (current + 1) % testimonials.length,
   ];
+  const visible = visibleIndices.map(idx => testimonials[idx]);
 
   return (
     <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
@@ -94,14 +96,32 @@ export default function TestimonialsSection() {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#F59E0B] uppercase tracking-widest bg-[#F59E0B]/10 border border-[#F59E0B]/20 px-4 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+            style={{ color: '#D97706', background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.25)' }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D97706' }} />
             Client Stories
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900">
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 leading-tight">
             What Our{' '}
-            <span className="bg-gradient-to-r from-[#F59E0B] via-[#FBBF24] to-[#D4174A] bg-clip-text text-transparent">
-              Clients Say
+            <span className="relative inline-block">
+              <span style={{
+                backgroundImage: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #D4174A 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                Clients Say
+              </span>
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 280 8" fill="none" preserveAspectRatio="none" style={{ height: '6px' }}>
+                <path d="M2 5 Q70 1 140 5 Q210 9 278 3" stroke="url(#tg)" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+                <defs>
+                  <linearGradient id="tg" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#F59E0B"/>
+                    <stop offset="50%" stopColor="#EF4444"/>
+                    <stop offset="100%" stopColor="#D4174A"/>
+                  </linearGradient>
+                </defs>
+              </svg>
             </span>
           </h2>
         </div>
@@ -110,7 +130,7 @@ export default function TestimonialsSection() {
         <div className="relative">
           <div className="grid md:grid-cols-3 gap-5">
             {visible.map((t, i) => (
-              <div key={`${t.name}-${i}`} className={i === 1 ? 'scale-[1.03]' : ''}>
+              <div key={visibleIndices[i]} className={i === 1 ? 'md:scale-[1.03]' : ''}>
               <TiltCard intensity={16} className="h-full">
               <div
                 className="rounded-2xl p-7 flex flex-col h-full"
@@ -124,7 +144,7 @@ export default function TestimonialsSection() {
                 }}>
 
                 {/* Quote icon */}
-                <Quote size={28} className="mb-4 depth-pop" style={{ color: t.color, opacity: i === 1 ? 0.55 : 0.22 }} />
+                <Quote size={28} className="mb-4 depth-pop" style={{ color: t.color, opacity: i === 1 ? 0.85 : 0.55 }} />
 
                 {/* Stars */}
                 <div className="flex gap-1 mb-4 depth-mid">
@@ -133,7 +153,7 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
 
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1 italic">
+                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1 italic font-medium">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
@@ -146,7 +166,7 @@ export default function TestimonialsSection() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 text-sm">{t.name}</p>
-                    <p className="text-slate-400 text-xs">{t.title}</p>
+                    <p className="text-slate-500 text-xs font-medium">{t.title}</p>
                   </div>
                 </div>
               </div>

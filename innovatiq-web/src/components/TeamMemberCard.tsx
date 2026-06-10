@@ -1,7 +1,6 @@
 'use client';
-import { useState } from 'react';
 import Image from 'next/image';
-import { Linkedin, Twitter, ChevronDown, ChevronUp } from 'lucide-react';
+import { LinkedinIcon, Instagram, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface TeamMember {
   name: string;
@@ -13,12 +12,19 @@ interface TeamMember {
   photoPosition?: string;
 }
 
-export default function TeamMemberCard({ m }: { m: TeamMember }) {
-  const [expanded, setExpanded] = useState(false);
+export default function TeamMemberCard({
+  m,
+  expanded,
+  onToggle,
+}: {
+  m: TeamMember;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
 
   return (
     <div
-      className="group relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+      className="group relative flex flex-col transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       style={{
         background: '#FFFFFF',
         border: '1px solid rgba(0,0,0,0.07)',
@@ -26,7 +32,7 @@ export default function TeamMemberCard({ m }: { m: TeamMember }) {
         boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 28px rgba(0,0,0,0.07)',
       }}
     >
-      {/* Photo — translateZ forces GPU layer, eliminating sub-pixel gap on hover */}
+      {/* Photo */}
       <div
         className="relative h-56 shrink-0 overflow-hidden"
         style={{ background: '#E2E8F0', transform: 'translateZ(0)' }}
@@ -38,22 +44,15 @@ export default function TeamMemberCard({ m }: { m: TeamMember }) {
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           style={{ objectPosition: m.photoPosition ?? 'center' }}
         />
-        {/* Gradient fades to fully opaque at bottom to eliminate seam with card body */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.70) 100%)' }}
+          style={{ background: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.60) 100%)' }}
         />
-        <div
-          className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider"
-          style={{ background: m.accent, color: '#fff', boxShadow: `0 2px 8px ${m.accent}66` }}
-        >
-          {m.role}
-        </div>
       </div>
 
       {/* Info */}
       <div className="p-5 flex flex-col flex-1">
-        <div className="flex items-start justify-between gap-2 mb-2">
+        <div className="flex items-start justify-between gap-2 mb-3">
           <div>
             <h3 className="font-bold text-gray-900 text-base leading-tight">{m.name}</h3>
             <p className="text-xs font-semibold mt-0.5" style={{ color: m.accent }}>
@@ -61,71 +60,47 @@ export default function TeamMemberCard({ m }: { m: TeamMember }) {
             </p>
           </div>
           <div className="flex gap-1.5 shrink-0">
-            <a
-              href="#"
-              className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-              style={{
-                background: '#F1F5F9',
-                border: '1px solid rgba(0,0,0,0.10)',
-                color: '#64748B',
-              }}
-            >
-              <Linkedin size={11} />
+            <a href="#" className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+              style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}>
+              <LinkedinIcon size={11} />
             </a>
-            <a
-              href="#"
-              className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-              style={{
-                background: '#F1F5F9',
-                border: '1px solid rgba(0,0,0,0.10)',
-                color: '#64748B',
-              }}
-            >
-              <Twitter size={11} />
+            <a href="#" className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:scale-110"
+              style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}>
+              <Instagram size={11} />
             </a>
           </div>
         </div>
 
-        {/* Bio — scrollable when expanded so card height never changes */}
-        <div className="mb-3">
-          <div
-            className="text-slate-500 text-xs leading-relaxed"
-            style={{
-              maxHeight: expanded ? '200px' : '54px',
-              overflow: 'hidden',
-              transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-          >
-            {m.bio}
+        {/* Bio with bottom fade when collapsed */}
+        <div>
+          <div className="relative">
+            <div
+              className="text-slate-500 text-[15px] leading-relaxed"
+              style={{
+                maxHeight: expanded ? '320px' : '96px',
+                overflow: 'hidden',
+                transition: 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+            >
+              {m.bio}
+            </div>
+            {/* Fade mask — only visible when collapsed */}
+            {!expanded && (
+              <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none"
+                style={{ background: 'linear-gradient(to bottom, transparent, #FFFFFF)' }} />
+            )}
           </div>
           <button
-            onClick={() => setExpanded((v) => !v)}
-            className="flex items-center gap-1 mt-1.5 text-[11px] font-semibold transition-colors"
+            onClick={onToggle}
+            className="flex items-center gap-1 mt-2 text-[13px] font-semibold transition-colors cursor-pointer"
             style={{ color: m.accent }}
           >
             {expanded ? (
-              <>
-                <ChevronUp size={12} /> Show less
-              </>
+              <><ChevronUp size={12} /> Show less</>
             ) : (
-              <>
-                <ChevronDown size={12} /> Read more
-              </>
+              <><ChevronDown size={12} /> Read more</>
             )}
           </button>
-        </div>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1.5 mt-auto">
-          {m.expertise.map((e) => (
-            <span
-              key={e}
-              className="text-[10px] px-2 py-0.5 rounded-full font-medium"
-              style={{ background: `${m.accent}12`, color: m.accent, border: `1px solid ${m.accent}20` }}
-            >
-              {e}
-            </span>
-          ))}
         </div>
       </div>
     </div>

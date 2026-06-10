@@ -95,14 +95,40 @@ export default function Chatbot() {
   return (
     <>
       {/* Floating toggle button */}
-      <button
-        onClick={() => setOpen(o => !o)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95"
-        style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 8px 32px rgba(212,23,74,0.45)' }}
-        aria-label={open ? 'Close chat' : 'Open chat'}
-      >
-        {open ? <X size={22} /> : <MessageSquare size={22} />}
-      </button>
+      <div className="fixed bottom-6 right-6 z-50 group">
+        {!open && (
+          <span
+            className="absolute top-1/2 -translate-y-1/2
+              px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap
+              opacity-0 translate-x-2
+              group-hover:opacity-100 group-hover:translate-x-0
+              transition-all duration-200 pointer-events-none"
+            style={{
+              right: 'calc(100% + 12px)',
+              background: 'rgba(255,255,255,0.94)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(0,0,0,0.08)',
+              color: '#374151',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.90)',
+            }}
+          >
+            Chat with us
+          </span>
+        )}
+        <button
+          onClick={() => setOpen(o => !o)}
+          className="w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
+          style={{
+            background: 'linear-gradient(145deg, #E8174F 0%, #C4102E 55%, #A8102E 100%)',
+            boxShadow:
+              '0 2px 4px rgba(0,0,0,0.06), 0 8px 28px rgba(212,23,74,0.42), 0 20px 52px rgba(212,23,74,0.18), 0 0 0 1px rgba(212,23,74,0.25), inset 0 1px 0 rgba(255,255,255,0.18)',
+          }}
+          aria-label={open ? 'Close chat' : 'Open chat'}
+        >
+          {open ? <X size={22} /> : <MessageSquare size={22} />}
+        </button>
+      </div>
 
       {/* Chat panel */}
       {open && (
@@ -111,8 +137,8 @@ export default function Chatbot() {
           style={{ border: '1px solid rgba(0,0,0,0.10)', maxHeight: '520px', background: '#fff' }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
-            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
+            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
               <MessageSquare size={17} className="text-white" />
             </div>
             <div>
@@ -199,7 +225,7 @@ export default function Chatbot() {
 
           {/* Message input */}
           {step === 'chat' && (
-            <div className="flex-shrink-0 flex gap-2 p-3 border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
+            <div className="shrink-0 flex gap-2 p-3 border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
               <input
                 type="text"
                 placeholder="Type your message..."
@@ -213,7 +239,7 @@ export default function Chatbot() {
               />
               <button
                 onClick={sendMessage}
-                className="w-10 h-10 flex-shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105"
+                className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105"
                 style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}
                 aria-label="Send"
               >
@@ -223,7 +249,7 @@ export default function Chatbot() {
           )}
 
           {step === 'done' && (
-            <div className="flex-shrink-0 p-3 text-center border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
+            <div className="shrink-0 p-3 text-center border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
               <button
                 onClick={() => { reset(); }}
                 className="text-sm font-medium transition-colors hover:underline"

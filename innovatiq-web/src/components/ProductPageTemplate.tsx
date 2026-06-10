@@ -54,18 +54,19 @@ export default function ProductPageTemplate({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
               {badge && (
-                <span className="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                  style={{ color: '#D97706', borderColor: 'rgba(245,158,11,0.25)', background: 'rgba(245,158,11,0.08)' }}>
+                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+                  style={{ color, borderColor: `${color}30`, background: `${color}10` }}>
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                   {badge}
                 </span>
               )}
               <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 {name} —{' '}
-                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}99)` }}>
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: gradient }}>
                   {subtitle}
                 </span>
               </h2>
-              <p className="text-slate-500 leading-relaxed mb-8">{description}</p>
+              <p className="text-slate-600 font-medium leading-relaxed mb-8">{description}</p>
               <div className="space-y-3 mb-8">
                 {highlights.map(h => (
                   <div key={h} className="flex items-start gap-3">
@@ -73,7 +74,7 @@ export default function ProductPageTemplate({
                       style={{ background: `${color}15` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-slate-600 text-sm">{h}</span>
+                    <span className="text-slate-600 text-[15px] font-medium">{h}</span>
                   </div>
                 ))}
               </div>
@@ -110,7 +111,7 @@ export default function ProductPageTemplate({
                     </div>
                     <div>
                       <h3 className="text-xl font-bold">{name}</h3>
-                      <p className="text-white/65 text-xs mt-0.5">{subtitle}</p>
+                      <p className="text-white/85 text-xs font-semibold mt-0.5">{subtitle}</p>
                     </div>
                   </div>
                   <div className="h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
@@ -122,7 +123,7 @@ export default function ProductPageTemplate({
                     <div key={f.title} className="flex items-center gap-3 rounded-xl px-4 py-3"
                       style={{ background: 'rgba(255,255,255,0.22)' }}>
                       <span className="text-xl">{f.icon}</span>
-                      <span className="font-medium text-sm text-white">{f.title}</span>
+                      <span className="font-semibold text-sm text-white">{f.title}</span>
                     </div>
                   ))}
                 </div>
@@ -143,17 +144,17 @@ export default function ProductPageTemplate({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-              style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+              style={{ color, borderColor: `${color}30`, background: `${color}10` }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
               Core Features
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Powerful{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}99)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: gradient }}>
                 Features
               </span>
             </h2>
-            <p className="text-slate-500 mt-3 max-w-xl mx-auto">
+            <p className="text-slate-600 font-medium mt-3 max-w-xl mx-auto">
               Everything you need to {tagline.toLowerCase()}
             </p>
           </AnimatedSection>
@@ -175,7 +176,7 @@ export default function ProductPageTemplate({
                   }}>
                   <div className="text-4xl mb-4">{f.icon}</div>
                   <h3 className="font-semibold text-gray-800 mb-2">{f.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{f.description}</p>
+                  <p className="text-slate-600 text-sm font-medium leading-relaxed">{f.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -193,16 +194,16 @@ export default function ProductPageTemplate({
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border"
-              style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+              style={{ color, borderColor: `${color}30`, background: `${color}10` }}>
               Get Started Today
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Ready to Experience{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}99)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: gradient }}>
                 {name}?
               </span>
             </h2>
-            <p className="text-slate-500 mb-10 text-lg">
+            <p className="text-slate-600 font-medium mb-10 text-lg">
               Start your free trial today — no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

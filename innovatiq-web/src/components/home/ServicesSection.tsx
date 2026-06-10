@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Cloud, Shield, BarChart2, Zap, Server, Network, Wrench } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 
@@ -70,13 +71,27 @@ const SERVICES = [
 ];
 
 export default function ServicesSection() {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [gridVisible, setGridVisible] = useState(false);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setGridVisible(true); observer.disconnect(); } },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
-      className="relative pt-14 pb-28 overflow-hidden"
+      className="relative pt-12 sm:pt-14 pb-16 sm:pb-28 overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, #FEF5F7 0%, #FDFAFE 22%, #FFFFFF 50%)',
-        borderRadius: '40px 40px 0 0',
-        marginTop: '-72px',
+        borderRadius: '28px 28px 0 0',
+        marginTop: '-40px',
         zIndex: 10,
         position: 'relative',
         boxShadow: '0 -4px 32px rgba(212,23,74,0.06)',
@@ -92,26 +107,49 @@ export default function ServicesSection() {
 
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#D4174A] uppercase tracking-widest bg-[#D4174A]/10 border border-[#D4174A]/20 px-4 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A] animate-pulse" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+            style={{ color: '#BE123C', background: 'rgba(190,18,60,0.09)', border: '1px solid rgba(190,18,60,0.22)' }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D4174A' }} />
             What We Offer
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-5 leading-tight">
-            Comprehensive IT Solutions<br />
-            <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">
-              For Modern Enterprises
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 mb-5 leading-tight">
+            Comprehensive IT Solutions
+            <br />
+            <span className="relative inline-block mt-1">
+              <span style={{
+                backgroundImage: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 45%, #881337 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                For Modern Enterprises
+              </span>
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 400 10" fill="none" preserveAspectRatio="none" style={{ height: '7px' }}>
+                <path d="M2 7 Q100 2 200 6 Q300 10 398 4" stroke="url(#sg)" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+                <defs>
+                  <linearGradient id="sg" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#F43F5E"/>
+                    <stop offset="50%" stopColor="#E11D48"/>
+                    <stop offset="100%" stopColor="#881337"/>
+                  </linearGradient>
+                </defs>
+              </svg>
             </span>
           </h2>
-          <p className="text-slate-500 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-500 text-lg font-medium max-w-xl mx-auto leading-relaxed">
             From cloud infrastructure to cyber security — end-to-end services that accelerate your digital journey.
           </p>
         </AnimatedSection>
 
-        {/* Cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {/* Cards grid — single observer, CSS animation per card */}
+        <div ref={gridRef} className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {SERVICES.map((s, i) => (
-            <AnimatedSection key={s.href} delay={i * 60}>
-              <Link href={s.href} className="group block h-full">
+            <div
+              key={s.href}
+              className={gridVisible ? 'product-card-enter' : ''}
+              style={{ opacity: gridVisible ? undefined : 0, animationDelay: `${i * 55}ms` }}
+            >
+            <Link href={s.href} className="group block h-full">
                 <div className="relative h-full flex flex-col overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                   style={{
                     background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${s.clr} 0%, ${s.clr} 20%, ${s.clr}CC 45%, ${s.clr}55 70%, transparent 90%) border-box`,
@@ -122,56 +160,48 @@ export default function ServicesSection() {
                     borderRightWidth: '0',
                     borderBottomWidth: '0',
                     borderRadius: '20px',
-                    boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.07)',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 16px 48px ${s.shadow}, 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)`;
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 28px ${s.shadow}, 0 12px 32px rgba(0,0,0,0.10)`;
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.07)';
                   }}
                 >
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[20px]"
-                    style={{ background: `radial-gradient(ellipse at 10% 0%, ${s.clr}0D 0%, transparent 65%)` }} />
-
                   <div className="p-6 flex flex-col flex-1">
-                    {/* Number badge */}
-                    <span className="text-[11px] font-black tracking-widest mb-4 block"
-                      style={{ color: `${s.clr}60` }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
-                      style={{ background: s.bg, boxShadow: `0 4px 14px ${s.shadow}` }}>
-                      <s.Icon size={22} style={{ color: s.clr }} strokeWidth={1.6} />
+                      style={{ background: '#F1F5F9', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
+                      <s.Icon size={22} className="text-slate-600" strokeWidth={1.8} />
                     </div>
 
                     {/* Content */}
-                    <h3 className="font-bold text-gray-900 text-[15px] mb-2 leading-snug">{s.title}</h3>
-                    <p className="text-slate-500 text-[13px] leading-relaxed flex-1">{s.desc}</p>
+                    <h3 className="font-extrabold text-gray-900 text-[17px] mb-2.5 leading-snug">{s.title}</h3>
+                    <p className="text-slate-500 text-[14.5px] font-medium leading-relaxed flex-1">{s.desc}</p>
 
                     {/* Footer */}
                     <div className="flex items-center justify-between mt-5 pt-4"
-                      style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                      <span className="text-[11px] font-bold uppercase tracking-wider"
-                        style={{ color: s.clr }}>
+                      style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                         Explore
                       </span>
                       <div className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 group-hover:translate-x-1"
-                        style={{ background: `${s.clr}12`, border: `1px solid ${s.clr}20` }}>
-                        <ArrowRight size={12} style={{ color: s.clr }} />
+                        style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.08)' }}>
+                        <ArrowRight size={12} className="text-slate-500" />
                       </div>
                     </div>
                   </div>
                 </div>
               </Link>
-            </AnimatedSection>
+            </div>
           ))}
 
           {/* Custom Solution card */}
-          <AnimatedSection delay={SERVICES.length * 60}>
+          <div
+            className={gridVisible ? 'product-card-enter' : ''}
+            style={{ opacity: gridVisible ? undefined : 0, animationDelay: `${SERVICES.length * 55}ms` }}
+          >
             <Link href="/contact" className="group block h-full">
               <div className="relative h-full rounded-2xl p-7 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                 style={{
@@ -201,7 +231,7 @@ export default function ServicesSection() {
                 </div>
 
                 <h3 className="font-bold text-gray-900 text-[17px] mb-3">Custom Solution</h3>
-                <p className="text-slate-500 text-[13.5px] leading-relaxed mb-7 max-w-[220px]">
+                <p className="text-slate-500 text-[13.5px] font-semibold leading-relaxed mb-7 max-w-55">
                   Tell us your challenge — we&apos;ll design the perfect solution for you.
                 </p>
 
@@ -214,7 +244,7 @@ export default function ServicesSection() {
                 </span>
               </div>
             </Link>
-          </AnimatedSection>
+          </div>
         </div>
       </div>
     </section>

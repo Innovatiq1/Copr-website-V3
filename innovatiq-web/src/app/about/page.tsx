@@ -68,7 +68,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(212,23,74,0.08)', color: '#D4174A', border: '1px solid rgba(212,23,74,0.15)' }}>
                       🎯 Our Vision
                     </div>
-                    <p className="text-slate-500 leading-relaxed text-sm">
+                    <p className="text-slate-500 leading-relaxed text-base font-medium">
                       Our vision at Innovatiq is to be the trailblazer in leading the way towards a digitally empowered future.
                       We envision a world where businesses seamlessly integrate technology into every aspect of their operations,
                       driving growth, innovation, and sustainability. Through our relentless pursuit of excellence and innovation,
@@ -97,7 +97,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(245,158,11,0.08)', color: '#D97706', border: '1px solid rgba(245,158,11,0.18)' }}>
                       🚀 Our Mission
                     </div>
-                    <p className="text-slate-500 leading-relaxed text-sm">
+                    <p className="text-slate-500 leading-relaxed text-base font-medium">
                       Driven by a passion for innovation and a commitment to excellence, our mission at Innovatiq is to be
                       the trusted partner in digital transformation. Through our tailored IT-enabled services, we enable
                       businesses to navigate the complexities of digital disruption, unlocking new opportunities, and
@@ -127,7 +127,7 @@ export default function AboutPage() {
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               The Principles That{' '}
-              <span className="bg-gradient-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Guide Us</span>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)' }}>Guide Us</span>
             </h2>
           </AnimatedSection>
 
@@ -151,7 +151,7 @@ export default function AboutPage() {
                       <Image src={v.icon} alt={v.title} width={40} height={40} style={{ objectFit: 'contain' }} />
                     </div>
                     <h3 className="font-bold text-gray-800 text-lg mb-2">{v.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{v.desc}</p>
+                    <p className="text-slate-500 text-sm font-medium leading-relaxed">{v.desc}</p>
                   </div>
                 </TiltCard>
               </AnimatedSection>
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 Who We{' '}
                 <span className="bg-gradient-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Are</span>
               </h2>
-              <p className="text-slate-500 leading-relaxed mb-6">
+              <p className="text-slate-500 font-medium leading-relaxed mb-6">
                 Empowering digital transformations through a fusion of collaboration, excellence, and customer-centricity,
                 we elevate standards, unite diverse perspectives, and place our clients at the heart of innovation.
                 At the heart of Innovatiq, you&apos;ll find a team of dedicated professionals who are passionate about
@@ -197,7 +197,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(212,23,74,0.10)' }}>
                       <CheckCircle2 size={13} style={{ color: '#D4174A' }} />
                     </div>
-                    <span className="text-slate-600 text-sm">{p}</span>
+                    <span className="text-slate-600 text-sm font-medium">{p}</span>
                   </div>
                 ))}
               </div>
@@ -219,7 +219,7 @@ export default function AboutPage() {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
                   }}>
                   <p className="text-3xl font-bold" style={{ color: '#D4174A' }}>15+</p>
-                  <p className="text-xs text-slate-400 mt-0.5">Years of Excellence</p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">Years of Excellence</p>
                 </div>
                 <div className="absolute -top-5 -right-5 rounded-2xl p-4"
                   style={{
@@ -228,7 +228,7 @@ export default function AboutPage() {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
                   }}>
                   <p className="text-3xl font-bold" style={{ color: '#F59E0B' }}>3</p>
-                  <p className="text-xs text-slate-400 mt-0.5">Countries</p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">Countries</p>
                 </div>
               </TiltCard>
             </AnimatedSection>
@@ -257,12 +257,12 @@ export default function AboutPage() {
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Innovatiq –{' '}
-              <span className="bg-linear-to-r from-[#D4174A] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">
                 Shaping Tomorrow&apos;s Digital Landscape
               </span>
               , today
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
               We combine deep technology expertise with industry-specific knowledge to deliver transformative outcomes for businesses across Asia Pacific.
             </p>
           </AnimatedSection>
@@ -296,7 +296,7 @@ export default function AboutPage() {
                       </span>
                     </div>
                     <h3 className="font-bold text-gray-900 text-lg mb-3">{item.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{item.description}</p>
+                    <p className="text-slate-500 text-sm font-medium leading-relaxed">{item.description}</p>
                   </div>
                 </AnimatedSection>
               );

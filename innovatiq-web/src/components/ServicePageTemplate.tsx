@@ -52,12 +52,13 @@ export default function ServicePageTemplate({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
-              <span className="inline-block text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                style={{ color, background: `${color}08`, borderColor: `${color}25` }}>
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
+                style={{ color, background: `${color}10`, borderColor: `${color}30` }}>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                 Overview
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{title}</h2>
-              <p className="text-slate-500 leading-relaxed mb-8">{overview}</p>
+              <p className="text-slate-600 font-medium leading-relaxed mb-8">{overview}</p>
               <div className="space-y-3">
                 {overviewPoints.map(point => (
                   <div key={point} className="flex items-start gap-3">
@@ -65,7 +66,7 @@ export default function ServicePageTemplate({
                       style={{ background: `${color}12` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-slate-600 text-sm">{point}</span>
+                    <span className="text-slate-600 text-[15px] font-medium">{point}</span>
                   </div>
                 ))}
               </div>
@@ -84,12 +85,18 @@ export default function ServicePageTemplate({
                   borderRadius: '16px',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                 }}>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-2 gap-4">
                   {benefits.slice(0, 4).map(b => (
-                    <div key={b.title} className="p-4 rounded-xl" style={{ background: `${color}06` }}>
-                      <div className="text-3xl mb-3">{b.icon}</div>
-                      <h4 className="font-semibold text-gray-800 mb-1 text-sm">{b.title}</h4>
-                      <p className="text-slate-500 text-xs leading-relaxed">{b.description}</p>
+                    <div key={b.title} className="p-4 rounded-xl flex flex-col gap-3"
+                      style={{ background: `${color}06`, border: `1px solid ${color}12` }}>
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
+                        style={{ background: `${color}12`, border: `1px solid ${color}20` }}>
+                        {b.icon}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-gray-800 mb-1 text-[15.5px] leading-snug">{b.title}</h4>
+                        <p className="text-slate-600 text-[13.5px] font-medium leading-relaxed">{b.description}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -118,11 +125,11 @@ export default function ServicePageTemplate({
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Key{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)` }}>
                 Benefits
               </span>
             </h2>
-            <p className="text-slate-500 mt-3 max-w-xl mx-auto">
+            <p className="text-slate-600 font-medium mt-3 max-w-xl mx-auto">
               Discover how our {title} expertise transforms your business outcomes.
             </p>
           </AnimatedSection>
@@ -144,7 +151,7 @@ export default function ServicePageTemplate({
                   }}>
                   <div className="text-4xl mb-4">{b.icon}</div>
                   <h3 className="font-semibold text-gray-800 mb-2">{b.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{b.description}</p>
+                  <p className="text-slate-600 text-base font-medium leading-relaxed">{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -170,7 +177,7 @@ export default function ServicePageTemplate({
               </span>
               <h2 className="text-4xl font-bold text-gray-900">
                 Our{' '}
-                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, ${color}, ${color}80)` }}>
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)` }}>
                   Approach
                 </span>
               </h2>
@@ -193,7 +200,7 @@ export default function ServicePageTemplate({
                       {step.step}
                     </div>
                     <h3 className="font-semibold text-gray-800 mb-2">{step.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{step.description}</p>
+                    <p className="text-slate-600 text-sm font-medium leading-relaxed">{step.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -233,7 +240,7 @@ export default function ServicePageTemplate({
                       borderLeft: `3px solid ${color}`,
                     }}>
                     <h3 className="font-semibold text-gray-800 mb-3" style={{ color }}>{card.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{card.description}</p>
+                    <p className="text-slate-600 text-sm font-medium leading-relaxed">{card.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -260,7 +267,7 @@ export default function ServicePageTemplate({
                   Investments
                 </span>
               </h2>
-              <p className="text-slate-500 mt-3 max-w-xl mx-auto">
+              <p className="text-slate-600 font-medium mt-3 max-w-xl mx-auto">
                 Our managed services deliver measurable return on investment while protecting your business assets.
               </p>
             </AnimatedSection>
@@ -275,7 +282,7 @@ export default function ServicePageTemplate({
                     }}>
                     <div className="text-4xl mb-4">{card.icon}</div>
                     <h3 className="font-bold text-gray-800 mb-3 text-lg">{card.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{card.description}</p>
+                    <p className="text-slate-600 text-sm font-medium leading-relaxed">{card.description}</p>
                   </div>
                 </AnimatedSection>
               ))}

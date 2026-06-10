@@ -78,7 +78,7 @@ export default async function CareersPage() {
               <AnimatedSection key={b.title} delay={i * 80} className="h-full">
                 <div className="text-center p-7 hover:-translate-y-1 transition-all duration-300 h-full"
                   style={{
-                    background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${b.color} 0%, ${b.color} 20%, ${b.color}CC 45%, ${b.color}55 70%, transparent 90%) border-box`,
+                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 20%, rgba(212,23,74,0.80) 45%, rgba(212,23,74,0.33) 70%, transparent 90%) border-box',
                     borderStyle: 'solid',
                     borderColor: 'transparent',
                     borderTopWidth: '4px',

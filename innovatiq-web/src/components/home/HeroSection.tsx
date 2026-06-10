@@ -167,8 +167,6 @@ function StatCard({
     return () => clearTimeout(timer);
   }, [visible, num, suffix, index]);
 
-  const showLeftBorder = (index === 0 || index === 2) || (hovered && (index === 1 || index === 3));
-
   return (
     <div
       ref={ref}
@@ -182,47 +180,29 @@ function StatCard({
         position: 'absolute', inset: 0,
         transform: 'skewX(-9deg)',
         transformOrigin: 'bottom center',
-        background: showLeftBorder
-          ? (hovered
-            ? `linear-gradient(#F1F5F9, #F1F5F9) padding-box, linear-gradient(to bottom, ${c} 0%, ${c} 55%, ${c}BB 80%, transparent 100%) border-box`
-            : `linear-gradient(#F1F5F9, #F1F5F9) padding-box, linear-gradient(to bottom, ${c} 0%, ${c} 25%, ${c}BB 50%, transparent 100%) border-box`)
-          : '#F1F5F9',
+        background: hovered
+          ? 'linear-gradient(to bottom, #FFF5F7 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 22%, rgba(212,23,74,0.75) 48%, rgba(212,23,74,0.28) 72%, transparent 92%) border-box'
+          : 'linear-gradient(to bottom, #FFF5F7 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 22%, rgba(212,23,74,0.75) 48%, rgba(212,23,74,0.28) 72%, transparent 92%) border-box',
+        borderStyle: 'solid',
+        borderColor: 'transparent',
+        borderTopWidth: '4px',
+        borderLeftWidth: '1px',
+        borderRightWidth: '1px',
+        borderBottomWidth: '1px',
         borderRadius: '16px',
-        borderStyle: showLeftBorder ? 'solid' : undefined,
-        borderColor: showLeftBorder ? 'transparent' : `${hovered ? c + '40' : 'rgba(0,0,0,0.10)'}`,
-        borderWidth: showLeftBorder ? undefined : '1.5px',
-        borderLeftWidth: showLeftBorder ? '4px' : undefined,
-        borderRightWidth: showLeftBorder ? '1px' : undefined,
-        borderTopWidth: showLeftBorder ? '1px' : undefined,
-        borderBottomWidth: showLeftBorder ? '1px' : undefined,
         boxShadow: hovered
-          ? `0 20px 56px ${c}30, 0 6px 20px rgba(0,0,0,0.09)`
-          : '0 2px 14px rgba(0,0,0,0.09), 0 1px 3px rgba(0,0,0,0.06)',
+          ? '0 20px 48px rgba(212,23,74,0.15), 0 6px 20px rgba(0,0,0,0.07)'
+          : '0 2px 14px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05)',
         overflow: 'hidden',
-        transition: 'box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease',
+        transition: 'box-shadow 0.35s ease, background 0.35s ease',
       }}>
-        {/* Top-left color wash */}
+        {/* Hover glow */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: `linear-gradient(135deg, ${c}0C 0%, transparent 42%)`,
-        }} />
-        {/* Bottom-right color wash */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: `linear-gradient(135deg, transparent 58%, ${c}09 100%)`,
-          opacity: hovered ? 1 : 0.7,
+          background: 'radial-gradient(ellipse at top center, rgba(212,23,74,0.08) 0%, transparent 65%)',
+          opacity: hovered ? 1 : 0,
           transition: 'opacity 0.4s ease',
         }} />
-
-        {/* Top bar — slides in from left on hover */}
-        <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
-          background: `linear-gradient(90deg, ${c} 0%, ${c}99 65%, transparent 100%)`,
-          transformOrigin: 'left',
-          transform: hovered ? 'scaleX(1)' : 'scaleX(0)',
-          transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1)',
-        }} />
-
       </div>
 
       {/* ── Content — sits in the un-skewed outer wrapper, reads perfectly straight ── */}
@@ -234,13 +214,13 @@ function StatCard({
           <div style={{
             width: '52px', height: '52px', borderRadius: '15px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: `linear-gradient(135deg, ${c}22, ${c}0C)`,
-            border: `1.5px solid ${c}35`,
-            boxShadow: hovered ? `0 8px 24px ${c}30` : `0 4px 14px ${c}18`,
+            background: 'rgba(212,23,74,0.10)',
+            border: '1.5px solid rgba(212,23,74,0.22)',
+            boxShadow: hovered ? '0 8px 24px rgba(212,23,74,0.25)' : '0 2px 8px rgba(212,23,74,0.12)',
             transform: hovered ? 'rotate(-5deg) scale(1.1)' : 'rotate(0deg) scale(1)',
             transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
           }}>
-            <Icon size={22} style={{ color: c }} strokeWidth={1.7} />
+            <Icon size={22} style={{ color: '#D4174A' }} strokeWidth={1.7} />
           </div>
         </div>
 
@@ -248,18 +228,18 @@ function StatCard({
         <p ref={countRef} className="text-[32px] sm:text-[46px]" style={{
           fontWeight: 900, lineHeight: 1, marginBottom: '6px',
           letterSpacing: '-1px', fontVariantNumeric: 'tabular-nums',
-          backgroundImage: `linear-gradient(135deg, ${c} 0%, ${c}CC 100%)`,
+          backgroundImage: 'linear-gradient(135deg, #D4174A 0%, rgba(212,23,74,0.80) 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
-          filter: `drop-shadow(0 2px 6px ${c}30)`,
+          filter: 'drop-shadow(0 2px 6px rgba(212,23,74,0.25))',
         }}>0{suffix}</p>
 
         {/* Expanding underline */}
         <div style={{
           height: '2px', borderRadius: '2px', marginBottom: '8px',
           width: hovered ? '44px' : '24px',
-          background: `linear-gradient(90deg, ${c}, ${c}30)`,
+          background: 'linear-gradient(90deg, #D4174A, rgba(212,23,74,0.25))',
           transition: 'width 0.35s ease',
         }} />
 
@@ -438,7 +418,7 @@ export default function HeroSection() {
               </Link>
               <Link href="/services/cloud"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-gray-700 rounded-xl transition-all duration-300 hover:-translate-y-1"
-                style={{ border: '1px solid rgba(0,0,0,0.12)', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)' }}>
+                style={{ border: '1.5px solid rgba(0,0,0,0.28)', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)' }}>
                 Explore Services
               </Link>
             </div>

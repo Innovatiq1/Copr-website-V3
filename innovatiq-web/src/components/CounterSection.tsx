@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Trophy, Zap, Users, Star } from 'lucide-react';
 
 const stats = [
-  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
-  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
-  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
-  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
+  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
+  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
+  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
+  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
 ];
 
 // visible is passed from StatCard — no separate IntersectionObserver needed
@@ -66,8 +66,8 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
           ? 'opacity 0.4s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, background 0.35s ease'
           : `opacity 0.6s ease ${index * 120}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
         background: hovered
-          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to bottom, ${stat.color} 0%, ${stat.color} 55%, ${stat.color}BB 80%, transparent 100%) border-box`
-          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to bottom, ${stat.color} 0%, ${stat.color} 25%, ${stat.color}BB 50%, transparent 100%) border-box`,
+          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 20%, rgba(212,23,74,0.80) 45%, rgba(212,23,74,0.33) 70%, transparent 90%) border-box`
+          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 20%, rgba(212,23,74,0.80) 45%, rgba(212,23,74,0.33) 70%, transparent 90%) border-box`,
         borderRadius: '24px',
         padding: '28px 22px 24px',
         textAlign: 'left' as const,
@@ -75,8 +75,8 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         overflow: 'hidden',
         borderStyle: 'solid',
         borderColor: 'transparent',
-        borderLeftWidth: '4px',
-        borderTopWidth: '1px',
+        borderTopWidth: '4px',
+        borderLeftWidth: '1px',
         borderRightWidth: '1px',
         borderBottomWidth: '1px',
         boxShadow: hovered
@@ -98,26 +98,6 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '24px',
         background: `linear-gradient(148deg, ${stat.color}08 0%, transparent 38%)`,
       }} />
-
-      {/* Top bar — slides in on hover */}
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
-        background: `linear-gradient(90deg, ${stat.color}, ${stat.color}AA 70%, transparent 100%)`,
-        transformOrigin: 'left',
-        transform: hovered ? 'scaleX(1)' : 'scaleX(0)',
-        transition: 'transform 0.45s cubic-bezier(0.16,1,0.3,1)',
-        borderRadius: '24px 24px 0 0',
-      }} />
-
-      {/* Watermark number */}
-      <div style={{
-        position: 'absolute', bottom: '-6px', right: '10px',
-        fontSize: '76px', fontWeight: 900, color: stat.color,
-        opacity: 0.055, lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
-        letterSpacing: '-3px',
-      }}>
-        {stat.val}{stat.suffix}
-      </div>
 
       {/* Icon */}
       <div style={{ marginBottom: '16px', position: 'relative', display: 'inline-flex' }}>

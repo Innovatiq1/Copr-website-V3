@@ -8,3 +8,6 @@ tunnel.js
 
 # Claude settings
 .claude/settings.local.json
+
+# User uploaded files
+innovatiq-web/public/uploads/

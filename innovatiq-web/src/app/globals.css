@@ -10,8 +10,7 @@ body {
   overflow-x: clip;
   background: #FFFFFF;
   background-image:
-    radial-gradient(ellipse 120% 60% at 80% 0%, rgba(212,23,74,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 50% at 10% 100%, rgba(59,130,246,0.03) 0%, transparent 60%);
+    radial-gradient(ellipse 120% 60% at 80% 0%, rgba(212,23,74,0.04) 0%, transparent 60%);
 }
 
 ::-webkit-scrollbar { width: 5px; }
@@ -126,8 +125,8 @@ body {
   50%       { filter: drop-shadow(0 4px 48px rgba(212,23,74,0.55)); }
 }
 @keyframes badge-ring-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.00); }
-  50%       { box-shadow: 0 0 0 8px rgba(245,158,11,0.10), 0 0 0 16px rgba(245,158,11,0.04); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,23,74,0.00); }
+  50%       { box-shadow: 0 0 0 8px rgba(212,23,74,0.10), 0 0 0 16px rgba(212,23,74,0.04); }
 }
 @keyframes top-bar-shimmer {
   0%   { background-position: 0% center; }
@@ -163,12 +162,12 @@ body {
 }
 
 .stat-bar-flow-accent {
-  background: linear-gradient(90deg, #D4174A, #F59E0B 33%, #3B82F6 66%, #10B981, #D4174A);
+  background: linear-gradient(90deg, #D4174A, #E11D48 33%, #F43F5E 66%, #D4174A);
   background-size: 200% 100%;
   animation: stat-bar-flow 5s linear infinite;
 }
 .stat-line-shimmer-anim {
-  background: linear-gradient(90deg, transparent 0%, rgba(212,23,74,0.40) 18%, rgba(245,158,11,0.55) 36%, rgba(59,130,246,0.55) 56%, rgba(16,185,129,0.40) 76%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(212,23,74,0.35) 25%, rgba(212,23,74,0.50) 50%, rgba(212,23,74,0.35) 75%, transparent 100%);
   background-size: 200% 100%;
   animation: stat-line-flow 4s ease-in-out infinite;
 }

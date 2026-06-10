@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Trophy, Zap, Users, Star } from 'lucide-react';
 
 const stats = [
-  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#D4174A', light: '#FFF9FA', mid: 'rgba(212,23,74,0.12)'  },
-  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#F59E0B', light: '#FFFEF9', mid: 'rgba(245,158,11,0.12)' },
-  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#3B82F6', light: '#F8FBFF', mid: 'rgba(59,130,246,0.12)'  },
-  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#10B981', light: '#F6FEFA', mid: 'rgba(16,185,129,0.12)'  },
+  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
+  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
+  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
+  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)'  },
 ];
 
 // visible is passed from StatCard — no separate IntersectionObserver needed

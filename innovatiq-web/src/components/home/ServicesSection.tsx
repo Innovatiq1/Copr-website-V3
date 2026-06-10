@@ -10,9 +10,9 @@ const SERVICES = [
     desc: 'Scalable cloud infrastructure, seamless migration, and cost optimisation for growing businesses.',
     href: '/services/cloud',
     Icon: Cloud,
-    clr: '#3B82F6',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(59,130,246,0.18)',
+    clr: '#D4174A',
+    bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
   {
     title: 'Cyber Security',
@@ -21,52 +21,52 @@ const SERVICES = [
     Icon: Shield,
     clr: '#D4174A',
     bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
-    shadow: 'rgba(212,23,74,0.18)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
   {
     title: 'IT Consulting',
     desc: 'Strategic technology advisory aligning your IT roadmap with core business goals.',
     href: '/services/consulting',
     Icon: BarChart2,
-    clr: '#F59E0B',
-    bg: 'linear-gradient(135deg, #FFFBEB, #FEF3C7)',
-    shadow: 'rgba(245,158,11,0.18)',
+    clr: '#D4174A',
+    bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
   {
     title: 'Digital Transformation',
     desc: 'Reimagine your business with AI, automation, and modern platforms at scale.',
     href: '/services/digital-transformation',
     Icon: Zap,
-    clr: '#8B5CF6',
-    bg: 'linear-gradient(135deg, #F5F3FF, #EDE9FE)',
-    shadow: 'rgba(139,92,246,0.18)',
+    clr: '#D4174A',
+    bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
   {
     title: 'Managed IT Services',
     desc: 'Proactive 24/7 IT management with guaranteed SLA performance and rapid response.',
     href: '/services/managed-it',
     Icon: Server,
-    clr: '#10B981',
-    bg: 'linear-gradient(135deg, #ECFDF5, #D1FAE5)',
-    shadow: 'rgba(16,185,129,0.18)',
+    clr: '#D4174A',
+    bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
   {
     title: 'Advanced Infrastructure',
     desc: 'Enterprise-grade network and server infrastructure built to scale with your growth.',
     href: '/services/advanced-infra',
     Icon: Network,
-    clr: '#F97316',
-    bg: 'linear-gradient(135deg, #FFF7ED, #FFEDD5)',
-    shadow: 'rgba(249,115,22,0.18)',
+    clr: '#D4174A',
+    bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
   {
     title: 'Field Services',
     desc: 'Certified on-site technical support, maintenance, and deployment across the region.',
     href: '/services/field-service',
     Icon: Wrench,
-    clr: '#06B6D4',
-    bg: 'linear-gradient(135deg, #ECFEFF, #CFFAFE)',
-    shadow: 'rgba(6,182,212,0.18)',
+    clr: '#D4174A',
+    bg: 'linear-gradient(135deg, #FFF5F7, #FFE4EA)',
+    shadow: 'rgba(212,23,74,0.15)',
   },
 ];
 
@@ -89,7 +89,7 @@ export default function ServicesSection() {
     <section
       className="relative pt-12 sm:pt-14 pb-16 sm:pb-28 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #FEF5F7 0%, #FDFAFE 22%, #FFFFFF 50%)',
+        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
         borderRadius: '28px 28px 0 0',
         marginTop: '-40px',
         zIndex: 10,
@@ -100,8 +100,6 @@ export default function ServicesSection() {
       {/* Background decorations */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at center top, rgba(212,23,74,0.07) 0%, transparent 65%)' }} />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(59,130,246,0.04) 0%, transparent 65%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 

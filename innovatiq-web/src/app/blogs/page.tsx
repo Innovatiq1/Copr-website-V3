@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { getBlogImageUrl } from '@/lib/api';
 import { getBlogsDirect } from '@/lib/server-data';
 
-const tagColors = ['#1D4ED8', '#3B82F6', '#F59E0B', '#8B5CF6', '#10B981', '#06B6D4'];
+const tagColors = ['#1D4ED8'];
 
 export default async function BlogsPage() {
   const data = await getBlogsDirect(1, 50);
@@ -102,16 +102,16 @@ export default async function BlogsPage() {
                         <h3 className="font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#1D4ED8] transition-colors line-clamp-2">
                           {blog.title}
                         </h3>
-                        <p className="text-slate-500 font-medium text-sm leading-relaxed flex-1 line-clamp-3">
+                        <p className="text-slate-600 font-medium text-sm leading-relaxed flex-1 line-clamp-3">
                           {blog.shortDescription}
                         </p>
                         <div className="flex items-center justify-between mt-5 pt-4"
                           style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                          <div className="flex items-center gap-3 text-sm text-slate-500 font-medium">
+                          <div className="flex items-center gap-3 text-sm text-slate-600 font-medium">
                             <span className="flex items-center gap-1.5"><ThumbsUp size={13} /> {blog.likes || 0}</span>
                             <span className="flex items-center gap-1.5"><ThumbsDown size={13} /> {blog.dislikes || 0}</span>
                           </div>
-                          <span className="flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all" style={{ color }}>
+                          <span className="flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all" style={{ color: '#1E40AF' }}>
                             Read more <ArrowRight size={13} />
                           </span>
                         </div>

@@ -28,7 +28,7 @@ export default function ConsultingPage() {
         { step: '3', title: 'Strategy', description: 'Development of actionable roadmap with clear milestones and priorities.' },
         { step: '4', title: 'Execute', description: 'Support through implementation and measure business outcomes.' },
       ]}
-      color="#9B7522"
+      color="#1D4ED8"
       serviceType="consulting"
     />
   );

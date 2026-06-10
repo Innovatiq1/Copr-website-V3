@@ -41,7 +41,7 @@ const leadership = [
     bio: 'Prashanth is one of the Directors of Innovatiq Technologies, leading the Delivery and Technical teams. Drawing from a career spanning over 30 years at prominent multinational corporations including Wipro, he brings a wealth of expertise in project delivery, technical implementation, and team leadership.\n\nHis diverse experience across different corporate environments has equipped him with valuable insights into client needs, industry best practices, and the intricacies of managing complex, large-scale projects. Having navigated through varied roles across MNCs, Prashanth possesses a deep understanding of how to align technical execution with business goals.\n\nIn his role at Innovatiq, Prashanth leverages this rich background to drive innovation, streamline delivery processes, and ensure the technical excellence of the team\'s output. His leadership is instrumental in guiding teams towards consistently delivering superior results for clients.',
     expertise: ['IT Strategy', 'Program Management', 'Team Leadership'],
     photo: '/images/aboutUs/ourTeam/prashanth-removebg-preview-1.png',
-    accent: '#D97706',
+    accent: '#1D4ED8',
   },
   {
     name: 'Srinivas Rao',
@@ -49,7 +49,7 @@ const leadership = [
     bio: 'An established and proven leader with over 28+ years of experience, including a significant tenure at a large German-based NYSE-listed company. A business-focused professional and thought leader in Management, Sales, and Business Consulting, Srinivas has built a career at the intersection of strategy and execution.\n\nHe has extensive experience managing company operations, P&L responsibilities, and driving cross-functional teams across the globe. His approach combines the strategic clarity of a seasoned consultant with the hands-on discipline of an executioner — consistently leveraging organizational competencies to align delivery with the business objectives of customers.\n\nAs Business Head India, Srinivas brings this global perspective and deep domain expertise to accelerate Innovatiq\'s growth, strengthen client relationships, and build a high-performing delivery engine in the Indian market.',
     expertise: ['Business Development', 'P&L Management', 'Strategic Leadership'],
     photo: '/images/aboutUs/ourTeam/Srinivash.PNG',
-    accent: '#3B82F6',
+    accent: '#1D4ED8',
   },
   {
     name: 'Sujatha',
@@ -57,7 +57,7 @@ const leadership = [
     bio: 'Sujatha is an accomplished professional with a wealth of experience in the managed resources business. Currently serving as the Head of Resources Business at Innovatiq, she brings a powerful combination of strategic vision, operational expertise, and leadership acumen to drive business growth and achieve organizational objectives.\n\nWith an MBA degree and 18 years of diverse industry experience, Sujatha possesses a deep understanding of resource management dynamics, talent acquisition, and workforce planning. Her proven track record of delivering results in challenging environments reflects her ability to balance people-first values with sharp business focus.\n\nSujatha champions a culture of inclusivity and professional growth at Innovatiq, ensuring the organization attracts, develops, and retains the best talent to support its ambitious growth goals.',
     expertise: ['Resource Management', 'HR Strategy', 'Operational Excellence'],
     photo: '/images/aboutUs/ourTeam/Sujatha.jpg',
-    accent: '#10B981',
+    accent: '#1D4ED8',
   },
 ];
 
@@ -68,7 +68,7 @@ const teamMembers = [
     bio: 'Abhishek is a seasoned IT professional with 16 years of diverse industry experience spanning sales, business development, and channel management. He combines strong technical expertise with strategic business acumen to align technology solutions with evolving client needs. Known for his consultative approach and results-oriented mindset, he consistently transforms opportunities into sustainable business growth.',
     expertise: ['Sales Leadership', 'Business Development', 'Channel Management'],
     photo: '/images/aboutUs/ourTeam/Abhishek.png',
-    accent: '#D97706',
+    accent: '#1D4ED8',
     photoPosition: 'center',
   },
   {
@@ -77,7 +77,7 @@ const teamMembers = [
     bio: 'A dynamic and results-oriented sales leader, Thomas brings extensive experience in driving business growth and fostering long-term client success. With a strong track record in sales and marketing, he has consistently delivered multi-million-dollar revenues and secured key strategic accounts across competitive markets.',
     expertise: ['Strategic Account Management', 'Business Development', 'Team Leadership'],
     photo: '/images/aboutUs/ourTeam/Thomas-1195x1536.png',
-    accent: '#3B82F6',
+    accent: '#1D4ED8',
     photoPosition: 'center',
   },
   {
@@ -86,7 +86,7 @@ const teamMembers = [
     bio: 'Sathish is a dynamic presales professional with a sharp ability to align technology solutions with business goals. He thrives at the intersection of sales strategy and technical consulting, crafting compelling proposals and delivering impactful solution demonstrations that build lasting stakeholder trust and accelerate business growth.',
     expertise: ['Presales', 'Solution Design', 'Technical Consulting'],
     photo: '/images/aboutUs/ourTeam/sathish.jpg',
-    accent: '#10B981',
+    accent: '#1D4ED8',
   },
 ];
 

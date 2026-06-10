@@ -30,7 +30,7 @@ export default function AdvancedInfraPage() {
         { step: '3', title: 'Deploy', description: 'Professional implementation with minimal business disruption.' },
         { step: '4', title: 'Manage', description: 'Ongoing management, monitoring, and optimization.' },
       ]}
-      color="#F59E0B"
+      color="#1D4ED8"
       detailCards={[
         { title: 'Network Design & Architecture', description: 'This involves the planning and implementation of network layouts, including the selection of hardware, software, protocols, and configurations to meet specific business requirements. Advanced services might involve designing resilient, scalable, and adaptable architectures capable of supporting emerging technologies such as cloud computing, IoT and SDN.' },
         { title: 'Network Security', description: 'Advanced security services are essential to protect networks from a myriad of threats, including malware, ransomware, phishing attacks, and data breaches. This may involve the deployment of advanced firewalls, intrusion detection/prevention systems (IDS/IPS), encryption technologies, secure access controls, and continuous monitoring solutions to identify and mitigate security risks in real-time.' },

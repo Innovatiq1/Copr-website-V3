@@ -28,7 +28,7 @@ export default function ManagedITPage() {
         { step: '3', title: 'Resolve', description: 'Proactive issue resolution before business impact occurs.' },
         { step: '4', title: 'Report', description: 'Regular reporting and strategic IT reviews with your team.' },
       ]}
-      color="#10B981"
+      color="#1D4ED8"
       investmentCards={[
         { title: 'Cost Savings', description: 'By leveraging our managed services and staffing solutions, organizations can significantly reduce operational costs associated with hiring, training, and managing in-house IT staff, as well as ongoing infrastructure maintenance and upgrades — enabling smarter budget allocation.', icon: '💰' },
         { title: 'Strategic Investment', description: 'Invest in our IT Staffing and Managed Services to align your workforce and IT capabilities with your strategic objectives. By partnering with us, you can ensure that your staffing and IT infrastructure investments are aligned with your business goals, enabling you to achieve better outcomes, drive innovation, and maintain a competitive edge in the marketplace.', icon: '📊' },

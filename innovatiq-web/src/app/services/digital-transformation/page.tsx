@@ -28,7 +28,7 @@ export default function DigitalTransformationPage() {
         { step: '3', title: 'Build', description: 'Develop and deploy digital solutions in agile sprints.' },
         { step: '4', title: 'Scale', description: 'Scale successful pilots and embed change across the organization.' },
       ]}
-      color="#8B5CF6"
+      color="#1D4ED8"
       serviceType="digital"
     />
   );

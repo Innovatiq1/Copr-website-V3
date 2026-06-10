@@ -28,7 +28,7 @@ export default function FieldServicePage() {
         { step: '3', title: 'Execute', description: 'Professional on-site service delivery with full documentation.' },
         { step: '4', title: 'Report', description: 'Detailed service report and sign-off with quality check.' },
       ]}
-      color="#06B6D4"
+      color="#1D4ED8"
       serviceType="field"
     />
   );

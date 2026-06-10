@@ -26,8 +26,8 @@ export default function LMPPage() {
         { title: 'Manager Insights Dashboard', description: 'Dashboards giving managers visibility into team motivation, engagement levels, and learning trends to support strategic talent development.', icon: '🏆' },
         { title: 'Talent Development Investment', description: 'Invest in our LMP to drive superior learning outcomes — providing personalized and adaptive learning experiences that improve learner engagement, performance, and satisfaction.', icon: '💡' },
       ]}
-      gradient="linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)"
-      color="#7c3aed"
+      gradient="linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%)"
+      color="#1D4ED8"
       productType="lmp"
     />
   );

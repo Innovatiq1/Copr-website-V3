@@ -201,17 +201,17 @@ export default function ServicesSection() {
               <div className="relative h-full rounded-2xl p-7 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                 style={{
                   background: 'linear-gradient(145deg, rgba(29,78,216,0.04) 0%, rgba(255,140,66,0.03) 100%)',
-                  border: '1.5px dashed rgba(29,78,216,0.22)',
+                  border: '1.5px dashed rgba(29,78,216,0.50)',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
                   minHeight: '260px',
                 }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 48px rgba(29,78,216,0.12)';
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(29,78,216,0.40)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(29,78,216,0.70)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(29,78,216,0.22)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(29,78,216,0.50)';
                 }}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"

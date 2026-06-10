@@ -88,7 +88,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       {/* Diagonal color slice — bottom right */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '24px',
-        background: `linear-gradient(148deg, transparent 55%, ${stat.color}10 55%)`,
+        background: `linear-gradient(148deg, transparent 45%, ${stat.color}08 100%)`,
         opacity: hovered ? 1 : 0.6,
         transition: 'opacity 0.4s ease',
       }} />
@@ -130,7 +130,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       {/* Label */}
       <p style={{
         fontSize: '12px', fontWeight: 800, letterSpacing: '0.09em',
-        textTransform: 'uppercase', color: '#475569', margin: 0,
+        textTransform: 'uppercase', color: '#334155', margin: 0,
       }}>
         {stat.label}
       </p>
@@ -213,9 +213,13 @@ export default function CounterSection() {
                 { src: '/images/Data-Protection-Trustmark-Logo_Horizontal_Colour.png', alt: 'Data Protection' },
               ].map(c => (
                 <div key={c.alt}
-                  className="rounded-xl px-3 py-2 flex items-center transition-all duration-200 hover:scale-105 hover:shadow-md"
-                  style={{ background: 'rgba(255,255,255,0.85)', border: '1px solid rgba(0,0,0,0.07)', backdropFilter: 'blur(8px)', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-                  <Image src={c.src} alt={c.alt} width={80} height={30} style={{ objectFit: 'contain', height: '28px', width: 'auto' }} />
+                  className="rounded-xl px-3 py-2.5 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1.5px solid rgba(29,78,216,0.14)',
+                    boxShadow: '0 2px 12px rgba(29,78,216,0.08), 0 1px 4px rgba(0,0,0,0.05)',
+                  }}>
+                  <Image src={c.src} alt={c.alt} width={60} height={28} style={{ objectFit: 'contain', height: '28px', maxWidth: '60px', width: 'auto' }} />
                 </div>
               ))}
             </div>

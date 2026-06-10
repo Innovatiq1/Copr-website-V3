@@ -234,13 +234,13 @@ function StatCard({
           <div style={{
             width: '52px', height: '52px', borderRadius: '15px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: `linear-gradient(135deg, ${c}22, ${c}0C)`,
-            border: `1.5px solid ${c}35`,
-            boxShadow: hovered ? `0 8px 24px ${c}30` : `0 4px 14px ${c}18`,
+            background: `linear-gradient(135deg, ${c}40, ${c}22)`,
+            border: `1.5px solid ${c}60`,
+            boxShadow: hovered ? `0 8px 24px ${c}40` : `0 4px 14px ${c}28`,
             transform: hovered ? 'rotate(-5deg) scale(1.1)' : 'rotate(0deg) scale(1)',
             transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
           }}>
-            <Icon size={22} style={{ color: c }} strokeWidth={1.7} />
+            <Icon size={22} style={{ color: c }} strokeWidth={2} />
           </div>
         </div>
 

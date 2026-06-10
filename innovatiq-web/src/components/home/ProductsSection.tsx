@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef } from 'react';
 import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import TiltCard from '@/components/TiltCard';
@@ -67,15 +66,11 @@ const products = [
 ];
 
 export default function ProductsSection() {
-  const gridRef = useRef<HTMLDivElement>(null);
-
   return (
     <section
       className="relative py-24 overflow-hidden"
       style={{
         background: '#FFFFFF',
-        contentVisibility: 'auto',
-        containIntrinsicSize: '0 1400px',
       }}
     >
 
@@ -126,7 +121,7 @@ export default function ProductsSection() {
         </div>
 
         {/* Cards grid — single observer on the parent, CSS animation per card */}
-        <div ref={gridRef} className="grid lg:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-2 gap-6">
           {products.map((p, i) => (
             <div key={p.name}>
               <TiltCard intensity={14} className="h-full">

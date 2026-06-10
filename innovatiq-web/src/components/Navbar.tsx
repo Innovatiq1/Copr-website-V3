@@ -156,7 +156,7 @@ export default function Navbar() {
                 </Link>
                 <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 18px rgba(14,165,233,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
+                  style={{ background: 'linear-gradient(to right, #3B82F6 0%, #2563EB 60%, #1D4ED8 100%)', boxShadow: '0 4px 18px rgba(14,165,233,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
                   Get Demo <ArrowRight size={14} />
                 </Link>
               </div>
@@ -264,7 +264,7 @@ export default function Navbar() {
             </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
-              style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}>
+              style={{ background: 'linear-gradient(to right, #3B82F6 0%, #2563EB 60%, #1D4ED8 100%)' }}>
               Get Demo <ArrowRight size={14} />
             </Link>
           </div>

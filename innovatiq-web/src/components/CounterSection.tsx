@@ -66,10 +66,12 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
           ? 'opacity 0.4s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, background 0.35s ease'
           : `opacity 0.6s ease ${index * 120}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
         background: hovered
-          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box`
-          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box`,
-        borderRadius: '24px',
-        padding: '28px 22px 24px',
+          ? `linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(239,246,255,0.90) 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 22%, rgba(29,78,216,0.70) 50%, transparent 90%) border-box`
+          : `linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(239,246,255,0.82) 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 22%, rgba(29,78,216,0.70) 50%, transparent 90%) border-box`,
+        backdropFilter: 'blur(24px)',
+        WebkitBackdropFilter: 'blur(24px)',
+        borderRadius: '20px',
+        padding: '24px 20px 22px',
         textAlign: 'left' as const,
         position: 'relative' as const,
         overflow: 'hidden',
@@ -80,56 +82,53 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         borderRightWidth: '1px',
         borderBottomWidth: '1px',
         boxShadow: hovered
-          ? `0 24px 60px ${stat.color}22, 0 4px 16px rgba(0,0,0,0.06)`
-          : '0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04)',
+          ? `0 20px 44px rgba(29,78,216,0.16), 0 8px 20px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,1)`
+          : `0 4px 20px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.95)`,
         cursor: 'default',
       }}
     >
-      {/* Diagonal color slice — bottom right */}
+      {/* Glass sheen */}
       <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '24px',
+        position: 'absolute', top: 0, left: 0, right: 0, height: '45%',
+        pointerEvents: 'none',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.50) 0%, transparent 100%)',
+      }} />
+
+      {/* Soft diagonal tint */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '20px',
         background: `linear-gradient(148deg, transparent 45%, ${stat.color}08 100%)`,
-        opacity: hovered ? 1 : 0.6,
-        transition: 'opacity 0.4s ease',
       }} />
 
-      {/* Top-left accent glow */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '24px',
-        background: `linear-gradient(148deg, ${stat.color}08 0%, transparent 38%)`,
-      }} />
-
-      {/* Icon */}
-      <div style={{ marginBottom: '16px', position: 'relative', display: 'inline-flex' }}>
+      {/* Icon row */}
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <div style={{
-          width: '52px', height: '52px', borderRadius: '15px',
+          width: '46px', height: '46px', borderRadius: '13px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          background: `linear-gradient(148deg, ${stat.color}22, ${stat.color}0C)`,
-          border: `1.5px solid ${stat.color}35`,
-          boxShadow: hovered ? `0 8px 24px ${stat.color}30` : `0 4px 14px ${stat.color}18`,
-          transform: hovered ? 'rotate(-6deg) scale(1.12)' : 'rotate(0) scale(1)',
-          transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
+          background: `rgba(255,255,255,0.90)`,
+          border: `1.5px solid rgba(29,78,216,0.18)`,
+          boxShadow: `0 2px 12px rgba(29,78,216,0.12)`,
+          transform: hovered ? 'scale(1.10)' : 'scale(1)',
+          transition: 'transform 0.3s ease',
         }}>
-          <stat.Icon size={22} style={{ color: stat.color }} strokeWidth={1.7} />
+          <stat.Icon size={20} style={{ color: stat.color }} strokeWidth={1.8} />
         </div>
       </div>
 
       {/* Number */}
-      <div style={{ marginBottom: '6px' }}>
-        <Counter target={stat.val} suffix={stat.suffix} color={stat.color} visible={visible} />
-      </div>
+      <Counter target={stat.val} suffix={stat.suffix} color={stat.color} visible={visible} />
 
-      {/* Expanding underline */}
+      {/* Divider */}
       <div style={{
-        height: '2px', borderRadius: '2px', marginBottom: '8px',
-        width: hovered ? '48px' : '28px',
-        background: `linear-gradient(90deg, ${stat.color}, ${stat.color}30)`,
-        transition: 'width 0.35s ease',
+        height: '2px', borderRadius: '2px', margin: '10px 0 10px',
+        width: hovered ? '44px' : '24px',
+        background: `linear-gradient(90deg, ${stat.color}, rgba(29,78,216,0.20))`,
+        transition: 'width 0.3s ease',
       }} />
 
       {/* Label */}
       <p style={{
-        fontSize: '12px', fontWeight: 800, letterSpacing: '0.09em',
+        fontSize: '11px', fontWeight: 700, letterSpacing: '0.10em',
         textTransform: 'uppercase', color: '#334155', margin: 0,
       }}>
         {stat.label}

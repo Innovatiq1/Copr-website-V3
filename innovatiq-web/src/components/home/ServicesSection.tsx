@@ -219,7 +219,7 @@ export default function ServicesSection() {
 
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
                   style={{
-                    background: 'linear-gradient(135deg, #1D4ED8, #FF4D7C)',
+                    background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
                     boxShadow: '0 8px 24px rgba(29,78,216,0.30)',
                   }}>
                   <ArrowRight size={24} className="text-white" />

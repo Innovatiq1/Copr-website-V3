@@ -19,7 +19,7 @@ const testimonials = [
     quote: 'Innovatiq\'s business development team understood our goals from day one. Their tailored IT roadmap and seamless cloud migration strategy positioned us for scalability and growth across Southeast Asia. Truly impressed by their commitment and expertise.',
     rating: 5,
     avatar: 'KA',
-    color: '#3B82F6',
+    color: '#1D4ED8',
   },
   {
     name: 'Thomas',
@@ -27,7 +27,7 @@ const testimonials = [
     quote: 'Innovatiq brought clarity and structure to our digital transformation journey. Their ability to align technology with our business objectives was exceptional. Every milestone was met with transparency and professionalism.',
     rating: 5,
     avatar: 'TH',
-    color: '#10B981',
+    color: '#1D4ED8',
   },
   {
     name: 'James',
@@ -35,7 +35,7 @@ const testimonials = [
     quote: 'Our experience with Innovatiq has been outstanding. They helped us align technology with our growth plans, ensuring smooth operations and enhanced productivity. Their clear communication, quick response, and dependable service make them an invaluable partner for any organization.',
     rating: 5,
     avatar: 'JA',
-    color: '#8B5CF6',
+    color: '#1D4ED8',
   },
   {
     name: 'Anna Scott',
@@ -43,7 +43,7 @@ const testimonials = [
     quote: 'The Innovatiq team consistently goes above and beyond. They brought structure, vision, and innovation to our IT processes, helping us scale our business with confidence. Their genuine dedication to client success sets them apart in today\'s fast-changing digital world.',
     rating: 5,
     avatar: 'AS',
-    color: '#F59E0B',
+    color: '#1D4ED8',
   },
   {
     name: 'Clarke',
@@ -51,7 +51,7 @@ const testimonials = [
     quote: 'Innovatiq\'s business development team combines deep technical expertise with a clear understanding of business needs. They provided us with scalable solutions that improved performance across all departments. We admire their commitment, professionalism, and ability to deliver beyond expectations.',
     rating: 5,
     avatar: 'CL',
-    color: '#06B6D4',
+    color: '#1D4ED8',
   },
 ];
 

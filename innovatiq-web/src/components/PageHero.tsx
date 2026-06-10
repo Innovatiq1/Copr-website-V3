@@ -39,7 +39,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
 
   return (
     <section ref={heroRef} className="relative overflow-hidden pt-32 sm:pt-36 pb-16 sm:pb-24"
-      style={{ background: 'linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 40%, #EFF6FF 100%)' }}>
+      style={{ background: 'linear-gradient(to right, #FFFFFF 0%, #F8FBFF 40%, #EFF6FF 75%, #E8F2FF 100%)' }}>
 
       {/* Ambient orbs — sized down on mobile */}
       <div ref={orb1Ref} className="absolute -top-10 -right-10 sm:-top-20 sm:-right-20 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] pointer-events-none"
@@ -101,7 +101,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
 
       {/* Subtle bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent, #EFF6FF)' }} />
+        style={{ background: 'linear-gradient(to bottom, transparent, #FFFFFF)' }} />
     </section>
   );
 }

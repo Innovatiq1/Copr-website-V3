@@ -18,41 +18,52 @@ export default function CtaSection() {
       <div className="absolute bottom-0 right-0 w-150 h-150 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at bottom right, rgba(225,29,72,0.07) 0%, transparent 70%)' }} />
 
-      {/* Dot grid pattern */}
+      {/* Cross/plus grid pattern */}
       <div className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(190,18,60,0.18) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 8v24M8 20h24' stroke='rgba(190,18,60,0.13)' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E")`,
+          backgroundSize: '40px 40px',
           maskImage: 'radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 100%)',
           WebkitMaskImage: 'radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 100%)',
         }} />
 
-      {/* Floating dots */}
+      {/* Floating geometric shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Large soft blobs */}
-        <div className="float absolute rounded-full"
-          style={{ top: '10%', left: '8%', width: '14px', height: '14px', background: '#F43F5E', opacity: 0.35, boxShadow: '0 0 18px rgba(244,63,94,0.5)' }} />
-        <div className="float-d absolute rounded-full"
-          style={{ top: '20%', right: '10%', width: '10px', height: '10px', background: '#E11D48', opacity: 0.40, boxShadow: '0 0 14px rgba(225,29,72,0.5)' }} />
-        <div className="float absolute rounded-full"
-          style={{ bottom: '18%', left: '12%', width: '8px', height: '8px', background: '#BE123C', opacity: 0.35, boxShadow: '0 0 12px rgba(190,18,60,0.5)' }} />
-        <div className="float-d absolute rounded-full"
-          style={{ bottom: '25%', right: '8%', width: '12px', height: '12px', background: '#FDA4AF', opacity: 0.40, boxShadow: '0 0 16px rgba(253,164,175,0.5)' }} />
-        <div className="float absolute rounded-full"
-          style={{ top: '45%', left: '3%', width: '6px', height: '6px', background: '#F43F5E', opacity: 0.30 }} />
-        <div className="float-d absolute rounded-full"
-          style={{ top: '60%', right: '4%', width: '8px', height: '8px', background: '#FECDD3', opacity: 0.45 }} />
-        <div className="float absolute rounded-full"
-          style={{ top: '30%', left: '22%', width: '5px', height: '5px', background: '#BE123C', opacity: 0.25 }} />
-        <div className="float-d absolute rounded-full"
-          style={{ bottom: '40%', right: '20%', width: '6px', height: '6px', background: '#E11D48', opacity: 0.28 }} />
-        {/* Rings */}
-        <div className="float absolute rounded-full"
-          style={{ top: '8%', right: '22%', width: '60px', height: '60px', border: '1.5px solid rgba(190,18,60,0.18)' }} />
-        <div className="float-d absolute rounded-full"
-          style={{ bottom: '12%', left: '18%', width: '80px', height: '80px', border: '1.5px dashed rgba(244,63,94,0.20)' }} />
-        <div className="float absolute rounded-full"
-          style={{ top: '50%', right: '2%', width: '44px', height: '44px', border: '1px solid rgba(190,18,60,0.15)' }} />
+        {/* Solid diamonds */}
+        <div className="float absolute"
+          style={{ top: '10%', left: '8%', width: '14px', height: '14px', background: '#F43F5E', opacity: 0.38, transform: 'rotate(45deg)', borderRadius: '2px', boxShadow: '0 0 18px rgba(244,63,94,0.50)' }} />
+        <div className="float-d absolute"
+          style={{ top: '20%', right: '10%', width: '10px', height: '10px', background: '#E11D48', opacity: 0.42, transform: 'rotate(45deg)', borderRadius: '1px', boxShadow: '0 0 14px rgba(225,29,72,0.50)' }} />
+        <div className="float absolute"
+          style={{ bottom: '18%', left: '12%', width: '9px', height: '9px', background: '#BE123C', opacity: 0.36, transform: 'rotate(45deg)', boxShadow: '0 0 12px rgba(190,18,60,0.50)' }} />
+        <div className="float-d absolute"
+          style={{ bottom: '25%', right: '8%', width: '13px', height: '13px', background: '#FDA4AF', opacity: 0.42, transform: 'rotate(45deg)', borderRadius: '2px', boxShadow: '0 0 16px rgba(253,164,175,0.50)' }} />
+        {/* Small squares */}
+        <div className="float absolute"
+          style={{ top: '45%', left: '3%', width: '6px', height: '6px', background: '#F43F5E', opacity: 0.30, borderRadius: '1.5px' }} />
+        <div className="float-d absolute"
+          style={{ top: '60%', right: '4%', width: '8px', height: '8px', background: '#FECDD3', opacity: 0.45, transform: 'rotate(45deg)', borderRadius: '1px' }} />
+        <div className="float absolute"
+          style={{ top: '30%', left: '22%', width: '5px', height: '5px', background: '#BE123C', opacity: 0.25, transform: 'rotate(45deg)' }} />
+        <div className="float-d absolute"
+          style={{ bottom: '40%', right: '20%', width: '7px', height: '7px', background: '#E11D48', opacity: 0.28, transform: 'rotate(45deg)', borderRadius: '1px' }} />
+        {/* Rotated square outlines */}
+        <div className="float absolute"
+          style={{ top: '8%', right: '22%', width: '58px', height: '58px', border: '1.5px solid rgba(190,18,60,0.20)', transform: 'rotate(45deg)', borderRadius: '6px' }} />
+        <div className="float-d absolute"
+          style={{ bottom: '12%', left: '18%', width: '76px', height: '76px', border: '1.5px dashed rgba(244,63,94,0.22)', transform: 'rotate(15deg)', borderRadius: '4px' }} />
+        <div className="float absolute"
+          style={{ top: '50%', right: '2%', width: '44px', height: '44px', border: '1px solid rgba(190,18,60,0.16)', transform: 'rotate(30deg)', borderRadius: '3px' }} />
+        {/* Triangle shapes via SVG */}
+        <svg className="float absolute" style={{ top: '70%', left: '6%', opacity: 0.28 }} width="14" height="14" viewBox="0 0 14 14">
+          <polygon points="7,1 13,13 1,13" fill="none" stroke="#BE123C" strokeWidth="1.4" strokeLinejoin="round" />
+        </svg>
+        <svg className="float-d absolute" style={{ top: '15%', left: '40%', opacity: 0.22 }} width="18" height="18" viewBox="0 0 18 18">
+          <polygon points="9,1 17,17 1,17" fill="#F43F5E" fillOpacity="0.5" />
+        </svg>
+        <svg className="float absolute" style={{ bottom: '30%', right: '14%', opacity: 0.25 }} width="12" height="12" viewBox="0 0 12 12">
+          <polygon points="6,1 11,11 1,11" fill="none" stroke="#E11D48" strokeWidth="1.2" strokeLinejoin="round" />
+        </svg>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">

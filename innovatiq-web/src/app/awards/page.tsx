@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -8,7 +8,7 @@ import { getAwardsDirect } from '@/lib/server-data';
 import { Trophy } from 'lucide-react';
 import AwardCard from '@/components/AwardCard';
 
-const awardColors = ['#D4174A', '#F59E0B', '#3B82F6', '#8B5CF6', '#10B981', '#F59E0B'];
+const awardColors = ['#1D4ED8', '#F59E0B', '#3B82F6', '#8B5CF6', '#10B981', '#F59E0B'];
 
 export default async function AwardsPage() {
   const awards: any[] = await getAwardsDirect(1, 50);
@@ -60,25 +60,25 @@ export default async function AwardsPage() {
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Static bg layers */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(212,23,74,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(29,78,216,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
         <div className="absolute top-0 right-0 w-150 h-150 pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(212,23,74,0.09) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top right, rgba(29,78,216,0.09) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-125 h-125 pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.06) 0%, transparent 60%)' }} />
 
         {/* Animated shapes */}
         <div className="absolute top-16 right-20 w-64 h-64 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(212,23,74,0.09) 0%, transparent 70%)', animation: 'award-blob-1 9s ease-in-out infinite' }} />
+          style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.09) 0%, transparent 70%)', animation: 'award-blob-1 9s ease-in-out infinite' }} />
         <div className="absolute bottom-12 left-20 w-72 h-72 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%)', animation: 'award-blob-2 12s ease-in-out infinite' }} />
         {/* Diamonds */}
         <div className="absolute top-24 left-32 w-10 h-10 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.16)', borderRadius: '3px', animation: 'award-diamond 9s ease-in-out infinite' }} />
+          style={{ background: 'rgba(29,78,216,0.16)', borderRadius: '3px', animation: 'award-diamond 9s ease-in-out infinite' }} />
         <div className="absolute bottom-32 right-32 w-7 h-7 pointer-events-none"
           style={{ background: 'rgba(59,130,246,0.20)', borderRadius: '2px', animation: 'award-diamond 11s ease-in-out infinite', animationDelay: '-3s' }} />
         {/* Hollow hexagons */}
         <svg className="absolute top-32 right-32 pointer-events-none" width="60" height="60" style={{ animation: 'award-hex 11s ease-in-out infinite' }}>
-          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(212,23,74,0.20)" strokeWidth="1.5" />
+          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(29,78,216,0.20)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute bottom-24 left-1/4 pointer-events-none" width="76" height="76" style={{ animation: 'award-hex-rev 14s ease-in-out infinite', animationDelay: '-5s' }}>
           <polygon points="38,2 72,20 72,56 38,74 4,56 4,20" fill="none" stroke="rgba(59,130,246,0.18)" strokeWidth="1" />
@@ -90,21 +90,21 @@ export default async function AwardsPage() {
         <div className="absolute top-20 right-1/3 w-8 h-8 pointer-events-none"
           style={{ background: 'rgba(59,130,246,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 10s ease-in-out infinite', animationDelay: '-4s' }} />
         <div className="absolute bottom-20 right-24 w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          style={{ background: 'rgba(29,78,216,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 8s ease-in-out infinite', animationDelay: '-1s' }} />
         {/* Ring */}
         <div className="absolute top-1/4 left-1/3 w-24 h-24 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(212,23,74,0.13)', animation: 'award-hex 13s ease-in-out infinite', animationDelay: '-6s' }} />
+          style={{ border: '1px solid rgba(29,78,216,0.13)', animation: 'award-hex 13s ease-in-out infinite', animationDelay: '-6s' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-              style={{ color: '#D4174A', borderColor: 'rgba(212,23,74,0.25)', background: 'rgba(212,23,74,0.08)' }}>
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D4174A' }} />
+              style={{ color: '#1D4ED8', borderColor: 'rgba(29,78,216,0.25)', background: 'rgba(29,78,216,0.08)' }}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#1D4ED8' }} />
               Recognition
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Industry{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #D4174A, #F59E0B)' }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #1D4ED8, #F59E0B)' }}>
                 Awards
               </span>
             </h2>
@@ -144,7 +144,7 @@ export default async function AwardsPage() {
       </section>
 
       {/* Certifications */}
-      <section className="relative pt-10 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFFBF0 0%, #F8FAFC 50%, #FFF5F7 100%)' }}>
+      <section className="relative pt-10 pb-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFFBF0 0%, #F8FAFC 50%, #EFF6FF 100%)' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(245,158,11,0.12) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-125 pointer-events-none"
@@ -152,18 +152,18 @@ export default async function AwardsPage() {
         <div className="absolute top-0 left-0 w-100 h-100 pointer-events-none"
           style={{ background: 'radial-gradient(circle at top left, rgba(245,158,11,0.09) 0%, transparent 65%)' }} />
         <div className="absolute bottom-0 right-0 w-100 h-100 pointer-events-none"
-          style={{ background: 'radial-gradient(circle at bottom right, rgba(212,23,74,0.06) 0%, transparent 65%)' }} />
+          style={{ background: 'radial-gradient(circle at bottom right, rgba(29,78,216,0.06) 0%, transparent 65%)' }} />
         {/* Animated hexagons for cert section */}
         <svg className="absolute top-8 right-24 pointer-events-none" width="52" height="52" style={{ animation: 'cert-hex 10s ease-in-out infinite' }}>
           <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(245,158,11,0.25)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute bottom-8 left-24 pointer-events-none" width="44" height="44" style={{ animation: 'cert-hex 13s ease-in-out infinite', animationDelay: '-4s' }}>
-          <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(212,23,74,0.18)" strokeWidth="1.5" />
+          <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(29,78,216,0.18)" strokeWidth="1.5" />
         </svg>
         <div className="absolute top-12 left-1/3 w-7 h-7 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.22)', borderRadius: '2px', animation: 'award-diamond 10s ease-in-out infinite', animationDelay: '-3s' }} />
         <div className="absolute bottom-12 right-1/3 w-5 h-5 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 9s ease-in-out infinite', animationDelay: '-2s' }} />
+          style={{ background: 'rgba(29,78,216,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 9s ease-in-out infinite', animationDelay: '-2s' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>

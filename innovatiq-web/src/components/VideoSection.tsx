@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -60,8 +60,8 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
     <section className="relative py-20 overflow-hidden" style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#D4174A] uppercase tracking-widest bg-[#D4174A]/8 border border-[#D4174A]/15 px-4 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A]" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
             Video
           </span>
           <h2 className="text-3xl font-bold mb-2" style={{ color: headingColor }}>

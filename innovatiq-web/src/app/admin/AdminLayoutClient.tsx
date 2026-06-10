@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
@@ -80,7 +80,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-              style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
+              style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)' }}>
               <span className="text-white text-xs font-black">IQ</span>
             </div>
             <div>
@@ -111,21 +111,21 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                 className="flex items-center gap-3 px-4 py-3 rounded-xl mb-1 transition-all group relative"
                 style={{
                   background: isActive
-                    ? 'linear-gradient(135deg, rgba(212,23,74,0.08) 0%, rgba(212,23,74,0.12) 100%)'
+                    ? 'linear-gradient(135deg, rgba(29,78,216,0.08) 0%, rgba(29,78,216,0.12) 100%)'
                     : 'transparent',
-                  border: isActive ? '1px solid rgba(212,23,74,0.15)' : '1px solid transparent',
-                  color: isActive ? '#D4174A' : '#475569',
+                  border: isActive ? '1px solid rgba(29,78,216,0.15)' : '1px solid transparent',
+                  color: isActive ? '#1D4ED8' : '#475569',
                   fontWeight: isActive ? 600 : 400,
                   fontSize: '14px',
                 }}
               >
                 {isActive && (
                   <div className="absolute left-0 top-2 bottom-2 w-0.5 rounded-full"
-                    style={{ background: '#D4174A' }} />
+                    style={{ background: '#1D4ED8' }} />
                 )}
                 <Icon size={17} />
                 <span className="flex-1">{label}</span>
-                {isActive && <ChevronRight size={14} style={{ color: '#D4174A' }} />}
+                {isActive && <ChevronRight size={14} style={{ color: '#1D4ED8' }} />}
               </Link>
             );
           })}

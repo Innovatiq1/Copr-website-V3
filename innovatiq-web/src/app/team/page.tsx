@@ -1,4 +1,4 @@
-import PageHero from '@/components/PageHero';
+﻿import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import Link from 'next/link';
@@ -33,7 +33,7 @@ const leadership = [
     ],
     expertise: ['Sales & Business Development', 'Enterprise IT', 'Strategic Leadership'],
     photo: '/images/aboutUs/ourTeam/Krishna.jpeg',
-    accent: '#D4174A',
+    accent: '#1D4ED8',
   },
   {
     name: 'Prashanth',
@@ -138,24 +138,24 @@ export default function TeamPage() {
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(212,23,74,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(29,78,216,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
         <div className="absolute top-0 right-0 w-175 h-150 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top right, rgba(212,23,74,0.09) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(ellipse at top right, rgba(29,78,216,0.09) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-125 h-100 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at bottom left, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at center, rgba(212,23,74,0.03) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.03) 0%, transparent 70%)' }} />
 
         {/* Soft ambient blobs */}
         <div className="absolute top-16 right-16 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(212,23,74,0.11) 0%, transparent 70%)', animation: 'blob-drift-1 9s ease-in-out infinite' }} />
+          style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.11) 0%, transparent 70%)', animation: 'blob-drift-1 9s ease-in-out infinite' }} />
         <div className="absolute bottom-12 left-16 w-80 h-80 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 12s ease-in-out infinite' }} />
         {/* Shapes scattered randomly all over */}
         <div className="absolute top-10 left-[7%] w-9 h-9 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.16)', borderRadius: '3px', animation: 'diamond-spin-1 9s ease-in-out infinite' }} />
+          style={{ background: 'rgba(29,78,216,0.16)', borderRadius: '3px', animation: 'diamond-spin-1 9s ease-in-out infinite' }} />
         <div className="absolute top-8 left-[38%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          style={{ background: 'rgba(29,78,216,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 8s ease-in-out infinite', animationDelay: '-1s' }} />
         <div className="absolute top-[18%] left-[63%] w-5 h-5 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.26)', borderRadius: '2px', animation: 'diamond-spin-1 7s ease-in-out infinite', animationDelay: '-2s' }} />
         <div className="absolute top-[42%] left-[22%] w-5 h-5 pointer-events-none"
@@ -165,10 +165,10 @@ export default function TeamPage() {
         <div className="absolute bottom-14 left-[57%] w-6 h-6 pointer-events-none"
           style={{ background: 'rgba(59,130,246,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite', animationDelay: '-6s' }} />
         <div className="absolute bottom-16 right-[7%] w-8 h-8 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.15)', borderRadius: '3px', animation: 'diamond-spin-1 12s ease-in-out infinite', animationDelay: '-2s' }} />
+          style={{ background: 'rgba(29,78,216,0.15)', borderRadius: '3px', animation: 'diamond-spin-1 12s ease-in-out infinite', animationDelay: '-2s' }} />
 
         <svg className="absolute top-16 right-[9%] pointer-events-none" width="60" height="60" style={{ animation: 'hex-float 11s ease-in-out infinite' }}>
-          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(212,23,74,0.22)" strokeWidth="1.5" />
+          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(29,78,216,0.22)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute top-[32%] left-[4%] pointer-events-none" width="44" height="44" style={{ animation: 'hex-float 8s ease-in-out infinite', animationDelay: '-2s' }}>
           <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(245,158,11,0.28)" strokeWidth="1.5" />
@@ -186,16 +186,16 @@ export default function TeamPage() {
         <div className="absolute top-20 left-[22%] w-7 h-7 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 10s ease-in-out infinite', animationDelay: '-4s' }} />
         <div className="absolute top-[55%] left-[36%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          style={{ background: 'rgba(29,78,216,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 8s ease-in-out infinite', animationDelay: '-1s' }} />
         <div className="absolute top-[12%] right-[30%] w-5 h-5 pointer-events-none"
           style={{ background: 'rgba(59,130,246,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 11s ease-in-out infinite', animationDelay: '-5s' }} />
         <div className="absolute bottom-[25%] right-[20%] w-7 h-7 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 9s ease-in-out infinite', animationDelay: '-3s' }} />
         <div className="absolute bottom-8 left-[11%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 7s ease-in-out infinite', animationDelay: '-2s' }} />
+          style={{ background: 'rgba(29,78,216,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 7s ease-in-out infinite', animationDelay: '-2s' }} />
 
         <div className="absolute top-[15%] left-[51%] w-20 h-20 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(212,23,74,0.13)', animation: 'hex-float 13s ease-in-out infinite', animationDelay: '-6s' }} />
+          style={{ border: '1px solid rgba(29,78,216,0.13)', animation: 'hex-float 13s ease-in-out infinite', animationDelay: '-6s' }} />
         <div className="absolute top-[62%] right-[16%] w-14 h-14 rounded-full pointer-events-none"
           style={{ border: '1px solid rgba(59,130,246,0.16)', animation: 'hex-float-rev 11s ease-in-out infinite', animationDelay: '-4s' }} />
         <div className="absolute bottom-12 left-[43%] w-10 h-10 rounded-full pointer-events-none"
@@ -204,13 +204,13 @@ export default function TeamPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-              style={{ color: '#D4174A', background: 'rgba(212,23,74,0.08)', border: '1px solid rgba(212,23,74,0.15)' }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A] animate-pulse" />
+              style={{ color: '#1D4ED8', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.15)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8] animate-pulse" />
               Leadership
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Visionary{' '}
-              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Leaders</span>
+              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Leaders</span>
             </h2>
             <p className="text-slate-500 font-medium max-w-xl mx-auto text-base leading-relaxed">
               Decades of combined experience driving digital transformation across Asia Pacific and beyond.
@@ -242,7 +242,7 @@ export default function TeamPage() {
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="absolute bottom-0 right-0 w-125 h-100 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at bottom right, rgba(212,23,74,0.08) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(ellipse at bottom right, rgba(29,78,216,0.08) 0%, transparent 60%)' }} />
         <div className="absolute top-0 left-0 w-125 h-100 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at top left, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
 
@@ -250,18 +250,18 @@ export default function TeamPage() {
         <div className="absolute top-10 right-10 w-64 h-64 rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 11s ease-in-out infinite' }} />
         <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(212,23,74,0.08) 0%, transparent 70%)', animation: 'blob-drift-1 13s ease-in-out infinite', animationDelay: '-4s' }} />
+          style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.08) 0%, transparent 70%)', animation: 'blob-drift-1 13s ease-in-out infinite', animationDelay: '-4s' }} />
         {/* Diamonds */}
         <div className="absolute top-16 right-20 w-8 h-8 pointer-events-none"
           style={{ background: 'rgba(59,130,246,0.20)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite' }} />
         <div className="absolute bottom-20 left-24 w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(212,23,74,0.18)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
+          style={{ background: 'rgba(29,78,216,0.18)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
         {/* Hollow hexagons */}
         <svg className="absolute top-16 right-1/3 pointer-events-none" width="56" height="56" style={{ animation: 'hex-float 12s ease-in-out infinite' }}>
           <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" fill="none" stroke="rgba(59,130,246,0.20)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute bottom-16 left-1/3 pointer-events-none" width="72" height="72" style={{ animation: 'hex-float-rev 16s ease-in-out infinite', animationDelay: '-6s' }}>
-          <polygon points="36,2 68,19 68,53 36,70 4,53 4,19" fill="none" stroke="rgba(212,23,74,0.16)" strokeWidth="1" />
+          <polygon points="36,2 68,19 68,53 36,70 4,53 4,19" fill="none" stroke="rgba(29,78,216,0.16)" strokeWidth="1" />
         </svg>
         {/* Triangle */}
         <div className="absolute top-1/2 right-16 w-7 h-7 pointer-events-none"
@@ -271,7 +271,7 @@ export default function TeamPage() {
           <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
               Our{' '}
-              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Expert Team</span>
+              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Expert Team</span>
             </h2>
             <p className="text-slate-500 font-medium mt-2">100+ certified professionals delivering excellence daily.</p>
           </AnimatedSection>
@@ -281,7 +281,7 @@ export default function TeamPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFF5F7 0%, #FFF9F5 100%)' }}>
+      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #EFF6FF 0%, #FFF9F5 100%)' }}>
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -292,7 +292,7 @@ export default function TeamPage() {
             </p>
             <Link href="/careers"
               className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 8px 24px rgba(212,23,74,0.35)' }}>
+              style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 8px 24px rgba(29,78,216,0.35)' }}>
               View Open Positions
             </Link>
           </AnimatedSection>

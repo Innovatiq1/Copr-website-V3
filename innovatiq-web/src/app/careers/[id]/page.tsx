@@ -88,7 +88,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ background: '#0A1628' }}>
-        <div className="w-12 h-12 border-4 border-[#D4174A] border-t-transparent rounded-full animate-spin" />
+        <div className="w-12 h-12 border-4 border-[#1D4ED8] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -98,7 +98,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
       <div className="min-h-screen flex items-center justify-center pt-32">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">Job Not Found</h2>
-          <Link href="/careers" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#D4174A] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200">View All Jobs</Link>
+          <Link href="/careers" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200">View All Jobs</Link>
         </div>
       </div>
     );
@@ -128,7 +128,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                     { icon: <Clock size={15} />, label: job.employmentType },
                   ].map(item => (
                     <div key={item.label} className="flex items-center gap-2 text-gray-600 text-sm">
-                      <span className="text-[#D4174A]">{item.icon}</span>
+                      <span className="text-[#1D4ED8]">{item.icon}</span>
                       {item.label}
                     </div>
                   ))}
@@ -145,7 +145,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                       : job.primarySkills.split(',')
                     ).map((s: string) => (
                       <span key={s.trim()} className="px-3 py-1.5 rounded-full text-sm font-medium"
-                        style={{ background: 'rgba(212,23,74,0.22)', color: '#D4174A' }}>
+                        style={{ background: 'rgba(212,23,74,0.22)', color: '#1D4ED8' }}>
                         {s.trim()}
                       </span>
                     ))}
@@ -168,7 +168,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                   <ul className="space-y-2">
                     {job.responsibilities.split('\n').filter(Boolean).map((r, i) => (
                       <li key={i} className="flex items-start gap-3 text-gray-600">
-                        <div className="w-2 h-2 rounded-full bg-[#D4174A] mt-2 flex-shrink-0" />
+                        <div className="w-2 h-2 rounded-full bg-[#1D4ED8] mt-2 flex-shrink-0" />
                         {r}
                       </li>
                     ))}
@@ -219,7 +219,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                       <p className="text-gray-500 text-sm mb-6">
                         Thank you for applying. We&apos;ll review your application and be in touch soon.
                       </p>
-                      <Link href="/careers" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#D4174A] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200">
+                      <Link href="/careers" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200">
                         View More Jobs
                       </Link>
                     </div>
@@ -240,7 +240,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                               required={field.required}
                               value={formData[field.name as keyof typeof formData]}
                               onChange={e => setFormData(p => ({ ...p, [field.name]: e.target.value }))}
-                              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-[#D4174A] transition-colors"
+                              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-[#1D4ED8] transition-colors"
                             />
                           </div>
                         ))}
@@ -252,7 +252,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                             accept=".pdf,.doc,.docx"
                             required
                             onChange={e => setResume(e.target.files?.[0] || null)}
-                            className="w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-[#D4174A] hover:file:bg-red-100"
+                            className="w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-[#1D4ED8] hover:file:bg-blue-100"
                           />
                         </div>
 
@@ -262,7 +262,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                             rows={3}
                             value={formData.statement}
                             onChange={e => setFormData(p => ({ ...p, statement: e.target.value }))}
-                            className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-[#D4174A] resize-none transition-colors"
+                            className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-[#1D4ED8] resize-none transition-colors"
                           />
                         </div>
 
@@ -276,7 +276,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                             required
                             value={captcha.answer}
                             onChange={e => setCaptcha(p => ({ ...p, answer: e.target.value }))}
-                            className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-[#D4174A]"
+                            className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm outline-none focus:border-[#1D4ED8]"
                           />
                         </div>
 
@@ -284,7 +284,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                           <p className="text-red-500 text-xs p-3 bg-red-50 rounded-lg">{error}</p>
                         )}
 
-                        <button type="submit" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#D4174A] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
+                        <button type="submit" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
                           Submit Application <ChevronRight size={16} />
                         </button>
                       </form>

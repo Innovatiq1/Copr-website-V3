@@ -1,14 +1,14 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Trophy, Zap, Users, Star } from 'lucide-react';
 
 const stats = [
-  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
-  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
-  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
-  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#D4174A', light: '#FFF5F7', mid: 'rgba(212,23,74,0.12)' },
+  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
+  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
+  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
+  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
 ];
 
 // visible is passed from StatCard — no separate IntersectionObserver needed
@@ -66,8 +66,8 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
           ? 'opacity 0.4s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, background 0.35s ease'
           : `opacity 0.6s ease ${index * 120}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
         background: hovered
-          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 20%, rgba(212,23,74,0.80) 45%, rgba(212,23,74,0.33) 70%, transparent 90%) border-box`
-          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 20%, rgba(212,23,74,0.80) 45%, rgba(212,23,74,0.33) 70%, transparent 90%) border-box`,
+          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box`
+          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box`,
         borderRadius: '24px',
         padding: '28px 22px 24px',
         textAlign: 'left' as const,
@@ -146,7 +146,7 @@ export default function CounterSection() {
 
       {/* Premium ambient decorative radial glows */}
       <div className="absolute top-0 left-0 w-[45%] h-full pointer-events-none opacity-40" style={{
-        background: 'radial-gradient(circle at 10% 20%, rgba(212,23,74,0.05) 0%, transparent 60%)',
+        background: 'radial-gradient(circle at 10% 20%, rgba(29,78,216,0.05) 0%, transparent 60%)',
       }} />
       <div className="absolute bottom-0 left-[20%] w-[35%] h-[60%] pointer-events-none opacity-40" style={{
         background: 'radial-gradient(circle at 50% 80%, rgba(59,130,246,0.05) 0%, transparent 65%)',
@@ -182,13 +182,13 @@ export default function CounterSection() {
 
           {/* Left — text + certs */}
           <div>
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#D4174A] uppercase tracking-widest bg-[#D4174A]/8 border border-[#D4174A]/15 px-4 py-1.5 rounded-full mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A]" />
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-6">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
               Our Impact
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
               Numbers That<br />
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #BE123C 0%, #D4174A 40%, #E11D48 100%)' }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #1E40AF 0%, #1D4ED8 40%, #2563EB 100%)' }}>
                 Speak for Themselves
               </span>
             </h2>

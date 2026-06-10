@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { getBlogImageUrl } from '@/lib/api';
 import { getBlogsDirect } from '@/lib/server-data';
 
-const tagColors = ['#D4174A', '#3B82F6', '#F59E0B', '#8B5CF6', '#10B981', '#06B6D4'];
+const tagColors = ['#1D4ED8', '#3B82F6', '#F59E0B', '#8B5CF6', '#10B981', '#06B6D4'];
 
 export default async function BlogsPage() {
   const data = await getBlogsDirect(1, 50);
@@ -25,9 +25,9 @@ export default async function BlogsPage() {
 
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(212,23,74,0.07) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(29,78,216,0.07) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="absolute top-0 left-0 w-162.5 h-162.5 pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top left, rgba(212,23,74,0.09) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top left, rgba(29,78,216,0.09) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 right-0 w-162.5 h-162.5 pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom right, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 pointer-events-none"
@@ -36,13 +36,13 @@ export default async function BlogsPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-              style={{ color: '#D4174A', borderColor: 'rgba(212,23,74,0.25)', background: 'rgba(212,23,74,0.08)' }}>
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D4174A' }} />
+              style={{ color: '#1D4ED8', borderColor: 'rgba(29,78,216,0.25)', background: 'rgba(29,78,216,0.08)' }}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#1D4ED8' }} />
               Latest Insights
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Expert{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)' }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #3B82F6 100%)' }}>
                 Perspectives
               </span>
             </h2>
@@ -54,8 +54,8 @@ export default async function BlogsPage() {
           {blogs.length === 0 && (
             <div className="flex flex-col items-center justify-center py-24 text-center">
               <div className="w-20 h-20 rounded-full flex items-center justify-center mb-5"
-                style={{ background: 'rgba(212,23,74,0.1)', border: '1px solid rgba(212,23,74,0.2)' }}>
-                <FileText size={32} className="text-[#D4174A]" />
+                style={{ background: 'rgba(29,78,216,0.1)', border: '1px solid rgba(29,78,216,0.2)' }}>
+                <FileText size={32} className="text-[#1D4ED8]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">No blogs published yet</h3>
               <p className="text-gray-500 font-medium text-sm">Check back soon for the latest insights from Innovatiq.</p>
@@ -99,7 +99,7 @@ export default async function BlogsPage() {
                       </div>
 
                       <div className="p-6 flex flex-col flex-1">
-                        <h3 className="font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#D4174A] transition-colors line-clamp-2">
+                        <h3 className="font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#1D4ED8] transition-colors line-clamp-2">
                           {blog.title}
                         </h3>
                         <p className="text-slate-500 font-medium text-sm leading-relaxed flex-1 line-clamp-3">

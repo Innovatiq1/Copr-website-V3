@@ -1,8 +1,8 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
 
-const CRIMSON = '#D4174A';
+const CRIMSON = '#1D4ED8';
 const GOLD    = '#A07830';
 const NAVY    = '#3A0F1E';
 const NAVY2   = '#4D1828';

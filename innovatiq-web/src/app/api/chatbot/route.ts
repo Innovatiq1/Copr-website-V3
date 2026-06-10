@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
       ? `<h3 style="color:#E8174B;margin-top:20px;">Chat History</h3>
          ${chatHistory.map((m: { role: string; text: string }) => `
            <div style="margin-bottom:8px;padding:8px;border-radius:6px;background:${m.role === 'user' ? '#fef2f4' : '#f3f4f6'}">
-             <strong style="color:${m.role === 'user' ? '#D4174A' : '#374151'}">${m.role === 'user' ? 'User' : 'Bot'}:</strong>
+             <strong style="color:${m.role === 'user' ? '#1D4ED8' : '#374151'}">${m.role === 'user' ? 'User' : 'Bot'}:</strong>
              <span style="color:#374151;margin-left:6px;">${m.text}</span>
            </div>`).join('')}`
       : '';

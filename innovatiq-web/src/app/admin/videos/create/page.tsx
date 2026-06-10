@@ -64,8 +64,8 @@ export default function VideoCreatePage() {
   };
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.currentTarget.style.borderColor = '#D4174A';
-    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)';
+    e.currentTarget.style.borderColor = '#1D4ED8';
+    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(29,78,216,0.1)';
   };
   const blurStyle = (e: React.FocusEvent<HTMLInputElement>) => {
     e.currentTarget.style.borderColor = '#E2E8F0';
@@ -76,7 +76,7 @@ export default function VideoCreatePage() {
     <div className="space-y-3">
       <div className="flex items-center gap-3 cursor-pointer group" onClick={onChange}>
         <div className="w-5 h-5 rounded flex items-center justify-center transition-all shrink-0"
-          style={{ background: checked ? '#D4174A' : '#F1F5F9', border: checked ? '1px solid #D4174A' : '1px solid #CBD5E1' }}>
+          style={{ background: checked ? '#1D4ED8' : '#F1F5F9', border: checked ? '1px solid #1D4ED8' : '1px solid #CBD5E1' }}>
           {checked && (
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
               <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -92,7 +92,7 @@ export default function VideoCreatePage() {
   const SubCheckbox = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
     <div className="flex items-center gap-3 cursor-pointer group" onClick={onChange}>
       <div className="w-4 h-4 rounded flex items-center justify-center transition-all shrink-0"
-        style={{ background: checked ? 'rgba(212,23,74,0.8)' : '#F1F5F9', border: checked ? '1px solid rgba(212,23,74,0.8)' : '1px solid #E2E8F0' }}>
+        style={{ background: checked ? 'rgba(29,78,216,0.8)' : '#F1F5F9', border: checked ? '1px solid rgba(29,78,216,0.8)' : '1px solid #E2E8F0' }}>
         {checked && (
           <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
             <path d="M1 3L2.8 4.8L7 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -178,7 +178,7 @@ export default function VideoCreatePage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}>
             {loading ? 'Adding...' : 'Add Video'}
           </button>
           <Link href="/admin/videos"

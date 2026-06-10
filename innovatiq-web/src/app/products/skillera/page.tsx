@@ -1,4 +1,4 @@
-import ProductPageTemplate from '@/components/ProductPageTemplate';
+﻿import ProductPageTemplate from '@/components/ProductPageTemplate';
 
 export default function SkillEraPage() {
   return (
@@ -27,8 +27,8 @@ export default function SkillEraPage() {
         { title: 'Mobile Accessibility', description: 'Access training anytime, anywhere, on any device with our mobile-responsive platform, ensuring seamless learning for remote users.', icon: '📱' },
         { title: 'Third-Party Integration', description: 'Connect seamlessly with HRMS, LMS, CRMs, ERPs, and other enterprise business tools.', icon: '🔗' },
       ]}
-      gradient="linear-gradient(135deg, #D4174A 0%, #A8102E 100%)"
-      color="#D4174A"
+      gradient="linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)"
+      color="#1D4ED8"
       productType="tms"
     />
   );

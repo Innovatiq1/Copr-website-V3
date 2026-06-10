@@ -131,7 +131,7 @@ export default function DashboardPage() {
         }}
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="h-0.5 w-8 rounded-full" style={{ background: '#D4174A' }} />
+          <div className="h-0.5 w-8 rounded-full" style={{ background: '#1D4ED8' }} />
           <h2 className="text-base font-semibold text-slate-800">Quick Actions</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -207,13 +207,13 @@ export default function DashboardPage() {
         <div
           className="rounded-2xl p-6"
           style={{
-            background: 'linear-gradient(145deg, rgba(212,23,74,0.04) 0%, rgba(212,23,74,0.01) 100%)',
-            border: '1px solid rgba(212,23,74,0.1)',
+            background: 'linear-gradient(145deg, rgba(29,78,216,0.04) 0%, rgba(29,78,216,0.01) 100%)',
+            border: '1px solid rgba(29,78,216,0.1)',
             boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
           }}
         >
           <div className="flex items-center gap-3 mb-5">
-            <div className="h-0.5 w-8 rounded-full" style={{ background: '#D4174A' }} />
+            <div className="h-0.5 w-8 rounded-full" style={{ background: '#1D4ED8' }} />
             <h2 className="text-base font-semibold text-slate-800">Admin Sections</h2>
           </div>
           <div className="grid grid-cols-2 gap-2">
@@ -222,7 +222,7 @@ export default function DashboardPage() {
               { label: 'Manage Careers', href: '/admin/careers', color: '#10B981' },
               { label: 'Manage Awards', href: '/admin/awards', color: '#F59E0B' },
               { label: 'Manage Videos', href: '/admin/videos', color: '#8B5CF6' },
-              { label: 'View Enquiries', href: '/admin/enquiries', color: '#D4174A' },
+              { label: 'View Enquiries', href: '/admin/enquiries', color: '#1D4ED8' },
             ].map(({ label, href, color }) => (
               <Link key={href} href={href}
                 className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-800 transition-all"

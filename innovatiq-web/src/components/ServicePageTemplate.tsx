@@ -1,4 +1,4 @@
-import PageHero from './PageHero';
+﻿import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
@@ -37,7 +37,7 @@ export default function ServicePageTemplate({
   overviewPoints,
   benefits,
   processSteps,
-  color = '#D4174A',
+  color = '#1D4ED8',
   detailCards,
   investmentCards,
   serviceType,
@@ -125,7 +125,7 @@ export default function ServicePageTemplate({
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Key{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #3B82F6 100%)` }}>
                 Benefits
               </span>
             </h2>
@@ -177,7 +177,7 @@ export default function ServicePageTemplate({
               </span>
               <h2 className="text-4xl font-bold text-gray-900">
                 Our{' '}
-                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #BE123C 0%, #D4174A 50%, #F43F5E 100%)` }}>
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #3B82F6 100%)` }}>
                   Approach
                 </span>
               </h2>

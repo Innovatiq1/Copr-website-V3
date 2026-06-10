@@ -1,4 +1,4 @@
-import PageHero from '@/components/PageHero';
+﻿import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 
 const sections = [
@@ -79,8 +79,8 @@ export default function PrivacyPolicyPage() {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <div className="p-8 rounded-2xl mb-8 border border-[#D4174A]/20"
-              style={{ background: 'rgba(212,23,74,0.04)' }}>
+            <div className="p-8 rounded-2xl mb-8 border border-[#1D4ED8]/20"
+              style={{ background: 'rgba(29,78,216,0.04)' }}>
               <p className="text-gray-600 leading-relaxed">
                 Innovatiq Technologies (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy.
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information

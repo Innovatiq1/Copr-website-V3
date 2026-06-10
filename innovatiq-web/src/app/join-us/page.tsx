@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import PageHero from '@/components/PageHero';
@@ -80,7 +80,7 @@ export default function JoinUsPage() {
                         required={f.required}
                         value={formData[f.name as keyof typeof formData]}
                         onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#D4174A] transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#1D4ED8] transition-colors"
                       />
                     </div>
                   ))}
@@ -89,14 +89,14 @@ export default function JoinUsPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">Resume *</label>
                     <input type="file" accept=".pdf,.doc,.docx" required
                       onChange={e => setResume(e.target.files?.[0] || null)}
-                      className="w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-[#D4174A]" />
+                      className="w-full text-sm text-gray-500 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-[#1D4ED8]" />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">Tell us about yourself</label>
                     <textarea rows={3} value={formData.statement}
                       onChange={e => setFormData(p => ({ ...p, statement: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#D4174A] resize-none transition-colors" />
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#1D4ED8] resize-none transition-colors" />
                   </div>
 
                   <div>
@@ -105,12 +105,12 @@ export default function JoinUsPage() {
                     </label>
                     <input type="number" required value={captchaAnswer}
                       onChange={e => setCaptchaAnswer(e.target.value)}
-                      className="w-28 px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#D4174A]" />
+                      className="w-28 px-4 py-3 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#1D4ED8]" />
                   </div>
 
                   {error && <p className="text-red-500 text-sm p-3 bg-red-50 rounded-xl">{error}</p>}
 
-                  <button type="submit" disabled={loading} className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-[#D4174A] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={loading} className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
                     {loading ? 'Submitting...' : 'Submit Profile'} <Send size={16} />
                   </button>
                 </form>

@@ -83,7 +83,7 @@ export default function AwardEditPage() {
   };
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = '#D4174A';
+    e.currentTarget.style.borderColor = '#1D4ED8';
     e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)';
   };
   const blurStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -178,7 +178,7 @@ export default function AwardEditPage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}>
             {loading ? 'Saving...' : 'Save Changes'}
           </button>
           <Link href="/admin/awards"

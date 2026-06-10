@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
 
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -24,7 +24,7 @@ export default async function CareersPage() {
       {/* Why Join Us */}
       <section className="relative py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(212,23,74,0.05) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top right, rgba(29,78,216,0.05) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.03) 0%, transparent 60%)' }} />
 
@@ -33,13 +33,13 @@ export default async function CareersPage() {
           {/* Two-column top: heading left, image right */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
             <AnimatedSection>
-              <span className="inline-flex items-center gap-2 text-xs font-bold text-[#D4174A] uppercase tracking-widest bg-[#D4174A]/8 border border-[#D4174A]/15 px-4 py-1.5 rounded-full mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#D4174A]" />
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
                 Perks & Culture
               </span>
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
                 Why Work at{' '}
-                <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Innovatiq?</span>
+                <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Innovatiq?</span>
               </h2>
               <p className="text-slate-500 font-medium mb-3 leading-relaxed">
                 At Innovatiq we treasure our people as they are our most important assets. We encourage a diverse and inclusive culture working together in an open minded environment.
@@ -58,7 +58,7 @@ export default async function CareersPage() {
                   className="w-full h-72 object-cover object-center" />
                 {/* Brand colour overlay */}
                 <div className="absolute inset-0 pointer-events-none"
-                  style={{ background: 'linear-gradient(135deg, rgba(212,23,74,0.12) 0%, transparent 60%)' }} />
+                  style={{ background: 'linear-gradient(135deg, rgba(29,78,216,0.12) 0%, transparent 60%)' }} />
                 {/* Bottom caption strip */}
                 <div className="absolute bottom-0 left-0 right-0 px-5 py-3"
                   style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55), transparent)' }}>
@@ -70,7 +70,7 @@ export default async function CareersPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
             {[
-              { icon: '🚀', title: 'Challenging Work', description: 'Work on complex, high-impact projects for enterprise clients across the region.', color: '#D4174A' },
+              { icon: '🚀', title: 'Challenging Work', description: 'Work on complex, high-impact projects for enterprise clients across the region.', color: '#1D4ED8' },
               { icon: '📚', title: 'Continuous Learning', description: 'Generous training and certification budgets to keep your skills current.', color: '#3B82F6' },
               { icon: '🌍', title: 'Global Exposure', description: 'Work with international clients and teams across Asia Pacific.', color: '#10B981' },
               { icon: '💡', title: 'Innovation Culture', description: 'We encourage experimentation, creative thinking, and bold ideas.', color: '#F59E0B' },
@@ -78,7 +78,7 @@ export default async function CareersPage() {
               <AnimatedSection key={b.title} delay={i * 80} className="h-full">
                 <div className="text-center p-7 hover:-translate-y-1 transition-all duration-300 h-full"
                   style={{
-                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 20%, rgba(212,23,74,0.80) 45%, rgba(212,23,74,0.33) 70%, transparent 90%) border-box',
+                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box',
                     borderStyle: 'solid',
                     borderColor: 'transparent',
                     borderTopWidth: '4px',
@@ -106,19 +106,19 @@ export default async function CareersPage() {
           <img src="/images/Carrer%20Hero%20Section%20Background%201.svg" alt="" aria-hidden="true"
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[800px] h-auto opacity-[0.04] object-contain" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[400px]"
-            style={{ background: 'radial-gradient(ellipse at bottom left, rgba(212,23,74,0.05) 0%, transparent 60%)' }} />
+            style={{ background: 'radial-gradient(ellipse at bottom left, rgba(29,78,216,0.05) 0%, transparent 60%)' }} />
           <div className="absolute top-0 right-0 w-[400px] h-[400px]"
             style={{ background: 'radial-gradient(ellipse at top right, rgba(59,130,246,0.04) 0%, transparent 60%)' }} />
           {/* Subtle dot grid */}
           <div className="absolute inset-0 opacity-[0.018]"
-            style={{ backgroundImage: 'radial-gradient(circle, #D4174A 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+            style={{ backgroundImage: 'radial-gradient(circle, #1D4ED8 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-2">
               Open{' '}
-              <span className="bg-gradient-to-r from-[#BE123C] via-[#D4174A] to-[#E11D48] bg-clip-text text-transparent">Positions</span>
+              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Positions</span>
             </h2>
             <p className="text-slate-500 font-medium">{careers.length > 0 ? `${careers.length} opportunities available across our offices.` : 'New opportunities coming soon.'}</p>
           </AnimatedSection>
@@ -127,8 +127,8 @@ export default async function CareersPage() {
             <div className="flex flex-col items-center justify-center py-16 text-center rounded-2xl mb-6"
               style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.07)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                style={{ background: 'rgba(212,23,74,0.08)', border: '1px solid rgba(212,23,74,0.15)' }}>
-                <Briefcase size={28} className="text-[#D4174A]" />
+                style={{ background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.15)' }}>
+                <Briefcase size={28} className="text-[#1D4ED8]" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">No open positions right now</h3>
               <p className="text-slate-500 font-medium text-sm">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
@@ -140,7 +140,7 @@ export default async function CareersPage() {
               <AnimatedSection key={job._id} delay={i * 60}>
                 <div className="p-5 pl-6 hover:-translate-y-1 transition-all duration-300 flex flex-col sm:flex-row sm:items-center gap-5"
                   style={{
-                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to bottom, #D4174A 0%, #D4174A 20%, #D4174ACC 45%, #D4174A55 70%, transparent 90%) border-box',
+                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to bottom, #1D4ED8 0%, #1D4ED8 20%, #1D4ED8CC 45%, #1D4ED855 70%, transparent 90%) border-box',
                     borderStyle: 'solid',
                     borderColor: 'transparent',
                     borderTopWidth: '0',
@@ -153,8 +153,8 @@ export default async function CareersPage() {
 
                   {/* Icon anchor */}
                   <div className="shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center self-start sm:self-center"
-                    style={{ background: 'linear-gradient(135deg, rgba(212,23,74,0.12), rgba(212,23,74,0.05))', border: '1px solid rgba(212,23,74,0.18)' }}>
-                    <Briefcase size={22} style={{ color: '#D4174A' }} />
+                    style={{ background: 'linear-gradient(135deg, rgba(29,78,216,0.12), rgba(29,78,216,0.05))', border: '1px solid rgba(29,78,216,0.18)' }}>
+                    <Briefcase size={22} style={{ color: '#1D4ED8' }} />
                   </div>
 
                   {/* Content */}
@@ -163,23 +163,23 @@ export default async function CareersPage() {
                       <h3 className="font-bold text-gray-900 text-lg">{job.jobTitle || job.title}</h3>
                       {job.employmentType && (
                         <span className="text-xs px-2.5 py-0.5 rounded-full font-semibold"
-                          style={{ background: 'rgba(212,23,74,0.08)', color: '#D4174A', border: '1px solid rgba(212,23,74,0.15)' }}>
+                          style={{ background: 'rgba(29,78,216,0.08)', color: '#1D4ED8', border: '1px solid rgba(29,78,216,0.15)' }}>
                           {job.employmentType}
                         </span>
                       )}
                     </div>
                     {job.companyName && (
-                      <p className="text-sm font-medium mb-3" style={{ color: '#D4174A' }}>{job.companyName}</p>
+                      <p className="text-sm font-medium mb-3" style={{ color: '#1D4ED8' }}>{job.companyName}</p>
                     )}
                     <div className="flex flex-wrap gap-4 text-sm text-slate-500 font-medium">
                       {job.location && (
-                        <span className="flex items-center gap-1.5"><MapPin size={13} style={{ color: '#D4174A' }} />{job.location}</span>
+                        <span className="flex items-center gap-1.5"><MapPin size={13} style={{ color: '#1D4ED8' }} />{job.location}</span>
                       )}
                       {(job.experienceLevel || job.experience) && (
-                        <span className="flex items-center gap-1.5"><Briefcase size={13} style={{ color: '#D4174A' }} />{job.experienceLevel || job.experience}</span>
+                        <span className="flex items-center gap-1.5"><Briefcase size={13} style={{ color: '#1D4ED8' }} />{job.experienceLevel || job.experience}</span>
                       )}
                       {job.employmentType && (
-                        <span className="flex items-center gap-1.5"><Clock size={13} style={{ color: '#D4174A' }} />{job.employmentType}</span>
+                        <span className="flex items-center gap-1.5"><Clock size={13} style={{ color: '#1D4ED8' }} />{job.employmentType}</span>
                       )}
                     </div>
                     {(() => {
@@ -204,7 +204,7 @@ export default async function CareersPage() {
                   <div className="shrink-0 flex flex-col items-end gap-3 self-center">
                     <Link href={`/careers/${job._id}`}
                       className="inline-flex items-center gap-2 py-2.5 px-6 text-sm text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                      style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 12px rgba(212,23,74,0.30)' }}>
+                      style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 12px rgba(29,78,216,0.30)' }}>
                       Apply Now <ChevronRight size={14} />
                     </Link>
                   </div>
@@ -217,19 +217,19 @@ export default async function CareersPage() {
           <AnimatedSection className="mt-10">
             <div className="relative overflow-hidden rounded-2xl flex flex-col sm:flex-row items-stretch"
               style={{
-                background: 'linear-gradient(135deg, #FFF5F7 0%, #FFF9F5 60%, #FFFBF5 100%)',
-                border: '1.5px solid rgba(212,23,74,0.18)',
-                boxShadow: '0 4px 24px rgba(212,23,74,0.08)',
+                background: 'linear-gradient(135deg, #EFF6FF 0%, #FFF9F5 60%, #FFFBF5 100%)',
+                border: '1.5px solid rgba(29,78,216,0.18)',
+                boxShadow: '0 4px 24px rgba(29,78,216,0.08)',
               }}>
               {/* Ambient glow top-left */}
               <div className="absolute top-0 left-0 w-72 h-72 rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
-                style={{ background: 'radial-gradient(circle, rgba(212,23,74,0.07) 0%, transparent 70%)' }} />
+                style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.07) 0%, transparent 70%)' }} />
 
               {/* Left: content */}
               <div className="relative z-10 flex-1 px-8 py-12">
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                  style={{ background: 'rgba(212,23,74,0.09)', border: '1px solid rgba(212,23,74,0.18)' }}>
-                  <Users size={26} className="text-[#D4174A]" />
+                  style={{ background: 'rgba(29,78,216,0.09)', border: '1px solid rgba(29,78,216,0.18)' }}>
+                  <Users size={26} className="text-[#1D4ED8]" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">Don&apos;t See a Role That Fits?</h3>
                 <p className="text-slate-500 font-medium mb-7 max-w-sm leading-relaxed">
@@ -237,14 +237,14 @@ export default async function CareersPage() {
                 </p>
                 <Link href="/join-us"
                   className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 8px 24px rgba(212,23,74,0.30)' }}>
+                  style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 8px 24px rgba(29,78,216,0.30)' }}>
                   Submit Your Profile <ChevronRight size={16} />
                 </Link>
               </div>
 
               {/* Right: visible career image */}
               <div className="hidden sm:flex items-end justify-center w-64 shrink-0 overflow-hidden"
-                style={{ background: 'linear-gradient(to left, rgba(212,23,74,0.06), transparent)' }}>
+                style={{ background: 'linear-gradient(to left, rgba(29,78,216,0.06), transparent)' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/images/Carrer%20Image.svg" alt="" aria-hidden="true"
                   className="h-[95%] max-h-64 w-auto object-contain opacity-30 select-none pointer-events-none" />

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,10 +13,10 @@ const words: React.ReactNode[] = [
 ];
 
 const STATS = [
-  { v: '100+', l: 'Successful Projects', c: '#D4174A', bg: '#FFFFFF', icon: Trophy },
-  { v: '200+', l: 'Happy Clients',       c: '#D4174A', bg: '#FFFFFF', icon: Users },
-  { v: '100+', l: 'Skilled Experts',     c: '#D4174A', bg: '#FFFFFF', icon: GraduationCap },
-  { v: '15+',  l: 'Ongoing Projects',    c: '#D4174A', bg: '#FFFFFF', icon: Rocket },
+  { v: '100+', l: 'Successful Projects', c: '#1D4ED8', bg: '#FFFFFF', icon: Trophy },
+  { v: '200+', l: 'Happy Clients',       c: '#1D4ED8', bg: '#FFFFFF', icon: Users },
+  { v: '100+', l: 'Skilled Experts',     c: '#1D4ED8', bg: '#FFFFFF', icon: GraduationCap },
+  { v: '15+',  l: 'Ongoing Projects',    c: '#1D4ED8', bg: '#FFFFFF', icon: Rocket },
 ];
 
 function CardDecor({ index, c }: { index: number; c: string }) {
@@ -181,8 +181,8 @@ function StatCard({
         transform: 'skewX(-9deg)',
         transformOrigin: 'bottom center',
         background: hovered
-          ? 'linear-gradient(to bottom, #FFF5F7 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 22%, rgba(212,23,74,0.75) 48%, rgba(212,23,74,0.28) 72%, transparent 92%) border-box'
-          : 'linear-gradient(to bottom, #FFF5F7 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #D4174A 0%, #D4174A 22%, rgba(212,23,74,0.75) 48%, rgba(212,23,74,0.28) 72%, transparent 92%) border-box',
+          ? 'linear-gradient(to bottom, #EFF6FF 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 22%, rgba(29,78,216,0.75) 48%, rgba(29,78,216,0.28) 72%, transparent 92%) border-box'
+          : 'linear-gradient(to bottom, #EFF6FF 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 22%, rgba(29,78,216,0.75) 48%, rgba(29,78,216,0.28) 72%, transparent 92%) border-box',
         borderStyle: 'solid',
         borderColor: 'transparent',
         borderTopWidth: '4px',
@@ -191,7 +191,7 @@ function StatCard({
         borderBottomWidth: '1px',
         borderRadius: '16px',
         boxShadow: hovered
-          ? '0 20px 48px rgba(212,23,74,0.15), 0 6px 20px rgba(0,0,0,0.07)'
+          ? '0 20px 48px rgba(29,78,216,0.15), 0 6px 20px rgba(0,0,0,0.07)'
           : '0 2px 14px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.05)',
         overflow: 'hidden',
         transition: 'box-shadow 0.35s ease, background 0.35s ease',
@@ -199,7 +199,7 @@ function StatCard({
         {/* Hover glow */}
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at top center, rgba(212,23,74,0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse at top center, rgba(29,78,216,0.08) 0%, transparent 65%)',
           opacity: hovered ? 1 : 0,
           transition: 'opacity 0.4s ease',
         }} />
@@ -214,13 +214,13 @@ function StatCard({
           <div style={{
             width: '52px', height: '52px', borderRadius: '15px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            background: 'rgba(212,23,74,0.10)',
-            border: '1.5px solid rgba(212,23,74,0.22)',
-            boxShadow: hovered ? '0 8px 24px rgba(212,23,74,0.25)' : '0 2px 8px rgba(212,23,74,0.12)',
+            background: 'rgba(29,78,216,0.10)',
+            border: '1.5px solid rgba(29,78,216,0.22)',
+            boxShadow: hovered ? '0 8px 24px rgba(29,78,216,0.25)' : '0 2px 8px rgba(29,78,216,0.12)',
             transform: hovered ? 'rotate(-5deg) scale(1.1)' : 'rotate(0deg) scale(1)',
             transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
           }}>
-            <Icon size={22} style={{ color: '#D4174A' }} strokeWidth={1.7} />
+            <Icon size={22} style={{ color: '#1D4ED8' }} strokeWidth={1.7} />
           </div>
         </div>
 
@@ -228,18 +228,18 @@ function StatCard({
         <p ref={countRef} className="text-[32px] sm:text-[46px]" style={{
           fontWeight: 900, lineHeight: 1, marginBottom: '6px',
           letterSpacing: '-1px', fontVariantNumeric: 'tabular-nums',
-          backgroundImage: 'linear-gradient(135deg, #D4174A 0%, rgba(212,23,74,0.80) 100%)',
+          backgroundImage: 'linear-gradient(135deg, #1D4ED8 0%, rgba(29,78,216,0.80) 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
-          filter: 'drop-shadow(0 2px 6px rgba(212,23,74,0.25))',
+          filter: 'drop-shadow(0 2px 6px rgba(29,78,216,0.25))',
         }}>0{suffix}</p>
 
         {/* Expanding underline */}
         <div style={{
           height: '2px', borderRadius: '2px', marginBottom: '8px',
           width: hovered ? '44px' : '24px',
-          background: 'linear-gradient(90deg, #D4174A, rgba(212,23,74,0.25))',
+          background: 'linear-gradient(90deg, #1D4ED8, rgba(29,78,216,0.25))',
           transition: 'width 0.35s ease',
         }} />
 
@@ -296,7 +296,7 @@ export default function HeroSection() {
         style={{
           width: '900px', height: '900px',
           top: '-200px', left: '-180px',
-          background: 'radial-gradient(circle at 55% 55%, rgba(212,23,74,0.05) 0%, rgba(255,77,124,0.02) 45%, transparent 70%)',
+          background: 'radial-gradient(circle at 55% 55%, rgba(29,78,216,0.05) 0%, rgba(255,77,124,0.02) 45%, transparent 70%)',
           filter: 'blur(90px)',
           contain: 'strict',
         }} />
@@ -306,8 +306,8 @@ export default function HeroSection() {
       <div className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage: [
-            'linear-gradient(rgba(212,23,74,0.05) 1px, transparent 1px)',
-            'linear-gradient(90deg, rgba(212,23,74,0.05) 1px, transparent 1px)',
+            'linear-gradient(rgba(29,78,216,0.05) 1px, transparent 1px)',
+            'linear-gradient(90deg, rgba(29,78,216,0.05) 1px, transparent 1px)',
           ].join(', '),
           backgroundSize: '72px 72px',
           maskImage: 'radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 100%)',
@@ -318,7 +318,7 @@ export default function HeroSection() {
       {/* ── Geometric decorations — hidden on mobile so they don't overlap text ── */}
       <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
         <div className="spin-s absolute"
-          style={{ top: '8%', left: '1.5%', width: '160px', height: '160px', border: '1.5px solid rgba(212,23,74,0.15)', borderRadius: '20px', transform: 'rotate(12deg)' }} />
+          style={{ top: '8%', left: '1.5%', width: '160px', height: '160px', border: '1.5px solid rgba(29,78,216,0.15)', borderRadius: '20px', transform: 'rotate(12deg)' }} />
         <div className="absolute"
           style={{ bottom: '14%', right: '2.5%', width: '90px', height: '90px', border: '1.5px solid rgba(100,116,139,0.14)', borderRadius: '18px', transform: 'rotate(25deg)', animation: 'spin-slow 22s linear infinite reverse' }} />
         <div className="float-d absolute"
@@ -331,7 +331,7 @@ export default function HeroSection() {
           style={{ top: '65%', left: '43%', width: '28px', height: '28px', border: '1px solid rgba(100,116,139,0.18)', borderRadius: '5px', transform: 'rotate(20deg)' }} />
 
         <svg className="float absolute" style={{ top: '36%', left: '4.5%' }} width="38" height="38">
-          <polygon points="19,2 34,11 34,28 19,36 4,28 4,11" fill="none" stroke="rgba(212,23,74,0.22)" strokeWidth="1.5" />
+          <polygon points="19,2 34,11 34,28 19,36 4,28 4,11" fill="none" stroke="rgba(29,78,216,0.22)" strokeWidth="1.5" />
         </svg>
         <svg className="float absolute" style={{ top: '13%', right: '17%' }} width="46" height="46">
           <polygon points="23,2 42,12 42,33 23,44 4,33 4,12" fill="none" stroke="rgba(100,116,139,0.14)" strokeWidth="1.5" />
@@ -341,7 +341,7 @@ export default function HeroSection() {
         </svg>
 
         <div className="float absolute rounded-full"
-          style={{ top: '52%', left: '7%', width: '10px', height: '10px', background: 'rgba(212,23,74,0.22)' }} />
+          style={{ top: '52%', left: '7%', width: '10px', height: '10px', background: 'rgba(29,78,216,0.22)' }} />
         <div className="float-d absolute rounded-full"
           style={{ top: '9%', right: '34%', width: '8px', height: '8px', background: 'rgba(100,116,139,0.20)' }} />
         <div className="float absolute rounded-full"
@@ -357,8 +357,8 @@ export default function HeroSection() {
 
             {/* Badge */}
             <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-7"
-              style={{ background: 'rgba(212,23,74,0.08)', border: '1.5px solid rgba(212,23,74,0.30)' }}>
-              <Zap size={13} style={{ color: '#D4174A' }} fill="currentColor" />
+              style={{ background: 'rgba(29,78,216,0.08)', border: '1.5px solid rgba(29,78,216,0.30)' }}>
+              <Zap size={13} style={{ color: '#1D4ED8' }} fill="currentColor" />
               <span className="text-[12.5px] font-bold uppercase tracking-widest" style={{ color: '#A8102E' }}>
                 Trusted by 200+ Enterprises Worldwide
               </span>
@@ -371,7 +371,7 @@ export default function HeroSection() {
               <span
                 className="block mt-2 bg-clip-text text-transparent"
                 style={{
-                  backgroundImage: 'linear-gradient(135deg, #BE123C 0%, #D4174A 35%, #E11D48 65%, #F43F5E 100%)',
+                  backgroundImage: 'linear-gradient(135deg, #1E40AF 0%, #1D4ED8 35%, #2563EB 65%, #3B82F6 100%)',
                   opacity: vis ? 1 : 0,
                   transform: vis ? 'translateY(0)' : 'translateY(10px)',
                   transition: 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -400,8 +400,8 @@ export default function HeroSection() {
               ].map(({ text, icon: Icon }) => (
                 <div key={text} className="flex items-center gap-3 group/check">
                   <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 group-hover/check:scale-110"
-                    style={{ background: 'rgba(212,23,74,0.10)', border: '1px solid rgba(212,23,74,0.20)' }}>
-                    <Icon size={13} className="text-[#D4174A]" />
+                    style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.20)' }}>
+                    <Icon size={13} className="text-[#1D4ED8]" />
                   </div>
                   <span className="text-[14px] font-bold transition-colors duration-300 group-hover/check:text-slate-800"
                     style={{ color: '#475569' }}>{text}</span>
@@ -413,7 +413,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-4">
               <Link href="/contact"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg, #D4174A 0%, #A8102E 100%)' }}>
+                style={{ background: 'linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)' }}>
                 Get Free Demo <ArrowRight size={16} />
               </Link>
               <Link href="/services/cloud"
@@ -430,10 +430,10 @@ export default function HeroSection() {
 
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[530px] h-[530px] rounded-full pulse-glow"
-                  style={{ background: 'radial-gradient(circle, rgba(212,23,74,0.07) 30%, transparent 70%)', border: '1px solid rgba(212,23,74,0.14)' }} />
+                  style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.07) 30%, transparent 70%)', border: '1px solid rgba(29,78,216,0.14)' }} />
               </div>
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[495px] h-[495px] rounded-full border border-dashed border-[#D4174A]/20 spin-s" />
+                <div className="w-[495px] h-[495px] rounded-full border border-dashed border-[#1D4ED8]/20 spin-s" />
               </div>
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-[425px] h-[425px] rounded-full border border-dashed border-slate-200"
@@ -444,8 +444,8 @@ export default function HeroSection() {
                 {/* Main image — NO dark overlay */}
                 <div className="absolute inset-8 rounded-full overflow-hidden border-2"
                   style={{
-                    borderColor: 'rgba(212,23,74,0.15)',
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.13), 0 0 0 6px rgba(212,23,74,0.05)',
+                    borderColor: 'rgba(29,78,216,0.15)',
+                    boxShadow: '0 20px 60px rgba(0,0,0,0.13), 0 0 0 6px rgba(29,78,216,0.05)',
                   }}>
                   <Image
                     src="/images/executives-paying-attention-digital-tablet 1.jpg"
@@ -455,10 +455,10 @@ export default function HeroSection() {
                 {/* Floating card — ISO */}
                 <div className="absolute -top-2 right-2 float-d">
                   <div className="rounded-2xl px-4 py-3 flex items-center gap-3"
-                    style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(212,23,74,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
+                    style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(29,78,216,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: 'rgba(212,23,74,0.08)', border: '1px solid rgba(212,23,74,0.18)' }}>
-                      <Trophy size={18} className="text-[#D4174A]" />
+                      style={{ background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.18)' }}>
+                      <Trophy size={18} className="text-[#1D4ED8]" />
                     </div>
                     <div>
                       <p className="text-[13px] font-extrabold text-gray-900">ISO Certified</p>
@@ -486,8 +486,8 @@ export default function HeroSection() {
                 <div className="absolute top-1/2 -right-10 -translate-y-1/2 float-d" style={{ animationDelay: '1s' }}>
                   <div className="rounded-2xl px-5 py-4 text-white text-center"
                     style={{
-                      background: 'linear-gradient(135deg, #D4174A 0%, #A8102E 100%)',
-                      boxShadow: '0 8px 40px rgba(212,23,74,0.40)',
+                      background: 'linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)',
+                      boxShadow: '0 8px 40px rgba(29,78,216,0.40)',
                     }}>
                     <p className="text-[32px] font-black">200+</p>
                     <p className="text-[11px] font-bold opacity-90 mt-0.5">Happy Clients</p>

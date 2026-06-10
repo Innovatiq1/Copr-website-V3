@@ -78,7 +78,7 @@ export default function BlogsPage() {
           <Link
             href="/admin/blogs/create"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
-            style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}
+            style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}
           >
             <Plus size={16} /> Create Blog
           </Link>

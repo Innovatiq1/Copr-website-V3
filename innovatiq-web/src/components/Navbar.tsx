@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -62,7 +62,7 @@ export default function Navbar() {
             <span className="hidden sm:inline">Trusted by <strong>200+ Enterprises</strong></span>
             <Link href="/contact"
               className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:opacity-90 ml-0.5"
-              style={{ background: '#D4174A', color: '#fff' }}>
+              style={{ background: '#1D4ED8', color: '#fff' }}>
               Get Demo <ArrowRight size={11} strokeWidth={2.5} />
             </Link>
           </div>
@@ -100,7 +100,7 @@ export default function Navbar() {
                     onMouseLeave={() => setDrop(null)}>
                     <button
                       className="flex items-center gap-1.5 px-4 py-2 rounded-lg capitalize transition-all duration-200 cursor-pointer"
-                      style={{ color: drop === k ? '#D4174A' : '#374151', background: drop === k ? 'rgba(212,23,74,0.08)' : 'transparent' }}>
+                      style={{ color: drop === k ? '#1D4ED8' : '#374151', background: drop === k ? 'rgba(29,78,216,0.08)' : 'transparent' }}>
                       {k === 'about' ? 'About Us' : k.charAt(0).toUpperCase() + k.slice(1)}
                       <ChevronDown size={13} className={`transition-transform duration-200 ${drop === k ? 'rotate-180' : ''}`} />
                     </button>
@@ -117,23 +117,23 @@ export default function Navbar() {
                         {k === 'products'
                           ? NAV.products.map(p => (
                             <Link key={p.href} href={p.href} onClick={() => setDrop(null)}
-                              className="flex items-center gap-3 px-4 py-3 transition-all group hover:bg-[rgba(212,23,74,0.06)]"
+                              className="flex items-center gap-3 px-4 py-3 transition-all group hover:bg-[rgba(29,78,216,0.06)]"
                               style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                                 style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.08)' }}>
                                 {p.logo
                                   ? <Image src={p.logo} alt={p.label} width={26} height={26} className="object-contain" />
-                                  : <span className="text-[9px] font-black text-[#D4174A]">LMP</span>}
+                                  : <span className="text-[9px] font-black text-[#1D4ED8]">LMP</span>}
                               </div>
                               <div>
-                                <p className="font-semibold text-gray-800 text-sm group-hover:text-[#D4174A] transition-colors">{p.label}</p>
+                                <p className="font-semibold text-gray-800 text-sm group-hover:text-[#1D4ED8] transition-colors">{p.label}</p>
                                 <p className="text-xs text-gray-400">{p.sub}</p>
                               </div>
                             </Link>
                           ))
                           : (NAV[k] as { label: string; href: string }[]).map(l => (
                             <Link key={l.href} href={l.href} onClick={() => setDrop(null)}
-                              className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.05)] transition-all">
+                              className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#1D4ED8] hover:bg-[rgba(29,78,216,0.05)] transition-all">
                               {l.label}
                             </Link>
                           ))
@@ -143,8 +143,8 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                <Link href="/careers" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.08)] transition-all duration-200">Careers</Link>
-                <Link href="/contact" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#D4174A] hover:bg-[rgba(212,23,74,0.08)] transition-all duration-200">Contact</Link>
+                <Link href="/careers" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#1D4ED8] hover:bg-[rgba(29,78,216,0.08)] transition-all duration-200">Careers</Link>
+                <Link href="/contact" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#1D4ED8] hover:bg-[rgba(29,78,216,0.08)] transition-all duration-200">Contact</Link>
               </div>
 
               {/* CTAs */}
@@ -156,7 +156,7 @@ export default function Navbar() {
                 </Link>
                 <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
+                  style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)' }}>
                   Get Demo <ArrowRight size={14} />
                 </Link>
               </div>
@@ -238,7 +238,7 @@ export default function Navbar() {
                 <div className="ml-3 pb-1">
                   {m.items.map((l: { label: string; href: string; sub?: string }) => (
                     <Link key={l.href} href={l.href} onClick={closeDrawer}
-                      className="block px-3 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#D4174A] rounded-xl hover:bg-[rgba(212,23,74,0.06)] transition-all">
+                      className="block px-3 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#1D4ED8] rounded-xl hover:bg-[rgba(29,78,216,0.06)] transition-all">
                       {l.label}{l.sub ? ` — ${l.sub}` : ''}
                     </Link>
                   ))}
@@ -264,7 +264,7 @@ export default function Navbar() {
             </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
-              style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)' }}>
+              style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)' }}>
               Get Demo <ArrowRight size={14} />
             </Link>
           </div>

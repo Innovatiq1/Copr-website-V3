@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 
@@ -48,10 +48,10 @@ export default function ScrollToTop() {
           background: 'linear-gradient(145deg, rgba(255,255,255,0.98) 0%, rgba(255,228,236,0.95) 100%)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(212,23,74,0.16)',
-          color: '#D4174A',
+          border: '1px solid rgba(29,78,216,0.16)',
+          color: '#1D4ED8',
           boxShadow:
-            '0 0 0 4px rgba(212,23,74,0.07), 0 2px 4px rgba(0,0,0,0.04), 0 10px 30px rgba(212,23,74,0.18), inset 0 1px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(212,23,74,0.06)',
+            '0 0 0 4px rgba(29,78,216,0.07), 0 2px 4px rgba(0,0,0,0.04), 0 10px 30px rgba(29,78,216,0.18), inset 0 1px 0 rgba(255,255,255,1), inset 0 -1px 0 rgba(29,78,216,0.06)',
         }}
       >
         <ArrowUp size={15} strokeWidth={2.5} />

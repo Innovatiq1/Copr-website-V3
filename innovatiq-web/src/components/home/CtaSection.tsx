@@ -1,9 +1,9 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Phone, Mail, Shield, Clock, Award, Globe } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 
-const CTA_GRAD = 'linear-gradient(135deg, #D4174A 0%, #9333EA 100%)';
+const CTA_GRAD = 'linear-gradient(135deg, #1D4ED8 0%, #9333EA 100%)';
 const CTA_CLR  = '#9333EA';
 
 export default function CtaSection() {
@@ -12,7 +12,7 @@ export default function CtaSection() {
 
       {/* Ambient glows — red + blue + purple matching the gradient */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(212,23,74,0.05) 0%, transparent 65%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.05) 0%, transparent 65%)' }} />
       <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at top left, rgba(59,130,246,0.05) 0%, transparent 70%)' }} />
       <div className="absolute bottom-0 right-0 w-150 h-150 pointer-events-none"
@@ -26,7 +26,7 @@ export default function CtaSection() {
             {/* Badge — gradient text + gradient border */}
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
               style={{
-                background: 'linear-gradient(135deg, rgba(212,23,74,0.08) 0%, rgba(147,51,234,0.08) 100%)',
+                background: 'linear-gradient(135deg, rgba(29,78,216,0.08) 0%, rgba(147,51,234,0.08) 100%)',
                 border: '1px solid rgba(147,51,234,0.28)',
               }}>
               <span className="w-1.5 h-1.5 rounded-full animate-pulse"
@@ -63,7 +63,7 @@ export default function CtaSection() {
                 className="inline-flex items-center gap-2 px-8 py-4 text-white text-base font-semibold rounded-xl transition-all duration-300 hover:-translate-y-1"
                 style={{
                   background: CTA_GRAD,
-                  boxShadow: '0 8px 32px rgba(147,51,234,0.30), 0 2px 8px rgba(212,23,74,0.18)',
+                  boxShadow: '0 8px 32px rgba(147,51,234,0.30), 0 2px 8px rgba(29,78,216,0.18)',
                 }}>
                 Get Free Consultation <ArrowRight size={17} />
               </Link>

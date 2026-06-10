@@ -128,7 +128,7 @@ export default function BlogEditPage() {
             <label className="block text-sm font-medium text-slate-700 mb-1.5">Title *</label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required
               placeholder="Blog title" style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = '#D4174A'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = '#1D4ED8'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
               onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }} />
           </div>
 
@@ -139,7 +139,7 @@ export default function BlogEditPage() {
             <textarea value={shortDescription} onChange={(e) => setShortDescription(e.target.value.slice(0, 200))} required
               rows={3} placeholder="Brief description..."
               style={{ ...inputStyle, resize: 'vertical' }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = '#D4174A'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = '#1D4ED8'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
               onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }} />
           </div>
 
@@ -148,14 +148,14 @@ export default function BlogEditPage() {
             <textarea value={description} onChange={(e) => setDescription(e.target.value)} required
               rows={10} placeholder="<p>Full blog content in HTML...</p>"
               style={{ ...inputStyle, resize: 'vertical', fontFamily: 'monospace' }}
-              onFocus={(e) => { e.currentTarget.style.borderColor = '#D4174A'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = '#1D4ED8'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
               onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }} />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1.5">Author *</label>
             <select value={author} onChange={(e) => setAuthor(e.target.value)} style={inputStyle}
-              onFocus={(e) => { e.currentTarget.style.borderColor = '#D4174A'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = '#1D4ED8'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
               onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }}>
               {AUTHORS.map((a) => (
                 <option key={a} value={a}>{a}</option>
@@ -181,7 +181,7 @@ export default function BlogEditPage() {
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
                 placeholder="Type a tag and press Enter"
                 style={{ ...inputStyle, width: 'auto', flex: 1 }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = '#D4174A'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = '#1D4ED8'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)'; }}
                 onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }} />
               <button type="button" onClick={addTag}
                 className="px-4 py-2.5 rounded-xl text-sm font-medium text-slate-600 flex items-center gap-1.5 transition-all hover:bg-slate-100 cursor-pointer"
@@ -211,7 +211,7 @@ export default function BlogEditPage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #D4174A, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 15px rgba(212,23,74,0.25)' }}>
             {loading ? 'Saving...' : 'Save Changes'}
           </button>
           <Link href="/admin/blogs"

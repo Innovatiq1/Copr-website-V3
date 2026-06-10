@@ -102,7 +102,7 @@ export default function CtaSection() {
               </span>
             </h2>
 
-            <p className="text-slate-500 text-lg font-medium mb-10 max-w-lg leading-relaxed">
+            <p className="text-gray-600 text-lg font-medium mb-10 max-w-lg leading-relaxed">
               Connect with our experts for a free consultation and discover how Innovatiq
               can accelerate your business transformation.
             </p>
@@ -142,7 +142,7 @@ export default function CtaSection() {
                   </div>
                   <div>
                     <p className="text-gray-800 text-sm font-semibold">{label}</p>
-                    <p className="text-slate-500 text-xs font-semibold">{sub}</p>
+                    <p className="text-gray-600 text-xs font-semibold">{sub}</p>
                   </div>
                 </div>
               ))}
@@ -176,7 +176,7 @@ export default function CtaSection() {
                         <Icon size={16} style={{ color: CTA_CLR }} />
                       </div>
                       <div>
-                        <p className="text-xs text-slate-600 font-semibold mb-0.5">{label}</p>
+                        <p className="text-xs text-gray-600 font-semibold mb-0.5">{label}</p>
                         <a href={href} className="font-semibold text-gray-800 text-sm transition-colors hover:text-[#BE123C]">
                           {value}
                         </a>
@@ -188,7 +188,7 @@ export default function CtaSection() {
                 <div className="flex items-center gap-3 pt-5" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
                   <Image src="/images/innovatiq-logo.png" alt="Innovatiq" width={90} height={32}
                     style={{ objectFit: 'contain', height: '28px', width: 'auto' }} />
-                  <span className="text-slate-500 text-xs font-semibold">Trusted IT Partner Since 2010</span>
+                  <span className="text-gray-600 text-xs font-semibold">Trusted IT Partner Since 2010</span>
                 </div>
               </div>
             </TiltCard>

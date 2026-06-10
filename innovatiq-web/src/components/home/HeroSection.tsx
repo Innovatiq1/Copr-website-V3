@@ -461,7 +461,7 @@ export default function HeroSection() {
                       <Trophy size={18} className="text-[#BE123C]" />
                     </div>
                     <div>
-                      <p className="text-[13px] font-extrabold text-gray-900">ISO Certified</p>
+                      <p className="text-[13px] font-semibold text-gray-900">ISO Certified</p>
                       <p className="text-[11px] font-semibold text-gray-500">9001:2015</p>
                     </div>
                   </div>
@@ -473,10 +473,10 @@ export default function HeroSection() {
                     style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
                       style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.09)' }}>
-                      <Globe size={18} className="text-slate-500" />
+                      <Globe size={18} className="text-gray-600" />
                     </div>
                     <div>
-                      <p className="text-[13px] font-extrabold text-gray-900">Asia Pacific</p>
+                      <p className="text-[13px] font-semibold text-gray-900">Asia Pacific</p>
                       <p className="text-[11px] font-semibold text-gray-500">SG · IN · MY</p>
                     </div>
                   </div>

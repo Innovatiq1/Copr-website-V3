@@ -116,7 +116,7 @@ export default function WhyUsSection() {
                     <Image src="/logo/image003-preview (1).png" alt="ISO" width={28} height={28} style={{ objectFit:'contain' }} />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
+                    <p className="font-semibold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
                     <p className="text-gray-600 text-[11px] font-semibold">9001:2015</p>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ export default function WhyUsSection() {
               </span>
             </h2>
 
-            <p className="text-slate-500 text-[17px] font-medium leading-relaxed mb-8 max-w-lg">
+            <p className="text-gray-600 text-[17px] font-medium leading-relaxed mb-8 max-w-lg">
               We don&apos;t just deliver technology — we build lasting partnerships.
               Every solution is tailored to your unique business needs and drives measurable growth.
             </p>
@@ -187,7 +187,7 @@ export default function WhyUsSection() {
                     style={{ background: clr + '14', border: `1px solid ${clr}30` }}>
                     <CIcon size={13} style={{ color: clr }} />
                   </div>
-                  <span className="text-slate-600 text-[15px] font-medium">{text}</span>
+                  <span className="text-gray-600 text-[15px] font-medium">{text}</span>
                 </div>
               ))}
             </div>
@@ -219,7 +219,7 @@ export default function WhyUsSection() {
                   {/* Text — right */}
                   <div className="relative z-10 min-w-0">
                     <p className="font-extrabold text-gray-800 text-[14px] leading-snug mb-1">{r.title}</p>
-                    <p className="text-slate-500 text-[12.5px] font-medium leading-relaxed">{r.desc}</p>
+                    <p className="text-gray-600 text-[12.5px] font-medium leading-relaxed">{r.desc}</p>
                   </div>
                 </div>
               ))}

@@ -128,7 +128,7 @@ export default function ProductsSection() {
               </svg>
             </span>
           </h2>
-          <p className="text-slate-600 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-lg font-medium max-w-xl mx-auto leading-relaxed">
             Innovative platforms designed to transform how enterprises learn, secure, and grow.
           </p>
         </div>
@@ -220,14 +220,14 @@ export default function ProductsSection() {
                       </div>
                     </div>
 
-                    <p className="text-slate-500 text-[15px] font-medium leading-relaxed mb-5 flex-1">{p.desc}</p>
+                    <p className="text-gray-600 text-[15px] font-medium leading-relaxed mb-5 flex-1">{p.desc}</p>
 
                     {/* Features */}
                     <div className="grid grid-cols-2 gap-y-2 gap-x-3 mb-5">
                       {p.features.map(f => (
                         <div key={f} className="flex items-center gap-1.5">
                           <CheckCircle2 size={13} style={{ color: p.clr, flexShrink: 0 }} strokeWidth={2} />
-                          <span className="text-[13px] text-slate-600 font-semibold">{f}</span>
+                          <span className="text-[13px] text-gray-600 font-semibold">{f}</span>
                         </div>
                       ))}
                     </div>
@@ -259,7 +259,7 @@ export default function ProductsSection() {
 
         {/* Talk to Expert CTA */}
         <AnimatedSection className="mt-14 text-center">
-          <p className="text-slate-500 mb-5 text-sm font-semibold">Unsure which product fits your needs?</p>
+          <p className="text-gray-600 mb-5 text-sm font-semibold">Unsure which product fits your needs?</p>
           <Link href="/contact"
             className="inline-flex items-center gap-2.5 px-8 py-4 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
             style={{

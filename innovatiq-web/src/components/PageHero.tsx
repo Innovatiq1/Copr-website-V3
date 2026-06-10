@@ -88,7 +88,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
           {title}
         </h1>
         {subtitle && (
-          <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         )}

@@ -96,10 +96,10 @@ export default function LeadershipCard({ m }: { m: Leader }) {
                       {section.heading}
                     </h4>
                   )}
-                  <p className="text-slate-500 text-[15px] leading-relaxed">{section.text}</p>
+                  <p className="text-gray-600 text-[15px] leading-relaxed">{section.text}</p>
                 </div>
               )) : m.bio.split('\n\n').map((para, i) => (
-                <p key={i} className="text-slate-500 text-[15px] leading-relaxed mb-2 last:mb-0">
+                <p key={i} className="text-gray-600 text-[15px] leading-relaxed mb-2 last:mb-0">
                   {para}
                 </p>
               ))}

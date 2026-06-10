@@ -178,7 +178,7 @@ export default function ContactPage() {
                   Something{' '}
                   <span className="bg-gradient-to-r from-[#BE123C] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Great</span>
                 </h2>
-                <p className="text-slate-600 font-medium text-sm leading-relaxed max-w-sm">
+                <p className="text-gray-600 font-medium text-sm leading-relaxed max-w-sm">
                   Have a question or a project in mind? Complete the form and our expert team will respond within 24 business hours.
                 </p>
               </AnimatedSection>
@@ -193,9 +193,9 @@ export default function ContactPage() {
                     <div className="p-4 rounded-2xl border transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex items-center justify-between"
                       style={{ background: '#FFFFFF', borderColor: 'rgba(0,0,0,0.06)' }}>
                       <div className="space-y-0.5">
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{channel.label}</p>
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-gray-600">{channel.label}</p>
                         <a href={`mailto:${channel.email}`} className="text-sm font-bold text-slate-800 hover:text-[#BE123C] transition-colors">{channel.email}</a>
-                        <p className="text-[11px] text-slate-500 font-medium">{channel.desc}</p>
+                        <p className="text-[11px] text-gray-600 font-medium">{channel.desc}</p>
                       </div>
                       <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
                         style={{ background: channel.bg, border: `1px solid ${channel.border}` }}>
@@ -238,7 +238,7 @@ export default function ContactPage() {
                     <div className="text-center py-12">
                       <div className="text-6xl mb-4">✅</div>
                       <h3 className="text-2xl font-bold text-gray-900 mb-3">Message Sent!</h3>
-                      <p className="text-slate-600 font-medium max-w-sm mx-auto">
+                      <p className="text-gray-600 font-medium max-w-sm mx-auto">
                         Thank you for reaching out. Our team will contact you within 24 business hours.
                       </p>
                     </div>

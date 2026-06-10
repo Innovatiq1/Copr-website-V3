@@ -41,10 +41,10 @@ export default async function CareersPage() {
                 Why Work at{' '}
                 <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Innovatiq?</span>
               </h2>
-              <p className="text-slate-500 font-medium mb-3 leading-relaxed">
+              <p className="text-gray-600 font-medium mb-3 leading-relaxed">
                 At Innovatiq we treasure our people as they are our most important assets. We encourage a diverse and inclusive culture working together in an open minded environment.
               </p>
-              <p className="text-slate-500 font-medium leading-relaxed">
+              <p className="text-gray-600 font-medium leading-relaxed">
                 Are you enthusiastic and passionate about innovation and technology? You are a perfect match and we have the right challenges to help you grow, upskill to nurture your career.
               </p>
             </AnimatedSection>
@@ -90,7 +90,7 @@ export default async function CareersPage() {
                   }}>
                   <div className="text-4xl mb-4">{b.icon}</div>
                   <h3 className="font-semibold text-gray-800 mb-2">{b.title}</h3>
-                  <p className="text-slate-500 font-medium text-sm leading-relaxed">{b.description}</p>
+                  <p className="text-gray-600 font-medium text-sm leading-relaxed">{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -120,7 +120,7 @@ export default async function CareersPage() {
               Open{' '}
               <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Positions</span>
             </h2>
-            <p className="text-slate-500 font-medium">{careers.length > 0 ? `${careers.length} opportunities available across our offices.` : 'New opportunities coming soon.'}</p>
+            <p className="text-gray-600 font-medium">{careers.length > 0 ? `${careers.length} opportunities available across our offices.` : 'New opportunities coming soon.'}</p>
           </AnimatedSection>
 
           {careers.length === 0 && (
@@ -131,7 +131,7 @@ export default async function CareersPage() {
                 <Briefcase size={28} className="text-[#BE123C]" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">No open positions right now</h3>
-              <p className="text-slate-500 font-medium text-sm">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
+              <p className="text-gray-600 font-medium text-sm">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
             </div>
           )}
 
@@ -171,7 +171,7 @@ export default async function CareersPage() {
                     {job.companyName && (
                       <p className="text-sm font-medium mb-3" style={{ color: '#BE123C' }}>{job.companyName}</p>
                     )}
-                    <div className="flex flex-wrap gap-4 text-sm text-slate-500 font-medium">
+                    <div className="flex flex-wrap gap-4 text-sm text-gray-600 font-medium">
                       {job.location && (
                         <span className="flex items-center gap-1.5"><MapPin size={13} style={{ color: '#BE123C' }} />{job.location}</span>
                       )}
@@ -232,7 +232,7 @@ export default async function CareersPage() {
                   <Users size={26} className="text-[#BE123C]" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">Don&apos;t See a Role That Fits?</h3>
-                <p className="text-slate-500 font-medium mb-7 max-w-sm leading-relaxed">
+                <p className="text-gray-600 font-medium mb-7 max-w-sm leading-relaxed">
                   We&apos;re always looking for exceptional talent. Submit your profile and we&apos;ll reach out when the right opportunity arises.
                 </p>
                 <Link href="/join-us"

@@ -46,7 +46,7 @@ export default async function BlogsPage() {
                 Perspectives
               </span>
             </h2>
-            <p className="text-slate-500 font-medium mt-3 max-w-xl mx-auto">
+            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
               Stay ahead with insights on digital transformation, cloud computing, and enterprise technology.
             </p>
           </AnimatedSection>
@@ -102,12 +102,12 @@ export default async function BlogsPage() {
                         <h3 className="font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#BE123C] transition-colors line-clamp-2">
                           {blog.title}
                         </h3>
-                        <p className="text-slate-600 font-medium text-sm leading-relaxed flex-1 line-clamp-3">
+                        <p className="text-gray-600 font-medium text-sm leading-relaxed flex-1 line-clamp-3">
                           {blog.shortDescription}
                         </p>
                         <div className="flex items-center justify-between mt-5 pt-4"
                           style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                          <div className="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                          <div className="flex items-center gap-3 text-sm text-gray-600 font-medium">
                             <span className="flex items-center gap-1.5"><ThumbsUp size={13} /> {blog.likes || 0}</span>
                             <span className="flex items-center gap-1.5"><ThumbsDown size={13} /> {blog.dislikes || 0}</span>
                           </div>

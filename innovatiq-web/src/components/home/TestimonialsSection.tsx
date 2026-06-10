@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
 
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-1 italic font-medium">
+                <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1 italic font-medium">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 
@@ -164,7 +164,7 @@ export default function TestimonialsSection() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 text-sm">{t.name}</p>
-                    <p className="text-slate-500 text-xs font-medium">{t.title}</p>
+                    <p className="text-gray-600 text-xs font-medium">{t.title}</p>
                   </div>
                 </div>
               </div>

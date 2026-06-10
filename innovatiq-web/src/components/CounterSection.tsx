@@ -91,7 +91,27 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: '45%',
         pointerEvents: 'none',
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.50) 0%, transparent 100%)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.55) 0%, transparent 100%)',
+      }} />
+
+      {/* Soft diagonal tint — adds depth at same color */}
+      <div style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '20px',
+        background: `linear-gradient(148deg, transparent 40%, ${stat.color}0A 100%)`,
+      }} />
+
+      {/* Subtle inner glow line at bottom */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: '12%', right: '12%', height: '1px',
+        pointerEvents: 'none',
+        background: `linear-gradient(90deg, transparent, ${stat.color}30, transparent)`,
+      }} />
+
+      {/* Corner accent — top-right sparkle */}
+      <div style={{
+        position: 'absolute', top: '14px', right: '14px', width: '28px', height: '28px',
+        pointerEvents: 'none', borderRadius: '50%',
+        background: `radial-gradient(circle, ${stat.color}14 0%, transparent 70%)`,
       }} />
 
       {/* Icon row */}
@@ -138,6 +158,14 @@ export default function CounterSection() {
     }}>
 
 
+      {/* Ambient radial glows */}
+      <div className="absolute top-0 left-0 w-[45%] h-full pointer-events-none opacity-40" style={{
+        background: 'radial-gradient(circle at 10% 20%, rgba(190,18,60,0.06) 0%, transparent 60%)',
+      }} />
+      <div className="absolute bottom-0 left-[20%] w-[35%] h-[60%] pointer-events-none opacity-40" style={{
+        background: 'radial-gradient(circle at 50% 80%, rgba(244,63,94,0.05) 0%, transparent 65%)',
+      }} />
+
       {/* Image panel — slanted left edge via clip-path */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
         backgroundImage: "url('/images/statistics_bg_clarity.png')",
@@ -155,9 +183,17 @@ export default function CounterSection() {
 
       {/* Top/bottom fade to blend with section bg */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(180deg, #FFFFFF 0%, transparent 12%, transparent 88%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #FFF5F6 0%, transparent 12%, transparent 88%, #FFF5F6 100%)',
         clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
         zIndex: 2,
+      }} />
+
+      {/* Slant edge soft glow */}
+      <div className="absolute inset-y-0 pointer-events-none" style={{
+        left: 'calc(45% - 60px)',
+        width: '120px',
+        background: 'linear-gradient(90deg, transparent 0%, rgba(190,18,60,0.07) 50%, transparent 100%)',
+        zIndex: 3,
       }} />
 
 

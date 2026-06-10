@@ -39,12 +39,12 @@ export default function AboutPage() {
         <ParallaxLayer
           speed={0.3}
           className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(29,78,216,0.05) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }}
         />
         <ParallaxLayer
           speed={0.2}
           className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.04) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
@@ -59,13 +59,13 @@ export default function AboutPage() {
                     border: '1px solid rgba(0,0,0,0.07)',
                     boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
                   }}>
-                  <div className="relative h-52 overflow-hidden" style={{ background: '#EFF6FF' }}>
-                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-[#1D4ED8] opacity-60" />
+                  <div className="relative h-52 overflow-hidden" style={{ background: '#FFF1F2' }}>
+                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-[#BE123C] opacity-60" />
                     <Image src="/images/aboutUs/visionimg.svg" alt="Vision" fill style={{ objectFit: 'contain', padding: '24px' }} />
                   </div>
                   <div className="p-8">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-4 text-xs font-semibold"
-                      style={{ background: 'rgba(29,78,216,0.08)', color: '#1D4ED8', border: '1px solid rgba(29,78,216,0.15)' }}>
+                      style={{ background: 'rgba(190,18,60,0.08)', color: '#BE123C', border: '1px solid rgba(190,18,60,0.15)' }}>
                       🎯 Our Vision
                     </div>
                     <p className="text-slate-500 leading-relaxed text-base font-medium">
@@ -116,26 +116,26 @@ export default function AboutPage() {
         <ParallaxLayer
           speed={0.35}
           className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top left, rgba(29,78,216,0.05) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(circle at top left, rgba(190,18,60,0.05) 0%, transparent 60%)' }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
-              style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
+              style={{ color: '#BE123C', background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.40)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
               Core Values
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               The Principles That{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #3B82F6 100%)' }}>Guide Us</span>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #F43F5E 100%)' }}>Guide Us</span>
             </h2>
           </AnimatedSection>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: '/images/aboutUs/innovationicon.svg', title: 'Innovation', desc: 'We are driven by a passion for innovation, constantly pushing the boundaries of what\'s possible to deliver transformative digital transformation solutions and services.', color: '#1D4ED8' },
+              { icon: '/images/aboutUs/innovationicon.svg', title: 'Innovation', desc: 'We are driven by a passion for innovation, constantly pushing the boundaries of what\'s possible to deliver transformative digital transformation solutions and services.', color: '#BE123C' },
               { icon: '/images/aboutUs/respecticon.svg', title: 'Respect', desc: 'We treat all individuals with respect, fostering an inclusive and supportive environment where everyone feels valued and empowered to contribute their best.', color: '#F59E0B' },
-              { icon: '/images/aboutUs/agilityicon.svg', title: 'Agility', desc: 'We embrace agility as a core value, adapting quickly to changing circumstances and leveraging emerging technologies to stay ahead of the curve.', color: '#3B82F6' },
+              { icon: '/images/aboutUs/agilityicon.svg', title: 'Agility', desc: 'We embrace agility as a core value, adapting quickly to changing circumstances and leveraging emerging technologies to stay ahead of the curve.', color: '#F43F5E' },
               { icon: '/images/aboutUs/Integrityicon.svg', title: 'Integrity', desc: 'We act with integrity, ensuring honesty, transparency, and ethical practices in everything we do.', color: '#10B981' },
             ].map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 80}>
@@ -194,8 +194,8 @@ export default function AboutPage() {
                 ].map(p => (
                   <div key={p} className="flex items-center gap-3">
                     <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'rgba(29,78,216,0.10)' }}>
-                      <CheckCircle2 size={13} style={{ color: '#1D4ED8' }} />
+                      style={{ background: 'rgba(190,18,60,0.10)' }}>
+                      <CheckCircle2 size={13} style={{ color: '#BE123C' }} />
                     </div>
                     <span className="text-slate-600 text-[15px] font-medium">{p}</span>
                   </div>
@@ -218,7 +218,7 @@ export default function AboutPage() {
                     border: '1px solid rgba(0,0,0,0.08)',
                     boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
                   }}>
-                  <p className="text-3xl font-bold" style={{ color: '#1D4ED8' }}>15+</p>
+                  <p className="text-3xl font-bold" style={{ color: '#BE123C' }}>15+</p>
                   <p className="text-xs text-slate-500 font-medium mt-0.5">Years of Excellence</p>
                 </div>
                 <div className="absolute -top-5 -right-5 rounded-2xl p-4"
@@ -242,22 +242,22 @@ export default function AboutPage() {
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Ambient decorations */}
         <div className="absolute top-0 right-0 w-125 h-125 pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(29,78,216,0.05) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-100 h-100 pointer-events-none"
-          style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.04) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }} />
         <div className="absolute inset-0 pointer-events-none opacity-[0.015]"
-          style={{ backgroundImage: 'radial-gradient(circle, #1D4ED8 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, #BE123C 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-              style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
+              style={{ color: '#BE123C', background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.40)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
               Why Us?
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
               Innovatiq –{' '}
-              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">
                 Shaping Tomorrow&apos;s Digital Landscape
               </span>
               , today
@@ -269,7 +269,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-6 items-stretch">
             {WHY_US.map((item, i) => {
-              const accent = ['#1D4ED8', '#3B82F6', '#10B981'][i];
+              const accent = ['#BE123C', '#F43F5E', '#10B981'][i];
               return (
                 <AnimatedSection key={item.title} delay={i * 100} className="h-full">
                   <div className="p-7 hover:-translate-y-1 transition-all duration-300 h-full"

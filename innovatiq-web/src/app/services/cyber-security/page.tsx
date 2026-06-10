@@ -28,7 +28,7 @@ export default function CyberSecurityPage() {
         { step: '3', title: 'Deploy', description: 'Implement security controls, tools, and monitoring systems.' },
         { step: '4', title: 'Monitor', description: 'Ongoing 24/7 monitoring, threat hunting, and incident response.' },
       ]}
-      color="#1D4ED8"
+      color="#BE123C"
       serviceType="cyber"
     />
   );

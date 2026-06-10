@@ -13,14 +13,14 @@ interface Stats {
 }
 
 const statCards = [
-  { key: 'blogs',   label: 'Total Blogs',   icon: FileText, color: '#3B82F6', glow: 'rgba(59,130,246,0.1)',  href: '/admin/blogs' },
+  { key: 'blogs',   label: 'Total Blogs',   icon: FileText, color: '#F43F5E', glow: 'rgba(244,63,94,0.1)',  href: '/admin/blogs' },
   { key: 'careers', label: 'Open Careers',  icon: Briefcase, color: '#10B981', glow: 'rgba(16,185,129,0.1)', href: '/admin/careers' },
   { key: 'awards',  label: 'Awards',        icon: Trophy,  color: '#F59E0B', glow: 'rgba(245,158,11,0.1)',  href: '/admin/awards' },
   { key: 'videos',  label: 'Videos',        icon: Video,   color: '#8B5CF6', glow: 'rgba(139,92,246,0.1)',  href: '/admin/videos' },
 ] as const;
 
 const quickActions = [
-  { label: 'New Blog Post',   href: '/admin/blogs/create',   color: '#3B82F6', icon: FileText },
+  { label: 'New Blog Post',   href: '/admin/blogs/create',   color: '#F43F5E', icon: FileText },
   { label: 'New Job Opening', href: '/admin/careers/create', color: '#10B981', icon: Briefcase },
   { label: 'Add Award',       href: '/admin/awards/create',  color: '#F59E0B', icon: Trophy },
   { label: 'Add Video',       href: '/admin/videos/create',  color: '#8B5CF6', icon: Video },
@@ -131,7 +131,7 @@ export default function DashboardPage() {
         }}
       >
         <div className="flex items-center gap-3 mb-6">
-          <div className="h-0.5 w-8 rounded-full" style={{ background: '#1D4ED8' }} />
+          <div className="h-0.5 w-8 rounded-full" style={{ background: '#BE123C' }} />
           <h2 className="text-base font-semibold text-slate-800">Quick Actions</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -207,22 +207,22 @@ export default function DashboardPage() {
         <div
           className="rounded-2xl p-6"
           style={{
-            background: 'linear-gradient(145deg, rgba(29,78,216,0.04) 0%, rgba(29,78,216,0.01) 100%)',
-            border: '1px solid rgba(29,78,216,0.1)',
+            background: 'linear-gradient(145deg, rgba(190,18,60,0.04) 0%, rgba(190,18,60,0.01) 100%)',
+            border: '1px solid rgba(190,18,60,0.1)',
             boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
           }}
         >
           <div className="flex items-center gap-3 mb-5">
-            <div className="h-0.5 w-8 rounded-full" style={{ background: '#1D4ED8' }} />
+            <div className="h-0.5 w-8 rounded-full" style={{ background: '#BE123C' }} />
             <h2 className="text-base font-semibold text-slate-800">Admin Sections</h2>
           </div>
           <div className="grid grid-cols-2 gap-2">
             {[
-              { label: 'Manage Blogs', href: '/admin/blogs', color: '#3B82F6' },
+              { label: 'Manage Blogs', href: '/admin/blogs', color: '#F43F5E' },
               { label: 'Manage Careers', href: '/admin/careers', color: '#10B981' },
               { label: 'Manage Awards', href: '/admin/awards', color: '#F59E0B' },
               { label: 'Manage Videos', href: '/admin/videos', color: '#8B5CF6' },
-              { label: 'View Enquiries', href: '/admin/enquiries', color: '#1D4ED8' },
+              { label: 'View Enquiries', href: '/admin/enquiries', color: '#BE123C' },
             ].map(({ label, href, color }) => (
               <Link key={href} href={href}
                 className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium text-slate-500 hover:text-slate-800 transition-all"

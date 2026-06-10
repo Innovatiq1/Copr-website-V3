@@ -11,8 +11,8 @@ const products = [
     tagline: 'Smart Learning. Simplified Growth.',
     description: 'AI-powered training lifecycle management with intelligent recommendations, advanced analytics, and automated workflows.',
     href: '/products/skillera',
-    gradient: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
-    color: '#1D4ED8',
+    gradient: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+    color: '#BE123C',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Learning'],
     badge: 'Most Popular',
   },
@@ -23,7 +23,7 @@ const products = [
     description: 'Comprehensive learning platform enabling organizations to create, manage, and deliver training programs at scale.',
     href: '/products/learnpro',
     gradient: 'linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)',
-    color: '#3B82F6',
+    color: '#F43F5E',
     features: ['Course Builder', 'Progress Tracking', 'Certifications', 'Social Learning'],
     badge: null,
   },
@@ -62,7 +62,7 @@ export default function ProductsPage() {
 
       <section className="relative py-24 overflow-hidden" style={{ background: '#080F20' }}>
         <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top left, rgba(29,78,216,0.1) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top left, rgba(190,18,60,0.1) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom right, rgba(139,92,246,0.08) 0%, transparent 60%)' }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -119,7 +119,7 @@ export default function ProductsPage() {
                 border: '1px solid rgba(255,255,255,0.15)',
               }}>
               <div className="absolute top-0 left-0 right-0 h-[2px]"
-                style={{ background: 'linear-gradient(90deg, #1D4ED8, #8B5CF6, transparent)' }} />
+                style={{ background: 'linear-gradient(90deg, #BE123C, #8B5CF6, transparent)' }} />
               <h3 className="text-xl font-bold text-white mb-3">Not Sure Which Product Fits Your Needs?</h3>
               <p className="text-gray-400 mb-6 max-w-xl mx-auto">
                 Our product experts can help you find the right solution for your organization.
@@ -127,7 +127,7 @@ export default function ProductsPage() {
               </p>
               <Link href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(29,78,216,0.35)' }}>
+                style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 16px rgba(190,18,60,0.35)' }}>
                 Talk to an Expert <ArrowRight size={16} />
               </Link>
             </div>

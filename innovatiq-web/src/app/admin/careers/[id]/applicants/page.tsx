@@ -12,7 +12,7 @@ type Applicant = any;
 const STATUS_OPTIONS = ['Reviewed', 'Shortlisted', 'Rejected'];
 
 const statusColors: Record<string, { bg: string; color: string; border: string }> = {
-  Reviewed:   { bg: 'rgba(59,130,246,0.08)',  color: '#2563EB', border: 'rgba(59,130,246,0.2)' },
+  Reviewed:   { bg: 'rgba(244,63,94,0.08)',  color: '#E11D48', border: 'rgba(244,63,94,0.2)' },
   Shortlisted:{ bg: 'rgba(16,185,129,0.08)',  color: '#059669', border: 'rgba(16,185,129,0.2)' },
   Rejected:   { bg: 'rgba(220,38,38,0.08)',   color: '#DC2626', border: 'rgba(220,38,38,0.2)' },
   Pending:    { bg: 'rgba(245,158,11,0.08)',  color: '#D97706', border: 'rgba(245,158,11,0.2)' },

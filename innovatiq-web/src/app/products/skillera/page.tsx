@@ -27,8 +27,8 @@ export default function SkillEraPage() {
         { title: 'Mobile Accessibility', description: 'Access training anytime, anywhere, on any device with our mobile-responsive platform, ensuring seamless learning for remote users.', icon: '📱' },
         { title: 'Third-Party Integration', description: 'Connect seamlessly with HRMS, LMS, CRMs, ERPs, and other enterprise business tools.', icon: '🔗' },
       ]}
-      gradient="linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)"
-      color="#1D4ED8"
+      gradient="linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)"
+      color="#BE123C"
       productType="tms"
     />
   );

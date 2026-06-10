@@ -64,8 +64,8 @@ export default function CareerCreatePage() {
   };
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    e.currentTarget.style.borderColor = '#1D4ED8';
-    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(29,78,216,0.1)';
+    e.currentTarget.style.borderColor = '#BE123C';
+    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(190,18,60,0.1)';
   };
   const blurStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     e.currentTarget.style.borderColor = '#E2E8F0';
@@ -142,7 +142,7 @@ export default function CareerCreatePage() {
             <div className="flex gap-2 mb-2 flex-wrap">
               {skills.map((skill) => (
                 <span key={skill} className="flex items-center gap-1.5 px-3 py-1 rounded-full text-sm text-slate-700"
-                  style={{ background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.2)' }}>
+                  style={{ background: 'rgba(190,18,60,0.08)', border: '1px solid rgba(190,18,60,0.2)' }}>
                   {skill}
                   <button type="button" onClick={() => removeSkill(skill)} className="text-slate-400 hover:text-red-500 cursor-pointer">
                     <X size={12} />
@@ -167,7 +167,7 @@ export default function CareerCreatePage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}>
             {loading ? 'Creating...' : 'Create Career'}
           </button>
           <Link href="/admin/careers"

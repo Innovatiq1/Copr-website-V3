@@ -62,8 +62,8 @@ export default function AwardCreatePage() {
   };
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = '#1D4ED8';
-    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(29,78,216,0.1)';
+    e.currentTarget.style.borderColor = '#BE123C';
+    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(190,18,60,0.1)';
   };
   const blurStyle = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.currentTarget.style.borderColor = '#E2E8F0';
@@ -153,7 +153,7 @@ export default function AwardCreatePage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}>
             {loading ? 'Creating...' : 'Create Award'}
           </button>
           <Link href="/admin/awards"

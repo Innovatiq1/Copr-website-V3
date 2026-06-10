@@ -3,25 +3,25 @@ import Image from 'next/image';
 import { ArrowRight, Phone, Mail, Shield, Clock, Award, Globe } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 
-const CTA_GRAD = 'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%)';
-const CTA_CLR  = '#1D4ED8';
+const CTA_GRAD = 'linear-gradient(135deg, #881337 0%, #BE123C 50%, #E11D48 100%)';
+const CTA_CLR  = '#BE123C';
 
 export default function CtaSection() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #F5F9FF 30%, #EEF4FF 55%, #F5F9FF 80%, #FFFFFF 100%)' }}>
+    <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF8F9 30%, #FFF0F2 55%, #FFF8F9 80%, #FFFFFF 100%)' }}>
 
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.08) 0%, transparent 65%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.08) 0%, transparent 65%)' }} />
       <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at top left, rgba(30,58,138,0.07) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at top left, rgba(136,19,55,0.07) 0%, transparent 70%)' }} />
       <div className="absolute bottom-0 right-0 w-150 h-150 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(37,99,235,0.07) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at bottom right, rgba(225,29,72,0.07) 0%, transparent 70%)' }} />
 
       {/* Dot grid pattern */}
       <div className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(29,78,216,0.18) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(190,18,60,0.18) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
           maskImage: 'radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 100%)',
           WebkitMaskImage: 'radial-gradient(ellipse 85% 80% at 50% 50%, black 20%, transparent 100%)',
@@ -31,28 +31,28 @@ export default function CtaSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Large soft blobs */}
         <div className="float absolute rounded-full"
-          style={{ top: '10%', left: '8%', width: '14px', height: '14px', background: '#3B82F6', opacity: 0.35, boxShadow: '0 0 18px rgba(59,130,246,0.5)' }} />
+          style={{ top: '10%', left: '8%', width: '14px', height: '14px', background: '#F43F5E', opacity: 0.35, boxShadow: '0 0 18px rgba(244,63,94,0.5)' }} />
         <div className="float-d absolute rounded-full"
-          style={{ top: '20%', right: '10%', width: '10px', height: '10px', background: '#2563EB', opacity: 0.40, boxShadow: '0 0 14px rgba(37,99,235,0.5)' }} />
+          style={{ top: '20%', right: '10%', width: '10px', height: '10px', background: '#E11D48', opacity: 0.40, boxShadow: '0 0 14px rgba(225,29,72,0.5)' }} />
         <div className="float absolute rounded-full"
-          style={{ bottom: '18%', left: '12%', width: '8px', height: '8px', background: '#1D4ED8', opacity: 0.35, boxShadow: '0 0 12px rgba(29,78,216,0.5)' }} />
+          style={{ bottom: '18%', left: '12%', width: '8px', height: '8px', background: '#BE123C', opacity: 0.35, boxShadow: '0 0 12px rgba(190,18,60,0.5)' }} />
         <div className="float-d absolute rounded-full"
-          style={{ bottom: '25%', right: '8%', width: '12px', height: '12px', background: '#60A5FA', opacity: 0.40, boxShadow: '0 0 16px rgba(96,165,250,0.5)' }} />
+          style={{ bottom: '25%', right: '8%', width: '12px', height: '12px', background: '#FDA4AF', opacity: 0.40, boxShadow: '0 0 16px rgba(253,164,175,0.5)' }} />
         <div className="float absolute rounded-full"
-          style={{ top: '45%', left: '3%', width: '6px', height: '6px', background: '#3B82F6', opacity: 0.30 }} />
+          style={{ top: '45%', left: '3%', width: '6px', height: '6px', background: '#F43F5E', opacity: 0.30 }} />
         <div className="float-d absolute rounded-full"
-          style={{ top: '60%', right: '4%', width: '8px', height: '8px', background: '#93C5FD', opacity: 0.45 }} />
+          style={{ top: '60%', right: '4%', width: '8px', height: '8px', background: '#FECDD3', opacity: 0.45 }} />
         <div className="float absolute rounded-full"
-          style={{ top: '30%', left: '22%', width: '5px', height: '5px', background: '#1D4ED8', opacity: 0.25 }} />
+          style={{ top: '30%', left: '22%', width: '5px', height: '5px', background: '#BE123C', opacity: 0.25 }} />
         <div className="float-d absolute rounded-full"
-          style={{ bottom: '40%', right: '20%', width: '6px', height: '6px', background: '#2563EB', opacity: 0.28 }} />
+          style={{ bottom: '40%', right: '20%', width: '6px', height: '6px', background: '#E11D48', opacity: 0.28 }} />
         {/* Rings */}
         <div className="float absolute rounded-full"
-          style={{ top: '8%', right: '22%', width: '60px', height: '60px', border: '1.5px solid rgba(29,78,216,0.18)' }} />
+          style={{ top: '8%', right: '22%', width: '60px', height: '60px', border: '1.5px solid rgba(190,18,60,0.18)' }} />
         <div className="float-d absolute rounded-full"
-          style={{ bottom: '12%', left: '18%', width: '80px', height: '80px', border: '1.5px dashed rgba(59,130,246,0.20)' }} />
+          style={{ bottom: '12%', left: '18%', width: '80px', height: '80px', border: '1.5px dashed rgba(244,63,94,0.20)' }} />
         <div className="float absolute rounded-full"
-          style={{ top: '50%', right: '2%', width: '44px', height: '44px', border: '1px solid rgba(29,78,216,0.15)' }} />
+          style={{ top: '50%', right: '2%', width: '44px', height: '44px', border: '1px solid rgba(190,18,60,0.15)' }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
@@ -64,8 +64,8 @@ export default function CtaSection() {
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
               style={{
                 background: '#FFFFFF',
-                border: '1.5px solid rgba(29,78,216,0.38)',
-                boxShadow: '0 2px 10px rgba(29,78,216,0.12)',
+                border: '1.5px solid rgba(190,18,60,0.38)',
+                boxShadow: '0 2px 10px rgba(190,18,60,0.12)',
               }}>
               <span className="w-1.5 h-1.5 rounded-full animate-pulse"
                 style={{ background: CTA_GRAD }} />
@@ -101,7 +101,7 @@ export default function CtaSection() {
                 className="inline-flex items-center gap-2 px-8 py-4 text-white text-base font-semibold rounded-xl transition-all duration-300 hover:-translate-y-1"
                 style={{
                   background: CTA_GRAD,
-                  boxShadow: '0 8px 32px rgba(29,78,216,0.35), 0 2px 8px rgba(30,58,138,0.20)',
+                  boxShadow: '0 8px 32px rgba(190,18,60,0.35), 0 2px 8px rgba(136,19,55,0.20)',
                 }}>
                 Get Free Consultation <ArrowRight size={17} />
               </Link>
@@ -126,7 +126,7 @@ export default function CtaSection() {
                 <div key={label} className="flex items-center gap-3 rounded-xl p-3.5"
                   style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.20)' }}>
+                    style={{ background: 'rgba(190,18,60,0.10)', border: '1px solid rgba(190,18,60,0.20)' }}>
                     <Icon size={17} style={{ color: CTA_CLR }} />
                   </div>
                   <div>
@@ -161,12 +161,12 @@ export default function CtaSection() {
                     <div key={label} className="flex items-center gap-4 p-4 rounded-2xl transition-all duration-200 hover:bg-gray-50"
                       style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                        style={{ background: 'rgba(29,78,216,0.08)' }}>
+                        style={{ background: 'rgba(190,18,60,0.08)' }}>
                         <Icon size={16} style={{ color: CTA_CLR }} />
                       </div>
                       <div>
                         <p className="text-xs text-slate-600 font-semibold mb-0.5">{label}</p>
-                        <a href={href} className="font-semibold text-gray-800 text-sm transition-colors hover:text-[#1D4ED8]">
+                        <a href={href} className="font-semibold text-gray-800 text-sm transition-colors hover:text-[#BE123C]">
                           {value}
                         </a>
                       </div>

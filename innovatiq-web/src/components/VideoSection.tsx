@@ -60,8 +60,8 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
     <section className="relative py-20 overflow-hidden" style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(29,78,216,0.12)] px-4 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
+          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
             Video
           </span>
           <h2 className="text-3xl font-bold mb-2" style={{ color: headingColor }}>

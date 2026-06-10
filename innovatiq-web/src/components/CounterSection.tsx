@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { Trophy, Zap, Users, Star } from 'lucide-react';
 
 const stats = [
-  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
-  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
-  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
-  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#1D4ED8', light: '#EFF6FF', mid: 'rgba(29,78,216,0.12)' },
+  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
 ];
 
 // visible is passed from StatCard — no separate IntersectionObserver needed
@@ -66,8 +66,8 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
           ? 'opacity 0.4s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, background 0.35s ease'
           : `opacity 0.6s ease ${index * 120}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
         background: hovered
-          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box`
-          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 20%, rgba(29,78,216,0.80) 45%, rgba(29,78,216,0.33) 70%, transparent 90%) border-box`,
+          ? `linear-gradient(to bottom, ${stat.light} 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 20%, rgba(190,18,60,0.80) 45%, rgba(190,18,60,0.33) 70%, transparent 90%) border-box`
+          : `linear-gradient(to bottom, ${stat.light} 0%, #FFFFFF 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 20%, rgba(190,18,60,0.80) 45%, rgba(190,18,60,0.33) 70%, transparent 90%) border-box`,
         borderRadius: '24px',
         padding: '28px 22px 24px',
         textAlign: 'left' as const,
@@ -141,15 +141,15 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 export default function CounterSection() {
   return (
     <section className="relative py-24 overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #F8FBFF 0%, #EFF6FF 35%, #E8F4FF 65%, #F8FBFF 100%)'
+      background: 'linear-gradient(180deg, #FFFAFB 0%, #FFF1F2 35%, #FFE8EC 65%, #FFFAFB 100%)'
     }}>
 
       {/* Premium ambient decorative radial glows */}
       <div className="absolute top-0 left-0 w-[45%] h-full pointer-events-none opacity-40" style={{
-        background: 'radial-gradient(circle at 10% 20%, rgba(29,78,216,0.05) 0%, transparent 60%)',
+        background: 'radial-gradient(circle at 10% 20%, rgba(190,18,60,0.05) 0%, transparent 60%)',
       }} />
       <div className="absolute bottom-0 left-[20%] w-[35%] h-[60%] pointer-events-none opacity-40" style={{
-        background: 'radial-gradient(circle at 50% 80%, rgba(59,130,246,0.05) 0%, transparent 65%)',
+        background: 'radial-gradient(circle at 50% 80%, rgba(244,63,94,0.05) 0%, transparent 65%)',
       }} />
 
       {/* Image panel — slanted left edge via clip-path */}
@@ -169,7 +169,7 @@ export default function CounterSection() {
 
       {/* Top/bottom fade to blend with section bg */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(180deg, #F8FBFF 0%, transparent 12%, transparent 88%, #F8FBFF 100%)',
+        background: 'linear-gradient(180deg, #FFFAFB 0%, transparent 12%, transparent 88%, #FFFAFB 100%)',
         clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
         zIndex: 2,
       }} />
@@ -178,7 +178,7 @@ export default function CounterSection() {
       <div className="absolute inset-y-0 pointer-events-none" style={{
         left: 'calc(45% - 60px)',
         width: '120px',
-        background: 'linear-gradient(90deg, transparent 0%, rgba(29,78,216,0.07) 50%, transparent 100%)',
+        background: 'linear-gradient(90deg, transparent 0%, rgba(190,18,60,0.07) 50%, transparent 100%)',
         zIndex: 3,
       }} />
 
@@ -187,14 +187,14 @@ export default function CounterSection() {
 
           {/* Left — text + certs */}
           <div>
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
-              style={{ background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
+              style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
               Our Impact
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-5 leading-tight">
               Numbers That<br />
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #1E40AF 0%, #1D4ED8 40%, #2563EB 100%)' }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: 'linear-gradient(135deg, #9F1239 0%, #BE123C 40%, #E11D48 100%)' }}>
                 Speak for Themselves
               </span>
             </h2>

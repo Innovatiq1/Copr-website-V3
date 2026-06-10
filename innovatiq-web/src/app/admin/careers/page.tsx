@@ -76,7 +76,7 @@ export default function CareersPage() {
           <Link
             href="/admin/careers/create"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
-            style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}
+            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}
           >
             <Plus size={16} /> Create Career
           </Link>
@@ -172,7 +172,7 @@ export default function CareersPage() {
                         <Link
                           href={`/admin/careers/${career._id}/applicants`}
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer"
-                          style={{ background: 'rgba(59,130,246,0.08)', color: '#3B82F6', border: '1px solid rgba(59,130,246,0.2)' }}
+                          style={{ background: 'rgba(244,63,94,0.08)', color: '#F43F5E', border: '1px solid rgba(244,63,94,0.2)' }}
                         >
                           <Users size={12} /> Applicants
                         </Link>

@@ -50,15 +50,15 @@ export default function AdminLoginPage() {
       {/* Ambient orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[700px] h-[700px]"
-          style={{ background: 'radial-gradient(circle at top right, rgba(29,78,216,0.06) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.06) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px]"
-          style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.08) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.08) 0%, transparent 60%)' }} />
       </div>
 
       {/* Floating decorative rings */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[600px] h-[600px] rounded-full border border-dashed"
-          style={{ borderColor: 'rgba(29,78,216,0.1)', animation: 'spin 30s linear infinite' }} />
+          style={{ borderColor: 'rgba(190,18,60,0.1)', animation: 'spin 30s linear infinite' }} />
       </div>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[400px] h-[400px] rounded-full border border-dashed"
@@ -79,12 +79,12 @@ export default function AdminLoginPage() {
           <div className="text-center mb-8">
             <div className="relative inline-flex items-center justify-center mb-5">
               <div className="absolute inset-0 rounded-2xl blur-lg"
-                style={{ background: 'rgba(29,78,216,0.2)' }} />
+                style={{ background: 'rgba(190,18,60,0.2)' }} />
               <div
                 className="relative w-16 h-16 rounded-2xl flex items-center justify-center"
                 style={{
-                  background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
-                  boxShadow: '0 8px 32px rgba(29,78,216,0.35)',
+                  background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                  boxShadow: '0 8px 32px rgba(190,18,60,0.35)',
                 }}
               >
                 <Shield size={26} color="white" />
@@ -130,9 +130,9 @@ export default function AdminLoginPage() {
                     border: '1px solid #E2E8F0',
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(29,78,216,0.5)';
-                    e.currentTarget.style.background = 'rgba(29,78,216,0.02)';
-                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(29,78,216,0.12)';
+                    e.currentTarget.style.borderColor = 'rgba(190,18,60,0.5)';
+                    e.currentTarget.style.background = 'rgba(190,18,60,0.02)';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(190,18,60,0.12)';
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = '#E2E8F0';
@@ -162,9 +162,9 @@ export default function AdminLoginPage() {
                     border: '1px solid #E2E8F0',
                   }}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(29,78,216,0.5)';
-                    e.currentTarget.style.background = 'rgba(29,78,216,0.02)';
-                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(29,78,216,0.12)';
+                    e.currentTarget.style.borderColor = 'rgba(190,18,60,0.5)';
+                    e.currentTarget.style.background = 'rgba(190,18,60,0.02)';
+                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(190,18,60,0.12)';
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = '#E2E8F0';
@@ -188,11 +188,11 @@ export default function AdminLoginPage() {
               disabled={loading}
               className="relative w-full py-3.5 rounded-xl text-white font-semibold text-sm transition-all mt-2 overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               style={{
-                background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
-                boxShadow: '0 8px 32px rgba(29,78,216,0.3)',
+                background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                boxShadow: '0 8px 32px rgba(190,18,60,0.3)',
               }}
-              onMouseEnter={e => !loading && (e.currentTarget.style.boxShadow = '0 12px 40px rgba(29,78,216,0.45)')}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 8px 32px rgba(29,78,216,0.3)')}
+              onMouseEnter={e => !loading && (e.currentTarget.style.boxShadow = '0 12px 40px rgba(190,18,60,0.45)')}
+              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 8px 32px rgba(190,18,60,0.3)')}
             >
               <span className="relative">
                 {loading ? (

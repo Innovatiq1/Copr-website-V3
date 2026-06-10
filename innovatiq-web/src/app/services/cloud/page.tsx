@@ -1,4 +1,4 @@
-import ServicePageTemplate from '@/components/ServicePageTemplate';
+﻿import ServicePageTemplate from '@/components/ServicePageTemplate';
 
 export default function CloudPage() {
   return (
@@ -28,7 +28,7 @@ export default function CloudPage() {
         { step: '3', title: 'Migration', description: 'Execute phased migration with zero-downtime approach.' },
         { step: '4', title: 'Optimize', description: 'Continuous optimization for performance and cost efficiency.' },
       ]}
-      color="#3B82F6"
+      color="#F43F5E"
       serviceType="cloud"
     />
   );

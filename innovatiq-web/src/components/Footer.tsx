@@ -2,10 +2,10 @@
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
 
-const CRIMSON = '#60A5FA';
-const GOLD    = '#93C5FD';
+const CRIMSON = '#FDA4AF';
+const GOLD    = '#FECDD3';
 const NAVY    = '#0F172A';
-const NAVY2   = '#1E3A8A';
+const NAVY2   = '#881337';
 
 export default function Footer() {
   return (

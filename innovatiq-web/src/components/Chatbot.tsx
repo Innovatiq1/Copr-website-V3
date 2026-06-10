@@ -120,9 +120,9 @@ export default function Chatbot() {
           onClick={() => setOpen(o => !o)}
           className="w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
           style={{
-            background: 'linear-gradient(145deg, #0EA5E9 0%, #2563EB 55%, #1E40AF 100%)',
+            background: 'linear-gradient(145deg, #FB7185 0%, #E11D48 55%, #9F1239 100%)',
             boxShadow:
-              '0 2px 4px rgba(0,0,0,0.06), 0 8px 28px rgba(29,78,216,0.42), 0 20px 52px rgba(29,78,216,0.18), 0 0 0 1px rgba(29,78,216,0.25), inset 0 1px 0 rgba(255,255,255,0.18)',
+              '0 2px 4px rgba(0,0,0,0.06), 0 8px 28px rgba(190,18,60,0.42), 0 20px 52px rgba(190,18,60,0.18), 0 0 0 1px rgba(190,18,60,0.25), inset 0 1px 0 rgba(255,255,255,0.18)',
           }}
           aria-label={open ? 'Close chat' : 'Open chat'}
         >
@@ -137,7 +137,7 @@ export default function Chatbot() {
           style={{ border: '1px solid rgba(0,0,0,0.10)', maxHeight: '520px', background: '#fff' }}
         >
           {/* Header */}
-          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}>
+          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}>
             <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
               <MessageSquare size={17} className="text-white" />
             </div>
@@ -164,7 +164,7 @@ export default function Chatbot() {
                 <div
                   className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed"
                   style={m.role === 'user'
-                    ? { background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
+                    ? { background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
                     : { background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
                 >
                   {m.text}
@@ -180,7 +180,7 @@ export default function Chatbot() {
                     key={i}
                     onClick={() => selectInterest(i)}
                     className="text-xs px-3 py-1.5 rounded-full border transition-all hover:-translate-y-0.5 font-medium"
-                    style={{ borderColor: 'rgba(29,78,216,0.4)', color: '#1D4ED8', background: 'rgba(29,78,216,0.05)' }}
+                    style={{ borderColor: 'rgba(190,18,60,0.4)', color: '#BE123C', background: 'rgba(190,18,60,0.05)' }}
                   >
                     {i}
                   </button>
@@ -205,7 +205,7 @@ export default function Chatbot() {
                     onChange={e => setForm(p => ({ ...p, [f.key]: e.target.value }))}
                     className="w-full px-3 py-2 rounded-lg border text-sm outline-none transition-colors"
                     style={{ borderColor: 'rgba(0,0,0,0.12)', color: '#374151', background: '#fff' }}
-                    onFocus={e => (e.target.style.borderColor = '#1D4ED8')}
+                    onFocus={e => (e.target.style.borderColor = '#BE123C')}
                     onBlur={e => (e.target.style.borderColor = 'rgba(0,0,0,0.12)')}
                   />
                 ))}
@@ -213,7 +213,7 @@ export default function Chatbot() {
                   onClick={handleSubmit}
                   disabled={!form.name.trim() || !form.email.trim() || submitting}
                   className="w-full py-2.5 rounded-lg text-sm font-semibold text-white flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                  style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}
                 >
                   {submitting ? 'Sending...' : <><Send size={14} /> Send Message</>}
                 </button>
@@ -234,13 +234,13 @@ export default function Chatbot() {
                 onKeyDown={e => e.key === 'Enter' && sendMessage()}
                 className="flex-1 px-4 py-2.5 rounded-xl border text-sm outline-none transition-colors"
                 style={{ borderColor: 'rgba(0,0,0,0.12)', color: '#374151', background: '#fff' }}
-                onFocus={e => (e.target.style.borderColor = '#1D4ED8')}
+                onFocus={e => (e.target.style.borderColor = '#BE123C')}
                 onBlur={e => (e.target.style.borderColor = 'rgba(0,0,0,0.12)')}
               />
               <button
                 onClick={sendMessage}
                 className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105"
-                style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}
+                style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)' }}
                 aria-label="Send"
               >
                 <ChevronRight size={18} />
@@ -253,7 +253,7 @@ export default function Chatbot() {
               <button
                 onClick={() => { reset(); }}
                 className="text-sm font-medium transition-colors hover:underline"
-                style={{ color: '#1D4ED8' }}
+                style={{ color: '#BE123C' }}
               >
                 Start a new conversation
               </button>

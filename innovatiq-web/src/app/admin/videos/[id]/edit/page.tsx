@@ -93,7 +93,7 @@ export default function VideoEditPage() {
   };
 
   const focusStyle = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.currentTarget.style.borderColor = '#1D4ED8';
+    e.currentTarget.style.borderColor = '#BE123C';
     e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,23,74,0.1)';
   };
   const blurStyle = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -105,7 +105,7 @@ export default function VideoEditPage() {
     <div className="space-y-3">
       <div className="flex items-center gap-3 cursor-pointer group" onClick={onChange}>
         <div className="w-5 h-5 rounded flex items-center justify-center transition-all shrink-0"
-          style={{ background: checked ? '#1D4ED8' : '#F1F5F9', border: checked ? '1px solid #1D4ED8' : '1px solid #CBD5E1' }}>
+          style={{ background: checked ? '#BE123C' : '#F1F5F9', border: checked ? '1px solid #BE123C' : '1px solid #CBD5E1' }}>
           {checked && (
             <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
               <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -212,7 +212,7 @@ export default function VideoEditPage() {
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
             className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
-            style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 15px rgba(14,165,233,0.30)' }}>
+            style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 15px rgba(251,113,133,0.30)' }}>
             {loading ? 'Saving...' : 'Save Changes'}
           </button>
           <Link href="/admin/videos"

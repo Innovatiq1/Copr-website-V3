@@ -34,8 +34,8 @@ export default function RootLayout({
     <html lang="en" className={plusJakartaSans.variable}>
       <body className="antialiased font-[family-name:var(--font-sans)]">
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
-          <div style={{ position: 'absolute', top: 0, right: 0, width: '60vw', height: '50vh', background: 'radial-gradient(ellipse at top right, rgba(29,78,216,0.04) 0%, transparent 65%)', }} />
-          <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50vw', height: '50vh', background: 'radial-gradient(ellipse at bottom left, rgba(59,130,246,0.03) 0%, transparent 65%)', }} />
+          <div style={{ position: 'absolute', top: 0, right: 0, width: '60vw', height: '50vh', background: 'radial-gradient(ellipse at top right, rgba(190,18,60,0.04) 0%, transparent 65%)', }} />
+          <div style={{ position: 'absolute', bottom: 0, left: 0, width: '50vw', height: '50vh', background: 'radial-gradient(ellipse at bottom left, rgba(244,63,94,0.03) 0%, transparent 65%)', }} />
         </div>
         <SiteShell>{children}</SiteShell>
       </body>

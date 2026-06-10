@@ -37,7 +37,7 @@ export default function ServicePageTemplate({
   overviewPoints,
   benefits,
   processSteps,
-  color = '#1D4ED8',
+  color = '#BE123C',
   detailCards,
   investmentCards,
   serviceType,
@@ -111,7 +111,7 @@ export default function ServicePageTemplate({
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${color}05 0%, transparent 70%)` }} />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top right, rgba(59,130,246,0.04) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse at top right, rgba(244,63,94,0.04) 0%, transparent 70%)' }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/Design.svg" alt="" aria-hidden="true"
           className="absolute right-0 bottom-0 h-[70%] max-h-[400px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
@@ -125,7 +125,7 @@ export default function ServicePageTemplate({
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
               Key{' '}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #3B82F6 100%)` }}>
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #F43F5E 100%)` }}>
                 Benefits
               </span>
             </h2>
@@ -177,7 +177,7 @@ export default function ServicePageTemplate({
               </span>
               <h2 className="text-4xl font-bold text-gray-900">
                 Our{' '}
-                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #3B82F6 100%)` }}>
+                <span className="bg-clip-text text-transparent" style={{ backgroundImage: `linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #F43F5E 100%)` }}>
                   Approach
                 </span>
               </h2>

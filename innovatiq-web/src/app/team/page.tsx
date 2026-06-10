@@ -33,7 +33,7 @@ const leadership = [
     ],
     expertise: ['Sales & Business Development', 'Enterprise IT', 'Strategic Leadership'],
     photo: '/images/aboutUs/ourTeam/Krishna.jpeg',
-    accent: '#1D4ED8',
+    accent: '#BE123C',
   },
   {
     name: 'Prashanth',
@@ -49,7 +49,7 @@ const leadership = [
     bio: 'An established and proven leader with over 28+ years of experience, including a significant tenure at a large German-based NYSE-listed company. A business-focused professional and thought leader in Management, Sales, and Business Consulting, Srinivas has built a career at the intersection of strategy and execution.\n\nHe has extensive experience managing company operations, P&L responsibilities, and driving cross-functional teams across the globe. His approach combines the strategic clarity of a seasoned consultant with the hands-on discipline of an executioner — consistently leveraging organizational competencies to align delivery with the business objectives of customers.\n\nAs Business Head India, Srinivas brings this global perspective and deep domain expertise to accelerate Innovatiq\'s growth, strengthen client relationships, and build a high-performing delivery engine in the Indian market.',
     expertise: ['Business Development', 'P&L Management', 'Strategic Leadership'],
     photo: '/images/aboutUs/ourTeam/Srinivash.PNG',
-    accent: '#3B82F6',
+    accent: '#F43F5E',
   },
   {
     name: 'Sujatha',
@@ -77,7 +77,7 @@ const teamMembers = [
     bio: 'A dynamic and results-oriented sales leader, Thomas brings extensive experience in driving business growth and fostering long-term client success. With a strong track record in sales and marketing, he has consistently delivered multi-million-dollar revenues and secured key strategic accounts across competitive markets.',
     expertise: ['Strategic Account Management', 'Business Development', 'Team Leadership'],
     photo: '/images/aboutUs/ourTeam/Thomas-1195x1536.png',
-    accent: '#3B82F6',
+    accent: '#F43F5E',
     photoPosition: 'center',
   },
   {
@@ -138,46 +138,46 @@ export default function TeamPage() {
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(29,78,216,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(190,18,60,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
         <div className="absolute top-0 right-0 w-175 h-150 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top right, rgba(29,78,216,0.09) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(ellipse at top right, rgba(190,18,60,0.09) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-125 h-100 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at bottom left, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(ellipse at bottom left, rgba(244,63,94,0.07) 0%, transparent 60%)' }} />
         <div className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.03) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.03) 0%, transparent 70%)' }} />
 
         {/* Soft ambient blobs */}
         <div className="absolute top-16 right-16 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.11) 0%, transparent 70%)', animation: 'blob-drift-1 9s ease-in-out infinite' }} />
+          style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.11) 0%, transparent 70%)', animation: 'blob-drift-1 9s ease-in-out infinite' }} />
         <div className="absolute bottom-12 left-16 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 12s ease-in-out infinite' }} />
+          style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 12s ease-in-out infinite' }} />
         {/* Shapes scattered randomly all over */}
         <div className="absolute top-10 left-[7%] w-9 h-9 pointer-events-none"
-          style={{ background: 'rgba(29,78,216,0.16)', borderRadius: '3px', animation: 'diamond-spin-1 9s ease-in-out infinite' }} />
+          style={{ background: 'rgba(190,18,60,0.16)', borderRadius: '3px', animation: 'diamond-spin-1 9s ease-in-out infinite' }} />
         <div className="absolute top-8 left-[38%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(29,78,216,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          style={{ background: 'rgba(190,18,60,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 8s ease-in-out infinite', animationDelay: '-1s' }} />
         <div className="absolute top-[18%] left-[63%] w-5 h-5 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.26)', borderRadius: '2px', animation: 'diamond-spin-1 7s ease-in-out infinite', animationDelay: '-2s' }} />
         <div className="absolute top-[42%] left-[22%] w-5 h-5 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.22)', borderRadius: '2px', animation: 'diamond-spin-2 10s ease-in-out infinite', animationDelay: '-4s' }} />
         <div className="absolute top-[50%] right-[9%] w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(59,130,246,0.20)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
+          style={{ background: 'rgba(244,63,94,0.20)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
         <div className="absolute bottom-14 left-[57%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(59,130,246,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite', animationDelay: '-6s' }} />
+          style={{ background: 'rgba(244,63,94,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite', animationDelay: '-6s' }} />
         <div className="absolute bottom-16 right-[7%] w-8 h-8 pointer-events-none"
-          style={{ background: 'rgba(29,78,216,0.15)', borderRadius: '3px', animation: 'diamond-spin-1 12s ease-in-out infinite', animationDelay: '-2s' }} />
+          style={{ background: 'rgba(190,18,60,0.15)', borderRadius: '3px', animation: 'diamond-spin-1 12s ease-in-out infinite', animationDelay: '-2s' }} />
 
         <svg className="absolute top-16 right-[9%] pointer-events-none" width="60" height="60" style={{ animation: 'hex-float 11s ease-in-out infinite' }}>
-          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(29,78,216,0.22)" strokeWidth="1.5" />
+          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(190,18,60,0.22)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute top-[32%] left-[4%] pointer-events-none" width="44" height="44" style={{ animation: 'hex-float 8s ease-in-out infinite', animationDelay: '-2s' }}>
           <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(245,158,11,0.28)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute top-[28%] left-[46%] pointer-events-none" width="52" height="52" style={{ animation: 'hex-float-rev 14s ease-in-out infinite', animationDelay: '-3s' }}>
-          <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(59,130,246,0.18)" strokeWidth="1.5" />
+          <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(244,63,94,0.18)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute bottom-20 left-[26%] pointer-events-none" width="72" height="72" style={{ animation: 'hex-float-rev 15s ease-in-out infinite', animationDelay: '-5s' }}>
-          <polygon points="36,2 67,19 67,53 36,70 5,53 5,19" fill="none" stroke="rgba(59,130,246,0.16)" strokeWidth="1" />
+          <polygon points="36,2 67,19 67,53 36,70 5,53 5,19" fill="none" stroke="rgba(244,63,94,0.16)" strokeWidth="1" />
         </svg>
         <svg className="absolute bottom-10 right-[28%] pointer-events-none" width="40" height="40" style={{ animation: 'hex-float 9s ease-in-out infinite', animationDelay: '-7s' }}>
           <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="rgba(245,158,11,0.24)" strokeWidth="1.5" />
@@ -186,31 +186,31 @@ export default function TeamPage() {
         <div className="absolute top-20 left-[22%] w-7 h-7 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 10s ease-in-out infinite', animationDelay: '-4s' }} />
         <div className="absolute top-[55%] left-[36%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(29,78,216,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          style={{ background: 'rgba(190,18,60,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 8s ease-in-out infinite', animationDelay: '-1s' }} />
         <div className="absolute top-[12%] right-[30%] w-5 h-5 pointer-events-none"
-          style={{ background: 'rgba(59,130,246,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 11s ease-in-out infinite', animationDelay: '-5s' }} />
+          style={{ background: 'rgba(244,63,94,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 11s ease-in-out infinite', animationDelay: '-5s' }} />
         <div className="absolute bottom-[25%] right-[20%] w-7 h-7 pointer-events-none"
           style={{ background: 'rgba(245,158,11,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 9s ease-in-out infinite', animationDelay: '-3s' }} />
         <div className="absolute bottom-8 left-[11%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(29,78,216,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 7s ease-in-out infinite', animationDelay: '-2s' }} />
+          style={{ background: 'rgba(190,18,60,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 7s ease-in-out infinite', animationDelay: '-2s' }} />
 
         <div className="absolute top-[15%] left-[51%] w-20 h-20 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(29,78,216,0.13)', animation: 'hex-float 13s ease-in-out infinite', animationDelay: '-6s' }} />
+          style={{ border: '1px solid rgba(190,18,60,0.13)', animation: 'hex-float 13s ease-in-out infinite', animationDelay: '-6s' }} />
         <div className="absolute top-[62%] right-[16%] w-14 h-14 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(59,130,246,0.16)', animation: 'hex-float-rev 11s ease-in-out infinite', animationDelay: '-4s' }} />
+          style={{ border: '1px solid rgba(244,63,94,0.16)', animation: 'hex-float-rev 11s ease-in-out infinite', animationDelay: '-4s' }} />
         <div className="absolute bottom-12 left-[43%] w-10 h-10 rounded-full pointer-events-none"
           style={{ border: '1px solid rgba(245,158,11,0.20)', animation: 'hex-float 10s ease-in-out infinite', animationDelay: '-4s' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-              style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8] animate-pulse" />
+              style={{ color: '#BE123C', background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.40)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C] animate-pulse" />
               Leadership
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Visionary{' '}
-              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Leaders</span>
+              <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Leaders</span>
             </h2>
             <p className="text-slate-500 font-medium max-w-xl mx-auto text-base leading-relaxed">
               Decades of combined experience driving digital transformation across Asia Pacific and beyond.
@@ -240,38 +240,38 @@ export default function TeamPage() {
       {/* Team Members */}
       <section className="relative pt-12 pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(59,130,246,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+          style={{ backgroundImage: 'radial-gradient(circle, rgba(244,63,94,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="absolute bottom-0 right-0 w-125 h-100 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at bottom right, rgba(29,78,216,0.08) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(ellipse at bottom right, rgba(190,18,60,0.08) 0%, transparent 60%)' }} />
         <div className="absolute top-0 left-0 w-125 h-100 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at top left, rgba(59,130,246,0.07) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(ellipse at top left, rgba(244,63,94,0.07) 0%, transparent 60%)' }} />
 
         {/* Soft ambient blobs */}
         <div className="absolute top-10 right-10 w-64 h-64 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 11s ease-in-out infinite' }} />
+          style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 11s ease-in-out infinite' }} />
         <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(29,78,216,0.08) 0%, transparent 70%)', animation: 'blob-drift-1 13s ease-in-out infinite', animationDelay: '-4s' }} />
+          style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.08) 0%, transparent 70%)', animation: 'blob-drift-1 13s ease-in-out infinite', animationDelay: '-4s' }} />
         {/* Diamonds */}
         <div className="absolute top-16 right-20 w-8 h-8 pointer-events-none"
-          style={{ background: 'rgba(59,130,246,0.20)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite' }} />
+          style={{ background: 'rgba(244,63,94,0.20)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite' }} />
         <div className="absolute bottom-20 left-24 w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(29,78,216,0.18)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
+          style={{ background: 'rgba(190,18,60,0.18)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
         {/* Hollow hexagons */}
         <svg className="absolute top-16 right-1/3 pointer-events-none" width="56" height="56" style={{ animation: 'hex-float 12s ease-in-out infinite' }}>
-          <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" fill="none" stroke="rgba(59,130,246,0.20)" strokeWidth="1.5" />
+          <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" fill="none" stroke="rgba(244,63,94,0.20)" strokeWidth="1.5" />
         </svg>
         <svg className="absolute bottom-16 left-1/3 pointer-events-none" width="72" height="72" style={{ animation: 'hex-float-rev 16s ease-in-out infinite', animationDelay: '-6s' }}>
-          <polygon points="36,2 68,19 68,53 36,70 4,53 4,19" fill="none" stroke="rgba(29,78,216,0.16)" strokeWidth="1" />
+          <polygon points="36,2 68,19 68,53 36,70 4,53 4,19" fill="none" stroke="rgba(190,18,60,0.16)" strokeWidth="1" />
         </svg>
         {/* Triangle */}
         <div className="absolute top-1/2 right-16 w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(59,130,246,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 10s ease-in-out infinite', animationDelay: '-2s' }} />
+          style={{ background: 'rgba(244,63,94,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 10s ease-in-out infinite', animationDelay: '-2s' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
               Our{' '}
-              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Expert Team</span>
+              <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Expert Team</span>
             </h2>
             <p className="text-slate-500 font-medium mt-2">100+ certified professionals delivering excellence daily.</p>
           </AnimatedSection>
@@ -281,7 +281,7 @@ export default function TeamPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #EFF6FF 0%, #FFF9F5 100%)' }}>
+      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #FFF1F2 0%, #FFF9F5 100%)' }}>
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -292,7 +292,7 @@ export default function TeamPage() {
             </p>
             <Link href="/careers"
               className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 8px 24px rgba(29,78,216,0.35)' }}>
+              style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 8px 24px rgba(190,18,60,0.35)' }}>
               View Open Positions
             </Link>
           </AnimatedSection>

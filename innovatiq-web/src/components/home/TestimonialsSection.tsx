@@ -11,7 +11,7 @@ const testimonials = [
     quote: 'Partnering with Innovatiq transformed our IT operations. Their proactive approach to infrastructure management and strategic business consulting helped us reduce downtime by 40% and improve overall efficiency. They\'re not just a vendor — they\'re a growth partner.',
     rating: 5,
     avatar: 'AL',
-    color: '#1D4ED8',
+    color: '#BE123C',
   },
   {
     name: 'Kalina',
@@ -19,7 +19,7 @@ const testimonials = [
     quote: 'Innovatiq\'s business development team understood our goals from day one. Their tailored IT roadmap and seamless cloud migration strategy positioned us for scalability and growth across Southeast Asia. Truly impressed by their commitment and expertise.',
     rating: 5,
     avatar: 'KA',
-    color: '#3B82F6',
+    color: '#F43F5E',
   },
   {
     name: 'Thomas',
@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
 
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.04) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.04) 0%, transparent 70%)' }} />
 
       {/* Illustration */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -103,7 +103,7 @@ export default function TestimonialsSection() {
             What Our{' '}
             <span className="relative inline-block">
               <span style={{
-                backgroundImage: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #1D4ED8 100%)',
+                backgroundImage: 'linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #BE123C 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
                   <linearGradient id="tg" x1="0" y1="0" x2="280" y2="0" gradientUnits="userSpaceOnUse">
                     <stop offset="0%" stopColor="#F59E0B"/>
                     <stop offset="50%" stopColor="#EF4444"/>
-                    <stop offset="100%" stopColor="#1D4ED8"/>
+                    <stop offset="100%" stopColor="#BE123C"/>
                   </linearGradient>
                 </defs>
               </svg>
@@ -188,7 +188,7 @@ export default function TestimonialsSection() {
                   style={{
                     width: i === current ? '24px' : '8px',
                     height: '8px',
-                    background: i === current ? '#1D4ED8' : 'rgba(0,0,0,0.15)',
+                    background: i === current ? '#BE123C' : 'rgba(0,0,0,0.15)',
                   }} />
               ))}
             </div>

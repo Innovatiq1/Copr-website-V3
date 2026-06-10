@@ -10,63 +10,63 @@ const SERVICES = [
     desc: 'Scalable cloud infrastructure, seamless migration, and cost optimisation for growing businesses.',
     href: '/services/cloud',
     Icon: Cloud,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
   {
     title: 'Cyber Security',
     desc: 'End-to-end security solutions protecting your data, users and business operations 24/7.',
     href: '/services/cyber-security',
     Icon: Shield,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
   {
     title: 'IT Consulting',
     desc: 'Strategic technology advisory aligning your IT roadmap with core business goals.',
     href: '/services/consulting',
     Icon: BarChart2,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
   {
     title: 'Digital Transformation',
     desc: 'Reimagine your business with AI, automation, and modern platforms at scale.',
     href: '/services/digital-transformation',
     Icon: Zap,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
   {
     title: 'Managed IT Services',
     desc: 'Proactive 24/7 IT management with guaranteed SLA performance and rapid response.',
     href: '/services/managed-it',
     Icon: Server,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
   {
     title: 'Advanced Infrastructure',
     desc: 'Enterprise-grade network and server infrastructure built to scale with your growth.',
     href: '/services/advanced-infra',
     Icon: Network,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
   {
     title: 'Field Services',
     desc: 'Certified on-site technical support, maintenance, and deployment across the region.',
     href: '/services/field-service',
     Icon: Wrench,
-    clr: '#1D4ED8',
-    bg: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)',
-    shadow: 'rgba(29,78,216,0.15)',
+    clr: '#BE123C',
+    bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
+    shadow: 'rgba(190,18,60,0.15)',
   },
 ];
 
@@ -89,25 +89,25 @@ export default function ServicesSection() {
     <section
       className="relative pt-12 sm:pt-14 pb-16 sm:pb-28 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #DBEAFE 0%, #EFF6FF 20%, #F5F9FF 55%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #FFE4E6 0%, #FFF1F2 20%, #FFF8F9 55%, #FFFFFF 100%)',
         borderRadius: '28px 28px 0 0',
         marginTop: '-40px',
         zIndex: 10,
         position: 'relative',
-        boxShadow: '0 -4px 32px rgba(29,78,216,0.06)',
+        boxShadow: '0 -4px 32px rgba(190,18,60,0.06)',
       }}>
 
       {/* Background decorations */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse at center top, rgba(29,78,216,0.07) 0%, transparent 65%)' }} />
+        style={{ background: 'radial-gradient(ellipse at center top, rgba(190,18,60,0.07) 0%, transparent 65%)' }} />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#1E40AF', background: '#FFFFFF', border: '1.5px solid rgba(30,64,175,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#1D4ED8' }} />
+            style={{ color: '#9F1239', background: '#FFFFFF', border: '1.5px solid rgba(159,18,57,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#BE123C' }} />
             What We Offer
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 mb-5 leading-tight">
@@ -115,7 +115,7 @@ export default function ServicesSection() {
             <br />
             <span className="relative inline-block mt-1">
               <span style={{
-                backgroundImage: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 45%, #1E3A8A 100%)',
+                backgroundImage: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 45%, #881337 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -126,9 +126,9 @@ export default function ServicesSection() {
                 <path d="M2 7 Q100 2 200 6 Q300 10 398 4" stroke="url(#sg)" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
                 <defs>
                   <linearGradient id="sg" x1="0" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#3B82F6"/>
-                    <stop offset="50%" stopColor="#2563EB"/>
-                    <stop offset="100%" stopColor="#1E3A8A"/>
+                    <stop offset="0%" stopColor="#F43F5E"/>
+                    <stop offset="50%" stopColor="#E11D48"/>
+                    <stop offset="100%" stopColor="#881337"/>
                   </linearGradient>
                 </defs>
               </svg>
@@ -168,9 +168,9 @@ export default function ServicesSection() {
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3"
                       style={{
-                        background: `linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)`,
-                        border: `1.5px solid rgba(29,78,216,0.18)`,
-                        boxShadow: `0 4px 12px rgba(29,78,216,0.10)`,
+                        background: `linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%)`,
+                        border: `1.5px solid rgba(190,18,60,0.18)`,
+                        boxShadow: `0 4px 12px rgba(190,18,60,0.10)`,
                       }}>
                       <s.Icon size={22} style={{ color: s.clr }} strokeWidth={1.75} />
                     </div>
@@ -200,27 +200,27 @@ export default function ServicesSection() {
             <Link href="/contact" className="group block h-full">
               <div className="relative h-full rounded-2xl p-7 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                 style={{
-                  background: 'linear-gradient(145deg, rgba(29,78,216,0.04) 0%, rgba(255,140,66,0.03) 100%)',
-                  border: '1.5px dashed rgba(29,78,216,0.22)',
+                  background: 'linear-gradient(145deg, rgba(190,18,60,0.04) 0%, rgba(255,140,66,0.03) 100%)',
+                  border: '1.5px dashed rgba(190,18,60,0.22)',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
                   minHeight: '260px',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 48px rgba(29,78,216,0.12)';
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(29,78,216,0.40)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 48px rgba(190,18,60,0.12)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(190,18,60,0.40)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(29,78,216,0.22)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(190,18,60,0.22)';
                 }}
               >
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                  style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.06) 0%, transparent 70%)' }} />
+                  style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.06) 0%, transparent 70%)' }} />
 
                 <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6"
                   style={{
-                    background: 'linear-gradient(135deg, #1D4ED8, #FF4D7C)',
-                    boxShadow: '0 8px 24px rgba(29,78,216,0.30)',
+                    background: 'linear-gradient(135deg, #BE123C, #FF4D7C)',
+                    boxShadow: '0 8px 24px rgba(190,18,60,0.30)',
                   }}>
                   <ArrowRight size={24} className="text-white" />
                 </div>
@@ -232,8 +232,8 @@ export default function ServicesSection() {
 
                 <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[12px] font-bold text-white uppercase tracking-wide transition-all duration-300 group-hover:-translate-y-0.5"
                   style={{
-                    background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
-                    boxShadow: '0 4px 14px rgba(29,78,216,0.30)',
+                    background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)',
+                    boxShadow: '0 4px 14px rgba(190,18,60,0.30)',
                   }}>
                   Talk to an Expert <ArrowRight size={12} />
                 </span>

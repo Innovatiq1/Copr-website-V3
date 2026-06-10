@@ -1,4 +1,4 @@
-import PageHero from './PageHero';
+﻿import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
@@ -45,7 +45,7 @@ export default function ProductPageTemplate({
         <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: `radial-gradient(circle at top right, ${color}08 0%, transparent 60%)` }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at bottom left, rgba(59,130,246,0.04) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }} />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/images/Design.svg" alt="" aria-hidden="true"
           className="absolute right-0 bottom-0 h-[65%] max-h-105 w-auto opacity-[0.12] pointer-events-none select-none object-contain" />

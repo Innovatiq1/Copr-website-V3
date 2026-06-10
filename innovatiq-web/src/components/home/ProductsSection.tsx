@@ -84,12 +84,12 @@ export default function ProductsSection() {
   return (
     <section
       className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #EFF6FF 0%, #F0F9FF 50%, #FFFFFF 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #FFF1F2 0%, #FFF5F6 50%, #FFFFFF 100%)' }}
     >
 
       {/* Background — single radial gradient only (no expensive tiled CSS grid) */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(29,78,216,0.04) 0%, transparent 60%)' }} />
+        style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(190,18,60,0.04) 0%, transparent 60%)' }} />
 
       {/* Decorative blob */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -101,7 +101,7 @@ export default function ProductsSection() {
         {/* Header — static, no entrance animation */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#1E40AF', background: '#FFFFFF', border: '1.5px solid rgba(30,64,175,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
+            style={{ color: '#9F1239', background: '#FFFFFF', border: '1.5px solid rgba(159,18,57,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
             <Sparkles size={11} />
             Our Products
           </span>
@@ -109,7 +109,7 @@ export default function ProductsSection() {
             Purpose-Built{' '}
             <span className="relative inline-block">
               <span style={{
-                backgroundImage: 'linear-gradient(135deg, #3B82F6 0%, #2563EB 45%, #1E3A8A 100%)',
+                backgroundImage: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 45%, #881337 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -120,9 +120,9 @@ export default function ProductsSection() {
                 <path d="M2 7 Q75 2 150 6 Q225 10 298 4" stroke="url(#ug)" strokeWidth="3" strokeLinecap="round" fill="none" />
                 <defs>
                   <linearGradient id="ug" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#3B82F6" />
-                    <stop offset="50%" stopColor="#2563EB" />
-                    <stop offset="100%" stopColor="#1E3A8A" />
+                    <stop offset="0%" stopColor="#F43F5E" />
+                    <stop offset="50%" stopColor="#E11D48" />
+                    <stop offset="100%" stopColor="#881337" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -194,7 +194,7 @@ export default function ProductsSection() {
                     {/* Most popular badge — solid bg instead of backdrop-filter */}
                     {p.badge && (
                       <span className="absolute top-4 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
-                        style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
+                        style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
                         ⭐ {p.badge}
                       </span>
                     )}
@@ -263,8 +263,8 @@ export default function ProductsSection() {
           <Link href="/contact"
             className="inline-flex items-center gap-2.5 px-8 py-4 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
             style={{
-              background: 'linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #2563EB 100%)',
-              boxShadow: '0 8px 32px rgba(29,78,216,0.35), 0 2px 8px rgba(29,78,216,0.20)',
+              background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
+              boxShadow: '0 8px 32px rgba(190,18,60,0.35), 0 2px 8px rgba(190,18,60,0.20)',
             }}>
             Talk to a Product Expert <ArrowRight size={15} />
           </Link>

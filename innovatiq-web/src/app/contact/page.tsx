@@ -14,7 +14,7 @@ const offices = [
     address: '60, Paya Lebar Road, #04-44, Paya Lebar Square, Singapore - 409051',
     phone: '+(65) 674-20955',
     email: 'info@innovatiq.com.sg',
-    color: '#1D4ED8',
+    color: '#BE123C',
   },
   {
     flag: '🇮🇳',
@@ -32,7 +32,7 @@ const offices = [
     address: 'Office 41, Level 1, Resource Centre - IIC Technology Park Malaysia, Bukit Jalil, KL 57000',
     phone: '+(65) 674-20955',
     email: 'info@innovatiq.com.sg',
-    color: '#3B82F6',
+    color: '#F43F5E',
   },
 ];
 
@@ -104,17 +104,17 @@ export default function ContactPage() {
       {/* Office Locations */}
       <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(29,78,216,0.05) 0%, transparent 60%)' }} />
+          style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(29,78,216,0.12)] px-4 py-1.5 rounded-full mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
               Where to Find Us
             </span>
             <h2 className="text-3xl font-bold text-gray-900">
               Our{' '}
-              <span className="bg-gradient-to-r from-[#1E40AF] via-[#1D4ED8] to-[#2563EB] bg-clip-text text-transparent">Offices</span>
+              <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Offices</span>
             </h2>
           </AnimatedSection>
           <div className="grid sm:grid-cols-3 gap-6">
@@ -161,7 +161,7 @@ export default function ContactPage() {
       {/* Contact Form */}
       <section className="relative py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse at center, rgba(29,78,216,0.04) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.04) 0%, transparent 70%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -169,14 +169,14 @@ export default function ContactPage() {
             {/* Left: Section Info and Premium Structured Channels */}
             <div className="lg:col-span-5 space-y-6">
               <AnimatedSection>
-                <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(29,78,216,0.12)] px-4 py-1.5 rounded-full mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
+                <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
                   Get in Touch
                 </span>
                 <h2 className="text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-none mb-4">
                   Let's Build<br/>
                   Something{' '}
-                  <span className="bg-gradient-to-r from-[#1D4ED8] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Great</span>
+                  <span className="bg-gradient-to-r from-[#BE123C] via-[#FF4D7C] to-[#FF8C42] bg-clip-text text-transparent">Great</span>
                 </h2>
                 <p className="text-slate-600 font-medium text-sm leading-relaxed max-w-sm">
                   Have a question or a project in mind? Complete the form and our expert team will respond within 24 business hours.
@@ -186,7 +186,7 @@ export default function ContactPage() {
               {/* Direct Contact Channels */}
               <div className="space-y-4">
                 {[
-                  { label: 'Singapore & Malaysia HQ', email: 'info@innovatiq.com.sg', desc: 'General & regional inquiries', color: '#1D4ED8', bg: 'rgba(29,78,216,0.04)', border: 'rgba(29,78,216,0.1)' },
+                  { label: 'Singapore & Malaysia HQ', email: 'info@innovatiq.com.sg', desc: 'General & regional inquiries', color: '#BE123C', bg: 'rgba(190,18,60,0.04)', border: 'rgba(190,18,60,0.1)' },
                   { label: 'India Development Center', email: 'info@innovatiqconsulting.com', desc: 'Development & general consulting', color: '#0891B2', bg: 'rgba(8,145,178,0.04)', border: 'rgba(8,145,178,0.1)' },
                 ].map(channel => (
                   <AnimatedSection key={channel.label}>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                       style={{ background: '#FFFFFF', borderColor: 'rgba(0,0,0,0.06)' }}>
                       <div className="space-y-0.5">
                         <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">{channel.label}</p>
-                        <a href={`mailto:${channel.email}`} className="text-sm font-bold text-slate-800 hover:text-[#1D4ED8] transition-colors">{channel.email}</a>
+                        <a href={`mailto:${channel.email}`} className="text-sm font-bold text-slate-800 hover:text-[#BE123C] transition-colors">{channel.email}</a>
                         <p className="text-[11px] text-slate-500 font-medium">{channel.desc}</p>
                       </div>
                       <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
@@ -223,7 +223,7 @@ export default function ContactPage() {
               <AnimatedSection>
                 <div className="rounded-2xl p-8"
                   style={{
-                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 15%, #FF4D7C 38%, #FF8C42 62%, transparent 85%) border-box',
+                    background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 15%, #FF4D7C 38%, #FF8C42 62%, transparent 85%) border-box',
                     borderStyle: 'solid',
                     borderColor: 'transparent',
                     borderTopWidth: '4px',
@@ -256,7 +256,7 @@ export default function ContactPage() {
                               onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
                               className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors placeholder-slate-400"
                               style={inputStyle}
-                              onFocus={e => e.target.style.borderColor = '#1D4ED8'}
+                              onFocus={e => e.target.style.borderColor = '#BE123C'}
                               onBlur={e => e.target.style.borderColor = 'rgba(0,0,0,0.10)'}
                             />
                           </div>
@@ -275,7 +275,7 @@ export default function ContactPage() {
                               onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
                               className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors placeholder-slate-400"
                               style={inputStyle}
-                              onFocus={e => e.target.style.borderColor = '#1D4ED8'}
+                              onFocus={e => e.target.style.borderColor = '#BE123C'}
                               onBlur={e => e.target.style.borderColor = 'rgba(0,0,0,0.10)'}
                             />
                           </div>
@@ -289,7 +289,7 @@ export default function ContactPage() {
                           onChange={e => setFormData(p => ({ ...p, location: e.target.value }))}
                           className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors placeholder-slate-400"
                           style={inputStyle}
-                          onFocus={e => e.target.style.borderColor = '#1D4ED8'}
+                          onFocus={e => e.target.style.borderColor = '#BE123C'}
                           onBlur={e => e.target.style.borderColor = 'rgba(0,0,0,0.10)'}
                         />
                       </div>
@@ -314,7 +314,7 @@ export default function ContactPage() {
                           onChange={e => setFormData(p => ({ ...p, description: e.target.value }))}
                           className="w-full px-4 py-3 rounded-xl text-sm outline-none resize-none transition-colors placeholder-slate-400"
                           style={inputStyle}
-                          onFocus={e => e.target.style.borderColor = '#1D4ED8'}
+                          onFocus={e => e.target.style.borderColor = '#BE123C'}
                           onBlur={e => e.target.style.borderColor = 'rgba(0,0,0,0.10)'}
                         />
                       </div>
@@ -328,21 +328,21 @@ export default function ContactPage() {
                           onChange={e => setCaptcha(p => ({ ...p, answer: e.target.value }))}
                           className="w-32 px-4 py-3 rounded-xl text-sm outline-none transition-colors"
                           style={inputStyle}
-                          onFocus={e => e.target.style.borderColor = '#1D4ED8'}
+                          onFocus={e => e.target.style.borderColor = '#BE123C'}
                           onBlur={e => e.target.style.borderColor = 'rgba(0,0,0,0.10)'}
                         />
                       </div>
 
                       {error && (
-                        <p className="text-[#1D4ED8] text-sm p-3 rounded-xl"
-                          style={{ background: 'rgba(29,78,216,0.06)', border: '1px solid rgba(29,78,216,0.15)' }}>
+                        <p className="text-[#BE123C] text-sm p-3 rounded-xl"
+                          style={{ background: 'rgba(190,18,60,0.06)', border: '1px solid rgba(190,18,60,0.15)' }}>
                           {error}
                         </p>
                       )}
 
                       <button type="submit" disabled={loading}
                         className="inline-flex items-center justify-center gap-2 w-full py-3.5 text-base text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
-                        style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(29,78,216,0.30)' }}>
+                        style={{ background: 'linear-gradient(135deg, #FB7185 0%, #E11D48 50%, #9F1239 100%)', boxShadow: '0 4px 16px rgba(190,18,60,0.30)' }}>
                         {loading ? 'Sending...' : 'Send Message'} <Send size={16} />
                       </button>
                     </form>

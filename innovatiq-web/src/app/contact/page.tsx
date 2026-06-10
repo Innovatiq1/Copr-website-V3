@@ -23,7 +23,7 @@ const offices = [
     address: 'Level 1, Unit 2, Salarpuria Sattva Knowledge City, Inorbit Mall Road, Raidurg Village, Hytech City, Hyderabad',
     phone: '+91-9000534494',
     email: 'info@innovatiqconsulting.com',
-    color: '#0891B2',
+    color: '#BE123C',
   },
   {
     flag: '🇲🇾',
@@ -32,7 +32,7 @@ const offices = [
     address: 'Office 41, Level 1, Resource Centre - IIC Technology Park Malaysia, Bukit Jalil, KL 57000',
     phone: '+(65) 674-20955',
     email: 'info@innovatiq.com.sg',
-    color: '#F43F5E',
+    color: '#BE123C',
   },
 ];
 
@@ -138,15 +138,15 @@ export default function ContactPage() {
                     <p className="text-sm font-medium" style={{ color: office.color }}>{office.role}</p>
                   </div>
                   <div className="space-y-3 text-sm">
-                    <div className="flex gap-3 text-slate-600 font-medium">
+                    <div className="flex gap-3 text-slate-700 font-medium">
                       <MapPin size={15} className="shrink-0 mt-0.5" style={{ color: office.color }} />
                       <span className="leading-relaxed">{office.address}</span>
                     </div>
-                    <div className="flex gap-3 text-slate-600 font-medium">
+                    <div className="flex gap-3 text-slate-700 font-medium">
                       <Phone size={15} className="shrink-0" style={{ color: office.color }} />
                       <a href={`tel:${office.phone}`} className="hover:text-gray-900 transition-colors">{office.phone}</a>
                     </div>
-                    <div className="flex gap-3 text-slate-600 font-medium">
+                    <div className="flex gap-3 text-slate-700 font-medium">
                       <Mail size={15} className="shrink-0" style={{ color: office.color }} />
                       <a href={`mailto:${office.email}`} className="hover:text-gray-900 transition-colors break-all">{office.email}</a>
                     </div>
@@ -250,7 +250,7 @@ export default function ContactPage() {
                           { name: 'lastName', label: 'Last Name', type: 'text', placeholder: 'Doe' },
                         ].map(f => (
                           <div key={f.name}>
-                            <label className="block text-sm font-medium text-gray-600 mb-1.5">{f.label} *</label>
+                            <label className="block text-sm font-semibold text-gray-800 mb-1.5">{f.label} *</label>
                             <input type={f.type} required placeholder={f.placeholder}
                               value={formData[f.name as keyof typeof formData]}
                               onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
@@ -269,7 +269,7 @@ export default function ContactPage() {
                           { name: 'email', label: 'Email Address', type: 'email', placeholder: 'john@example.com' },
                         ].map(f => (
                           <div key={f.name}>
-                            <label className="block text-sm font-medium text-gray-600 mb-1.5">{f.label} *</label>
+                            <label className="block text-sm font-semibold text-gray-800 mb-1.5">{f.label} *</label>
                             <input type={f.type} required placeholder={f.placeholder}
                               value={formData[f.name as keyof typeof formData]}
                               onChange={e => setFormData(p => ({ ...p, [f.name]: e.target.value }))}
@@ -283,7 +283,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1.5">Your Location *</label>
+                        <label className="block text-sm font-semibold text-gray-800 mb-1.5">Your Location *</label>
                         <input type="text" required placeholder="City, Country"
                           value={formData.location}
                           onChange={e => setFormData(p => ({ ...p, location: e.target.value }))}
@@ -295,7 +295,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1.5">What are you looking for? *</label>
+                        <label className="block text-sm font-semibold text-gray-800 mb-1.5">What are you looking for? *</label>
                         <select required value={formData.lookingFor}
                           onChange={e => setFormData(p => ({ ...p, lookingFor: e.target.value }))}
                           className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-colors text-gray-700"
@@ -308,7 +308,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1.5">Tell us more *</label>
+                        <label className="block text-sm font-semibold text-gray-800 mb-1.5">Tell us more *</label>
                         <textarea required rows={4} placeholder="Describe your project, challenge, or inquiry..."
                           value={formData.description}
                           onChange={e => setFormData(p => ({ ...p, description: e.target.value }))}
@@ -320,7 +320,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-600 mb-1.5">
+                        <label className="block text-sm font-semibold text-gray-800 mb-1.5">
                           Security Check: What is {captcha.a} + {captcha.b}? *
                         </label>
                         <input type="number" required

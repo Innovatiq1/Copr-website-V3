@@ -1,4 +1,4 @@
-﻿import PageHero from '@/components/PageHero';
+import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import Link from 'next/link';
@@ -11,8 +11,8 @@ const products = [
     tagline: 'Smart Learning. Simplified Growth.',
     description: 'AI-powered training lifecycle management with intelligent recommendations, advanced analytics, and automated workflows.',
     href: '/products/skillera',
-    gradient: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
-    color: '#1D4ED8',
+    gradient: 'linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)',
+    color: '#3B82F6',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Learning'],
     badge: 'Most Popular',
   },

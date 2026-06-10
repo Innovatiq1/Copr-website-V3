@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -17,9 +17,9 @@ const products = [
     logo: '/images/Skillera-png-logo.png',
     heroImg: '/images/SkillEra Hero Section.svg',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Ready'],
-    imgBg: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
-    clr: '#4F46E5',
-    clrLight: '#EEF2FF',
+    imgBg: 'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%)',
+    clr: '#1D4ED8',
+    clrLight: '#EFF6FF',
     badge: 'Most Popular',
   },
   {

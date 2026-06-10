@@ -53,7 +53,7 @@ export default function ServicePageTemplate({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                style={{ color, background: `${color}10`, borderColor: `${color}30` }}>
+                style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                 Overview
               </span>
@@ -119,7 +119,7 @@ export default function ServicePageTemplate({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-              style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+              style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
               What We Deliver
             </span>
@@ -171,7 +171,7 @@ export default function ServicePageTemplate({
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-16">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+                style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                 How We Work
               </span>
@@ -217,7 +217,7 @@ export default function ServicePageTemplate({
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-16">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+                style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                 Our Expertise
               </span>
@@ -257,7 +257,7 @@ export default function ServicePageTemplate({
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-16">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                style={{ color, borderColor: `${color}25`, background: `${color}08` }}>
+                style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                 ROI & Value
               </span>

@@ -2,14 +2,14 @@
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
 
-const CRIMSON = '#1D4ED8';
-const GOLD    = '#A07830';
-const NAVY    = '#3A0F1E';
-const NAVY2   = '#4D1828';
+const CRIMSON = '#60A5FA';
+const GOLD    = '#93C5FD';
+const NAVY    = '#0F172A';
+const NAVY2   = '#1E3A8A';
 
 export default function Footer() {
   return (
-    <footer style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #2C1510 50%, ${NAVY} 100%)`, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+    <footer style={{ background: `linear-gradient(135deg, ${NAVY} 0%, #172554 50%, ${NAVY} 100%)`, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="max-w-7xl mx-auto px-4 lg:px-8 pt-16 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
 
@@ -125,8 +125,8 @@ export default function Footer() {
                 <a key={label} href={href}
                   className="flex items-center gap-3 group transition-all">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110"
-                    style={{ background: NAVY2, border: '1px solid rgba(255,107,138,0.40)', boxShadow: '0 0 14px rgba(255,107,138,0.35), inset 0 0 8px rgba(255,107,138,0.12)' }}>
-                    <Icon size={16} style={{ color: '#FF6B8A', filter: 'drop-shadow(0 0 5px rgba(255,107,138,0.90))' }} />
+                    style={{ background: 'rgba(255,255,255,0.10)', border: '1px solid rgba(255,255,255,0.22)', boxShadow: '0 0 14px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.15)' }}>
+                    <Icon size={16} style={{ color: '#FFFFFF' }} />
                   </div>
                   <div>
                     <p className="text-xs font-bold" style={{ color: '#fff' }}>{label}:</p>

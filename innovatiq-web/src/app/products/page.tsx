@@ -11,7 +11,7 @@ const products = [
     tagline: 'Smart Learning. Simplified Growth.',
     description: 'AI-powered training lifecycle management with intelligent recommendations, advanced analytics, and automated workflows.',
     href: '/products/skillera',
-    gradient: 'linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)',
+    gradient: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
     color: '#1D4ED8',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Learning'],
     badge: 'Most Popular',
@@ -127,7 +127,7 @@ export default function ProductsPage() {
               </p>
               <Link href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 16px rgba(29,78,216,0.35)' }}>
+                style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(29,78,216,0.35)' }}>
                 Talk to an Expert <ArrowRight size={16} />
               </Link>
             </div>

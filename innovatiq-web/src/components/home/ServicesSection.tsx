@@ -89,7 +89,7 @@ export default function ServicesSection() {
     <section
       className="relative pt-12 sm:pt-14 pb-16 sm:pb-28 overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)',
+        background: 'linear-gradient(180deg, #DBEAFE 0%, #EFF6FF 20%, #F5F9FF 55%, #FFFFFF 100%)',
         borderRadius: '28px 28px 0 0',
         marginTop: '-40px',
         zIndex: 10,
@@ -106,7 +106,7 @@ export default function ServicesSection() {
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#1E40AF', background: 'rgba(30,64,175,0.09)', border: '1px solid rgba(30,64,175,0.22)' }}>
+            style={{ color: '#1E40AF', background: '#FFFFFF', border: '1.5px solid rgba(30,64,175,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#1D4ED8' }} />
             What We Offer
           </span>
@@ -150,44 +150,41 @@ export default function ServicesSection() {
             <Link href={s.href} className="group block h-full">
                 <div className="relative h-full flex flex-col overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                   style={{
-                    background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${s.clr} 0%, ${s.clr} 20%, ${s.clr}CC 45%, ${s.clr}55 70%, transparent 90%) border-box`,
-                    borderStyle: 'solid',
-                    borderColor: 'transparent',
-                    borderTopWidth: '4px',
-                    borderLeftWidth: '0',
-                    borderRightWidth: '0',
-                    borderBottomWidth: '0',
+                    background: '#FFFFFF',
                     borderRadius: '20px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.07)',
+                    borderTop: `4px solid ${s.clr}`,
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.07), 0 6px 20px rgba(0,0,0,0.06)',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 28px ${s.shadow}, 0 12px 32px rgba(0,0,0,0.10)`;
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 32px ${s.shadow}, 0 12px 32px rgba(0,0,0,0.08)`;
+                    (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.07)';
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.07), 0 6px 20px rgba(0,0,0,0.06)';
+                    (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
                   }}
                 >
                   <div className="p-6 flex flex-col flex-1">
                     {/* Icon */}
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
-                      style={{ background: '#F1F5F9', boxShadow: '0 1px 4px rgba(0,0,0,0.06)' }}>
-                      <s.Icon size={22} className="text-slate-600" strokeWidth={1.8} />
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3"
+                      style={{
+                        background: `linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)`,
+                        border: `1.5px solid rgba(29,78,216,0.18)`,
+                        boxShadow: `0 4px 12px rgba(29,78,216,0.10)`,
+                      }}>
+                      <s.Icon size={22} style={{ color: s.clr }} strokeWidth={1.75} />
                     </div>
 
                     {/* Content */}
-                    <h3 className="font-extrabold text-gray-900 text-[17px] mb-2.5 leading-snug">{s.title}</h3>
-                    <p className="text-slate-500 text-[14.5px] font-medium leading-relaxed flex-1">{s.desc}</p>
+                    <h3 className="font-extrabold text-gray-900 text-[16px] mb-2 leading-snug">{s.title}</h3>
+                    <p className="text-slate-500 text-[13.5px] font-medium leading-relaxed flex-1">{s.desc}</p>
 
                     {/* Footer */}
-                    <div className="flex items-center justify-between mt-5 pt-4"
-                      style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                        Explore
+                    <div className="flex items-center gap-1.5 mt-5 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+                      <span className="text-[11.5px] font-bold uppercase tracking-wider" style={{ color: s.clr }}>
+                        Learn More
                       </span>
-                      <div className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 group-hover:translate-x-1"
-                        style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.08)' }}>
-                        <ArrowRight size={12} className="text-slate-500" />
-                      </div>
+                      <ArrowRight size={11} style={{ color: s.clr }} className="transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>
                 </div>
@@ -235,7 +232,7 @@ export default function ServicesSection() {
 
                 <span className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-[12px] font-bold text-white uppercase tracking-wide transition-all duration-300 group-hover:-translate-y-0.5"
                   style={{
-                    background: 'linear-gradient(135deg, #1D4ED8, #A8102E)',
+                    background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
                     boxShadow: '0 4px 14px rgba(29,78,216,0.30)',
                   }}>
                   Talk to an Expert <ArrowRight size={12} />

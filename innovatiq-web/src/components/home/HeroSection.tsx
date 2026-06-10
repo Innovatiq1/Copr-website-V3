@@ -13,10 +13,10 @@ const words: React.ReactNode[] = [
 ];
 
 const STATS = [
-  { v: '100+', l: 'Successful Projects', c: '#1D4ED8', bg: '#FFFFFF', icon: Trophy },
-  { v: '200+', l: 'Happy Clients',       c: '#1D4ED8', bg: '#FFFFFF', icon: Users },
-  { v: '100+', l: 'Skilled Experts',     c: '#1D4ED8', bg: '#FFFFFF', icon: GraduationCap },
-  { v: '15+',  l: 'Ongoing Projects',    c: '#1D4ED8', bg: '#FFFFFF', icon: Rocket },
+  { v: '100+', l: 'Successful Projects', c: '#1D4ED8', bg: '#EFF6FF', icon: Trophy },
+  { v: '200+', l: 'Happy Clients',       c: '#1D4ED8', bg: '#EFF6FF', icon: Users },
+  { v: '100+', l: 'Skilled Experts',     c: '#1D4ED8', bg: '#EFF6FF', icon: GraduationCap },
+  { v: '15+',  l: 'Ongoing Projects',    c: '#1D4ED8', bg: '#EFF6FF', icon: Rocket },
 ];
 
 function CardDecor({ index, c }: { index: number; c: string }) {
@@ -287,7 +287,7 @@ export default function HeroSection() {
     <section
       className="relative overflow-hidden min-h-screen pt-[104px] sm:pt-[108px] pb-16 sm:pb-20 flex items-start lg:items-center"
       style={{
-        background: 'linear-gradient(135deg, #FFF8FA 0%, #FFFFFF 50%, #F8FBFF 100%)',
+        background: 'linear-gradient(135deg, #FFFFFF 0%, #F5F9FF 30%, #EDF4FF 60%, #F8FBFF 100%)',
       }}
     >
 
@@ -296,7 +296,7 @@ export default function HeroSection() {
         style={{
           width: '900px', height: '900px',
           top: '-200px', left: '-180px',
-          background: 'radial-gradient(circle at 55% 55%, rgba(29,78,216,0.05) 0%, rgba(255,77,124,0.02) 45%, transparent 70%)',
+          background: 'radial-gradient(circle at 55% 55%, rgba(29,78,216,0.12) 0%, rgba(37,99,235,0.06) 45%, transparent 70%)',
           filter: 'blur(90px)',
           contain: 'strict',
         }} />
@@ -357,9 +357,9 @@ export default function HeroSection() {
 
             {/* Badge */}
             <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-7"
-              style={{ background: 'rgba(29,78,216,0.08)', border: '1.5px solid rgba(29,78,216,0.30)' }}>
+              style={{ background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 12px rgba(29,78,216,0.14)' }}>
               <Zap size={13} style={{ color: '#1D4ED8' }} fill="currentColor" />
-              <span className="text-[12.5px] font-bold uppercase tracking-widest" style={{ color: '#A8102E' }}>
+              <span className="text-[12.5px] font-bold uppercase tracking-widest" style={{ color: '#2563EB' }}>
                 Trusted by 200+ Enterprises Worldwide
               </span>
             </div>
@@ -413,7 +413,7 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-4">
               <Link href="/contact"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]"
-                style={{ background: 'linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)' }}>
+                style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}>
                 Get Free Demo <ArrowRight size={16} />
               </Link>
               <Link href="/services/cloud"
@@ -486,7 +486,7 @@ export default function HeroSection() {
                 <div className="absolute top-1/2 -right-10 -translate-y-1/2 float-d" style={{ animationDelay: '1s' }}>
                   <div className="rounded-2xl px-5 py-4 text-white text-center"
                     style={{
-                      background: 'linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)',
+                      background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)',
                       boxShadow: '0 8px 40px rgba(29,78,216,0.40)',
                     }}>
                     <p className="text-[32px] font-black">200+</p>

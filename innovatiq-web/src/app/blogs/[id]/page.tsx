@@ -63,7 +63,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Article not found</h1>
       <p className="text-slate-500 font-medium mb-7 text-center max-w-sm text-sm">This article may have been removed or the link is incorrect.</p>
       <Link href="/blogs" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm"
-        style={{ background: 'linear-gradient(135deg,#1D4ED8,#A8102E)', boxShadow: '0 4px 16px rgba(212,23,74,0.28)' }}>
+        style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(14,165,233,0.30)' }}>
         <ArrowLeft size={14} /> Back to Blogs
       </Link>
     </div>
@@ -227,7 +227,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
         <div>
           <Link href="/blogs"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
-            style={{ background: 'linear-gradient(135deg,#1D4ED8,#A8102E)', boxShadow: '0 4px 16px rgba(212,23,74,0.25)' }}>
+            style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(14,165,233,0.30)' }}>
             <ArrowLeft size={14} /> All Blogs
           </Link>
         </div>

@@ -110,7 +110,7 @@ export default function JoinUsPage() {
 
                   {error && <p className="text-red-500 text-sm p-3 bg-red-50 rounded-xl">{error}</p>}
 
-                  <button type="submit" disabled={loading} className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
+                  <button type="submit" disabled={loading} className="inline-flex items-center justify-center gap-2 w-full py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#1E40AF] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
                     {loading ? 'Submitting...' : 'Submit Profile'} <Send size={16} />
                   </button>
                 </form>

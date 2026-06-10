@@ -98,7 +98,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
       <div className="min-h-screen flex items-center justify-center pt-32">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-3">Job Not Found</h2>
-          <Link href="/careers" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200">View All Jobs</Link>
+          <Link href="/careers" className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#1E40AF] transition-all duration-200">View All Jobs</Link>
         </div>
       </div>
     );
@@ -219,7 +219,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                       <p className="text-gray-500 text-sm mb-6">
                         Thank you for applying. We&apos;ll review your application and be in touch soon.
                       </p>
-                      <Link href="/careers" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200">
+                      <Link href="/careers" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#1E40AF] transition-all duration-200">
                         View More Jobs
                       </Link>
                     </div>
@@ -284,7 +284,7 @@ export default function JobDetailPage({ params }: { params: { id: string } }) {
                           <p className="text-red-500 text-xs p-3 bg-red-50 rounded-lg">{error}</p>
                         )}
 
-                        <button type="submit" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#A8102E] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
+                        <button type="submit" className="inline-flex items-center justify-center gap-2 w-full px-7 py-3.5 bg-[#1D4ED8] text-white font-semibold rounded-xl hover:bg-[#1E40AF] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed">
                           Submit Application <ChevronRight size={16} />
                         </button>
                       </form>

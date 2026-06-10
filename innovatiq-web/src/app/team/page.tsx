@@ -204,7 +204,7 @@ export default function TeamPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-              style={{ color: '#1D4ED8', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.15)' }}>
+              style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8] animate-pulse" />
               Leadership
             </span>
@@ -292,7 +292,7 @@ export default function TeamPage() {
             </p>
             <Link href="/careers"
               className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 8px 24px rgba(29,78,216,0.35)' }}>
+              style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 8px 24px rgba(29,78,216,0.35)' }}>
               View Open Positions
             </Link>
           </AnimatedSection>

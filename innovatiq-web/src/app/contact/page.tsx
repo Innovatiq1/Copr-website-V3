@@ -108,7 +108,7 @@ export default function ContactPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-5">
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(29,78,216,0.12)] px-4 py-1.5 rounded-full mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
               Where to Find Us
             </span>
@@ -169,7 +169,7 @@ export default function ContactPage() {
             {/* Left: Section Info and Premium Structured Channels */}
             <div className="lg:col-span-5 space-y-6">
               <AnimatedSection>
-                <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-4">
+                <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(29,78,216,0.12)] px-4 py-1.5 rounded-full mb-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
                   Get in Touch
                 </span>
@@ -342,7 +342,7 @@ export default function ContactPage() {
 
                       <button type="submit" disabled={loading}
                         className="inline-flex items-center justify-center gap-2 w-full py-3.5 text-base text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
-                        style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 16px rgba(29,78,216,0.30)' }}>
+                        style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(29,78,216,0.30)' }}>
                         {loading ? 'Sending...' : 'Send Message'} <Send size={16} />
                       </button>
                     </form>

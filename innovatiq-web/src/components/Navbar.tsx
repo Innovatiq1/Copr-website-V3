@@ -49,7 +49,7 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50">
         {/* Promo bar — single line on all screen sizes */}
         <div className="py-2 sm:py-2.5 overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #FFCDD8 0%, #FFE8C8 50%, #FFCDD8 100%)', color: '#7C1030' }}>
+          style={{ background: 'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #1E3A8A 100%)', color: '#FFFFFF' }}>
           <div className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 whitespace-nowrap text-[11px] sm:text-[13px] font-medium tracking-wide">
             <span className="shrink-0">🚀</span>
             {/* Mobile: condensed */}
@@ -61,8 +61,8 @@ export default function Navbar() {
             <span className="opacity-60 hidden sm:inline">—</span>
             <span className="hidden sm:inline">Trusted by <strong>200+ Enterprises</strong></span>
             <Link href="/contact"
-              className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:opacity-90 ml-0.5"
-              style={{ background: '#1D4ED8', color: '#fff' }}>
+              className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:scale-105 ml-0.5"
+              style={{ background: '#FFFFFF', color: '#1D4ED8', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}>
               Get Demo <ArrowRight size={11} strokeWidth={2.5} />
             </Link>
           </div>
@@ -156,7 +156,7 @@ export default function Navbar() {
                 </Link>
                 <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)' }}>
+                  style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 18px rgba(14,165,233,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
                   Get Demo <ArrowRight size={14} />
                 </Link>
               </div>
@@ -264,7 +264,7 @@ export default function Navbar() {
             </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
-              style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)' }}>
+              style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}>
               Get Demo <ArrowRight size={14} />
             </Link>
           </div>

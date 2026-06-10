@@ -141,7 +141,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 export default function CounterSection() {
   return (
     <section className="relative py-24 overflow-hidden" style={{
-      background: 'linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 50%, #F1F5F9 100%)'
+      background: 'linear-gradient(180deg, #F8FBFF 0%, #EFF6FF 35%, #E8F4FF 65%, #F8FBFF 100%)'
     }}>
 
       {/* Premium ambient decorative radial glows */}
@@ -152,29 +152,34 @@ export default function CounterSection() {
         background: 'radial-gradient(circle at 50% 80%, rgba(59,130,246,0.05) 0%, transparent 65%)',
       }} />
 
-      {/* Image panel — right half only, behind the cards */}
+      {/* Image panel — slanted left edge via clip-path */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
         backgroundImage: "url('/images/statistics_bg_clarity.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
       }} />
 
-      {/* Modern gradient overlay fading the image left edge seamlessly into the section background */}
+      {/* Subtle dark scrim for readability */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(90deg, #FFFFFF 0%, rgba(248,250,252,0.85) 15%, rgba(248,250,252,0.3) 50%, transparent 100%)',
+        background: 'linear-gradient(90deg, transparent 0%, rgba(15,23,42,0.10) 50%, rgba(15,23,42,0.18) 100%)',
+        clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
         zIndex: 1,
       }} />
 
-      {/* Top and bottom gradient blend to match the section's background gradient */}
+      {/* Top/bottom fade to blend with section bg */}
       <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(180deg, #FFFFFF 0%, transparent 15%, transparent 85%, #F1F5F9 100%)',
-        zIndex: 1,
+        background: 'linear-gradient(180deg, #F8FBFF 0%, transparent 12%, transparent 88%, #F8FBFF 100%)',
+        clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        zIndex: 2,
       }} />
 
-      {/* Modern subtle Slate/Blue scrim overlay to enhance readability and visual depth */}
-      <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(90deg, transparent 0%, rgba(30,41,59,0.06) 40%, rgba(30,41,59,0.12) 100%)',
-        zIndex: 1,
+      {/* Slant edge soft glow — sits right at the diagonal join */}
+      <div className="absolute inset-y-0 pointer-events-none" style={{
+        left: 'calc(45% - 60px)',
+        width: '120px',
+        background: 'linear-gradient(90deg, transparent 0%, rgba(29,78,216,0.07) 50%, transparent 100%)',
+        zIndex: 3,
       }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
@@ -182,7 +187,8 @@ export default function CounterSection() {
 
           {/* Left — text + certs */}
           <div>
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-6">
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
+              style={{ background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
               Our Impact
             </span>

@@ -80,7 +80,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-              style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)' }}>
+              style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)' }}>
               <span className="text-white text-xs font-black">IQ</span>
             </div>
             <div>

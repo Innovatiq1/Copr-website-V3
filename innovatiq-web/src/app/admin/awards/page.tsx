@@ -69,7 +69,7 @@ export default function AwardsPage() {
           <Link
             href="/admin/awards/create"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-semibold"
-            style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}
+            style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 15px rgba(29,78,216,0.25)' }}
           >
             <Plus size={16} /> Create Award
           </Link>

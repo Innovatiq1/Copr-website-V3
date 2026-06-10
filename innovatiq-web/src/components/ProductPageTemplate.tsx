@@ -55,7 +55,7 @@ export default function ProductPageTemplate({
             <AnimatedSection direction="left">
               {badge && (
                 <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-                  style={{ color, borderColor: `${color}30`, background: `${color}10` }}>
+                  style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
                   <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
                   {badge}
                 </span>
@@ -144,7 +144,7 @@ export default function ProductPageTemplate({
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-              style={{ color, borderColor: `${color}30`, background: `${color}10` }}>
+              style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
               Core Features
             </span>
@@ -194,7 +194,7 @@ export default function ProductPageTemplate({
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border"
-              style={{ color, borderColor: `${color}30`, background: `${color}10` }}>
+              style={{ color, background: '#FFFFFF', borderColor: color, borderWidth: '1.5px', boxShadow: '0 2px 10px rgba(0,0,0,0.08)' }}>
               Get Started Today
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

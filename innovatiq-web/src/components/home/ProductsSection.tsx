@@ -17,9 +17,9 @@ const products = [
     logo: '/images/Skillera-png-logo.png',
     heroImg: '/images/SkillEra Hero Section.svg',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Ready'],
-    imgBg: 'linear-gradient(135deg, #1E3A8A 0%, #1E40AF 28%, #1D4ED8 52%, #3B82F6 75%, #FB923C 100%)',
-    clr: '#1D4ED8',
-    clrLight: '#EFF6FF',
+    imgBg: 'linear-gradient(135deg, #881337 0%, #BE123C 28%, #D4174A 52%, #F43F5E 75%, #FB923C 100%)',
+    clr: '#D4174A',
+    clrLight: '#FFF0F3',
     badge: 'Most Popular',
   },
   {
@@ -32,8 +32,8 @@ const products = [
     heroImg: '/images/LMS Hero Screen.svg',
     features: ['Course Builder', 'Certifications', 'Social Learning', 'Progress Tracking'],
     imgBg: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
-    clr: '#1D4ED8',
-    clrLight: '#EFF6FF',
+    clr: '#4F46E5',
+    clrLight: '#EEF2FF',
     badge: null,
   },
   {
@@ -46,8 +46,8 @@ const products = [
     heroImg: '/images/PMS Hero Section.svg',
     features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts'],
     imgBg: 'linear-gradient(135deg, #047857 0%, #10B981 50%, #34D399 100%)',
-    clr: '#1D4ED8',
-    clrLight: '#EFF6FF',
+    clr: '#10B981',
+    clrLight: '#ECFDF5',
     badge: null,
   },
   {
@@ -60,8 +60,8 @@ const products = [
     heroImg: '/images/LMP Hero Section.svg',
     features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics'],
     imgBg: 'linear-gradient(135deg, #C2410C 0%, #EA580C 50%, #F97316 100%)',
-    clr: '#1D4ED8',
-    clrLight: '#EFF6FF',
+    clr: '#EA580C',
+    clrLight: '#FFF7ED',
     badge: null,
   },
 ];
@@ -84,9 +84,7 @@ export default function ProductsSection() {
   return (
     <section
       className="relative py-24 overflow-hidden"
-      style={{
-        background: '#FFFFFF',
-      }}
+      style={{ background: 'linear-gradient(180deg, #EFF6FF 0%, #F0F9FF 50%, #FFFFFF 100%)' }}
     >
 
       {/* Background — single radial gradient only (no expensive tiled CSS grid) */}
@@ -103,7 +101,7 @@ export default function ProductsSection() {
         {/* Header — static, no entrance animation */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#1E40AF', background: 'rgba(30,64,175,0.09)', border: '1px solid rgba(30,64,175,0.22)' }}>
+            style={{ color: '#1E40AF', background: '#FFFFFF', border: '1.5px solid rgba(30,64,175,0.38)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
             <Sparkles size={11} />
             Our Products
           </span>
@@ -196,7 +194,7 @@ export default function ProductsSection() {
                     {/* Most popular badge — solid bg instead of backdrop-filter */}
                     {p.badge && (
                       <span className="absolute top-4 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
-                        style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
+                        style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', color: '#FFFFFF', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 2px 8px rgba(0,0,0,0.30)' }}>
                         ⭐ {p.badge}
                       </span>
                     )}

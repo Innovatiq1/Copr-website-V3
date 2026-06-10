@@ -33,7 +33,7 @@ export default async function CareersPage() {
           {/* Two-column top: heading left, image right */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
             <AnimatedSection>
-              <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-[#1D4ED8]/8 border border-[#1D4ED8]/15 px-4 py-1.5 rounded-full mb-5">
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-[#1D4ED8] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(29,78,216,0.12)] px-4 py-1.5 rounded-full mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
                 Perks & Culture
               </span>
@@ -127,7 +127,7 @@ export default async function CareersPage() {
             <div className="flex flex-col items-center justify-center py-16 text-center rounded-2xl mb-6"
               style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.07)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-                style={{ background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.15)' }}>
+                style={{ background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
                 <Briefcase size={28} className="text-[#1D4ED8]" />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">No open positions right now</h3>
@@ -204,7 +204,7 @@ export default async function CareersPage() {
                   <div className="shrink-0 flex flex-col items-end gap-3 self-center">
                     <Link href={`/careers/${job._id}`}
                       className="inline-flex items-center gap-2 py-2.5 px-6 text-sm text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                      style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 4px 12px rgba(29,78,216,0.30)' }}>
+                      style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 12px rgba(29,78,216,0.30)' }}>
                       Apply Now <ChevronRight size={14} />
                     </Link>
                   </div>
@@ -237,7 +237,7 @@ export default async function CareersPage() {
                 </p>
                 <Link href="/join-us"
                   className="inline-flex items-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
-                  style={{ background: 'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow: '0 8px 24px rgba(29,78,216,0.30)' }}>
+                  style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 8px 24px rgba(29,78,216,0.30)' }}>
                   Submit Your Profile <ChevronRight size={16} />
                 </Link>
               </div>

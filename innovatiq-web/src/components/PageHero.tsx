@@ -39,7 +39,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
 
   return (
     <section ref={heroRef} className="relative overflow-hidden pt-32 sm:pt-36 pb-16 sm:pb-24"
-      style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F0F5FF 55%, #EFF6FF 100%)' }}>
+      style={{ background: 'linear-gradient(160deg, #EFF6FF 0%, #DBEAFE 40%, #EFF6FF 100%)' }}>
 
       {/* Ambient orbs — sized down on mobile */}
       <div ref={orb1Ref} className="absolute -top-10 -right-10 sm:-top-20 sm:-right-20 w-[400px] sm:w-[700px] h-[400px] sm:h-[700px] pointer-events-none"
@@ -47,11 +47,11 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
       <div ref={orb2Ref} className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 60%)' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(139,92,246,0.04) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse, rgba(29,78,216,0.06) 0%, transparent 70%)' }} />
 
       {/* Top accent line */}
       <div className="absolute top-0 left-0 right-0 h-[3px] pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, #1D4ED8 30%, #FF4D7C 60%, transparent 100%)' }} />
+        style={{ background: 'linear-gradient(90deg, transparent 0%, #1E3A8A 20%, #1D4ED8 50%, #3B82F6 80%, transparent 100%)' }} />
 
       {/* Floating geometric shapes — hidden on mobile to avoid overflow clutter */}
       <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
@@ -60,7 +60,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
         <div className="float absolute rounded-full"
           style={{ top: '30%', left: '5%', width: '50px', height: '50px', background: 'rgba(59,130,246,0.05)', border: '1px solid rgba(59,130,246,0.18)' }} />
         <div className="float-d absolute"
-          style={{ bottom: '25%', right: '12%', width: '40px', height: '40px', background: 'rgba(139,92,246,0.05)', border: '1px solid rgba(139,92,246,0.18)', transform: 'rotate(45deg)' }} />
+          style={{ bottom: '25%', right: '12%', width: '40px', height: '40px', background: 'rgba(29,78,216,0.05)', border: '1px solid rgba(29,78,216,0.18)', transform: 'rotate(45deg)' }} />
         <div className="float absolute rounded-full"
           style={{ top: '60%', left: '3%', width: '8px', height: '8px', background: '#1D4ED8', opacity: 0.5, boxShadow: '0 0 8px rgba(29,78,216,0.4)' }} />
         <div className="float-d absolute rounded-full"
@@ -71,13 +71,13 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
         {badge && (
           <span className="inline-flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest px-5 py-2 rounded-full mb-5 transition-all duration-300 hover:scale-105 cursor-default"
             style={{ 
-              background: 'linear-gradient(135deg, #1D4ED8 0%, #A8102E 100%)', 
+              background: 'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%)',
               borderColor: 'rgba(255, 255, 255, 0.25)',
               borderWidth: '1px',
               borderStyle: 'solid',
-              boxShadow: '0 4px 14px rgba(212, 23, 74, 0.25)',
+              boxShadow: '0 4px 14px rgba(29,78,216,0.30)',
             }}>
-            <span className="w-2 h-2 rounded-full bg-[#F2AC3E]" />
+            <span className="w-2 h-2 rounded-full bg-[#93C5FD]" />
             {badge}
           </span>
         )}
@@ -101,7 +101,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
 
       {/* Subtle bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, transparent, #F8FAFC)' }} />
+        style={{ background: 'linear-gradient(to bottom, transparent, #EFF6FF)' }} />
     </section>
   );
 }

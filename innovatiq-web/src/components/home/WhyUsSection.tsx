@@ -37,7 +37,7 @@ export default function WhyUsSection() {
 
   return (
     <section className="relative py-24 overflow-hidden"
-      style={{ background: 'linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 55%)' }}>
+      style={{ background: 'linear-gradient(180deg, #EFF6FF 0%, #F0F9FF 40%, #FFFFFF 100%)' }}>
 
       {/* ── Color blobs ── */}
       <div className="absolute top-0 left-0 w-[700px] h-[700px] pointer-events-none"
@@ -117,30 +117,30 @@ export default function WhyUsSection() {
                   </div>
                   <div>
                     <p className="font-bold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
-                    <p className="text-gray-400 text-[11px]">9001:2015</p>
+                    <p className="text-gray-600 text-[11px] font-semibold">9001:2015</p>
                   </div>
                 </div>
 
                 {/* Badge: 24/7 support */}
                 <div className="absolute bottom-3 left-3 lg:-bottom-4 lg:-left-4 float rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
-                  style={{ background:'rgba(255,255,255,0.97)', border:'1px solid rgba(0,0,0,0.09)', boxShadow:'0 4px 24px rgba(0,0,0,0.10)' }}>
+                  style={{ background:'#FFFFFF', border:'1.5px solid rgba(29,78,216,0.18)', boxShadow:'0 6px 28px rgba(29,78,216,0.14), 0 2px 8px rgba(0,0,0,0.08)' }}>
                   <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background:'rgba(100,116,139,0.10)', border:'1px solid rgba(100,116,139,0.20)' }}>
-                    <Clock size={16} style={{ color:'#64748B' }} />
+                    style={{ background:'linear-gradient(135deg, #EFF6FF, #DBEAFE)', border:'1.5px solid rgba(29,78,216,0.22)' }}>
+                    <Clock size={16} style={{ color:'#1D4ED8' }} />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">24/7 Support</p>
-                    <p className="text-gray-400 text-[11px]">Always Available</p>
+                    <p className="font-bold text-gray-900 text-xs lg:text-sm leading-none mb-0.5">24/7 Support</p>
+                    <p className="text-slate-700 font-medium text-[11px]">Always Available</p>
                   </div>
                 </div>
 
                 {/* Badge: Award — hidden on mobile to avoid overflow, shows sm+ */}
                 <div className="hidden sm:flex absolute bottom-10 right-3 lg:right-0 lg:translate-x-4 float-d rounded-2xl px-3 py-2 lg:px-4 lg:py-3 items-center gap-2 lg:gap-2.5"
-                  style={{ background:'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow:'0 8px 28px rgba(29,78,216,0.38)', animationDelay:'1.5s' }}>
-                  <Star size={15} className="text-white/90" fill="currentColor" />
+                  style={{ background:'linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 50%, #2563EB 100%)', boxShadow:'0 8px 28px rgba(29,78,216,0.45)', animationDelay:'1.5s' }}>
+                  <Star size={15} className="text-white" fill="currentColor" />
                   <div>
                     <p className="font-bold text-white text-xs lg:text-sm leading-none mb-0.5">Award Winning</p>
-                    <p className="text-white/70 text-[11px]">Asia Pacific 2024</p>
+                    <p className="text-white font-medium text-[11px]">Asia Pacific 2024</p>
                   </div>
                 </div>
 
@@ -158,7 +158,7 @@ export default function WhyUsSection() {
           >
             {/* Badge */}
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6"
-              style={{ color:'#1D4ED8', background:'rgba(29,78,216,0.09)', border:'1px solid rgba(29,78,216,0.25)' }}>
+              style={{ color:'#1D4ED8', background:'#FFFFFF', border:'1.5px solid rgba(29,78,216,0.38)', boxShadow:'0 2px 10px rgba(29,78,216,0.12)' }}>
               <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background:'#1D4ED8' }} />
               Why Choose Innovatiq
             </span>
@@ -192,44 +192,43 @@ export default function WhyUsSection() {
               ))}
             </div>
 
-            {/* Reason cards */}
-            <div className="grid grid-cols-2 gap-3 mb-10">
+            {/* Reason cards — icon left, text right */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
               {reasons.map((r) => (
-                <TiltCard key={r.title} intensity={12}>
-                  <div className="group relative rounded-2xl p-5 overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-default"
-                    style={{
-                      background: 'linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, #1D4ED8 0%, #1D4ED8 22%, rgba(29,78,216,0.75) 48%, rgba(29,78,216,0.28) 72%, transparent 92%) border-box',
-                      borderStyle: 'solid',
-                      borderColor: 'transparent',
-                      borderTopWidth: '4px',
-                      borderLeftWidth: '1px',
-                      borderRightWidth: '1px',
-                      borderBottomWidth: '1px',
-                      borderRadius: '16px',
-                      boxShadow: '0 1px 4px rgba(0,0,0,0.05), 0 6px 20px rgba(0,0,0,0.06)',
-                    }}>
+                <div key={r.title}
+                  className="group relative flex items-start gap-4 rounded-2xl p-4 overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-default"
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid rgba(29,78,216,0.12)',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(29,78,216,0.06)',
+                    borderRadius: '16px',
+                  }}
+                  onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 28px rgba(29,78,216,0.14), 0 2px 8px rgba(0,0,0,0.05)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(29,78,216,0.06)'}
+                >
+                  {/* Hover glow */}
+                  <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: 'radial-gradient(ellipse at top left, rgba(29,78,216,0.05) 0%, transparent 65%)' }} />
 
-                    {/* Hover glow */}
-                    <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{ background: 'radial-gradient(ellipse at top left, rgba(29,78,216,0.06) 0%, transparent 65%)' }} />
-
-                    {/* Icon */}
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-[-4deg]"
-                      style={{ background: 'rgba(29,78,216,0.09)', border: '1.5px solid rgba(29,78,216,0.18)' }}>
-                      <r.Icon size={18} style={{ color: '#1D4ED8' }} strokeWidth={1.75} />
-                    </div>
-
-                    <p className="font-extrabold text-gray-800 text-[15px] mb-1.5 relative z-10">{r.title}</p>
-                    <p className="text-slate-500 text-[13px] font-medium leading-relaxed relative z-10">{r.desc}</p>
+                  {/* Icon — left */}
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-4deg] relative z-10"
+                    style={{ background: 'linear-gradient(135deg, #EFF6FF, #DBEAFE)', border: '1.5px solid rgba(29,78,216,0.20)', boxShadow: '0 2px 8px rgba(29,78,216,0.12)' }}>
+                    <r.Icon size={19} style={{ color: '#1D4ED8' }} strokeWidth={1.75} />
                   </div>
-                </TiltCard>
+
+                  {/* Text — right */}
+                  <div className="relative z-10 min-w-0">
+                    <p className="font-extrabold text-gray-800 text-[14px] leading-snug mb-1">{r.title}</p>
+                    <p className="text-slate-500 text-[12.5px] font-medium leading-relaxed">{r.desc}</p>
+                  </div>
+                </div>
               ))}
             </div>
 
             {/* CTA */}
             <Link href="/about"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5"
-              style={{ background:'linear-gradient(135deg, #1D4ED8, #A8102E)', boxShadow:'0 8px 32px rgba(29,78,216,0.35)' }}>
+              style={{ background:'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow:'0 8px 32px rgba(29,78,216,0.35)' }}>
               Learn More About Us <ArrowRight size={16} />
             </Link>
           </div>

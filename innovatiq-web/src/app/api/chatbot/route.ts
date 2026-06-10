@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     const html = `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
-        <div style="background:linear-gradient(135deg,#E8174B,#A8102E);padding:24px;border-radius:8px 8px 0 0;">
+        <div style="background:linear-gradient(135deg, #0EA5E9 0%, #1D4ED8 100%);padding:24px;border-radius:8px 8px 0 0;">
           <h2 style="color:#fff;margin:0;font-size:20px;">New Chatbot Inquiry</h2>
           <p style="color:rgba(255,255,255,0.8);margin:6px 0 0;font-size:14px;">${interest || 'General Inquiry'}</p>
         </div>

@@ -122,7 +122,7 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4"
-              style={{ color: '#1D4ED8', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.15)' }}>
+              style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
               Core Values
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
@@ -172,7 +172,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
               <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-                style={{ color: '#D97706', background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.18)' }}>
+                style={{ color: '#D97706', background: '#FFFFFF', border: '1.5px solid rgba(245,158,11,0.50)', boxShadow: '0 2px 10px rgba(245,158,11,0.10)' }}>
                 Who We Are
               </span>
               <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
@@ -251,7 +251,7 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-              style={{ color: '#1D4ED8', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.15)' }}>
+              style={{ color: '#1D4ED8', background: '#FFFFFF', border: '1.5px solid rgba(29,78,216,0.40)', boxShadow: '0 2px 10px rgba(29,78,216,0.12)' }}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#1D4ED8]" />
               Why Us?
             </span>

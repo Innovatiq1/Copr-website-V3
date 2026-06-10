@@ -91,13 +91,27 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: '45%',
         pointerEvents: 'none',
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.50) 0%, transparent 100%)',
+        background: 'linear-gradient(180deg, rgba(255,255,255,0.55) 0%, transparent 100%)',
       }} />
 
       {/* Soft diagonal tint */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: '20px',
-        background: `linear-gradient(148deg, transparent 45%, ${stat.color}08 100%)`,
+        background: `linear-gradient(148deg, transparent 40%, ${stat.color}0A 100%)`,
+      }} />
+
+      {/* Subtle inner glow line at bottom */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: '12%', right: '12%', height: '1px',
+        pointerEvents: 'none',
+        background: `linear-gradient(90deg, transparent, ${stat.color}30, transparent)`,
+      }} />
+
+      {/* Corner accent — top-right sparkle */}
+      <div style={{
+        position: 'absolute', top: '14px', right: '14px', width: '28px', height: '28px',
+        pointerEvents: 'none', borderRadius: '50%',
+        background: `radial-gradient(circle, ${stat.color}14 0%, transparent 70%)`,
       }} />
 
       {/* Icon row */}

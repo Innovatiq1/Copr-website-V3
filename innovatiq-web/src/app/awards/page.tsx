@@ -108,7 +108,7 @@ export default async function AwardsPage() {
                 Awards
               </span>
             </h2>
-            <p className="text-slate-500 font-medium mt-3 max-w-xl mx-auto">
+            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
               Recognized by industry leaders for innovation, excellence, and commitment to client success.
             </p>
           </AnimatedSection>
@@ -176,7 +176,7 @@ export default async function AwardsPage() {
               Our{' '}
               <span className="bg-linear-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Certifications</span>
             </h2>
-            <p className="text-slate-500 font-medium mb-12 max-w-lg mx-auto">Industry certifications validating our commitment to quality and excellence.</p>
+            <p className="text-gray-600 font-medium mb-12 max-w-lg mx-auto">Industry certifications validating our commitment to quality and excellence.</p>
             <div className="flex flex-wrap justify-center gap-5">
               {[
                 { label: 'ISO 9001:2015', sub: 'Quality Management', icon: '🏆' },
@@ -202,7 +202,7 @@ export default async function AwardsPage() {
                   <div className="text-3xl mb-3">{cert.icon}</div>
                   <div className="w-10 h-0.5 rounded-full mb-3" style={{ background: 'rgba(245,158,11,0.40)' }} />
                   <p className="font-bold text-gray-800 text-sm text-center leading-snug">{cert.label}</p>
-                  <p className="text-slate-500 font-medium text-xs text-center mt-1">{cert.sub}</p>
+                  <p className="text-gray-600 font-medium text-xs text-center mt-1">{cert.sub}</p>
                 </div>
               ))}
             </div>

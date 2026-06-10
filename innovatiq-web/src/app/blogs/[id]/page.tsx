@@ -61,7 +61,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
     <div className="min-h-screen flex flex-col items-center justify-center px-4" style={{ background: '#F9FAFB' }}>
       <div className="text-5xl mb-5">📄</div>
       <h1 className="text-2xl font-bold text-gray-900 mb-2">Article not found</h1>
-      <p className="text-slate-500 font-medium mb-7 text-center max-w-sm text-sm">This article may have been removed or the link is incorrect.</p>
+      <p className="text-gray-600 font-medium mb-7 text-center max-w-sm text-sm">This article may have been removed or the link is incorrect.</p>
       <Link href="/blogs" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm"
         style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #2563EB 50%, #1E40AF 100%)', boxShadow: '0 4px 16px rgba(14,165,233,0.30)' }}>
         <ArrowLeft size={14} /> Back to Blogs
@@ -104,7 +104,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
 
           {/* Back */}
           <Link href="/blogs"
-            className="inline-flex items-center gap-2 text-sm font-semibold mb-10 transition-colors group text-slate-600 hover:text-[#1D4ED8]">
+            className="inline-flex items-center gap-2 text-sm font-semibold mb-10 transition-colors group text-gray-600 hover:text-[#1D4ED8]">
             <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform" />
             Back to Blogs
           </Link>
@@ -126,7 +126,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
 
           {/* Short description */}
           {blog.shortDescription && (
-            <p className="text-[17px] text-slate-600 font-medium leading-relaxed mb-8 pl-4"
+            <p className="text-[17px] text-gray-600 font-medium leading-relaxed mb-8 pl-4"
               style={{ borderLeft: '3px solid #1D4ED8' }}>
               {blog.shortDescription}
             </p>
@@ -144,7 +144,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
               </div>
             )}
             <div className="w-px h-4 bg-gray-200" />
-            <div className="flex items-center gap-4 text-slate-500 text-sm font-medium">
+            <div className="flex items-center gap-4 text-gray-600 text-sm font-medium">
               {dateStr && <span className="flex items-center gap-1.5"><Calendar size={13} />{dateStr}</span>}
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
           {blog.description ? (
             <div className="blog-content" dangerouslySetInnerHTML={{ __html: blog.description }} />
           ) : blog.shortDescription ? (
-            <p className="text-slate-600 font-medium text-lg leading-relaxed">{blog.shortDescription}</p>
+            <p className="text-gray-600 font-medium text-lg leading-relaxed">{blog.shortDescription}</p>
           ) : (
             <p className="text-slate-300 font-medium italic text-sm">No content available.</p>
           )}

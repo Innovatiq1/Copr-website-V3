@@ -75,7 +75,7 @@ export default function TeamMemberCard({
         <div>
           <div className="relative">
             <div
-              className="text-slate-500 text-[15px] leading-relaxed"
+              className="text-gray-600 text-[15px] leading-relaxed"
               style={{
                 maxHeight: expanded ? '320px' : '96px',
                 overflow: 'hidden',

@@ -134,7 +134,7 @@ export default function ServicesSection() {
               </svg>
             </span>
           </h2>
-          <p className="text-slate-500 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-lg font-medium max-w-xl mx-auto leading-relaxed">
             From cloud infrastructure to cyber security — end-to-end services that accelerate your digital journey.
           </p>
         </AnimatedSection>
@@ -177,10 +177,11 @@ export default function ServicesSection() {
 
                     {/* Content */}
                     <h3 className="font-extrabold text-gray-900 text-[16px] mb-2 leading-snug">{s.title}</h3>
-                    <p className="text-slate-500 text-[13.5px] font-medium leading-relaxed flex-1">{s.desc}</p>
+                    <p className="text-gray-600 text-[14.5px] font-medium leading-relaxed">{s.desc}</p>
+                    <div className="flex-1" />
 
                     {/* Footer */}
-                    <div className="flex items-center gap-1.5 mt-5 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
+                    <div className="flex items-center gap-1.5 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
                       <span className="text-[11.5px] font-bold uppercase tracking-wider" style={{ color: s.clr }}>
                         Learn More
                       </span>
@@ -226,7 +227,7 @@ export default function ServicesSection() {
                 </div>
 
                 <h3 className="font-bold text-gray-900 text-[17px] mb-3">Custom Solution</h3>
-                <p className="text-slate-500 text-[13.5px] font-semibold leading-relaxed mb-7 max-w-55">
+                <p className="text-gray-600 text-[13.5px] font-semibold leading-relaxed mb-7 max-w-55">
                   Tell us your challenge — we&apos;ll design the perfect solution for you.
                 </p>
 

@@ -58,7 +58,7 @@ export default function ServicePageTemplate({
                 Overview
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{title}</h2>
-              <p className="text-slate-600 font-medium leading-relaxed mb-8">{overview}</p>
+              <p className="text-gray-600 font-medium leading-relaxed mb-8">{overview}</p>
               <div className="space-y-3">
                 {overviewPoints.map(point => (
                   <div key={point} className="flex items-start gap-3">
@@ -66,7 +66,7 @@ export default function ServicePageTemplate({
                       style={{ background: `${color}12` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-slate-600 text-[15px] font-medium">{point}</span>
+                    <span className="text-gray-600 text-[15px] font-medium">{point}</span>
                   </div>
                 ))}
               </div>
@@ -95,7 +95,7 @@ export default function ServicePageTemplate({
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-800 mb-1 text-[15.5px] leading-snug">{b.title}</h4>
-                        <p className="text-slate-600 text-[13.5px] font-medium leading-relaxed">{b.description}</p>
+                        <p className="text-gray-600 text-[13.5px] font-medium leading-relaxed">{b.description}</p>
                       </div>
                     </div>
                   ))}
@@ -129,7 +129,7 @@ export default function ServicePageTemplate({
                 Benefits
               </span>
             </h2>
-            <p className="text-slate-600 font-medium mt-3 max-w-xl mx-auto">
+            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
               Discover how our {title} expertise transforms your business outcomes.
             </p>
           </AnimatedSection>
@@ -151,7 +151,7 @@ export default function ServicePageTemplate({
                   }}>
                   <div className="text-4xl mb-4">{b.icon}</div>
                   <h3 className="font-semibold text-gray-800 mb-2">{b.title}</h3>
-                  <p className="text-slate-600 text-base font-medium leading-relaxed">{b.description}</p>
+                  <p className="text-gray-600 text-base font-medium leading-relaxed">{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -200,7 +200,7 @@ export default function ServicePageTemplate({
                       {step.step}
                     </div>
                     <h3 className="font-semibold text-gray-800 mb-2">{step.title}</h3>
-                    <p className="text-slate-600 text-sm font-medium leading-relaxed">{step.description}</p>
+                    <p className="text-gray-600 text-sm font-medium leading-relaxed">{step.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -240,7 +240,7 @@ export default function ServicePageTemplate({
                       borderLeft: `3px solid ${color}`,
                     }}>
                     <h3 className="font-semibold text-gray-800 mb-3" style={{ color }}>{card.title}</h3>
-                    <p className="text-slate-600 text-sm font-medium leading-relaxed">{card.description}</p>
+                    <p className="text-gray-600 text-sm font-medium leading-relaxed">{card.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -267,7 +267,7 @@ export default function ServicePageTemplate({
                   Investments
                 </span>
               </h2>
-              <p className="text-slate-600 font-medium mt-3 max-w-xl mx-auto">
+              <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
                 Our managed services deliver measurable return on investment while protecting your business assets.
               </p>
             </AnimatedSection>
@@ -282,7 +282,7 @@ export default function ServicePageTemplate({
                     }}>
                     <div className="text-4xl mb-4">{card.icon}</div>
                     <h3 className="font-bold text-gray-800 mb-3 text-lg">{card.title}</h3>
-                    <p className="text-slate-600 text-sm font-medium leading-relaxed">{card.description}</p>
+                    <p className="text-gray-600 text-sm font-medium leading-relaxed">{card.description}</p>
                   </div>
                 </AnimatedSection>
               ))}

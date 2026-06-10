@@ -66,7 +66,7 @@ export default function ProductPageTemplate({
                   {subtitle}
                 </span>
               </h2>
-              <p className="text-slate-600 font-medium leading-relaxed mb-8">{description}</p>
+              <p className="text-gray-600 font-medium leading-relaxed mb-8">{description}</p>
               <div className="space-y-3 mb-8">
                 {highlights.map(h => (
                   <div key={h} className="flex items-start gap-3">
@@ -74,7 +74,7 @@ export default function ProductPageTemplate({
                       style={{ background: `${color}15` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-slate-600 text-[15px] font-medium">{h}</span>
+                    <span className="text-gray-600 text-[15px] font-medium">{h}</span>
                   </div>
                 ))}
               </div>
@@ -154,7 +154,7 @@ export default function ProductPageTemplate({
                 Features
               </span>
             </h2>
-            <p className="text-slate-600 font-medium mt-3 max-w-xl mx-auto">
+            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
               Everything you need to {tagline.toLowerCase()}
             </p>
           </AnimatedSection>
@@ -176,7 +176,7 @@ export default function ProductPageTemplate({
                   }}>
                   <div className="text-4xl mb-4">{f.icon}</div>
                   <h3 className="font-semibold text-gray-800 mb-2">{f.title}</h3>
-                  <p className="text-slate-600 text-sm font-medium leading-relaxed">{f.description}</p>
+                  <p className="text-gray-600 text-sm font-medium leading-relaxed">{f.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -203,7 +203,7 @@ export default function ProductPageTemplate({
                 {name}?
               </span>
             </h2>
-            <p className="text-slate-600 font-medium mb-10 text-lg">
+            <p className="text-gray-600 font-medium mb-10 text-lg">
               Start your free trial today — no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

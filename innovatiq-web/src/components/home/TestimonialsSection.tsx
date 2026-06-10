@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
@@ -95,8 +95,8 @@ export default function TestimonialsSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-            style={{ color: '#D97706', background: '#FFFFFF', border: '1.5px solid rgba(217,119,6,0.50)', boxShadow: '0 2px 10px rgba(217,119,6,0.12)' }}>
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#D97706' }} />
+            style={{ color: '#BE123C', background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#BE123C' }} />
             Client Stories
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 leading-tight">
@@ -134,7 +134,7 @@ export default function TestimonialsSection() {
                 className="rounded-2xl p-7 flex flex-col h-full"
                 style={{
                   background: '#FFFFFF',
-                  border: i === 1 ? `1px solid ${testimonials[current].color}35` : '1px solid rgba(0,0,0,0.09)',
+                  border: i === 1 ? '1px solid rgba(71, 85, 105, 0.25)' : '1px solid rgba(0,0,0,0.09)',
                   boxShadow: i === 1
                     ? `0 2px 8px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.08)`
                     : '0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.05)',
@@ -142,7 +142,7 @@ export default function TestimonialsSection() {
                 }}>
 
                 {/* Quote icon */}
-                <Quote size={28} className="mb-4 depth-pop" style={{ color: t.color, opacity: i === 1 ? 0.85 : 0.55 }} />
+                <Quote size={28} className="mb-4 depth-pop" style={{ color: '#475569', opacity: i === 1 ? 0.9 : 0.6 }} />
 
                 {/* Stars */}
                 <div className="flex gap-1 mb-4 depth-mid">
@@ -159,7 +159,7 @@ export default function TestimonialsSection() {
                 <div className="flex items-center gap-3 depth-low">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                    style={{ background: `linear-gradient(135deg, ${t.color}, ${t.color}80)` }}>
+                    style={{ background: 'linear-gradient(135deg, #64748B, #475569)' }}>
                     {t.avatar}
                   </div>
                   <div>
@@ -188,7 +188,7 @@ export default function TestimonialsSection() {
                   style={{
                     width: i === current ? '24px' : '8px',
                     height: '8px',
-                    background: i === current ? '#BE123C' : 'rgba(0,0,0,0.15)',
+                    background: i === current ? '#475569' : 'rgba(0,0,0,0.15)',
                   }} />
               ))}
             </div>

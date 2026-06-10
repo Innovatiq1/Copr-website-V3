@@ -13,9 +13,9 @@ body {
     radial-gradient(ellipse 120% 60% at 80% 0%, rgba(190,18,60,0.04) 0%, transparent 60%);
 }
 
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #BE123C, #FF4D7C); border-radius: 3px; }
-::-webkit-scrollbar-track { background: #E2E8F0; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #F43F5E, #BE123C, #881337); border-radius: 99px; }
+::-webkit-scrollbar-track { background: #FFF1F2; border-radius: 99px; }
 
 .glass {
   background: linear-gradient(145deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.75) 100%);

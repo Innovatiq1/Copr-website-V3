@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - feature/saravana-ui-updates
+      - feature/rose-theme
 
 jobs:
   deploy:

@@ -179,7 +179,7 @@ export default function AboutPage() {
                 Who We{' '}
                 <span className="bg-gradient-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Are</span>
               </h2>
-              <p className="text-gray-600 font-medium leading-relaxed mb-6 text-[15px]">
+              <p className="text-[#3d3d3d] font-semibold leading-relaxed mb-6 text-[15px]">
                 Empowering digital transformations through a fusion of collaboration, excellence, and customer-centricity,
                 we elevate standards, unite diverse perspectives, and place our clients at the heart of innovation.
                 At the heart of Innovatiq, you&apos;ll find a team of dedicated professionals who are passionate about
@@ -197,7 +197,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(190,18,60,0.10)' }}>
                       <CheckCircle2 size={13} style={{ color: '#BE123C' }} />
                     </div>
-                    <span className="text-gray-600 text-[15px] font-medium">{p}</span>
+                    <span className="text-[#3d3d3d] text-[15px] font-semibold">{p}</span>
                   </div>
                 ))}
               </div>
@@ -262,7 +262,7 @@ export default function AboutPage() {
               </span>
               , today
             </h2>
-            <p className="text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-[#3d3d3d] font-semibold max-w-2xl mx-auto leading-relaxed">
               We combine deep technology expertise with industry-specific knowledge to deliver transformative outcomes for businesses across Asia Pacific.
             </p>
           </AnimatedSection>

@@ -102,7 +102,7 @@ export default function CtaSection() {
               </span>
             </h2>
 
-            <p className="text-gray-600 text-lg font-medium mb-10 max-w-lg leading-relaxed">
+            <p className="text-[#1a1a1a] text-lg font-medium mb-10 max-w-lg leading-relaxed">
               Connect with our experts for a free consultation and discover how Innovatiq
               can accelerate your business transformation.
             </p>

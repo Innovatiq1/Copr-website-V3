@@ -206,7 +206,7 @@ export default function CounterSection() {
                 Speak for Themselves
               </span>
             </h2>
-            <p className="text-gray-600 text-base font-medium leading-relaxed mb-10 max-w-md">
+            <p className="text-[#3d3d3d] text-base font-semibold leading-relaxed mb-10 max-w-md">
               At Innovatiq, we believe in the power of innovation to transform businesses and elevate their digital presence — building trust one project at a time.
             </p>
 

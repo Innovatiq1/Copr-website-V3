@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
                   ))}
                 </div>
 
-                <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-1 italic font-medium">
+                <p className="text-[#3d3d3d] text-sm leading-relaxed mb-6 flex-1 italic font-semibold">
                   &ldquo;{t.quote}&rdquo;
                 </p>
 

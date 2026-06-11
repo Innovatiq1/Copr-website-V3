@@ -134,7 +134,7 @@ export default function ServicesSection() {
               </svg>
             </span>
           </h2>
-          <p className="text-gray-600 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#1a1a1a] text-lg font-medium max-w-xl mx-auto leading-relaxed">
             From cloud infrastructure to cyber security — end-to-end services that accelerate your digital journey.
           </p>
         </AnimatedSection>

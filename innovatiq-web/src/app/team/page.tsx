@@ -212,7 +212,7 @@ export default function TeamPage() {
               Visionary{' '}
               <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Leaders</span>
             </h2>
-            <p className="text-gray-600 font-medium max-w-xl mx-auto text-base leading-relaxed">
+            <p className="text-[#3d3d3d] font-medium max-w-xl mx-auto text-lg leading-relaxed">
               Decades of combined experience driving digital transformation across Asia Pacific and beyond.
             </p>
           </AnimatedSection>
@@ -273,7 +273,7 @@ export default function TeamPage() {
               Our{' '}
               <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Expert Team</span>
             </h2>
-            <p className="text-gray-600 font-medium mt-2">100+ certified professionals delivering excellence daily.</p>
+            <p className="text-[#3d3d3d] font-medium mt-2 text-lg">100+ certified professionals delivering excellence daily.</p>
           </AnimatedSection>
 
           <ExpertTeamGrid members={teamMembers} />

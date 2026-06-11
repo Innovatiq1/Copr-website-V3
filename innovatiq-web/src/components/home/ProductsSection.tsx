@@ -128,7 +128,7 @@ export default function ProductsSection() {
               </svg>
             </span>
           </h2>
-          <p className="text-gray-600 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#1a1a1a] text-lg font-medium max-w-xl mx-auto leading-relaxed">
             Innovative platforms designed to transform how enterprises learn, secure, and grow.
           </p>
         </div>

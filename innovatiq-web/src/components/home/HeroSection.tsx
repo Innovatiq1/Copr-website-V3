@@ -383,8 +383,8 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-[16px] leading-[1.75] mb-8 max-w-lg font-semibold"
-              style={{ color: '#64748B', letterSpacing: '0.01em' }}>
+            <p className="text-[16px] leading-[1.75] mb-8 max-w-lg font-medium"
+              style={{ color: '#1a1a1a', letterSpacing: '0.01em' }}>
               Looking to create a digital product that makes an impact? Transform your ideas into
               intelligent, AI-driven digital experiences — from concept to launch. Our expert team
               helps you design, develop, and scale solutions that engage your audience and
@@ -403,8 +403,8 @@ export default function HeroSection() {
                     style={{ background: 'rgba(190,18,60,0.10)', border: '1px solid rgba(190,18,60,0.20)' }}>
                     <Icon size={13} className="text-[#BE123C]" />
                   </div>
-                  <span className="text-[14px] font-bold transition-colors duration-300 group-hover/check:text-slate-800"
-                    style={{ color: '#475569' }}>{text}</span>
+                  <span className="text-[14px] font-medium transition-colors duration-300 group-hover/check:text-slate-800"
+                    style={{ color: '#1a1a1a' }}>{text}</span>
                 </div>
               ))}
             </div>

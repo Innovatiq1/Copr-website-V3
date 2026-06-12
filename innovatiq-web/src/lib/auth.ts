@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 const JWT_SECRET = process.env.JWT_SECRET || 'adminsecret123';
 
 export function signToken(payload: object) {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d' });
+  return jwt.sign(payload, JWT_SECRET);
 }
 
 export function verifyToken(token: string) {

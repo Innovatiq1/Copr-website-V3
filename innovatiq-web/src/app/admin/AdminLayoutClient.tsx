@@ -85,7 +85,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
             </div>
             <div>
               <p className="text-slate-900 text-sm font-bold leading-none">Innovatiq</p>
-              <p className="text-slate-400 text-[10px] mt-0.5 leading-none">Admin Panel</p>
+              <p className="text-slate-600 text-[10px] mt-0.5 leading-none">Admin Panel</p>
             </div>
           </div>
           <button
@@ -98,7 +98,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
 
         {/* Navigation */}
         <nav className="flex-1 py-4 px-3 overflow-y-auto">
-          <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-widest px-3 mb-3">
+          <p className="text-[10px] text-slate-600 font-semibold uppercase tracking-widest px-3 mb-3">
             Main Menu
           </p>
           {navLinks.map(({ label, icon: Icon, href }) => {
@@ -114,7 +114,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                     ? 'linear-gradient(135deg, rgba(190,18,60,0.08) 0%, rgba(190,18,60,0.12) 100%)'
                     : 'transparent',
                   border: isActive ? '1px solid rgba(190,18,60,0.15)' : '1px solid transparent',
-                  color: isActive ? '#BE123C' : '#475569',
+                  color: isActive ? '#BE123C' : '#1E293B',
                   fontWeight: isActive ? 600 : 400,
                   fontSize: '14px',
                 }}
@@ -168,7 +168,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
           </div>
           {/* Breadcrumb on desktop */}
           <div className="hidden lg:flex items-center gap-2 text-sm">
-            <span className="text-slate-400">Admin</span>
+            <span className="text-slate-600">Admin</span>
             <ChevronRight size={14} className="text-slate-300" />
             <span className="text-slate-700 font-medium capitalize">
               {pathname.split('/').filter(Boolean).pop()}
@@ -176,7 +176,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
           </div>
           <div className="ml-auto flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-xs text-slate-400 hidden sm:block">Connected</span>
+            <span className="text-xs text-slate-600 hidden sm:block">Connected</span>
           </div>
         </header>
 

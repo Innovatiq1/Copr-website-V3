@@ -174,7 +174,7 @@ export default function WhyUsSection() {
               </span>
             </h2>
 
-            <p className="text-gray-600 text-[17px] font-medium leading-relaxed mb-8 max-w-lg">
+            <p className="text-[17px] font-medium leading-relaxed mb-8 max-w-lg" style={{ color: '#1a1a1a' }}>
               We don&apos;t just deliver technology — we build lasting partnerships.
               Every solution is tailored to your unique business needs and drives measurable growth.
             </p>
@@ -187,7 +187,7 @@ export default function WhyUsSection() {
                     style={{ background: clr + '14', border: `1px solid ${clr}30` }}>
                     <CIcon size={13} style={{ color: clr }} />
                   </div>
-                  <span className="text-gray-600 text-[15px] font-medium">{text}</span>
+                  <span className="text-[15px] font-medium" style={{ color: '#1a1a1a' }}>{text}</span>
                 </div>
               ))}
             </div>
@@ -219,7 +219,7 @@ export default function WhyUsSection() {
                   {/* Text — right */}
                   <div className="relative z-10 min-w-0">
                     <p className="font-extrabold text-gray-800 text-[14px] leading-snug mb-1">{r.title}</p>
-                    <p className="text-gray-600 text-[12.5px] font-medium leading-relaxed">{r.desc}</p>
+                    <p className="text-[12.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{r.desc}</p>
                   </div>
                 </div>
               ))}

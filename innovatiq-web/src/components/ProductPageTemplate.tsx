@@ -66,7 +66,7 @@ export default function ProductPageTemplate({
                   {subtitle}
                 </span>
               </h2>
-              <p className="text-gray-600 font-medium leading-relaxed mb-8">{description}</p>
+              <p className="font-medium leading-relaxed mb-8" style={{ color: '#1a1a1a' }}>{description}</p>
               <div className="space-y-3 mb-8">
                 {highlights.map(h => (
                   <div key={h} className="flex items-start gap-3">
@@ -74,7 +74,7 @@ export default function ProductPageTemplate({
                       style={{ background: `${color}15` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-gray-600 text-[15px] font-medium">{h}</span>
+                    <span className="text-[15px] font-medium" style={{ color: '#1a1a1a' }}>{h}</span>
                   </div>
                 ))}
               </div>
@@ -86,7 +86,7 @@ export default function ProductPageTemplate({
                 </Link>
                 <Link href="/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
-                  style={{ border: `1px solid ${color}35`, color, background: 'transparent' }}>
+                  style={{ border: `1.5px solid ${color}90`, color, background: 'transparent' }}>
                   Request Demo
                 </Link>
               </div>
@@ -110,8 +110,8 @@ export default function ProductPageTemplate({
                       🚀
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold">{name}</h3>
-                      <p className="text-white/85 text-xs font-semibold mt-0.5">{subtitle}</p>
+                      <h3 className="text-xl font-extrabold">{name}</h3>
+                      <p className="text-white/85 text-xs font-bold mt-0.5">{subtitle}</p>
                     </div>
                   </div>
                   <div className="h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
@@ -123,7 +123,7 @@ export default function ProductPageTemplate({
                     <div key={f.title} className="flex items-center gap-3 rounded-xl px-4 py-3"
                       style={{ background: 'rgba(255,255,255,0.22)' }}>
                       <span className="text-xl">{f.icon}</span>
-                      <span className="font-semibold text-sm text-white">{f.title}</span>
+                      <span className="text-sm text-white" style={{ fontWeight: 800 }}>{f.title}</span>
                     </div>
                   ))}
                 </div>
@@ -154,7 +154,7 @@ export default function ProductPageTemplate({
                 Features
               </span>
             </h2>
-            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
+            <p className="font-medium mt-3 max-w-xl mx-auto" style={{ color: '#1a1a1a' }}>
               Everything you need to {tagline.toLowerCase()}
             </p>
           </AnimatedSection>
@@ -175,8 +175,8 @@ export default function ProductPageTemplate({
                     boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
                   <div className="text-4xl mb-4">{f.icon}</div>
-                  <h3 className="font-semibold text-gray-800 mb-2">{f.title}</h3>
-                  <p className="text-gray-600 text-sm font-medium leading-relaxed">{f.description}</p>
+                  <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{f.title}</h3>
+                  <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{f.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -203,7 +203,7 @@ export default function ProductPageTemplate({
                 {name}?
               </span>
             </h2>
-            <p className="text-gray-600 font-medium mb-10 text-lg">
+            <p className="font-medium mb-10 text-lg" style={{ color: '#1a1a1a' }}>
               Start your free trial today — no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

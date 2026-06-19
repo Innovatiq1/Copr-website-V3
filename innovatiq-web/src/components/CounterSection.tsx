@@ -33,7 +33,7 @@ function Counter({ target, suffix, color, visible }: { target: number; suffix: s
 
   return (
     <span ref={ref} className="font-black tabular-nums"
-      style={{ fontSize: '48px', lineHeight: 1, color, filter: `drop-shadow(0 0 12px ${color}40)` }}>
+      style={{ fontSize: 'clamp(30px, 7vw, 48px)', lineHeight: 1, color, filter: `drop-shadow(0 0 12px ${color}40)` }}>
       0{suffix}
     </span>
   );
@@ -42,7 +42,15 @@ function Counter({ target, suffix, color, visible }: { target: number; suffix: s
 function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => {
@@ -51,6 +59,25 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
+
+  const borderProps = isMobile
+    ? { border: '1.5px solid rgba(190,18,60,0.35)' as const }
+    : {
+        borderStyle: 'solid' as const,
+        borderColor: 'transparent',
+        borderTopWidth: '4px',
+        borderLeftWidth: '1px',
+        borderRightWidth: '1px',
+        borderBottomWidth: '1px',
+      };
+
+  const bgValue = isMobile
+    ? (hovered
+        ? `linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,250,251,0.90) 100%)`
+        : `linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,250,251,0.82) 100%)`)
+    : (hovered
+        ? `linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,250,251,0.90) 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.70) 50%, transparent 90%) border-box`
+        : `linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,250,251,0.82) 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.70) 50%, transparent 90%) border-box`);
 
   return (
     <div
@@ -65,22 +92,15 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         transition: visible
           ? 'opacity 0.4s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, background 0.35s ease'
           : `opacity 0.6s ease ${index * 120}ms, transform 0.65s cubic-bezier(0.16,1,0.3,1) ${index * 120}ms`,
-        background: hovered
-          ? `linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,250,251,0.90) 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.70) 50%, transparent 90%) border-box`
-          : `linear-gradient(160deg, rgba(255,255,255,0.88) 0%, rgba(255,250,251,0.82) 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.70) 50%, transparent 90%) border-box`,
+        background: bgValue,
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
         borderRadius: '20px',
-        padding: '24px 20px 22px',
+        padding: 'clamp(14px, 3vw, 24px) clamp(12px, 2.5vw, 20px) clamp(14px, 3vw, 22px)',
         textAlign: 'left' as const,
         position: 'relative' as const,
         overflow: 'hidden',
-        borderStyle: 'solid',
-        borderColor: 'transparent',
-        borderTopWidth: '4px',
-        borderLeftWidth: '1px',
-        borderRightWidth: '1px',
-        borderBottomWidth: '1px',
+        ...borderProps,
         boxShadow: hovered
           ? `0 20px 44px rgba(190,18,60,0.16), 0 8px 20px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,1)`
           : `0 4px 20px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.95)`,
@@ -108,9 +128,9 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       }} />
 
       {/* Icon row */}
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 'clamp(10px, 2vw, 20px)' }}>
         <div style={{
-          width: '46px', height: '46px', borderRadius: '13px',
+          width: 'clamp(34px, 5vw, 46px)', height: 'clamp(34px, 5vw, 46px)', borderRadius: '13px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           background: `rgba(255,255,255,0.90)`,
           border: `1.5px solid rgba(190,18,60,0.18)`,
@@ -136,7 +156,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       {/* Label */}
       <p style={{
         fontSize: '11px', fontWeight: 700, letterSpacing: '0.10em',
-        textTransform: 'uppercase', color: '#334155', margin: 0,
+        textTransform: 'uppercase', color: '#1a1a1a', margin: 0,
       }}>
         {stat.label}
       </p>
@@ -146,7 +166,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 
 export default function CounterSection() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{
+    <section className="relative py-14 md:py-20 lg:py-24 overflow-hidden" style={{
       background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF5F6 40%, #FFF8F9 70%, #FFFFFF 100%)'
     }}>
 
@@ -159,39 +179,30 @@ export default function CounterSection() {
         background: 'radial-gradient(circle at 50% 80%, rgba(244,63,94,0.05) 0%, transparent 65%)',
       }} />
 
-      {/* Image panel — slanted left edge via clip-path */}
-      <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
+      {/* Image panel — soft left fade via mask */}
+      <div className="hidden lg:block absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
         backgroundImage: "url('/images/statistics_bg_clarity.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        maskImage: 'linear-gradient(to right, transparent 0%, black 13%)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 13%)',
       }} />
 
-      {/* Subtle dark scrim for readability */}
-      <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(90deg, transparent 0%, rgba(15,23,42,0.10) 50%, rgba(15,23,42,0.18) 100%)',
-        clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        zIndex: 1,
-      }} />
-
-      {/* Top/bottom fade to blend with section bg */}
-      <div className="absolute inset-y-0 right-0 w-[55%] pointer-events-none" style={{
-        background: 'linear-gradient(180deg, #FFF5F6 0%, transparent 12%, transparent 88%, #FFF5F6 100%)',
-        clipPath: 'polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      {/* Top fade */}
+      <div className="hidden lg:block absolute top-0 right-0 w-[55%] h-24 pointer-events-none" style={{
+        background: 'linear-gradient(to bottom, #FFFFFF 0%, transparent 100%)',
         zIndex: 2,
       }} />
 
-      {/* Slant edge soft glow */}
-      <div className="absolute inset-y-0 pointer-events-none" style={{
-        left: 'calc(45% - 60px)',
-        width: '120px',
-        background: 'linear-gradient(90deg, transparent 0%, rgba(190,18,60,0.07) 50%, transparent 100%)',
-        zIndex: 3,
+      {/* Bottom fade */}
+      <div className="hidden lg:block absolute bottom-0 right-0 w-[55%] h-24 pointer-events-none" style={{
+        background: 'linear-gradient(to top, #FFFFFF 0%, transparent 100%)',
+        zIndex: 2,
       }} />
 
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left — text + certs */}
           <div>
@@ -234,7 +245,7 @@ export default function CounterSection() {
           </div>
 
           {/* Right — 2×2 white 3D cards */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
             {stats.map((s, i) => (
               <StatCard key={i} stat={s} index={i} />
             ))}

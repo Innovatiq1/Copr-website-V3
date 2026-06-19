@@ -182,7 +182,7 @@ export default function ServicesSection() {
 
                     {/* Content */}
                     <h3 className="font-extrabold text-gray-900 text-[16px] mb-2 leading-snug">{s.title}</h3>
-                    <p className="text-gray-600 text-[14.5px] font-medium leading-relaxed">{s.desc}</p>
+                    <p className="text-[14.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{s.desc}</p>
                     <div className="flex-1" />
 
                     {/* Footer */}

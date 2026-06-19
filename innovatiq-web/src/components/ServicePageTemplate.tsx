@@ -58,7 +58,7 @@ export default function ServicePageTemplate({
                 Overview
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{title}</h2>
-              <p className="text-gray-600 font-medium leading-relaxed mb-8">{overview}</p>
+              <p className="font-medium leading-relaxed mb-8" style={{ color: '#1a1a1a' }}>{overview}</p>
               <div className="space-y-3">
                 {overviewPoints.map(point => (
                   <div key={point} className="flex items-start gap-3">
@@ -66,7 +66,7 @@ export default function ServicePageTemplate({
                       style={{ background: `${color}12` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-gray-600 text-[15px] font-medium">{point}</span>
+                    <span className="text-[15px] font-medium" style={{ color: '#1a1a1a' }}>{point}</span>
                   </div>
                 ))}
               </div>
@@ -107,7 +107,7 @@ export default function ServicePageTemplate({
       </section>
 
       {/* All Benefits */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 22%, #FFFEFE 55%, #FFFFFF 100%)' }}>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${color}05 0%, transparent 70%)` }} />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
@@ -129,7 +129,7 @@ export default function ServicePageTemplate({
                 Benefits
               </span>
             </h2>
-            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
+            <p className="font-semibold mt-3 max-w-xl mx-auto" style={{ color: '#1a1a1a' }}>
               Discover how our {title} expertise transforms your business outcomes.
             </p>
           </AnimatedSection>
@@ -150,8 +150,8 @@ export default function ServicePageTemplate({
                     boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
                   <div className="text-4xl mb-4">{b.icon}</div>
-                  <h3 className="font-semibold text-gray-800 mb-2">{b.title}</h3>
-                  <p className="text-gray-600 text-base font-medium leading-relaxed">{b.description}</p>
+                  <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{b.title}</h3>
+                  <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#374151' }}>{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -200,7 +200,7 @@ export default function ServicePageTemplate({
                       {step.step}
                     </div>
                     <h3 className="font-semibold text-gray-800 mb-2">{step.title}</h3>
-                    <p className="text-gray-600 text-sm font-medium leading-relaxed">{step.description}</p>
+                    <p className="text-sm font-semibold leading-relaxed" style={{ color: '#1a1a1a' }}>{step.description}</p>
                   </div>
                 </AnimatedSection>
               ))}

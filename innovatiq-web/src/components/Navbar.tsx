@@ -93,14 +93,14 @@ export default function Navbar() {
               </Link>
 
               {/* Desktop nav */}
-              <div className="hidden lg:flex items-center gap-0.5 text-sm font-bold">
+              <div className="hidden lg:flex items-center gap-0.5 text-sm font-semibold">
                 {(['about', 'products', 'services'] as NonNullable<Key>[]).map(k => (
                   <div key={k} className="relative"
                     onMouseEnter={() => setDrop(k)}
                     onMouseLeave={() => setDrop(null)}>
                     <button
                       className="flex items-center gap-1.5 px-4 py-2 rounded-lg capitalize transition-all duration-200 cursor-pointer"
-                      style={{ color: drop === k ? '#BE123C' : '#374151', background: drop === k ? 'rgba(190,18,60,0.08)' : 'transparent' }}>
+                      style={{ color: drop === k ? '#BE123C' : '#1a1a1a', background: drop === k ? 'rgba(190,18,60,0.08)' : 'transparent' }}>
                       {k === 'about' ? 'About Us' : k.charAt(0).toUpperCase() + k.slice(1)}
                       <ChevronDown size={13} className={`transition-transform duration-200 ${drop === k ? 'rotate-180' : ''}`} />
                     </button>
@@ -126,14 +126,14 @@ export default function Navbar() {
                                   : <span className="text-[9px] font-black text-[#BE123C]">LMP</span>}
                               </div>
                               <div>
-                                <p className="font-semibold text-gray-800 text-sm group-hover:text-[#BE123C] transition-colors">{p.label}</p>
-                                <p className="text-xs text-gray-400">{p.sub}</p>
+                                <p className="text-sm group-hover:text-[#BE123C] transition-colors" style={{ color: '#1a1a1a', fontWeight: 550 }}>{p.label}</p>
+                                <p className="text-xs" style={{ color: '#1a1a1a' }}>{p.sub}</p>
                               </div>
                             </Link>
                           ))
                           : (NAV[k] as { label: string; href: string }[]).map(l => (
                             <Link key={l.href} href={l.href} onClick={() => setDrop(null)}
-                              className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.05)] transition-all">
+                              className="block px-4 py-2.5 text-sm hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.05)] transition-all" style={{ color: '#1a1a1a', fontWeight: 550 }}>
                               {l.label}
                             </Link>
                           ))
@@ -143,15 +143,15 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                <Link href="/careers" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200">Careers</Link>
-                <Link href="/contact" className="px-4 py-2 rounded-lg font-bold text-gray-700 hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200">Contact</Link>
+                <Link href="/careers" className="px-4 py-2 rounded-lg font-semibold hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Careers</Link>
+                <Link href="/contact" className="px-4 py-2 rounded-lg font-semibold hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Contact</Link>
               </div>
 
               {/* CTAs */}
               <div className="hidden lg:flex items-center gap-3">
                 <Link href="/contact"
-                  className="px-5 py-2.5 text-sm font-semibold text-gray-700 rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
-                  style={{ border: '1px solid rgba(0,0,0,0.12)' }}>
+                  className="px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
+                  style={{ color: '#1a1a1a', border: '1px solid rgba(0,0,0,0.22)' }}>
                   Free Trial
                 </Link>
                 <Link href="/contact"
@@ -224,7 +224,7 @@ export default function Navbar() {
           ].map(m => (
             <div key={m.k}>
               <button onClick={() => setMob(v => v === m.k ? null : m.k)}
-                className="flex items-center justify-between w-full px-3 py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gray-50 transition-all">
+                className="flex items-center justify-between w-full px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
                 {m.label}
                 <ChevronDown size={14} className={`transition-transform duration-200 text-gray-600 ${mob === m.k ? 'rotate-180' : ''}`} />
               </button>
@@ -238,7 +238,7 @@ export default function Navbar() {
                 <div className="ml-3 pb-1">
                   {m.items.map((l: { label: string; href: string; sub?: string }) => (
                     <Link key={l.href} href={l.href} onClick={closeDrawer}
-                      className="block px-3 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#BE123C] rounded-xl hover:bg-[rgba(190,18,60,0.06)] transition-all">
+                      className="block px-3 py-2.5 text-sm font-semibold hover:text-[#BE123C] rounded-xl hover:bg-[rgba(190,18,60,0.06)] transition-all" style={{ color: '#1a1a1a' }}>
                       {l.label}{l.sub ? ` — ${l.sub}` : ''}
                     </Link>
                   ))}
@@ -247,18 +247,18 @@ export default function Navbar() {
             </div>
           ))}
           <Link href="/careers" onClick={closeDrawer}
-            className="block px-3 py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gray-50 transition-all">
+            className="block px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
             Careers
           </Link>
           <Link href="/contact" onClick={closeDrawer}
-            className="block px-3 py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gray-50 transition-all">
+            className="block px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
             Contact
           </Link>
 
           {/* CTA buttons */}
           <div className="pt-4 pb-6 space-y-2">
             <Link href="/contact" onClick={closeDrawer}
-              className="block text-center py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gray-50 transition-all"
+              className="block text-center py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}
               style={{ border: '1px solid rgba(0,0,0,0.12)' }}>
               Free Trial
             </Link>

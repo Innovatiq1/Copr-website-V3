@@ -68,7 +68,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(190,18,60,0.08)', color: '#BE123C', border: '1px solid rgba(190,18,60,0.15)' }}>
                       🎯 Our Vision
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-base font-medium">
+                    <p className="leading-relaxed text-base font-normal" style={{ color: '#1a1a1a' }}>
                       Our vision at Innovatiq is to be the trailblazer in leading the way towards a digitally empowered future.
                       We envision a world where businesses seamlessly integrate technology into every aspect of their operations,
                       driving growth, innovation, and sustainability. Through our relentless pursuit of excellence and innovation,
@@ -150,8 +150,8 @@ export default function AboutPage() {
                       style={{ background: `${v.color}10`, border: `1px solid ${v.color}20` }}>
                       <Image src={v.icon} alt={v.title} width={40} height={40} style={{ objectFit: 'contain' }} />
                     </div>
-                    <h3 className="font-bold text-gray-800 text-lg mb-2">{v.title}</h3>
-                    <p className="text-gray-600 text-[15px] font-medium leading-relaxed">{v.desc}</p>
+                    <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{v.title}</h3>
+                    <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{v.desc}</p>
                   </div>
                 </TiltCard>
               </AnimatedSection>
@@ -171,15 +171,16 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
-              <span className="inline-block text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
-                style={{ color: '#D97706', background: '#FFFFFF', border: '1.5px solid rgba(245,158,11,0.50)', boxShadow: '0 2px 10px rgba(245,158,11,0.10)' }}>
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+                style={{ color: '#BE123C', background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#BE123C' }} />
                 Who We Are
               </span>
               <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 Who We{' '}
                 <span className="bg-gradient-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Are</span>
               </h2>
-              <p className="text-[#3d3d3d] font-semibold leading-relaxed mb-6 text-[15px]">
+              <p className="text-[#3d3d3d] font-semibold leading-relaxed mb-6 text-[15.5px]">
                 Empowering digital transformations through a fusion of collaboration, excellence, and customer-centricity,
                 we elevate standards, unite diverse perspectives, and place our clients at the heart of innovation.
                 At the heart of Innovatiq, you&apos;ll find a team of dedicated professionals who are passionate about
@@ -197,7 +198,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(190,18,60,0.10)' }}>
                       <CheckCircle2 size={13} style={{ color: '#BE123C' }} />
                     </div>
-                    <span className="text-[#3d3d3d] text-[15px] font-semibold">{p}</span>
+                    <span className="text-[#3d3d3d] text-[14.5px] font-semibold">{p}</span>
                   </div>
                 ))}
               </div>
@@ -219,7 +220,7 @@ export default function AboutPage() {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
                   }}>
                   <p className="text-3xl font-bold" style={{ color: '#BE123C' }}>15+</p>
-                  <p className="text-xs text-gray-600 font-medium mt-0.5">Years of Excellence</p>
+                  <p className="text-xs text-gray-600 font-semibold mt-0.5">Years of Excellence</p>
                 </div>
                 <div className="absolute -top-5 -right-5 rounded-2xl p-4"
                   style={{
@@ -228,7 +229,7 @@ export default function AboutPage() {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
                   }}>
                   <p className="text-3xl font-bold" style={{ color: '#F59E0B' }}>3</p>
-                  <p className="text-xs text-gray-600 font-medium mt-0.5">Countries</p>
+                  <p className="text-xs text-gray-600 font-semibold mt-0.5">Countries</p>
                 </div>
               </TiltCard>
             </AnimatedSection>
@@ -295,8 +296,8 @@ export default function AboutPage() {
                         0{i + 1}
                       </span>
                     </div>
-                    <h3 className="font-bold text-gray-900 text-lg mb-3">{item.title}</h3>
-                    <p className="text-gray-600 text-[15px] font-medium leading-relaxed">{item.description}</p>
+                    <h3 className="font-bold text-lg mb-3" style={{ color: '#1a1a1a' }}>{item.title}</h3>
+                    <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{item.description}</p>
                   </div>
                 </AnimatedSection>
               );

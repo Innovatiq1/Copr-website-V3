@@ -10,7 +10,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ care
   try {
     await connectDB();
     const { careerId } = await params;
-    const applications = await JobApplication.find({ careerId }).sort({ createdAt: -1 }).lean();
+    const applications = await JobApplication.find({ careerId }).sort({ createdAt: -1 }).select('-resumeData').lean();
     return NextResponse.json(applications);
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

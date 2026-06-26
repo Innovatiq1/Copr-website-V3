@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     await connectDB();
     const body = await req.json();
     const career = await Career.create(body);
-    revalidateTag('careers', {});
+    revalidateTag('careers');
     return NextResponse.json(career, { status: 201 });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

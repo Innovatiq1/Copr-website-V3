@@ -1,4 +1,4 @@
-﻿import PageHero from '@/components/PageHero';
+import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import Link from 'next/link';
@@ -6,26 +6,52 @@ import { ArrowRight } from 'lucide-react';
 
 const products = [
   {
+    name: 'Sales CRM',
+    subtitle: 'AI-Powered Customer Relationship Management',
+    tagline: 'Close Deals Faster. Grow Smarter.',
+    description: 'Empower your sales team with an intelligent CRM designed to streamline customer interactions, manage pipelines, and accelerate revenue growth.',
+    href: '/products/sales-crm',
+    gradient: 'linear-gradient(135deg, #881337 0%, #BE123C 28%, #D4174A 52%, #F43F5E 75%, #FB923C 100%)',
+    color: '#D4174A',
+    features: ['AI Lead Scoring & Qualification', 'AI Deal Analysis & Forecasting', 'Intelligent Sales Recommendations', 'Automated Follow-Up Reminders', 'Sales Target Tracking', 'AI Analytics & Performance Insights', 'Email & Calendar Integration', 'Multi-Tenant & Role-Based Access'],
+    badge: 'Our Latest Product',
+    badgeLatest: true,
+  },
+  {
+    name: 'HRMS (ATS)',
+    subtitle: 'AI-Powered Recruitment Platform',
+    tagline: 'Find, Hire & Onboard Top Talent Faster with AI.',
+    description: 'Transform your hiring process with intelligent recruitment automation. Our AI-powered Applicant Tracking System helps HR teams streamline candidate sourcing, screening, evaluation, and hiring from a single platform.',
+    href: '/products/ai-ats',
+    gradient: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
+    color: '#4F46E5',
+    features: ['AI Resume Parsing & Screening', 'AI Candidate Matching & Ranking', 'AI Job Description Generator', 'Smart Candidate Pipeline Management', 'Automated Interview Scheduling', 'Recruitment Analytics & Insights', 'Multi-Tenant & Role-Based Access', 'Job Portal Integration'],
+    badge: 'Our Latest Product',
+    badgeLatest: true,
+  },
+  {
     name: 'SkillEra',
     subtitle: 'Training Management System',
     tagline: 'Smart Learning. Simplified Growth.',
     description: 'AI-powered training lifecycle management with intelligent recommendations, advanced analytics, and automated workflows.',
     href: '/products/skillera',
-    gradient: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
-    color: '#BE123C',
+    gradient: 'linear-gradient(135deg, #4a044e 0%, #86198f 50%, #a21caf 100%)',
+    color: '#a21caf',
     features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Learning'],
     badge: 'Most Popular',
+    badgeLatest: false,
   },
   {
     name: 'LearnPro',
     subtitle: 'Learning Management System',
     tagline: 'Next-Gen LMS Platform.',
-    description: 'Comprehensive learning platform enabling organizations to create, manage, and deliver training programs at scale.',
+    description: 'Comprehensive learning platform enabling organisations to create, manage, and deliver training programs at scale.',
     href: '/products/learnpro',
-    gradient: 'linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%)',
-    color: '#F43F5E',
+    gradient: 'linear-gradient(135deg, #164e63 0%, #0e7490 50%, #0891b2 100%)',
+    color: '#0e7490',
     features: ['Course Builder', 'Progress Tracking', 'Certifications', 'Social Learning'],
     badge: null,
+    badgeLatest: false,
   },
   {
     name: 'SecurOn',
@@ -37,6 +63,7 @@ const products = [
     color: '#10B981',
     features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Zero-Downtime'],
     badge: null,
+    badgeLatest: false,
   },
   {
     name: 'LMP',
@@ -48,6 +75,7 @@ const products = [
     color: '#8B5CF6',
     features: ['Gamification', 'Leaderboards', 'Rewards', 'Engagement Analytics'],
     badge: null,
+    badgeLatest: false,
   },
 ];
 
@@ -78,15 +106,22 @@ export default function ProductsPage() {
                   style={{ background: product.gradient, boxShadow: `0 10px 40px ${product.color}25` }}
                 >
                   {product.badge && (
-                    <span className="self-start text-xs font-semibold px-3 py-1 rounded-full mb-4"
-                      style={{ background: '#F59E0B', color: '#7A5A0A' }}>
-                      {product.badge}
-                    </span>
+                    product.badgeLatest ? (
+                      <span className="self-start text-xs font-bold px-3 py-1 rounded-full mb-4 flex items-center gap-1.5 w-fit"
+                        style={{ background: 'rgba(255,255,255,0.22)', color: '#fff', border: '1px solid rgba(255,255,255,0.45)', boxShadow: '0 2px 10px rgba(0,0,0,0.20)' }}>
+                        ✦ {product.badge}
+                      </span>
+                    ) : (
+                      <span className="self-start text-xs font-semibold px-3 py-1 rounded-full mb-4"
+                        style={{ background: '#F59E0B', color: '#7A5A0A' }}>
+                        {product.badge}
+                      </span>
+                    )
                   )}
                   <p className="text-white/60 text-xs uppercase tracking-widest mb-1">{product.subtitle}</p>
                   <h3 className="text-3xl font-bold text-white mb-2">{product.name}</h3>
-                  <p className="text-white/80 font-medium mb-4">{product.tagline}</p>
-                  <p className="text-white/70 text-sm leading-relaxed mb-5">{product.description}</p>
+                  <p className="text-white/80 font-medium mb-4 text-[16px]">{product.tagline}</p>
+                  <p className="text-white/70 text-[15px] font-medium leading-relaxed mb-5">{product.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6 flex-1">
                     {product.features.map(f => (
                       <span key={f} className="text-xs px-3 py-1 rounded-full font-medium"
@@ -121,8 +156,8 @@ export default function ProductsPage() {
               <div className="absolute top-0 left-0 right-0 h-[2px]"
                 style={{ background: 'linear-gradient(90deg, #BE123C, #8B5CF6, transparent)' }} />
               <h3 className="text-xl font-bold text-white mb-3">Not Sure Which Product Fits Your Needs?</h3>
-              <p className="text-gray-400 mb-6 max-w-xl mx-auto">
-                Our product experts can help you find the right solution for your organization.
+              <p className="text-white/70 mb-6 max-w-xl mx-auto text-[15px] font-medium">
+                Our product experts can help you find the right solution for your organisation.
                 Schedule a free 30-minute consultation today.
               </p>
               <Link href="/contact"

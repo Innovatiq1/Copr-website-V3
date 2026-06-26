@@ -42,7 +42,7 @@ const getCachedBlogs = (page: number, limit: number) => unstable_cache(
     const skip = (page - 1) * limit;
     const filter = { active: { $ne: false } };
     const [blogs, total] = await Promise.all([
-      Blog.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+      Blog.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit).select('-imageData').lean(),
       Blog.countDocuments(filter),
     ]);
     return {
@@ -69,7 +69,7 @@ const getCachedAwards = (page: number, limit: number) => unstable_cache(
   async () => {
     await connectDB();
     const filter = { active: { $ne: false } };
-    const awards = await Award.find(filter).sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).lean();
+    const awards = await Award.find(filter).sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).select('-awardImageData -optionalImageData').lean();
     return JSON.parse(JSON.stringify(awards));
   },
   [`awards-direct-${page}-${limit}`],

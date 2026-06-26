@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"Innovatiq Chatbot" <${process.env.SMTP_USER}>`,
-      to: process.env.SMTP_USER,
+      to: process.env.CHATBOT_TO || process.env.SMTP_USER,
       replyTo: email || undefined,
       subject: `[Chatbot Inquiry] ${interest || 'General'} - ${name || 'Anonymous'}`,
       html,

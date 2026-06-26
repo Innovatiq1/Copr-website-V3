@@ -38,7 +38,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
   }, []);
 
   return (
-    <section ref={heroRef} className="relative overflow-hidden pt-32 sm:pt-36 pb-16 sm:pb-24"
+    <section ref={heroRef} className="relative overflow-hidden pt-32 sm:pt-36 pb-6"
       style={{ background: 'linear-gradient(to right, #FFFFFF 0%, #FFFBFC 35%, #FFF5F6 72%, #FFF1F2 100%)' }}>
 
       {/* Ambient orbs — sized down on mobile */}
@@ -70,7 +70,7 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
       <div ref={contentRef} className="relative z-10 max-w-4xl mx-auto px-4 lg:px-8 text-center">
         {badge && (
           <span className="inline-flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest px-5 py-2 rounded-full mb-5 transition-all duration-300 hover:scale-105 cursor-default"
-            style={{ 
+            style={{
               background: 'linear-gradient(135deg, #881337 0%, #BE123C 100%)',
               borderColor: 'rgba(255, 255, 255, 0.25)',
               borderWidth: '1px',
@@ -92,11 +92,12 @@ export default function PageHero({ title, subtitle, badge, breadcrumb }: Props) 
             {subtitle}
           </p>
         )}
-        <div className="flex items-center justify-center gap-2 mt-8">
-          <div className="h-[2px] w-16 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #BE123C)' }} />
-          <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#BE123C', boxShadow: '0 0 10px rgba(190,18,60,0.4)' }} />
-          <div className="h-[2px] w-16 rounded-full" style={{ background: 'linear-gradient(90deg, #BE123C, transparent)' }} />
-        </div>
+      </div>
+      {/* Divider outside parallax container so it never gets clipped on scroll */}
+      <div className="relative z-10 flex items-center justify-center gap-2 mt-8 pb-2">
+        <div className="h-[2px] w-16 rounded-full" style={{ background: 'linear-gradient(90deg, transparent, #BE123C)' }} />
+        <div className="w-2.5 h-2.5 rounded-full" style={{ background: '#BE123C', boxShadow: '0 0 10px rgba(190,18,60,0.4)' }} />
+        <div className="h-[2px] w-16 rounded-full" style={{ background: 'linear-gradient(90deg, #BE123C, transparent)' }} />
       </div>
 
       {/* Subtle bottom fade */}

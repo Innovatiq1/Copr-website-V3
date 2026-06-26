@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
 import mongoose from 'mongoose';
 
 const TalentProfileSchema = new mongoose.Schema({
@@ -11,7 +9,9 @@ const TalentProfileSchema = new mongoose.Schema({
   skills: String,
   experience: String,
   statement: String,
-  resume: String,
+  resumeData: String,
+  resumeMime: String,
+  resumeName: String,
 }, { timestamps: true });
 
 const TalentProfile = mongoose.models.TalentProfile || mongoose.model('TalentProfile', TalentProfileSchema);
@@ -22,16 +22,15 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData();
 
     const resumeFile = formData.get('resumefile') as File | null;
-    let resumePath = '';
+    let resumeData = '';
+    let resumeMime = '';
+    let resumeName = '';
 
     if (resumeFile && resumeFile.size > 0) {
       const bytes = await resumeFile.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      const filename = `${Date.now()}-${resumeFile.name.replace(/\s/g, '_')}`;
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'resumes');
-      await mkdir(uploadDir, { recursive: true });
-      await writeFile(path.join(uploadDir, filename), buffer);
-      resumePath = `/uploads/resumes/${filename}`;
+      resumeData = Buffer.from(bytes).toString('base64');
+      resumeMime = resumeFile.type || 'application/octet-stream';
+      resumeName = resumeFile.name;
     }
 
     const profile = await TalentProfile.create({
@@ -41,7 +40,9 @@ export async function POST(req: NextRequest) {
       skills: formData.get('skills'),
       experience: formData.get('experience'),
       statement: formData.get('statement'),
-      resume: resumePath,
+      resumeData,
+      resumeMime,
+      resumeName,
     });
 
     return NextResponse.json(profile, { status: 201 });

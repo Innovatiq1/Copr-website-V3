@@ -1,13 +1,19 @@
-﻿import PageHero from './PageHero';
+import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import * as LucideIcons from 'lucide-react';
 
 interface Feature {
   title: string;
   description: string;
+  icon: string;
+}
+
+interface OverviewPill {
+  title: string;
   icon: string;
 }
 
@@ -22,7 +28,79 @@ interface Props {
   color: string;
   badge?: string;
   productType?: string;
+  overviewPills?: OverviewPill[];
+  heroImage?: string;
+  trialBadge?: string;
 }
+
+const renderIcon = (iconName: string, size: number = 24, style?: React.CSSProperties) => {
+  const IconComponent = (LucideIcons as any)[iconName];
+  if (IconComponent) {
+    return <IconComponent size={size} style={style} strokeWidth={1.75} />;
+  }
+
+  // Fallback map for emoji characters to Lucide icons
+  const emojiMap: Record<string, any> = {
+    '📈': LucideIcons.TrendingUp,
+    '⚡': LucideIcons.Zap,
+    '💰': LucideIcons.Coins,
+    '🔒': LucideIcons.Lock,
+    '🌐': LucideIcons.Globe,
+    '⚙️': LucideIcons.Settings,
+    '⚙': LucideIcons.Settings,
+    '🚀': LucideIcons.Rocket,
+    '📋': LucideIcons.ClipboardList,
+    '🔄': LucideIcons.RefreshCw,
+    '🖥': LucideIcons.Monitor,
+    '⚠': LucideIcons.AlertTriangle,
+    '⚠️': LucideIcons.AlertTriangle,
+    '🎯': LucideIcons.Target,
+    '📊': LucideIcons.BarChart3,
+    '🤝': LucideIcons.Handshake,
+    '🎓': LucideIcons.GraduationCap,
+    '🔍': LucideIcons.Search,
+    '🚨': LucideIcons.Siren,
+    '🛡': LucideIcons.Shield,
+    '✨': LucideIcons.Sparkles,
+    '💡': LucideIcons.Lightbulb,
+    '🤖': LucideIcons.Bot,
+    '🧠': LucideIcons.Brain,
+    '🏆': LucideIcons.Trophy,
+    '👷': LucideIcons.HardHat,
+    '📍': LucideIcons.MapPin,
+    '👥': LucideIcons.Users,
+    '📡': LucideIcons.Radio,
+    '🎨': LucideIcons.Palette,
+    '🎬': LucideIcons.Film,
+    '🏢': LucideIcons.Building2,
+    '📝': LucideIcons.FileText,
+    '🔗': LucideIcons.Link2,
+    '💬': LucideIcons.MessageSquare,
+    '🗺️': LucideIcons.Map,
+    '🗺': LucideIcons.Map,
+    '🏅': LucideIcons.Medal,
+    '👏': LucideIcons.ThumbsUp,
+    '🔭': LucideIcons.Telescope,
+    '👤': LucideIcons.User,
+    '📌': LucideIcons.Pin,
+    '📤': LucideIcons.Upload,
+    '🔑': LucideIcons.Key,
+    '🔔': LucideIcons.Bell,
+    '🗃️': LucideIcons.FolderOpen,
+    '🗃': LucideIcons.FolderOpen,
+    '✅': LucideIcons.CheckCircle2,
+    '↩️': LucideIcons.Undo,
+    '📱': LucideIcons.Smartphone,
+  };
+
+  const MappedComponent = emojiMap[iconName];
+  if (MappedComponent) {
+    return <MappedComponent size={size} style={style} strokeWidth={1.75} />;
+  }
+
+  // Fallback to text (e.g. if it's a character or emoji we didn't map)
+  return <span style={{ fontSize: `${size}px`, lineHeight: 1 }}>{iconName}</span>;
+};
 
 export default function ProductPageTemplate({
   name,
@@ -35,6 +113,9 @@ export default function ProductPageTemplate({
   color,
   badge,
   productType,
+  overviewPills,
+  heroImage,
+  trialBadge,
 }: Props) {
   return (
     <>
@@ -66,7 +147,7 @@ export default function ProductPageTemplate({
                   {subtitle}
                 </span>
               </h2>
-              <p className="font-medium leading-relaxed mb-8" style={{ color: '#1a1a1a' }}>{description}</p>
+              <p className="text-[17px] leading-relaxed mb-8" style={{ color: '#1a1a1a', fontWeight: 500 }}>{description}</p>
               <div className="space-y-3 mb-8">
                 {highlights.map(h => (
                   <div key={h} className="flex items-start gap-3">
@@ -74,7 +155,7 @@ export default function ProductPageTemplate({
                       style={{ background: `${color}15` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-[15px] font-medium" style={{ color: '#1a1a1a' }}>{h}</span>
+                    <span className="text-[17px]" style={{ color: '#1a1a1a', fontWeight: 500 }}>{h}</span>
                   </div>
                 ))}
               </div>
@@ -93,6 +174,13 @@ export default function ProductPageTemplate({
             </AnimatedSection>
 
             <AnimatedSection direction="right">
+              {heroImage ? (
+                <div className="rounded-3xl overflow-hidden relative"
+                  style={{ boxShadow: `0 28px 70px ${color}30` }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={heroImage} alt={`${name} dashboard`} className="w-full h-auto object-cover" />
+                </div>
+              ) : (
               <div className="rounded-3xl overflow-hidden text-white relative"
                 style={{ background: gradient, boxShadow: `0 28px 70px ${color}35` }}>
 
@@ -104,30 +192,50 @@ export default function ProductPageTemplate({
 
                 {/* Header */}
                 <div className="relative px-7 pt-7 pb-5">
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"
-                      style={{ background: 'rgba(255,255,255,0.22)' }}>
-                      🚀
+                  <div className="flex flex-col items-start sm:flex-row sm:items-start justify-between gap-3 mb-5">
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-white"
+                        style={{ background: 'rgba(255,255,255,0.22)' }}>
+                        {renderIcon('Rocket', 28, { color: '#ffffff' })}
+                      </div>
+                      <div>
+                        <h3 className="text-[22px] font-extrabold">{name}</h3>
+                        <p className="text-white text-[13px] font-semibold mt-0.5">{subtitle}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-extrabold">{name}</h3>
-                      <p className="text-white/85 text-xs font-bold mt-0.5">{subtitle}</p>
-                    </div>
+                    {trialBadge && (
+                      <span className="trial-badge-glow inline-flex items-center shrink-0 text-[10.5px] font-black tracking-wide px-3 py-1.5 rounded-full"
+                        style={{
+                          background: 'rgba(255,255,255,0.96)',
+                          color: color,
+                          border: '1px solid rgba(255,255,255,0.55)',
+                          whiteSpace: 'nowrap',
+                        }}>
+                        {trialBadge}
+                      </span>
+                    )}
                   </div>
                   <div className="h-px" style={{ background: 'rgba(255,255,255,0.25)' }} />
                 </div>
 
                 {/* Feature pills */}
-                <div className="relative px-5 pb-7 space-y-2.5">
-                  {features.slice(0, 4).map(f => (
+                <div className="relative px-5 pb-7">
+                  <p className="text-[13px] font-black uppercase tracking-widest mb-3 pl-1" style={{ color: 'rgba(255,255,255,0.95)' }}>AI Features</p>
+                  <div className="space-y-2.5">
+                  {(overviewPills || features.slice(0, 4)).map(f => (
                     <div key={f.title} className="flex items-center gap-3 rounded-xl px-4 py-3"
                       style={{ background: 'rgba(255,255,255,0.22)' }}>
-                      <span className="text-xl">{f.icon}</span>
-                      <span className="text-sm text-white" style={{ fontWeight: 800 }}>{f.title}</span>
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                        style={{ background: 'rgba(255,255,255,0.15)' }}>
+                        {renderIcon(f.icon, 16, { color: '#ffffff' })}
+                      </div>
+                      <span className="text-[14.5px] text-white" style={{ fontWeight: 800 }}>{f.title}</span>
                     </div>
                   ))}
+                  </div>
                 </div>
               </div>
+              )}
             </AnimatedSection>
           </div>
         </div>
@@ -174,9 +282,12 @@ export default function ProductPageTemplate({
                     borderRadius: '16px',
                     boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
-                  <div className="text-4xl mb-4">{f.icon}</div>
-                  <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{f.title}</h3>
-                  <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{f.description}</p>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    style={{ background: `${color}10`, border: `1.5px solid ${color}20`, color: color }}>
+                    {renderIcon(f.icon, 22, { color })}
+                  </div>
+                  <h3 className="font-bold text-[19px] mb-2" style={{ color: '#1a1a1a' }}>{f.title}</h3>
+                  <p className="text-[16.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{f.description}</p>
                 </div>
               </AnimatedSection>
             ))}

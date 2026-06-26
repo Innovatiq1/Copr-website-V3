@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -98,6 +98,9 @@ export default function WhyUsSection() {
                     src="/images/showing-good-results-group-young-freelancers-office-have-conversation-smiling (1).jpg"
                     alt="Innovatiq team" fill style={{ objectFit: 'cover' }}
                     className="brightness-[0.82]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={65}
+                    priority
                   />
                   <div className="absolute inset-0"
                     style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.12) 50%, transparent 100%)' }} />
@@ -108,12 +111,25 @@ export default function WhyUsSection() {
                     style={{ background: 'linear-gradient(315deg, rgba(100,116,139,0.14) 0%, transparent 70%)' }} />
                 </div>
 
-                {/* Badge: ISO — stays inside image on mobile, overhangs on lg+ */}
-                <div className="absolute top-3 right-3 lg:-top-4 lg:-right-4 float-d rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
-                  style={{ background:'rgba(255,255,255,0.97)', border:'1px solid rgba(0,0,0,0.09)', boxShadow:'0 4px 24px rgba(0,0,0,0.10)' }}>
-                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl bg-white flex items-center justify-center shrink-0"
+                {/* Badge: ISO 27001 — top-left */}
+                <div className="absolute top-3 left-3 lg:-top-4 lg:-left-4 float rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
+                  style={{ background:'#FFFFFF', border:'1.5px solid rgba(0,0,0,0.10)', boxShadow:'0 4px 24px rgba(0,0,0,0.14)', backdropFilter:'none', WebkitBackdropFilter:'none', isolation:'isolate' }}>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-white flex items-center justify-center shrink-0"
                     style={{ border:'1px solid rgba(0,0,0,0.07)' }}>
-                    <Image src="/logo/image003-preview (1).png" alt="ISO" width={28} height={28} style={{ objectFit:'contain' }} />
+                    <Image src="/images/image004-preview-1.png" alt="ISO 27001" width={52} height={52} style={{ objectFit:'contain' }} />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
+                    <p className="text-gray-600 text-[11px] font-semibold">27001:2022</p>
+                  </div>
+                </div>
+
+                {/* Badge: ISO 9001 — top-right */}
+                <div className="absolute top-3 right-3 lg:-top-4 lg:-right-4 float-d rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
+                  style={{ background:'#FFFFFF', border:'1.5px solid rgba(0,0,0,0.10)', boxShadow:'0 4px 24px rgba(0,0,0,0.14)', backdropFilter:'none', WebkitBackdropFilter:'none', isolation:'isolate' }}>
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-white flex items-center justify-center shrink-0"
+                    style={{ border:'1px solid rgba(0,0,0,0.07)' }}>
+                    <Image src="/logo/image003-preview (1).png" alt="ISO" width={52} height={52} style={{ objectFit:'contain' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
@@ -187,7 +203,7 @@ export default function WhyUsSection() {
                     style={{ background: clr + '14', border: `1px solid ${clr}30` }}>
                     <CIcon size={13} style={{ color: clr }} />
                   </div>
-                  <span className="text-[15px] font-medium" style={{ color: '#1a1a1a' }}>{text}</span>
+                  <span className="text-[16px] font-medium" style={{ color: '#1a1a1a' }}>{text}</span>
                 </div>
               ))}
             </div>
@@ -218,8 +234,8 @@ export default function WhyUsSection() {
 
                   {/* Text — right */}
                   <div className="relative z-10 min-w-0">
-                    <p className="font-extrabold text-gray-800 text-[14px] leading-snug mb-1">{r.title}</p>
-                    <p className="text-[12.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{r.desc}</p>
+                    <p className="font-extrabold text-gray-800 text-[16px] leading-snug mb-1">{r.title}</p>
+                    <p className="text-[13.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{r.desc}</p>
                   </div>
                 </div>
               ))}

@@ -33,10 +33,9 @@ export default function AnimatedSection({ children, className = '', delay = 0, d
       return;
     }
 
-    // Already in or above the viewport on mount (above-fold content) — show without animating
-    // This prevents the blank-flash caused by initial opacity:0 during hydration
+    // Already in or near the viewport on mount — show without animating
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
+    if (rect.top < window.innerHeight + 300) {
       setVisible(true);
       return;
     }
@@ -48,7 +47,7 @@ export default function AnimatedSection({ children, className = '', delay = 0, d
           observer.unobserve(entry.target);
         }
       },
-      { rootMargin: '0px 0px 80px 0px', threshold: 0 }
+      { rootMargin: '200px 0px 300px 0px', threshold: 0 }
     );
     observer.observe(el);
     return () => observer.disconnect();

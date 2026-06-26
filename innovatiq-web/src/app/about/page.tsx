@@ -11,7 +11,7 @@ const WHY_US = [
   {
     icon: '/images/aboutUs/whyUsSet1.svg',
     title: 'Focus on Digital Transformation',
-    description: 'Digital Transformation is more than a service for us; it\'s a commitment. We specialize in comprehensive Digital Transformation solutions that revitalize businesses, enhance efficiency, and position them for sustained success.',
+    description: 'Digital Transformation is more than a service for us; it\'s a commitment. We specialise in comprehensive Digital Transformation solutions that revitalise businesses, enhance efficiency, and position them for sustained success.',
   },
   {
     icon: '/images/aboutUs/whyUsSet2.svg',
@@ -31,11 +31,11 @@ export default function AboutPage() {
       <PageHero
         badge="About Us"
         title="Innovatiq – Shaping Tomorrow's Digital Landscape, Today"
-        subtitle="At Innovatiq, we believe in the power of innovation to transform businesses and elevate their digital presence. As a premier Information Technology Enabled Service (ITES) provider, we specialize in delivering cutting-edge solutions that drive digital transformation for our clients."
+        subtitle="At Innovatiq, we believe in the power of innovation to transform businesses and elevate their digital presence. As a premier Information Technology Enabled Service (ITES) provider, we specialise in delivering cutting-edge solutions that drive digital transformation for our clients."
       />
 
       {/* Vision & Mission */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative pt-8 pb-8 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <ParallaxLayer
           speed={0.3}
           className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
@@ -68,7 +68,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(190,18,60,0.08)', color: '#BE123C', border: '1px solid rgba(190,18,60,0.15)' }}>
                       🎯 Our Vision
                     </div>
-                    <p className="leading-relaxed text-base font-normal" style={{ color: '#1a1a1a' }}>
+                    <p className="leading-relaxed text-[17px] font-medium" style={{ color: '#1a1a1a' }}>
                       Our vision at Innovatiq is to be the trailblazer in leading the way towards a digitally empowered future.
                       We envision a world where businesses seamlessly integrate technology into every aspect of their operations,
                       driving growth, innovation, and sustainability. Through our relentless pursuit of excellence and innovation,
@@ -97,7 +97,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(79,70,229,0.08)', color: '#4F46E5', border: '1px solid rgba(79,70,229,0.18)' }}>
                       🚀 Our Mission
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-base font-medium">
+                    <p className="leading-relaxed text-[17px] font-medium" style={{ color: '#1a1a1a' }}>
                       Driven by a passion for innovation and a commitment to excellence, our mission at Innovatiq is to be
                       the trusted partner in digital transformation. Through our tailored IT-enabled services, we enable
                       businesses to navigate the complexities of digital disruption, unlocking new opportunities, and
@@ -112,7 +112,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-0 pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <ParallaxLayer
           speed={0.35}
           className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
@@ -151,7 +151,7 @@ export default function AboutPage() {
                       <Image src={v.icon} alt={v.title} width={40} height={40} style={{ objectFit: 'contain' }} />
                     </div>
                     <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{v.title}</h3>
-                    <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{v.desc}</p>
+                    <p className="text-[15.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{v.desc}</p>
                   </div>
                 </TiltCard>
               </AnimatedSection>
@@ -161,7 +161,7 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative pt-24 pb-16 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <ParallaxLayer
           speed={0.25}
           className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
@@ -177,10 +177,11 @@ export default function AboutPage() {
                 Who We Are
               </span>
               <h2 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                Who We{' '}
-                <span className="bg-gradient-to-r from-[#F59E0B] to-[#D4A847] bg-clip-text text-transparent">Are</span>
+                Who{' '}
+                <span style={{ color: '#BE123C' }}>We</span>
+                {' '}Are
               </h2>
-              <p className="text-[#3d3d3d] font-semibold leading-relaxed mb-6 text-[15.5px]">
+              <p className="text-[#3d3d3d] font-semibold leading-relaxed mb-6 text-[17px]">
                 Empowering digital transformations through a fusion of collaboration, excellence, and customer-centricity,
                 we elevate standards, unite diverse perspectives, and place our clients at the heart of innovation.
                 At the heart of Innovatiq, you&apos;ll find a team of dedicated professionals who are passionate about
@@ -198,7 +199,7 @@ export default function AboutPage() {
                       style={{ background: 'rgba(190,18,60,0.10)' }}>
                       <CheckCircle2 size={13} style={{ color: '#BE123C' }} />
                     </div>
-                    <span className="text-[#3d3d3d] text-[14.5px] font-semibold">{p}</span>
+                    <span className="text-[#3d3d3d] text-[16px] font-semibold">{p}</span>
                   </div>
                 ))}
               </div>
@@ -209,7 +210,7 @@ export default function AboutPage() {
                 <div className="rounded-3xl overflow-hidden"
                   style={{ height: '420px', boxShadow: '0 4px 24px rgba(0,0,0,0.10)', border: '1px solid rgba(0,0,0,0.06)' }}>
                   <Image src="/images/aboutUs/AboutUsHeroSection.jpg" alt="About Innovatiq" fill
-                    style={{ objectFit: 'cover' }} />
+                    style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" quality={65} priority />
                   <div className="absolute inset-0"
                     style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 60%)' }} />
                 </div>
@@ -261,7 +262,7 @@ export default function AboutPage() {
               <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">
                 Shaping Tomorrow&apos;s Digital Landscape
               </span>
-              , today
+              , Today
             </h2>
             <p className="text-[#3d3d3d] font-semibold max-w-2xl mx-auto leading-relaxed">
               We combine deep technology expertise with industry-specific knowledge to deliver transformative outcomes for businesses across Asia Pacific.
@@ -297,7 +298,7 @@ export default function AboutPage() {
                       </span>
                     </div>
                     <h3 className="font-bold text-lg mb-3" style={{ color: '#1a1a1a' }}>{item.title}</h3>
-                    <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{item.description}</p>
+                    <p className="text-[16px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{item.description}</p>
                   </div>
                 </AnimatedSection>
               );

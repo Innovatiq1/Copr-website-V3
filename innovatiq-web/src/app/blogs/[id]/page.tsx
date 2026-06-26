@@ -5,6 +5,7 @@ import { ThumbsUp, ThumbsDown, ArrowLeft, Share2, Calendar, CheckCircle } from '
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogImageUrl } from '@/lib/api';
+import Loader from '@/components/Loader';
 
 export default function BlogContentPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -48,14 +49,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
     if (res?.ok) { setDislikes(d => d + 1); setVoted('dislike'); localStorage.setItem(voteKey, 'dislike'); }
   };
 
-  if (loading) return (
-    <div className="min-h-screen flex items-center justify-center" style={{ background: '#F9FAFB' }}>
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-9 h-9 rounded-full border-[3px] border-[#BE123C] border-t-transparent animate-spin" />
-        <p className="text-slate-400 font-medium text-sm">Loading article…</p>
-      </div>
-    </div>
-  );
+  if (loading) return <Loader message="Loading article…" />;
 
   if (notFound || !blog) return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4" style={{ background: '#F9FAFB' }}>
@@ -100,7 +94,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
           style={{ background: 'linear-gradient(90deg,#BE123C 0%,#F59E0B 50%,#10B981 100%)' }} />
 
         {/* Content — all dark text on white */}
-        <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8">
+        <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-8">
 
           {/* Back */}
           <Link href="/blogs"
@@ -126,7 +120,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
 
           {/* Short description */}
           {blog.shortDescription && (
-            <p className="text-[17px] text-gray-600 font-medium leading-relaxed mb-8 pl-4"
+            <p className="text-[17px] text-gray-900 font-medium leading-relaxed mb-8 pl-4"
               style={{ borderLeft: '3px solid #BE123C' }}>
               {blog.shortDescription}
             </p>
@@ -144,7 +138,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
               </div>
             )}
             <div className="w-px h-4 bg-gray-200" />
-            <div className="flex items-center gap-4 text-gray-600 text-sm font-medium">
+            <div className="flex items-center gap-4 text-gray-600 text-sm font-semibold">
               {dateStr && <span className="flex items-center gap-1.5"><Calendar size={13} />{dateStr}</span>}
             </div>
           </div>
@@ -153,8 +147,8 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
 
       {/* ─── FEATURE IMAGE ─── */}
       {imageUrl && (
-        <div className="max-w-3xl mx-auto px-5 sm:px-8 -mt-4 mb-10">
-          <div className="relative h-60 md:h-[420px] w-full rounded-2xl overflow-hidden"
+        <div className="max-w-4xl mx-auto px-0 -mt-4 mb-10">
+          <div className="relative h-60 md:h-[460px] w-full rounded-2xl overflow-hidden"
             style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.15)', border: '1px solid rgba(0,0,0,0.08)' }}>
             <Image src={imageUrl} alt={blog.title} fill className="object-cover" />
           </div>
@@ -162,7 +156,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
       )}
 
       {/* ─── ARTICLE BODY ─── */}
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 pb-6">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 pb-6">
         <div className="bg-white rounded-2xl px-8 py-10"
           style={{ border: '1px solid rgba(0,0,0,0.07)', boxShadow: '0 2px 20px rgba(0,0,0,0.05)' }}>
           {blog.description ? (
@@ -176,7 +170,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
       </div>
 
       {/* ─── FEEDBACK & FOOTER ─── */}
-      <div className="max-w-3xl mx-auto px-5 sm:px-8 pb-20 space-y-5">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8 pb-20 space-y-5">
 
         {/* Feedback card */}
         <div className="bg-white rounded-2xl p-6"
@@ -184,7 +178,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="font-bold text-gray-900 text-[15px]">Was this article helpful?</p>
-              <p className="text-slate-400 font-medium text-xs mt-0.5">
+              <p className="text-slate-600 font-medium text-xs mt-0.5">
                 {voted ? `You voted · ${voted === 'like' ? '👍 Helpful' : '👎 Not helpful'}` : 'One vote per article · helps us improve'}
               </p>
             </div>
@@ -202,7 +196,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
               style={voted === 'like'
                 ? { background: '#059669', color: '#fff', border: '2px solid #059669', boxShadow: '0 4px 14px rgba(5,150,105,0.30)' }
                 : voted ? { background: '#f8fafc', color: '#cbd5e1', border: '2px solid #e2e8f0', cursor: 'not-allowed' }
-                : { background: '#fff', color: '#059669', border: '2px solid #059669' }}>
+                : { background: '#fff', color: '#059669', border: '2px solid #059669', cursor: 'pointer' }}>
               <ThumbsUp size={15} /> Yes, it was! ({likes})
             </button>
 
@@ -211,14 +205,14 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
               style={voted === 'dislike'
                 ? { background: '#DC2626', color: '#fff', border: '2px solid #DC2626', boxShadow: '0 4px 14px rgba(220,38,38,0.28)' }
                 : voted ? { background: '#f8fafc', color: '#cbd5e1', border: '2px solid #e2e8f0', cursor: 'not-allowed' }
-                : { background: '#fff', color: '#DC2626', border: '2px solid #DC2626' }}>
+                : { background: '#fff', color: '#DC2626', border: '2px solid #DC2626', cursor: 'pointer' }}>
               <ThumbsDown size={15} /> Not really ({dislikes})
             </button>
 
             <button
               onClick={() => navigator.share?.({ title: blog.title, url: window.location.href })}
               className="ml-auto flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: '#FFF1F2', color: '#E11D48', border: '2px solid #BFDBFE' }}>
+              style={{ background: '#FFF1F2', color: '#E11D48', border: '2px solid #BFDBFE', cursor: 'pointer' }}>
               <Share2 size={15} /> Share
             </button>
           </div>
@@ -329,16 +323,16 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
         }
 
         /* ── Article prose ── */
-        .blog-content { font-size: 17px; line-height: 1.85; color: #374151; }
+        .blog-content { font-size: 17px; line-height: 1.85; color: #374151; font-weight: 500; }
         .blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4 {
           font-weight: 800; color: #111827; margin-top: 1.8em; margin-bottom: 0.6em; line-height: 1.3;
         }
         .blog-content h1 { font-size: 1.9em; }
         .blog-content h2 { font-size: 1.4em; padding-bottom: 0.3em; border-bottom: 2px solid rgba(212,23,74,0.12); }
         .blog-content h3 { font-size: 1.15em; }
-        .blog-content p { margin-bottom: 1.4em; }
+        .blog-content p { margin-bottom: 1.4em; font-weight: 500; }
         .blog-content ul,.blog-content ol { margin: 1em 0 1.4em 1.6em; }
-        .blog-content li { margin-bottom: 0.5em; }
+        .blog-content li { margin-bottom: 0.5em; font-weight: 500; }
         .blog-content ul { list-style-type: disc; }
         .blog-content ol { list-style-type: decimal; }
         .blog-content blockquote {

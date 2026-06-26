@@ -5,7 +5,10 @@ const JobApplicationSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true },
   phone: { type: String },
-  resume: { type: String }, // file path
+  resumeData: { type: String },
+  resumeMime: { type: String },
+  resumeName: { type: String },
+  portfolioLink: { type: String },
   coverLetter: { type: String },
   status: { type: String, enum: ['pending', 'reviewed', 'shortlisted', 'rejected'], default: 'pending' },
 }, { timestamps: true });

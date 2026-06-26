@@ -11,6 +11,8 @@ interface TeamMember {
   photo: string;
   accent: string;
   photoPosition?: string;
+  linkedin?: string;
+  instagram?: string;
 }
 
 export default function ExpertTeamGrid({ members }: { members: TeamMember[] }) {

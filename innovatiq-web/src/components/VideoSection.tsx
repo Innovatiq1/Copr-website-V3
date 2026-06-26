@@ -46,7 +46,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
 
   const bg = dark ? '#0A1628' : '#F8FAFC';
   const headingColor = dark ? '#FFFFFF' : '#111827';
-  const subColor = dark ? 'rgba(255,255,255,0.6)' : '#6B7280';
+  const subColor = dark ? 'rgba(255,255,255,0.6)' : '#1F2937';
 
   const defaults: Record<string, { heading: string; sub: string }> = {
     home: { heading: 'Our Latest Video', sub: 'Explore our newest insight and success story' },
@@ -57,7 +57,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   const d = defaults[filterType] || defaults.home;
 
   return (
-    <section className="relative py-20 overflow-hidden" style={{ background: bg }}>
+    <section className="relative pt-6 pb-20 overflow-hidden" style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10">
           <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-5">
@@ -67,7 +67,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
           <h2 className="text-3xl font-bold mb-2" style={{ color: headingColor }}>
             {heading || d.heading}
           </h2>
-          <p className="text-sm" style={{ color: subColor }}>
+          <p className="text-[15px] font-medium" style={{ color: subColor }}>
             {subheading || d.sub}
           </p>
         </AnimatedSection>

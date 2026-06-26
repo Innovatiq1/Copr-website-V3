@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { connectDB } from '@/lib/mongodb';
 import JobApplication from '@/models/JobApplication';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
 
 export async function POST(req: NextRequest, { params }: { params: Promise<{ careerId: string }> }) {
   try {
@@ -13,18 +11,18 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ car
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
+    const portfolioLink = formData.get('portfolioLink') as string;
     const coverLetter = formData.get('coverLetter') as string;
     const resumeFile = formData.get('resume') as File | null;
 
-    let resumePath = '';
+    let resumeData = '';
+    let resumeMime = '';
+    let resumeName = '';
     if (resumeFile && resumeFile.size > 0) {
       const bytes = await resumeFile.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      const filename = `${Date.now()}-${resumeFile.name}`;
-      const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'resumes');
-      await mkdir(uploadDir, { recursive: true });
-      await writeFile(path.join(uploadDir, filename), buffer);
-      resumePath = `/uploads/resumes/${filename}`;
+      resumeData = Buffer.from(bytes).toString('base64');
+      resumeMime = resumeFile.type || 'application/octet-stream';
+      resumeName = resumeFile.name;
     }
 
     const application = await JobApplication.create({
@@ -32,8 +30,11 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ car
       name,
       email,
       phone,
+      portfolioLink: portfolioLink || '',
       coverLetter,
-      resume: resumePath,
+      resumeData,
+      resumeMime,
+      resumeName,
     });
 
     return NextResponse.json(application, { status: 201 });

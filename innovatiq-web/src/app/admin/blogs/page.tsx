@@ -64,8 +64,10 @@ export default function BlogsPage() {
                 Title: b.title || '',
                 Author: b.author || '',
                 Tags: (b.tags || []).join(', '),
+                Published: b.published ? 'Yes' : 'No',
                 Likes: b.likes ?? 0,
                 Dislikes: b.dislikes ?? 0,
+                'Short Description': b.shortDescription || b.summary || '',
                 Date: b.createdAt ? new Date(b.createdAt).toLocaleDateString() : '',
               })),
               'blogs'

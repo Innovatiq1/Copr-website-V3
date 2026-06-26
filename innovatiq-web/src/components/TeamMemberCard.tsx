@@ -10,6 +10,8 @@ interface TeamMember {
   photo: string;
   accent: string;
   photoPosition?: string;
+  linkedin?: string;
+  instagram?: string;
 }
 
 export default function TeamMemberCard({
@@ -43,6 +45,8 @@ export default function TeamMemberCard({
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           style={{ objectPosition: m.photoPosition ?? 'center' }}
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          quality={65}
         />
         <div
           className="absolute inset-0"
@@ -54,20 +58,12 @@ export default function TeamMemberCard({
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-2 mb-3">
           <div>
-            <h3 className="font-bold text-gray-900 text-base leading-tight">{m.name}</h3>
-            <p className="text-xs font-semibold mt-0.5" style={{ color: m.accent }}>
+            <h3 className="font-bold text-gray-900 text-xl leading-tight">{m.name}</h3>
+            <p className="text-[15px] mt-0.5" style={{ color: m.accent, fontWeight: 650 }}>
               {m.role}
             </p>
           </div>
           <div className="flex gap-1.5 shrink-0">
-            <a href="#" className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}>
-              <LinkedinIcon size={11} />
-            </a>
-            <a href="#" className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}>
-              <Instagram size={11} />
-            </a>
           </div>
         </div>
 
@@ -75,7 +71,7 @@ export default function TeamMemberCard({
         <div>
           <div className="relative">
             <div
-              className="text-gray-600 text-[15px] leading-relaxed"
+              className="text-gray-600 text-[16px] font-medium leading-relaxed"
               style={{
                 maxHeight: expanded ? '320px' : '96px',
                 overflow: 'hidden',

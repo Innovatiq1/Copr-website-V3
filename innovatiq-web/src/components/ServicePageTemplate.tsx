@@ -1,8 +1,9 @@
-﻿import PageHero from './PageHero';
+import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
 import { CheckCircle2 } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 
 interface Benefit {
   title: string;
@@ -29,6 +30,75 @@ interface Props {
   serviceType?: string;
 }
 
+const renderIcon = (iconName: string, size: number = 24, style?: React.CSSProperties) => {
+  const IconComponent = (LucideIcons as any)[iconName];
+  if (IconComponent) {
+    return <IconComponent size={size} style={style} strokeWidth={1.75} />;
+  }
+
+  // Fallback map for emoji characters to Lucide icons
+  const emojiMap: Record<string, any> = {
+    '📈': LucideIcons.TrendingUp,
+    '⚡': LucideIcons.Zap,
+    '💰': LucideIcons.Coins,
+    '🔒': LucideIcons.Lock,
+    '🌐': LucideIcons.Globe,
+    '⚙️': LucideIcons.Settings,
+    '⚙': LucideIcons.Settings,
+    '🚀': LucideIcons.Rocket,
+    '📋': LucideIcons.ClipboardList,
+    '🔄': LucideIcons.RefreshCw,
+    '🖥': LucideIcons.Monitor,
+    '⚠': LucideIcons.AlertTriangle,
+    '⚠️': LucideIcons.AlertTriangle,
+    '🎯': LucideIcons.Target,
+    '📊': LucideIcons.BarChart3,
+    '🤝': LucideIcons.Handshake,
+    '🎓': LucideIcons.GraduationCap,
+    '🔍': LucideIcons.Search,
+    '🚨': LucideIcons.Siren,
+    '🛡': LucideIcons.Shield,
+    '✨': LucideIcons.Sparkles,
+    '💡': LucideIcons.Lightbulb,
+    '🤖': LucideIcons.Bot,
+    '🧠': LucideIcons.Brain,
+    '🏆': LucideIcons.Trophy,
+    '👷': LucideIcons.HardHat,
+    '📍': LucideIcons.MapPin,
+    '👥': LucideIcons.Users,
+    '📡': LucideIcons.Radio,
+    '🎨': LucideIcons.Palette,
+    '🎬': LucideIcons.Film,
+    '🏢': LucideIcons.Building2,
+    '📝': LucideIcons.FileText,
+    '🔗': LucideIcons.Link2,
+    '💬': LucideIcons.MessageSquare,
+    '🗺️': LucideIcons.Map,
+    '🗺': LucideIcons.Map,
+    '🏅': LucideIcons.Medal,
+    '👏': LucideIcons.ThumbsUp,
+    '🔭': LucideIcons.Telescope,
+    '👤': LucideIcons.User,
+    '📌': LucideIcons.Pin,
+    '📤': LucideIcons.Upload,
+    '🔑': LucideIcons.Key,
+    '🔔': LucideIcons.Bell,
+    '🗃️': LucideIcons.FolderOpen,
+    '🗃': LucideIcons.FolderOpen,
+    '✅': LucideIcons.CheckCircle2,
+    '↩️': LucideIcons.Undo,
+    '📱': LucideIcons.Smartphone,
+  };
+
+  const MappedComponent = emojiMap[iconName];
+  if (MappedComponent) {
+    return <MappedComponent size={size} style={style} strokeWidth={1.75} />;
+  }
+
+  // Fallback to text (e.g. if it's a character or emoji we didn't map)
+  return <span style={{ fontSize: `${size}px`, lineHeight: 1 }}>{iconName}</span>;
+};
+
 export default function ServicePageTemplate({
   badge,
   title,
@@ -47,7 +117,7 @@ export default function ServicePageTemplate({
       <PageHero badge={badge} title={title} subtitle={subtitle} />
 
       {/* Overview */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -58,7 +128,7 @@ export default function ServicePageTemplate({
                 Overview
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">{title}</h2>
-              <p className="font-medium leading-relaxed mb-8" style={{ color: '#1a1a1a' }}>{overview}</p>
+              <p className="text-[17px] leading-relaxed mb-8" style={{ color: '#1a1a1a', fontWeight: 500 }}>{overview}</p>
               <div className="space-y-3">
                 {overviewPoints.map(point => (
                   <div key={point} className="flex items-start gap-3">
@@ -66,7 +136,7 @@ export default function ServicePageTemplate({
                       style={{ background: `${color}12` }}>
                       <CheckCircle2 size={12} style={{ color }} />
                     </div>
-                    <span className="text-[15px] font-medium" style={{ color: '#1a1a1a' }}>{point}</span>
+                    <span className="text-[17px]" style={{ color: '#1a1a1a', fontWeight: 500 }}>{point}</span>
                   </div>
                 ))}
               </div>
@@ -85,17 +155,17 @@ export default function ServicePageTemplate({
                   borderRadius: '16px',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                 }}>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   {benefits.slice(0, 4).map(b => (
-                    <div key={b.title} className="p-4 rounded-xl flex flex-col gap-3"
+                    <div key={b.title} className="p-3 sm:p-4 rounded-xl flex flex-col gap-2 sm:gap-3"
                       style={{ background: `${color}06`, border: `1px solid ${color}12` }}>
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0"
-                        style={{ background: `${color}12`, border: `1px solid ${color}20` }}>
-                        {b.icon}
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shrink-0"
+                        style={{ background: `${color}12`, border: `1px solid ${color}20`, color: color }}>
+                        {renderIcon(b.icon, 18, { color })}
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-800 mb-1 text-[15.5px] leading-snug">{b.title}</h4>
-                        <p className="text-gray-600 text-[13.5px] font-medium leading-relaxed">{b.description}</p>
+                        <h4 className="font-bold text-gray-800 mb-1 text-[15px] sm:text-[17px] leading-snug">{b.title}</h4>
+                        <p className="hidden sm:block text-[16px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{b.description}</p>
                       </div>
                     </div>
                   ))}
@@ -107,7 +177,7 @@ export default function ServicePageTemplate({
       </section>
 
       {/* All Benefits */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 22%, #FFFEFE 55%, #FFFFFF 100%)' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${color}05 0%, transparent 70%)` }} />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
@@ -149,9 +219,12 @@ export default function ServicePageTemplate({
                     borderRadius: '16px',
                     boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                   }}>
-                  <div className="text-4xl mb-4">{b.icon}</div>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    style={{ background: `${color}10`, border: `1.5px solid ${color}20`, color: color }}>
+                    {renderIcon(b.icon, 22, { color })}
+                  </div>
                   <h3 className="font-bold text-lg mb-2" style={{ color: '#1a1a1a' }}>{b.title}</h3>
-                  <p className="text-[15px] font-medium leading-relaxed" style={{ color: '#374151' }}>{b.description}</p>
+                  <p className="text-[16px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{b.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -200,7 +273,7 @@ export default function ServicePageTemplate({
                       {step.step}
                     </div>
                     <h3 className="font-semibold text-gray-800 mb-2">{step.title}</h3>
-                    <p className="text-sm font-semibold leading-relaxed" style={{ color: '#1a1a1a' }}>{step.description}</p>
+                    <p className="text-[16px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{step.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -239,8 +312,8 @@ export default function ServicePageTemplate({
                       boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05)',
                       borderLeft: `3px solid ${color}`,
                     }}>
-                    <h3 className="font-semibold text-gray-800 mb-3" style={{ color }}>{card.title}</h3>
-                    <p className="text-gray-600 text-sm font-medium leading-relaxed">{card.description}</p>
+                    <h3 className="font-bold text-[17px] mb-3" style={{ color }}>{card.title}</h3>
+                    <p className="text-[16px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{card.description}</p>
                   </div>
                 </AnimatedSection>
               ))}
@@ -267,7 +340,7 @@ export default function ServicePageTemplate({
                   Investments
                 </span>
               </h2>
-              <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
+              <p className="font-medium mt-3 max-w-xl mx-auto" style={{ color: '#1a1a1a' }}>
                 Our managed services deliver measurable return on investment while protecting your business assets.
               </p>
             </AnimatedSection>
@@ -280,9 +353,12 @@ export default function ServicePageTemplate({
                       border: '1px solid rgba(0,0,0,0.07)',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06)',
                     }}>
-                    <div className="text-4xl mb-4">{card.icon}</div>
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 shrink-0 transition-transform duration-300 group-hover:scale-110 mx-auto"
+                      style={{ background: `${color}10`, border: `1.5px solid ${color}20`, color: color }}>
+                      {renderIcon(card.icon, 22, { color })}
+                    </div>
                     <h3 className="font-bold text-gray-800 mb-3 text-lg">{card.title}</h3>
-                    <p className="text-gray-600 text-sm font-medium leading-relaxed">{card.description}</p>
+                    <p className="text-[16px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{card.description}</p>
                   </div>
                 </AnimatedSection>
               ))}

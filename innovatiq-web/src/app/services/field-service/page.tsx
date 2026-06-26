@@ -15,18 +15,18 @@ export default function FieldServicePage() {
         'Breakfix support with 24/7 technician dispatch',
       ]}
       benefits={[
-        { title: 'Local Support', description: 'We manage a wide array of field services, catering to diverse needs. Whether you require a break/fix solution nearby, we swiftly dispatch a technician with the necessary qualifications to your site.', icon: '📍' },
-        { title: 'Technician Management', description: 'Our dispatch services encompass everything from site evaluation to technician preparation, check-in, check-out, and ticket closure — ensuring a seamless process from start to finish.', icon: '👷' },
-        { title: 'Highly Qualified Technicians', description: 'Utilizing our Partner Alliance, rigorously screened talent pool, and advanced ticketing technology, we deploy skilled field technicians around the clock to swiftly restore your operations.', icon: '🏆' },
-        { title: 'Swift Problem Resolution', description: 'Our support services assure swift and effective resolution of issues. Our technicians are committed to promptly diagnosing issues, devising effective solutions, and implementing fixes efficiently.', icon: '🚀' },
-        { title: 'Customized Solutions', description: 'We understand that each business has distinct characteristics and technology obstacles that demand individualized care. Our break-fix support services are crafted to meet your particular requirements.', icon: '🎯' },
-        { title: 'Cost Effective & Transparent Pricing', description: 'We provide cost-effective and transparent pricing for our break-fix support services, furnishing comprehensive quotes in advance so you can make well-informed decisions for your business.', icon: '💰' },
+        { title: 'Local Support', description: 'Swift dispatch of qualified technicians to your site for any break/fix need — wherever you are.', icon: 'MapPin' },
+        { title: 'Technician Management', description: 'End-to-end dispatch management — from site evaluation and check-in to ticket closure — handled seamlessly.', icon: 'HardHat' },
+        { title: 'Highly Qualified Technicians', description: 'Rigorously screened, skilled field technicians available around the clock to restore your operations fast.', icon: 'Trophy' },
+        { title: 'Swift Problem Resolution', description: 'Prompt diagnosis, effective solutions, and efficient fixes — minimizing disruption to your business operations.', icon: 'Rocket' },
+        { title: 'Customised Solutions', description: 'Break-fix services tailored to your specific technology environment and business requirements.', icon: 'Target' },
+        { title: 'Transparent Pricing', description: 'Comprehensive quotes provided upfront — clear, cost-effective pricing with no hidden surprises.', icon: 'Coins' },
       ]}
       processSteps={[
         { step: '1', title: 'Request', description: 'Submit service request through portal, phone, or email.' },
         { step: '2', title: 'Dispatch', description: 'Qualified engineer dispatched based on skills and location.' },
         { step: '3', title: 'Execute', description: 'Professional on-site service delivery with full documentation.' },
-        { step: '4', title: 'Report', description: 'Detailed service report and sign-off with quality check.' },
+        { step: '4', title: 'Report', description: 'Detailed service report and sign-off shared with client within 24 hours.' },
       ]}
       color="#BE123C"
       serviceType="field"

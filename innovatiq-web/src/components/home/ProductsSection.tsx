@@ -10,59 +10,108 @@ import TiltCard from '@/components/TiltCard';
 const products = [
   {
     num: '01',
-    name: 'SkillEra',
-    sub: 'Training Management System',
-    desc: 'AI-powered training lifecycle management with intelligent recommendations and advanced analytics.',
-    href: '/products/skillera',
-    logo: '/images/Skillera-png-logo.png',
-    heroImg: '/images/SkillEra Hero Section.svg',
-    features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Ready'],
+    name: 'Sales CRM',
+    sub: 'AI-Powered Customer Relationship Management',
+    desc: 'Empower your sales team with an intelligent, AI-powered CRM designed to streamline customer interactions, manage pipelines, and accelerate revenue growth.',
+    href: '/products/sales-crm',
+    logo: null,
+    heroImg: '/images/CRM.png',
+    features: ['AI Recommendations', 'Analytics Dashboard', 'Automated Workflows', 'Mobile Ready', 'AI Lead Scoring & Qualification', 'AI Sales Assistant'],
     imgBg: 'linear-gradient(135deg, #881337 0%, #BE123C 28%, #D4174A 52%, #F43F5E 75%, #FB923C 100%)',
     clr: '#D4174A',
     clrLight: '#FFF0F3',
-    badge: 'Most Popular',
+    badge: 'Our Latest Product',
+    badgeLatest: true,
+    hasLandingPage: true,
+    objectFit: 'cover' as const,
+    objectPosition: 'right 10%',
   },
   {
     num: '02',
-    name: 'LearnPro',
-    sub: 'Learning Management System',
-    desc: 'Comprehensive platform for creating, managing, and delivering engaging training programs at scale.',
-    href: '/products/learnpro',
-    logo: '/images/Learnpro-png-logo.png',
-    heroImg: '/images/LMS Hero Screen.svg',
-    features: ['Course Builder', 'Certifications', 'Social Learning', 'Progress Tracking'],
+    name: 'HRMS (ATS)',
+    sub: 'AI-Powered Recruitment\nPlatform',
+    desc: 'Transform your hiring process with intelligent recruitment automation. Streamline candidate sourcing, screening, evaluation, and hiring from a single platform.',
+    href: '/products/ai-ats',
+    logo: null,
+    heroImg: '/images/HRMS.png',
+    features: ['Course Builder', 'Certifications', 'Social Learning', 'Progress Tracking', 'AI Resume Parsing & Screening', 'AI Candidate Matching & Ranking'],
     imgBg: 'linear-gradient(135deg, #1D4ED8 0%, #3B82F6 30%, #6366F1 62%, #818CF8 100%)',
     clr: '#4F46E5',
     clrLight: '#EEF2FF',
-    badge: null,
+    badge: 'Our Latest Product',
+    badgeLatest: true,
+    hasLandingPage: true,
+    objectFit: 'cover' as const,
+    objectPosition: 'right 10%',
   },
   {
     num: '03',
+    name: 'SkillEra',
+    sub: 'AI-Powered Training\nManagement System',
+    desc: 'Supercharge your training programs with AI-driven course creation, personalised learning paths, and predictive performance analytics.',
+    href: '/products/skillera',
+    logo: null,
+    heroImg: '/images/SkillEra.png',
+    features: ['Course Scheduling', 'SCORM Compliance', 'Certification Management', 'Mobile Learning', 'AI-Generated Courses & Training Content', 'Personalised Learning Recommendations'],
+    imgBg: 'linear-gradient(135deg, #4a044e 0%, #86198f 50%, #a21caf 100%)',
+    clr: '#a21caf',
+    clrLight: '#fdf4ff',
+    badge: 'Most Popular',
+    badgeLatest: false,
+    objectFit: 'cover' as const,
+    objectPosition: 'right center',
+    trialLabel: 'Experience a FREE 3-Month Trial!',
+  },
+  {
+    num: '04',
+    name: 'LearnPro',
+    sub: 'AI-Powered Learning\nManagement System',
+    desc: 'Deliver intelligent learning experiences at scale with AI course generation, automated assessments, and predictive student success analytics.',
+    href: '/products/learnpro',
+    logo: null,
+    heroImg: '/images/LMS.png',
+    features: ['Course Builder', 'Quiz Management', 'Progress Tracking', 'Certificate Generation', 'AI Course Content Generation', 'Personalised Learning Paths'],
+    imgBg: 'linear-gradient(135deg, #164e63 0%, #0e7490 50%, #0891b2 100%)',
+    clr: '#0e7490',
+    clrLight: '#ecfeff',
+    badge: null,
+    badgeLatest: false,
+    objectFit: 'cover' as const,
+    objectPosition: 'right center',
+  },
+  {
+    num: '05',
     name: 'SecurOn',
-    sub: 'Patch Management System',
-    desc: 'Enterprise-grade patch management ensuring your infrastructure stays secure and compliant 24/7.',
+    sub: 'AI-Powered Patch\nManagement System',
+    desc: 'Protect your enterprise infrastructure with AI-driven vulnerability detection, intelligent patch recommendations, and predictive threat analysis.',
     href: '/products/securon',
-    logo: '/images/Securon-png-logo.png',
-    heroImg: '/images/PMS Hero Section.svg',
-    features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts'],
+    logo: null,
+    heroImg: '/images/SecurOn.png',
+    features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts', 'AI-Based Vulnerability Detection', 'Intelligent Patch Recommendations'],
     imgBg: 'linear-gradient(135deg, #047857 0%, #10B981 50%, #34D399 100%)',
     clr: '#10B981',
     clrLight: '#ECFDF5',
     badge: null,
+    badgeLatest: false,
+    objectFit: 'cover' as const,
+    objectPosition: 'right center',
   },
   {
-    num: '04',
+    num: '06',
     name: 'LMP',
-    sub: 'Learning Motivational Platform',
-    desc: 'Gamification-powered platform that drives learner engagement and improves training completion rates.',
+    sub: 'AI-Powered Learning Motivational Platform',
+    desc: 'AI-enhanced gamification platform that predicts dropout risk, personalises motivation triggers, and drives training completion rates.',
     href: '/products/lmp',
     logo: null,
-    heroImg: '/images/LMP Hero Section.svg',
-    features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics'],
+    heroImg: '/images/LMP.png',
+    features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics', 'Personalised Learning Journeys', 'AI Learning Assistant'],
     imgBg: 'linear-gradient(135deg, #C2410C 0%, #EA580C 50%, #F97316 100%)',
     clr: '#EA580C',
     clrLight: '#FFF7ED',
     badge: null,
+    badgeLatest: false,
+    objectFit: 'cover' as const,
+    objectPosition: 'right 10%',
   },
 ];
 
@@ -135,7 +184,7 @@ export default function ProductsSection() {
 
         {/* Cards grid — single observer on the parent, CSS animation per card */}
         <div ref={gridRef} className="grid lg:grid-cols-2 gap-6">
-          {products.map((p, i) => (
+          {products.map((p: any, i) => (
             <div key={p.name}
               className={gridVisible ? 'product-card-enter' : ''}
               style={{ opacity: gridVisible ? undefined : 0, animationDelay: `${i * 100}ms` }}>
@@ -150,17 +199,41 @@ export default function ProductsSection() {
                   onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = `0 16px 56px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.06)`}
                   onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 8px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.05)'}
                 >
-                  {/* Image area — split: left overlay + right image */}
+                  {/* Image area — split: left overlay + right image (or decorative for new products) */}
                   <div className="relative overflow-hidden" style={{ height: '240px', background: p.imgBg }}>
                     {/* Ambient light blobs */}
                     <div className="absolute inset-0 pointer-events-none" style={{
                       backgroundImage: `radial-gradient(circle at 10% 90%, rgba(255,255,255,0.18) 0%, transparent 45%), radial-gradient(circle at 85% 15%, rgba(255,255,255,0.10) 0%, transparent 40%)`,
                     }} />
 
-                    {/* Product image — right-biased, drop-shadow only on hover via CSS */}
-                    <Image src={p.heroImg} alt={p.name} fill
-                      style={{ objectFit: 'contain', objectPosition: 'right center', paddingTop: '14px', paddingBottom: '14px', paddingRight: '12px', paddingLeft: '38%' }}
-                      className="group-hover:scale-[1.04] transition-transform duration-500" />
+                    {p.heroImg ? (
+                      <Image src={p.heroImg} alt={p.name} fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={70}
+                        style={{
+                          objectFit: 'cover',
+                          objectPosition: p.objectPosition || 'right center',
+                          paddingTop: '14px',
+                          paddingBottom: '14px',
+                          paddingRight: '12px',
+                          paddingLeft: p.paddingLeft || '32%',
+                        }}
+                        className="group-hover:scale-[1.04] transition-transform duration-500" />
+                    ) : (
+                      /* Decorative placeholder for products without hero images */
+                      <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col items-end gap-3 pointer-events-none">
+                        {[80, 120, 96, 64].map((w, idx) => (
+                          <div key={idx} className="rounded-lg" style={{
+                            width: `${w}px`, height: '10px',
+                            background: `rgba(255,255,255,${0.12 + idx * 0.06})`,
+                          }} />
+                        ))}
+                        <div className="mt-2 rounded-xl flex items-center justify-center"
+                          style={{ width: '64px', height: '64px', background: 'rgba(255,255,255,0.15)', border: '1.5px solid rgba(255,255,255,0.30)' }}>
+                          <Sparkles size={28} color="rgba(255,255,255,0.85)" />
+                        </div>
+                      </div>
+                    )}
 
                     {/* Left panel overlay */}
                     <div className="absolute left-0 top-0 bottom-0 w-[45%] flex flex-col justify-between p-5 pointer-events-none z-10"
@@ -181,8 +254,6 @@ export default function ProductsSection() {
                       </div>
                       {/* Name block at bottom */}
                       <div>
-                        <p className="text-white text-[10px] font-bold uppercase tracking-widest mb-1"
-                          style={{ opacity: 0.85, textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}>{p.sub}</p>
                         <h3 className="text-white font-black text-[22px] leading-tight" style={{ textShadow: '0 2px 16px rgba(0,0,0,0.45)' }}>{p.name}</h3>
                       </div>
                     </div>
@@ -191,12 +262,24 @@ export default function ProductsSection() {
                     <div className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
                       style={{ background: 'linear-gradient(to bottom, transparent, #FFFFFF)' }} />
 
-                    {/* Most popular badge — solid bg instead of backdrop-filter */}
+                    {/* Clickable overlay for products with landing pages */}
+                    {p.hasLandingPage && (
+                      <Link href={p.href} className="absolute inset-0 z-[5]" aria-label={`View ${p.name}`} />
+                    )}
+
+                    {/* Badge */}
                     {p.badge && (
-                      <span className="absolute top-4 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
-                        style={{ background: 'rgba(255,255,255,0.95)', color: '#9F1239', border: '1px solid rgba(255,255,255,0.60)', boxShadow: '0 2px 10px rgba(0,0,0,0.25)' }}>
-                        ⭐ {p.badge}
-                      </span>
+                      p.badgeLatest ? (
+                        <span className="absolute top-2 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
+                          style={{ background: 'rgba(255,255,255,0.95)', color: '#4c1d95', border: '1px solid rgba(255,255,255,0.60)', boxShadow: '0 2px 10px rgba(0,0,0,0.25)' }}>
+                          ✦ {p.badge}
+                        </span>
+                      ) : (
+                        <span className="absolute top-2 right-4 text-[10px] font-bold px-3 py-1.5 rounded-full z-10"
+                          style={{ background: 'rgba(255,255,255,0.95)', color: '#9F1239', border: '1px solid rgba(255,255,255,0.60)', boxShadow: '0 2px 10px rgba(0,0,0,0.25)' }}>
+                          ⭐ {p.badge}
+                        </span>
+                      )
                     )}
                   </div>
 
@@ -211,43 +294,51 @@ export default function ProductsSection() {
                           <Image src={p.logo} alt={p.name} width={28} height={28} style={{ objectFit: 'contain' }} />
                         </div>
                       ) : (
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-[10px] font-black shrink-0"
-                          style={{ background: p.imgBg }}>LMP</div>
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-[9px] font-black shrink-0"
+                          style={{ background: p.imgBg }}>{p.name.slice(0, 3).toUpperCase()}</div>
                       )}
                       <div>
-                        <h3 className="font-bold text-gray-900 text-[17px] leading-none">{p.name}</h3>
-                        <p className="text-[11.5px] mt-0.5 font-semibold" style={{ color: p.clr }}>{p.sub}</p>
+                        {p.hasLandingPage ? (
+                          <Link href={p.href} className="font-bold text-gray-900 text-[21px] leading-none hover:underline block" style={{ color: 'inherit', textDecoration: 'none' }}
+                            onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = p.clr}
+                            onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = 'inherit'}>
+                            {p.name}
+                          </Link>
+                        ) : (
+                          <h3 className="font-bold text-gray-900 text-[21px] leading-none">{p.name}</h3>
+                        )}
+                        <p className="text-[15px] mt-0.5 font-semibold" style={{ color: p.clr }}>{p.sub}</p>
                       </div>
                     </div>
 
-                    <p className="text-[15px] font-medium leading-relaxed mb-5 flex-1" style={{ color: '#1a1a1a' }}>{p.desc}</p>
+                    <p className="text-[16px] font-medium leading-relaxed mb-5" style={{ color: '#1a1a1a' }}>{p.desc}</p>
 
                     {/* Features */}
-                    <div className="grid grid-cols-2 gap-y-2 gap-x-3 mb-5">
-                      {p.features.map(f => (
-                        <div key={f} className="flex items-center gap-1.5">
-                          <CheckCircle2 size={13} style={{ color: p.clr, flexShrink: 0 }} strokeWidth={2} />
-                          <span className="text-[13px] font-semibold" style={{ color: '#1a1a1a' }}>{f}</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-3 mb-5">
+                      {p.features.map((f: string) => (
+                        <div key={f} className="flex items-start gap-1.5">
+                          <CheckCircle2 size={15} style={{ color: p.clr, flexShrink: 0, marginTop: '3px' }} strokeWidth={2} />
+                          <span className="text-[16px] font-medium leading-snug" style={{ color: '#1a1a1a' }}>{f}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Footer CTAs */}
-                    <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 pt-4 mt-auto" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                       <Link href={p.href}
-                        className="flex items-center gap-1.5 text-[13px] font-bold transition-all duration-200 group/link"
-                        style={{ color: p.clr }}>
-                        Explore {p.name}
+                        className="flex items-center gap-1.5 text-[15px] transition-all duration-200 group/link"
+                        style={{ color: p.clr, fontWeight: 650 }}>
+                        {p.hasLandingPage ? 'View Product Page' : `Explore ${p.name}`}
                         <ArrowRight size={13} className="group-hover/link:translate-x-1 transition-transform" />
                       </Link>
                       <Link href="/contact"
-                        className="ml-auto text-[12px] font-semibold px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+                        className="sm:ml-auto text-center text-[14px] font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
                         style={{
                           background: p.clrLight,
                           color: p.clr,
                           border: `1px solid ${p.clr}30`,
                         }}>
-                        Free Trial
+                        {(p as {trialLabel?: string}).trialLabel || 'Free Trial'}
                       </Link>
                     </div>
                   </div>
@@ -259,7 +350,7 @@ export default function ProductsSection() {
 
         {/* Talk to Expert CTA */}
         <AnimatedSection className="mt-14 text-center">
-          <p className="mb-5 text-sm font-semibold" style={{ color: '#1a1a1a' }}>Unsure which product fits your needs?</p>
+          <p className="mb-5 text-sm font-medium" style={{ color: '#1a1a1a' }}>Unsure which product fits your needs?</p>
           <Link href="/contact"
             className="inline-flex items-center gap-2.5 px-8 py-4 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
             style={{

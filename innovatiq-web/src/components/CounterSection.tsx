@@ -1,14 +1,14 @@
-﻿'use client';
+'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { Trophy, Zap, Users, Star } from 'lucide-react';
+import { Users, Trophy, GraduationCap, Sparkles } from 'lucide-react';
 
 const stats = [
-  { val: 100, suffix: '+', label: 'Successful Projects', Icon: Trophy,  color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
-  { val: 15,  suffix: '+', label: 'Ongoing Projects',    Icon: Zap,     color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
-  { val: 100, suffix: '+', label: 'Skilled Experts',     Icon: Users,   color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
-  { val: 200, suffix: '+', label: 'Happy Clients',       Icon: Star,    color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 150, suffix: '+', label: 'Clients',       Icon: Users,          color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 200, suffix: '+', label: 'Projects',       Icon: Trophy,         color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 500, suffix: '+', label: 'Experts',        Icon: GraduationCap,  color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
+  { val: 25,  suffix: '+', label: 'AI Use Cases',   Icon: Sparkles,       color: '#BE123C', light: '#FFF1F2', mid: 'rgba(190,18,60,0.12)' },
 ];
 
 // visible is passed from StatCard — no separate IntersectionObserver needed
@@ -155,10 +155,16 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 
       {/* Label */}
       <p style={{
-        fontSize: '11px', fontWeight: 700, letterSpacing: '0.10em',
+        fontSize: '14px', fontWeight: 700, letterSpacing: '0.08em',
         textTransform: 'uppercase', color: '#1a1a1a', margin: 0,
+        display: 'flex', alignItems: 'center', gap: '4px',
       }}>
-        {stat.label}
+        {stat.label === 'AI Use Cases' ? (
+          <>
+            <span style={{ fontSize: '17px', position: 'relative', top: '-1px' }}>AI</span>
+            {' USE CASES'}
+          </>
+        ) : stat.label}
       </p>
     </div>
   );
@@ -217,12 +223,12 @@ export default function CounterSection() {
                 Speak for Themselves
               </span>
             </h2>
-            <p className="text-[#3d3d3d] text-base font-semibold leading-relaxed mb-10 max-w-md">
+            <p className="text-[#3d3d3d] text-[17px] font-semibold leading-relaxed mb-10 max-w-md">
               At Innovatiq, we believe in the power of innovation to transform businesses and elevate their digital presence — building trust one project at a time.
             </p>
 
             {/* Certifications */}
-            <div className="flex flex-wrap gap-3">
+            <div className="grid grid-cols-3 gap-3 max-w-sm">
               {[
                 { src: '/images/image004-preview-1.png', alt: 'ISO 27001:2022' },
                 { src: '/logo/image003-preview (1).png', alt: 'ISO 9001:2015' },
@@ -232,20 +238,23 @@ export default function CounterSection() {
                 { src: '/images/Data-Protection-Trustmark-Logo_Horizontal_Colour.png', alt: 'Data Protection' },
               ].map(c => (
                 <div key={c.alt}
-                  className="rounded-xl px-3 py-2.5 flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+                  className="rounded-xl transition-all duration-300 hover:-translate-y-1"
                   style={{
                     background: '#FFFFFF',
                     border: '1.5px solid rgba(190,18,60,0.14)',
                     boxShadow: '0 2px 12px rgba(190,18,60,0.08), 0 1px 4px rgba(0,0,0,0.05)',
+                    padding: '10px',
                   }}>
-                  <Image src={c.src} alt={c.alt} width={60} height={28} style={{ objectFit: 'contain', height: '28px', maxWidth: '60px', width: 'auto' }} />
+                  <div style={{ position: 'relative', width: '100%', height: '52px' }}>
+                    <Image src={c.src} alt={c.alt} fill style={{ objectFit: 'contain' }} />
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Right — 2×2 white 3D cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
+          <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full">
             {stats.map((s, i) => (
               <StatCard key={i} stat={s} index={i} />
             ))}

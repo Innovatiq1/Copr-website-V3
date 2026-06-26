@@ -1,134 +1,28 @@
-﻿'use client';
+'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, CheckCircle2, Zap, Trophy, Users, GraduationCap, Rocket, Shield, Globe } from 'lucide-react';
-import TiltCard from '@/components/TiltCard';
+import { ArrowRight, CheckCircle2, Zap, Trophy, Users, GraduationCap, Sparkles, Shield, Handshake, Cloud } from 'lucide-react';
 
-const words: React.ReactNode[] = [
-  <>Digital<br />Transformation</>,
-  <>Cyber<br />Security</>,
-  <>Cloud<br />Innovation</>,
-  <>Managed IT<br />Services</>,
+const words: string[] = [
+  'DIGITAL TRANSFORMATION',
+  'CYBERSECURITY & THREAT PROTECTION',
+  'CLOUD INFRASTRUCTURE & MIGRATION',
+  'MANAGED IT SUPPORT & OPERATIONS',
 ];
 
 const STATS = [
-  { v: '100+', l: 'Successful Projects', c: '#BE123C', bg: '#FFF1F2', icon: Trophy },
-  { v: '200+', l: 'Happy Clients',       c: '#BE123C', bg: '#FFF1F2', icon: Users },
-  { v: '100+', l: 'Skilled Experts',     c: '#BE123C', bg: '#FFF1F2', icon: GraduationCap },
-  { v: '15+',  l: 'Ongoing Projects',    c: '#BE123C', bg: '#FFF1F2', icon: Rocket },
+  { v: '150+', l: 'Clients',        c: '#BE123C', bg: '#FFF1F2', icon: Users },
+  { v: '200+', l: 'Projects',       c: '#BE123C', bg: '#FFF1F2', icon: Trophy },
+  { v: '500+', l: 'Experts',        c: '#BE123C', bg: '#FFF1F2', icon: GraduationCap },
+  { v: '25+',  l: 'AI Use Cases',   c: '#BE123C', bg: '#FFF1F2', icon: Sparkles },
 ];
 
-function CardDecor({ index, c }: { index: number; c: string }) {
-  /* shared helpers */
-  const blob = (cls: string, extra?: React.CSSProperties) => (
-    <div className={`absolute rounded-full pointer-events-none transition-all duration-700 ${cls}`} style={extra} />
-  );
-  const dot = (cls: string, size: string, extra?: React.CSSProperties) => (
-    <div className={`absolute rounded-full pointer-events-none transition-all duration-300 ${cls}`}
-      style={{ width: size, height: size, ...extra }} />
-  );
-  const ring = (cls: string, size: string, border: string, extra?: React.CSSProperties) => (
-    <div className={`absolute rounded-full pointer-events-none transition-all duration-500 ${cls}`}
-      style={{ width: size, height: size, border, ...extra }} />
-  );
-  const cross = (cls: string, x: number, y: number) => (
-    <svg className={`absolute pointer-events-none transition-opacity duration-400 ${cls}`}
-      style={{ left: x, top: y }} width="12" height="12">
-      <line x1="6" y1="0" x2="6" y2="12" stroke={c} strokeWidth="1.5" />
-      <line x1="0" y1="6" x2="12" y2="6" stroke={c} strokeWidth="1.5" />
-    </svg>
-  );
-  const hex = (cls: string, x: number, y: number, size = 16) => (
-    <svg className={`absolute pointer-events-none transition-opacity duration-500 ${cls}`}
-      style={{ left: x, top: y }} width={size} height={size}>
-      <polygon points={`${size/2},1 ${size-2},${size/4} ${size-2},${size*3/4} ${size/2},${size-1} 2,${size*3/4} 2,${size/4}`}
-        fill="none" stroke={c} strokeWidth="1.5" />
-    </svg>
-  );
-  const square = (cls: string, x: number, y: number, deg: number) => (
-    <div className={`absolute pointer-events-none transition-opacity duration-400 ${cls}`}
-      style={{ left: x, top: y, width: 12, height: 12, border: `1.5px solid ${c}`, borderRadius: 3, transform: `rotate(${deg}deg)` }} />
-  );
-
-  if (index === 0) return (
-    <>
-      {blob('-top-10 -right-6 w-48 h-48 opacity-70 group-hover:opacity-100 group-hover:scale-[1.5]',
-        { background: `radial-gradient(circle,${c}30 0%,${c}10 50%,transparent 70%)`, filter:'blur(18px)' })}
-      {blob('-bottom-6 -left-4 w-32 h-32 opacity-50 group-hover:opacity-90 group-hover:scale-125',
-        { background: `radial-gradient(circle,${c}22 0%,transparent 70%)`, filter:'blur(12px)' })}
-      {ring('-bottom-12 -left-12 float opacity-55 group-hover:opacity-90', '140px', `1.5px solid ${c}45`)}
-      {ring('-top-4 right-6 float-d opacity-60 group-hover:opacity-100', '80px', `1.5px dashed ${c}50`)}
-      {ring('top-[40%] -left-4 float opacity-45 group-hover:opacity-80', '44px', `1.5px solid ${c}40`)}
-      {dot('top-4 left-6 float opacity-80 group-hover:opacity-100', '8px',
-        { background: c, boxShadow: `0 0 10px ${c}80` })}
-      {dot('bottom-5 right-8 float-d opacity-60 group-hover:opacity-90', '6px', { background: c })}
-      {dot('top-7 right-14 float opacity-50 group-hover:opacity-80', '4px', { background: c })}
-      {square('top-5 right-7 float opacity-55 group-hover:opacity-90', 0, 0, 45)}
-      {cross('opacity-50 group-hover:opacity-90 float-d', 20, 0)}
-      {hex('opacity-45 group-hover:opacity-80 float', 0, 0)}
-    </>
-  );
-  if (index === 1) return (
-    <>
-      {blob('-top-8 -left-10 w-48 h-48 opacity-70 group-hover:opacity-100 group-hover:scale-[1.5]',
-        { background: `radial-gradient(circle,${c}30 0%,${c}10 50%,transparent 70%)`, filter:'blur(18px)' })}
-      {blob('-bottom-4 -right-6 w-36 h-36 opacity-50 group-hover:opacity-90 group-hover:scale-125',
-        { background: `radial-gradient(circle,${c}22 0%,transparent 70%)`, filter:'blur(12px)' })}
-      {ring('-top-14 -left-14 float opacity-55 group-hover:opacity-90', '150px', `1.5px dashed ${c}45`)}
-      {ring('-bottom-2 -right-3 float-d opacity-60 group-hover:opacity-100', '80px', `1.5px solid ${c}50`)}
-      {ring('bottom-[30%] -right-4 float-d opacity-45 group-hover:opacity-80', '42px', `1.5px dashed ${c}40`)}
-      {dot('top-5 right-5 float-d opacity-80 group-hover:opacity-100', '8px',
-        { background: c, boxShadow: `0 0 10px ${c}80` })}
-      {dot('bottom-6 left-8 float opacity-60 group-hover:opacity-90', '6px', { background: c })}
-      {dot('bottom-10 right-16 float-d opacity-50 group-hover:opacity-80', '4px', { background: c })}
-      {square('bottom-6 left-7 float-d opacity-55 group-hover:opacity-90', 0, 0, 30)}
-      {cross('opacity-50 group-hover:opacity-90 float', 0, 20)}
-      {hex('opacity-45 group-hover:opacity-80 float-d', 0, 0)}
-    </>
-  );
-  if (index === 2) return (
-    <>
-      {blob('-top-6 -right-10 w-44 h-44 opacity-70 group-hover:opacity-100 group-hover:scale-[1.5]',
-        { background: `radial-gradient(circle,${c}30 0%,${c}10 50%,transparent 70%)`, filter:'blur(18px)' })}
-      {blob('-top-2 -left-6 w-32 h-32 opacity-50 group-hover:opacity-90 group-hover:scale-125',
-        { background: `radial-gradient(circle,${c}20 0%,transparent 70%)`, filter:'blur(12px)' })}
-      {ring('-top-14 -right-14 float-d opacity-55 group-hover:opacity-90', '150px', `1.5px solid ${c}45`)}
-      {ring('-bottom-3 left-10 float opacity-60 group-hover:opacity-100', '64px', `1.5px dashed ${c}50`)}
-      {ring('bottom-[32%] -right-3 float-d opacity-45 group-hover:opacity-80', '42px', `1.5px solid ${c}40`)}
-      {dot('bottom-5 right-5 float opacity-80 group-hover:opacity-100', '8px',
-        { background: c, boxShadow: `0 0 10px ${c}80` })}
-      {dot('top-5 left-8 float-d opacity-60 group-hover:opacity-90', '6px', { background: c })}
-      {dot('bottom-9 left-14 float opacity-50 group-hover:opacity-80', '4px', { background: c })}
-      {square('top-5 left-7 float-d opacity-55 group-hover:opacity-90', 0, 0, 20)}
-      {cross('opacity-50 group-hover:opacity-90 float', 0, 0)}
-      {hex('opacity-45 group-hover:opacity-80 float-d', 0, 20)}
-    </>
-  );
-  return (
-    <>
-      {blob('-bottom-10 -right-8 w-48 h-48 opacity-70 group-hover:opacity-100 group-hover:scale-[1.5]',
-        { background: `radial-gradient(circle,${c}30 0%,${c}10 50%,transparent 70%)`, filter:'blur(18px)' })}
-      {blob('-top-4 -left-4 w-32 h-32 opacity-50 group-hover:opacity-90 group-hover:scale-125',
-        { background: `radial-gradient(circle,${c}22 0%,transparent 70%)`, filter:'blur(12px)' })}
-      {ring('-top-12 right-8 float opacity-55 group-hover:opacity-90', '140px', `1.5px dashed ${c}45`)}
-      {ring('-bottom-12 -left-12 float-d opacity-60 group-hover:opacity-100', '140px', `1.5px solid ${c}50`)}
-      {ring('top-[26%] -right-3 float opacity-45 group-hover:opacity-80', '42px', `1.5px dashed ${c}40`)}
-      {dot('top-4 right-5 float-d opacity-80 group-hover:opacity-100', '8px',
-        { background: c, boxShadow: `0 0 10px ${c}80` })}
-      {dot('bottom-5 left-6 float opacity-60 group-hover:opacity-90', '6px', { background: c })}
-      {dot('top-8 left-14 float-d opacity-50 group-hover:opacity-80', '4px', { background: c })}
-      {square('bottom-5 right-6 float opacity-55 group-hover:opacity-90', 0, 0, 60)}
-      {cross('opacity-50 group-hover:opacity-90 float-d', 20, 20)}
-      {hex('opacity-45 group-hover:opacity-80 float', 0, 0)}
-    </>
-  );
-}
 
 function StatCard({
-  v, l, c, icon: Icon, index, total,
+  v, l, icon: Icon, index, isDesktop,
 }: {
-  v: string; l: string; c: string; bg: string; icon: React.ElementType; index: number; total: number;
+  v: string; l: string; c: string; bg: string; icon: React.ElementType; index: number; total: number; isPhone?: boolean; isDesktop?: boolean;
 }) {
   const num = parseInt(v);
   const suffix = v.slice(String(num).length);
@@ -175,10 +69,10 @@ function StatCard({
       className={`relative flex-1 cursor-default${visible ? ' stat-card-pop' : ' opacity-0'}`}
       style={{ animationDelay: visible ? `${index * 140}ms` : undefined }}
     >
-      {/* ── Parallelogram card background (skewed) ── */}
+      {/* ── Parallelogram card background (skewed on desktop only) ── */}
       <div style={{
         position: 'absolute', inset: 0,
-        transform: 'skewX(-9deg)',
+        transform: isDesktop ? 'skewX(-9deg)' : 'none',
         transformOrigin: 'bottom center',
         background: hovered
           ? 'linear-gradient(to bottom, #FFF1F2 0%, #FAFAFA 100%) padding-box, linear-gradient(to right, #BE123C 0%, #BE123C 22%, rgba(190,18,60,0.75) 48%, rgba(190,18,60,0.28) 72%, transparent 92%) border-box'
@@ -205,14 +99,18 @@ function StatCard({
         }} />
       </div>
 
-      {/* ── Content — sits in the un-skewed outer wrapper, reads perfectly straight ── */}
-      <div className="relative flex flex-col items-center justify-center py-6 px-3 sm:py-10 sm:px-5"
-        style={{ zIndex: 1 }}>
+      {/* ── Content ── */}
+      <div style={{
+          position: 'relative', zIndex: 1,
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+          padding: '24px 12px',
+        }}>
 
         {/* Icon */}
-        <div style={{ marginBottom: '14px' }}>
+        <div style={{ marginBottom: '12px' }}>
           <div style={{
-            width: '52px', height: '52px', borderRadius: '15px',
+            width: '44px', height: '44px', borderRadius: '14px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: 'rgba(190,18,60,0.10)',
             border: '1.5px solid rgba(190,18,60,0.22)',
@@ -220,24 +118,24 @@ function StatCard({
             transform: hovered ? 'rotate(-5deg) scale(1.1)' : 'rotate(0deg) scale(1)',
             transition: 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease',
           }}>
-            <Icon size={22} style={{ color: '#BE123C' }} strokeWidth={1.7} />
+            <Icon size={20} style={{ color: '#BE123C' }} strokeWidth={1.7} />
           </div>
         </div>
 
         {/* Number */}
-        <p ref={countRef} className="text-[32px] sm:text-[46px]" style={{
-          fontWeight: 900, lineHeight: 1, marginBottom: '6px',
+        <p ref={countRef} style={{
+          fontSize: '32px',
+          fontWeight: 900, lineHeight: 1, marginBottom: '4px',
           letterSpacing: '-1px', fontVariantNumeric: 'tabular-nums',
           backgroundImage: 'linear-gradient(135deg, #BE123C 0%, rgba(190,18,60,0.80) 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
+          WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           filter: 'drop-shadow(0 2px 6px rgba(190,18,60,0.25))',
         }}>0{suffix}</p>
 
-        {/* Expanding underline */}
+        {/* Underline */}
         <div style={{
-          height: '2px', borderRadius: '2px', marginBottom: '8px',
+          height: '2px', borderRadius: '2px', marginBottom: '6px',
           width: hovered ? '44px' : '24px',
           background: 'linear-gradient(90deg, #BE123C, rgba(190,18,60,0.25))',
           transition: 'width 0.35s ease',
@@ -245,18 +143,69 @@ function StatCard({
 
         {/* Label */}
         <p style={{
-          fontSize: '12px', fontWeight: 700, textTransform: 'uppercase',
-          letterSpacing: '0.07em', color: '#334155', margin: 0, textAlign: 'center',
-        }}>{l}</p>
+          fontSize: '15px', fontWeight: 700, textTransform: 'uppercase',
+          letterSpacing: '0.06em', color: '#334155', margin: 0, textAlign: 'center',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px',
+        }}>
+          {l === 'AI Use Cases' ? (
+            <>
+              <span style={{
+                color: '#BE123C',
+                fontSize: '20px',
+                fontWeight: 900,
+                position: 'relative',
+                top: '-2px',
+              }}>AI</span>
+              {' USE CASES'}
+            </>
+          ) : l}
+        </p>
       </div>
     </div>
   );
 }
 
+function CategoryCard({ icon: Icon, title, items }: { icon: React.ElementType; title: string; items: string[] }) {
+  return (
+    <div className="flex items-center gap-3.5 rounded-2xl px-4.5 py-4"
+      style={{
+        background: 'rgba(255,255,255,0.97)',
+        backdropFilter: 'blur(24px)',
+        border: '1px solid rgba(190,18,60,0.10)',
+        boxShadow: '0 6px 30px rgba(0,0,0,0.06), 0 2px 8px rgba(190,18,60,0.04)',
+        width: '200px',
+      }}>
+      <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+        style={{ background: 'linear-gradient(135deg, rgba(190,18,60,0.14) 0%, rgba(190,18,60,0.07) 100%)', border: '1.5px solid rgba(190,18,60,0.18)', boxShadow: '0 2px 8px rgba(190,18,60,0.12)' }}>
+        <Icon size={19} style={{ color: '#BE123C' }} strokeWidth={1.8} />
+      </div>
+      <div>
+        <p className="text-[12.5px] font-black uppercase tracking-wide leading-tight" style={{ color: '#0F172A' }}>{title}</p>
+        {items.map((item: string) => (
+          <p key={item} className="text-[12px] font-semibold leading-snug mt-0.5" style={{ color: '#334155' }}>{item}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
 export default function HeroSection() {
   const [wi, setWi] = useState(0);
   const [vis, setVis] = useState(true);
+  const [isPhone, setIsPhone] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
   const rightColRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const check = () => {
+      setIsPhone(window.innerWidth < 640);
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   useEffect(() => {
     let rafId = 0;
@@ -349,160 +298,163 @@ export default function HeroSection() {
       </div>
 
       {/* ══ Main content ══ */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
-        <div className="grid lg:grid-cols-[1fr_500px] xl:grid-cols-[1fr_560px] gap-10 xl:gap-20 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-10 lg:pb-12">
+        <div className="grid lg:grid-cols-[1fr_560px] xl:grid-cols-[1fr_620px] gap-10 xl:gap-20 items-center">
 
           {/* ── LEFT ── */}
           <div className="max-w-2xl">
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mb-7"
+            <div className="inline-flex items-center gap-1.5 sm:gap-2.5 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full mb-7"
               style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.40)', boxShadow: '0 2px 12px rgba(190,18,60,0.14)' }}>
-              <Zap size={13} style={{ color: '#BE123C' }} fill="currentColor" />
-              <span className="text-[12.5px] font-bold uppercase tracking-widest" style={{ color: '#E11D48' }}>
+              <Zap size={12} style={{ color: '#BE123C' }} fill="currentColor" />
+              <span className="text-[10.5px] sm:text-[12.5px] font-bold uppercase tracking-widest whitespace-nowrap" style={{ color: '#E11D48' }}>
                 Trusted by 200+ Enterprises Worldwide
               </span>
             </div>
 
             {/* Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-[58px] xl:text-[64px] font-extrabold leading-[1.08] mb-6 tracking-tight"
+            <h1 className="text-[33px] md:text-[37px] lg:text-[42px] font-extrabold leading-[1.14] mb-5 tracking-tight"
               style={{ color: '#0F172A' }}>
-              Transforming<br />Business Through
+              <span className="block">AI-POWERED</span>
               <span
-                className="block mt-2 bg-clip-text text-transparent"
+                className="block mt-3 bg-clip-text text-transparent"
                 style={{
                   backgroundImage: 'linear-gradient(135deg, #9F1239 0%, #BE123C 35%, #E11D48 65%, #F43F5E 100%)',
                   opacity: vis ? 1 : 0,
-                  transform: vis ? 'translateY(0)' : 'translateY(10px)',
+                  transform: vis ? 'translateY(0)' : 'translateY(8px)',
                   transition: 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                  minHeight: '2.5em',
+                  minHeight: '2.4em',
                   display: 'block',
-                  lineHeight: '1.18',
+                  lineHeight: '1.2',
                 }}>
                 {words[wi]}
               </span>
+              <span className="block mt-3">FOR SMARTER GROWTH</span>
             </h1>
 
-            <p className="text-[17.5px] leading-[1.75] mb-8 max-w-lg font-medium"
-              style={{ color: '#1a1a1a', letterSpacing: '0.01em' }}>
-              Looking to create a digital product that makes an impact? Transform your ideas into
-              intelligent, AI-driven digital experiences — from concept to launch. Our expert team
-              helps you design, develop, and scale solutions that engage your audience and
-              accelerate business growth.
+            <p className="text-[16.5px] leading-[1.75] mb-6 max-w-lg font-medium"
+              style={{ color: '#1A1A1A' }}>
+              Transform your business with AI-powered software solutions designed to streamline learning, training, cybersecurity, recruitment, and customer relationship management. Innovatiq helps organisations automate processes, improve productivity, and accelerate growth through intelligent technology.
             </p>
 
-            {/* Trust checks */}
-            <div className="space-y-3 mb-10">
+            {/* Feature checklist */}
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 mb-8">
               {[
-                { text: 'ISO 9001:2015 Certified Quality Management', icon: Shield },
-                { text: 'Offices in Singapore, India & Malaysia',     icon: Globe },
-                { text: '24/7 Managed Support with SLA Guarantee',    icon: CheckCircle2 },
-              ].map(({ text, icon: Icon }) => (
-                <div key={text} className="flex items-center gap-3 group/check">
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 group-hover/check:scale-110"
-                    style={{ background: 'rgba(190,18,60,0.10)', border: '1px solid rgba(190,18,60,0.20)' }}>
-                    <Icon size={13} className="text-[#BE123C]" />
-                  </div>
-                  <span className="text-[15.5px] font-medium transition-colors duration-300 group-hover/check:text-slate-800"
-                    style={{ color: '#1a1a1a' }}>{text}</span>
+                'AI-Powered Learning & Training Platforms',
+                'Intelligent Security & Patch Management',
+                'AI Recruitment & Talent Acquisition',
+                'AI-Powered Sales & CRM Solutions',
+                'Scalable Cloud & Managed IT Services',
+                '24/7 Expert Support',
+              ].map((text) => (
+                <div key={text} className="flex items-start gap-2">
+                  <CheckCircle2 size={15} style={{ color: '#BE123C', flexShrink: 0, marginTop: '2px' }} strokeWidth={2.5} />
+                  <span className="text-[15.5px] font-medium leading-snug" style={{ color: '#1a1a1a' }}>{text}</span>
                 </div>
               ))}
             </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
-              <Link href="/contact"
+              <Link href="/products/sales-crm"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:-translate-y-1 active:scale-[0.98]"
                 style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}>
-                Get Free Demo <ArrowRight size={16} />
+                Explore Our Products <ArrowRight size={16} />
               </Link>
-              <Link href="/services/cloud"
+              <Link href="/services/ai-services"
                 className="flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-gray-700 rounded-xl transition-all duration-300 hover:-translate-y-1"
                 style={{ border: '1.5px solid rgba(0,0,0,0.28)', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(12px)' }}>
-                Explore Services
+                Explore Our Services
               </Link>
             </div>
           </div>
 
           {/* ── RIGHT ── */}
-          <div ref={rightColRef} className="hidden lg:block relative">
-            <TiltCard intensity={15} className="relative">
+          <div ref={rightColRef} className="hidden lg:block" style={{ marginTop: '-60px' }}>
+            <div className="relative mx-auto" style={{ width: '600px', height: '580px' }}>
 
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[530px] h-[530px] rounded-full pulse-glow"
-                  style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.07) 30%, transparent 70%)', border: '1px solid rgba(190,18,60,0.14)' }} />
+              {/* SVG connector lines — behind everything */}
+              <svg className="absolute inset-0 pointer-events-none" width="600" height="580" fill="none" style={{ zIndex: 1 }}>
+                <defs>
+                  <linearGradient id="cl1" x1="300" y1="280" x2="300" y2="55" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#BE123C" stopOpacity="0.35" /><stop offset="100%" stopColor="#BE123C" stopOpacity="0.08" />
+                  </linearGradient>
+                  <linearGradient id="cl2" x1="300" y1="280" x2="490" y2="195" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#BE123C" stopOpacity="0.35" /><stop offset="100%" stopColor="#BE123C" stopOpacity="0.08" />
+                  </linearGradient>
+                  <linearGradient id="cl3" x1="300" y1="280" x2="435" y2="448" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#BE123C" stopOpacity="0.35" /><stop offset="100%" stopColor="#BE123C" stopOpacity="0.08" />
+                  </linearGradient>
+                  <linearGradient id="cl4" x1="300" y1="280" x2="165" y2="448" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#BE123C" stopOpacity="0.35" /><stop offset="100%" stopColor="#BE123C" stopOpacity="0.08" />
+                  </linearGradient>
+                  <linearGradient id="cl5" x1="300" y1="280" x2="110" y2="195" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#BE123C" stopOpacity="0.35" /><stop offset="100%" stopColor="#BE123C" stopOpacity="0.08" />
+                  </linearGradient>
+                </defs>
+                <line x1="300" y1="280" x2="300" y2="55" stroke="url(#cl1)" strokeWidth="1.5" strokeDasharray="5 3" />
+                <line x1="300" y1="280" x2="490" y2="195" stroke="url(#cl2)" strokeWidth="1.5" strokeDasharray="5 3" />
+                <line x1="300" y1="280" x2="435" y2="448" stroke="url(#cl3)" strokeWidth="1.5" strokeDasharray="5 3" />
+                <line x1="300" y1="280" x2="165" y2="448" stroke="url(#cl4)" strokeWidth="1.5" strokeDasharray="5 3" />
+                <line x1="300" y1="280" x2="110" y2="195" stroke="url(#cl5)" strokeWidth="1.5" strokeDasharray="5 3" />
+                {/* Endpoint dots */}
+                <circle cx="300" cy="55" r="3.5" fill="rgba(190,18,60,0.30)" />
+                <circle cx="490" cy="195" r="3.5" fill="rgba(190,18,60,0.30)" />
+                <circle cx="435" cy="448" r="3.5" fill="rgba(190,18,60,0.30)" />
+                <circle cx="165" cy="448" r="3.5" fill="rgba(190,18,60,0.30)" />
+                <circle cx="110" cy="195" r="3.5" fill="rgba(190,18,60,0.30)" />
+              </svg>
+
+              {/* Glow rings */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 2 }}>
+                <div className="w-[320px] h-[320px] rounded-full pulse-glow"
+                  style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.10) 30%, transparent 70%)', border: '1px solid rgba(190,18,60,0.18)' }} />
               </div>
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[495px] h-[495px] rounded-full border border-dashed border-[#BE123C]/20 spin-s" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-[425px] h-[425px] rounded-full border border-dashed border-slate-200"
-                  style={{ animation: 'spin-slow 14s linear infinite reverse' }} />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 2 }}>
+                <div className="w-[380px] h-[380px] rounded-full border border-dashed border-[#BE123C]/18 spin-s" />
               </div>
 
-              <div className="relative w-[460px] h-[460px] mx-auto">
-                {/* Main image — NO dark overlay */}
-                <div className="absolute inset-8 rounded-full overflow-hidden border-2"
-                  style={{
-                    borderColor: 'rgba(190,18,60,0.15)',
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.13), 0 0 0 6px rgba(190,18,60,0.05)',
-                  }}>
-                  <Image
-                    src="/images/executives-paying-attention-digital-tablet 1.jpg"
-                    alt="Innovatiq team" fill className="object-cover" priority />
-                </div>
-
-                {/* Floating card — ISO */}
-                <div className="absolute -top-2 right-2 float-d">
-                  <div className="rounded-2xl px-4 py-3 flex items-center gap-3"
-                    style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(190,18,60,0.12)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: 'rgba(190,18,60,0.08)', border: '1px solid rgba(190,18,60,0.18)' }}>
-                      <Trophy size={18} className="text-[#BE123C]" />
-                    </div>
-                    <div>
-                      <p className="text-[13px] font-semibold text-gray-900">ISO Certified</p>
-                      <p className="text-[11px] font-semibold text-gray-500">9001:2015</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating card — Asia Pacific */}
-                <div className="absolute -bottom-2 -left-8 float">
-                  <div className="rounded-2xl px-4 py-3 flex items-center gap-3"
-                    style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 8px 32px rgba(0,0,0,0.10)' }}>
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.09)' }}>
-                      <Globe size={18} className="text-gray-600" />
-                    </div>
-                    <div>
-                      <p className="text-[13px] font-semibold text-gray-900">Asia Pacific</p>
-                      <p className="text-[11px] font-semibold text-gray-500">SG · IN · MY</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Floating stat card */}
-                <div className="absolute top-1/2 -right-10 -translate-y-1/2 float-d" style={{ animationDelay: '1s' }}>
-                  <div className="rounded-2xl px-5 py-4 text-white text-center"
-                    style={{
-                      background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',
-                      boxShadow: '0 8px 40px rgba(190,18,60,0.40)',
-                    }}>
-                    <p className="text-[32px] font-black">200+</p>
-                    <p className="text-[11px] font-bold opacity-90 mt-0.5">Happy Clients</p>
-                  </div>
-                </div>
+              {/* Central AI image */}
+              <div className="absolute" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '300px', height: '300px', zIndex: 3, borderRadius: '50%', overflow: 'hidden' }}>
+                <Image src="/images/better_ai_hub_user.png" alt="AI Powered Products"
+                  fill style={{ objectFit: 'contain', mixBlendMode: 'multiply' }} priority />
               </div>
-            </TiltCard>
+
+              {/* Card 1 — Learning & Training (top center) */}
+              <div className="absolute float" style={{ left: '200px', top: '38px', zIndex: 10 }}>
+                <CategoryCard icon={GraduationCap} title="Learning & Training" items={['LearnPro LMS', 'SkillEra TMS']} />
+              </div>
+
+              {/* Card 2 — Recruitment (top right) */}
+              <div className="absolute float-d" style={{ left: '412px', top: '130px', zIndex: 10 }}>
+                <CategoryCard icon={Users} title="Recruitment Solutions" items={['HRMS (ATS)', 'AI-Powered Recruitment']} />
+              </div>
+
+              {/* Card 3 — Cloud & IT (bottom right) */}
+              <div className="absolute float" style={{ left: '335px', top: '445px', zIndex: 10 }}>
+                <CategoryCard icon={Cloud} title="Cloud & Managed IT" items={['Scalable & Secure', 'Reliable Solutions']} />
+              </div>
+
+              {/* Card 4 — CRM (bottom left) */}
+              <div className="absolute float-d" style={{ left: '65px', top: '445px', zIndex: 10 }}>
+                <CategoryCard icon={Handshake} title="Customer Relationship" items={['Sales CRM', 'Smarter Relationships']} />
+              </div>
+
+              {/* Card 5 — Security Solutions (top left) */}
+              <div className="absolute float" style={{ left: '-12px', top: '158px', zIndex: 10 }}>
+                <CategoryCard icon={Shield} title="Security Solutions" items={['SecurOn PMS', 'Intelligent Patch Mgmt']} />
+              </div>
+
+            </div>
           </div>
         </div>
 
-        {/* ── Stats bar — 2×2 on mobile, 4-across on lg+ ── */}
+        {/* ── Stats bar — 1-col phone / 2×2 tablet / 4-across desktop ── */}
         <div className="mt-10 sm:mt-14">
           <div className="grid grid-cols-2 lg:flex lg:items-stretch gap-3 sm:gap-4">
             {STATS.map((s, i) => (
-              <StatCard key={s.l} v={s.v} l={s.l} c={s.c} bg={s.bg} icon={s.icon} index={i} total={STATS.length} />
+              <StatCard key={s.l} v={s.v} l={s.l} c={s.c} bg={s.bg} icon={s.icon} index={i} total={STATS.length} isPhone={isPhone} isDesktop={isDesktop} />
             ))}
           </div>
         </div>

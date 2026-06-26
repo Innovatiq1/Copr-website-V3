@@ -3,17 +3,9 @@ import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Award from '@/models/Award';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
 
-async function saveFile(file: File, folder: string): Promise<string> {
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const filename = `${Date.now()}-${file.name.replace(/\s/g, '_')}`;
-  const uploadDir = path.join(process.cwd(), 'public', 'uploads', folder);
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(path.join(uploadDir, filename), buffer);
-  return `/uploads/${folder}/${filename}`;
+async function toBase64(file: File) {
+  return Buffer.from(await file.arrayBuffer()).toString('base64');
 }
 
 function getCachedAwards(page: number, limit: number) {
@@ -22,7 +14,7 @@ function getCachedAwards(page: number, limit: number) {
       await connectDB();
       const skip = (page - 1) * limit;
       const [awards, total] = await Promise.all([
-        Award.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Award.find().sort({ createdAt: -1 }).skip(skip).limit(limit).select('-awardImageData -optionalImageData').lean(),
         Award.countDocuments(),
       ]);
       return JSON.parse(JSON.stringify({ awards, total, page, pages: Math.ceil(total / limit) }));
@@ -37,14 +29,14 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    
+
     const authHeader = req.headers.get('Authorization');
     let data;
     if (authHeader) {
       await connectDB();
       const skip = (page - 1) * limit;
       const [awards, total] = await Promise.all([
-        Award.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Award.find().sort({ createdAt: -1 }).skip(skip).limit(limit).select('-awardImageData -optionalImageData').lean(),
         Award.countDocuments(),
       ]);
       data = JSON.parse(JSON.stringify({ awards, total, page, pages: Math.ceil(total / limit) }));
@@ -52,9 +44,7 @@ export async function GET(req: NextRequest) {
       data = await getCachedAwards(page, limit);
     }
 
-    return NextResponse.json(data, {
-      headers: { 'Cache-Control': 'no-store, max-age=0' },
-    });
+    return NextResponse.json(data, { headers: { 'Cache-Control': 'no-store, max-age=0' } });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });
   }
@@ -67,23 +57,22 @@ export async function POST(req: NextRequest) {
   try {
     await connectDB();
     const contentType = req.headers.get('content-type') || '';
-
     let awardData: Record<string, unknown> = {};
+    let awardImgBuf: Buffer | null = null, awardImgMime = '';
+    let optImgBuf: Buffer | null = null, optImgMime = '';
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await req.formData();
-
       const awardImageFile = formData.get('awardImage') as File | null;
       const optionalImageFile = formData.get('optionalImage') as File | null;
 
-      let awardImagePath = '';
-      let optionalImagePath = '';
-
       if (awardImageFile && awardImageFile.size > 0) {
-        awardImagePath = await saveFile(awardImageFile, 'awards');
+        awardImgBuf = Buffer.from(await awardImageFile.arrayBuffer());
+        awardImgMime = awardImageFile.type || 'image/jpeg';
       }
       if (optionalImageFile && optionalImageFile.size > 0) {
-        optionalImagePath = await saveFile(optionalImageFile, 'awards');
+        optImgBuf = Buffer.from(await optionalImageFile.arrayBuffer());
+        optImgMime = optionalImageFile.type || 'image/jpeg';
       }
 
       awardData = {
@@ -91,16 +80,30 @@ export async function POST(req: NextRequest) {
         shortDescription: formData.get('shortDescription'),
         description: formData.get('description'),
         year: formData.get('year'),
-        awardImage: awardImagePath || undefined,
-        optionalImage: optionalImagePath || undefined,
-        image: awardImagePath || undefined,
       };
     } else {
       awardData = await req.json();
     }
 
     const award = await Award.create(awardData);
-    revalidateTag('awards', {});
+
+    const updates: Record<string, unknown> = {};
+    if (awardImgBuf) {
+      updates.awardImageData = awardImgBuf.toString('base64');
+      updates.awardImageMime = awardImgMime;
+      updates.awardImage = `/api/awards/${award._id}/image`;
+      updates.image = `/api/awards/${award._id}/image`;
+    }
+    if (optImgBuf) {
+      updates.optionalImageData = optImgBuf.toString('base64');
+      updates.optionalImageMime = optImgMime;
+      updates.optionalImage = `/api/awards/${award._id}/optional-image`;
+    }
+    if (Object.keys(updates).length) {
+      await Award.findByIdAndUpdate(award._id, updates);
+    }
+
+    revalidateTag('awards');
     return NextResponse.json(award, { status: 201 });
   } catch (err) {
     console.error(err);

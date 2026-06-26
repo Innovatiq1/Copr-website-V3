@@ -1,8 +1,10 @@
-﻿'use client';
+'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight, BarChart3, Users, GraduationCap, BookOpen, Shield, Trophy, type LucideIcon } from 'lucide-react';
+
+type NavProduct = { label: string; sub: string; href: string; Icon: LucideIcon; color: string; bg: string };
 
 const NAV = {
   about: [
@@ -12,12 +14,15 @@ const NAV = {
     { label: 'Awards', href: '/awards' },
   ],
   products: [
-    { label: 'SkillEra', sub: 'Training Management System', href: '/products/skillera', logo: '/images/Skillera-png-logo.png' },
-    { label: 'LearnPro', sub: 'Learning Management System', href: '/products/learnpro', logo: '/images/Learnpro-png-logo.png' },
-    { label: 'SecurOn', sub: 'Patch Management System', href: '/products/securon', logo: '/images/Securon-png-logo.png' },
-    { label: 'LMP', sub: 'Learning Motivational Platform', href: '/products/lmp', logo: null },
-  ],
+    { label: 'Sales CRM', sub: 'AI-Powered CRM', href: '/products/sales-crm', Icon: BarChart3, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'AI-ATS / HRMS', sub: 'AI-Powered Recruitment Platform', href: '/products/ai-ats', Icon: Users, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'SkillEra', sub: 'Training Management System', href: '/products/skillera', Icon: GraduationCap, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'LearnPro', sub: 'Learning Management System', href: '/products/learnpro', Icon: BookOpen, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'SecurOn', sub: 'Patch Management System', href: '/products/securon', Icon: Shield, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'LMP', sub: 'Learning Motivational Platform', href: '/products/lmp', Icon: Trophy, color: '#BE123C', bg: '#FFF1F2' },
+  ] as NavProduct[],
   services: [
+    { label: 'AI Services', href: '/services/ai-services' },
     { label: 'Cloud Services', href: '/services/cloud' },
     { label: 'Cyber Security', href: '/services/cyber-security' },
     { label: 'IT Consulting', href: '/services/consulting' },
@@ -28,6 +33,12 @@ const NAV = {
   ],
 };
 
+const SLIDES = [
+  { text: 'SkillEra TMS – Training Management System', cta: 'Claim Your 3-Month Free Trial Now!', href: '/products/skillera' },
+  { text: 'Sales CRM – AI-Powered Customer Relationship Management', cta: 'Try Now', href: '/products/sales-crm' },
+  { text: 'HRMS (ATS) – AI-Powered Recruitment Platform · Start Hiring Smarter Today', cta: 'Try Now', href: '/products/ai-ats' },
+];
+
 type Key = 'about' | 'products' | 'services' | null;
 
 export default function Navbar() {
@@ -35,6 +46,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [drop, setDrop] = useState<Key>(null);
   const [mob, setMob] = useState<string | null>(null);
+  const [slideIdx, setSlideIdx] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
     const s = () => setScrolled(window.scrollY > 8);
@@ -42,28 +55,44 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', s);
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFadeIn(false);
+      setTimeout(() => {
+        setSlideIdx(i => (i + 1) % SLIDES.length);
+        setFadeIn(true);
+      }, 350);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
+
   const closeDrawer = () => setOpen(false);
+  const slide = SLIDES[slideIdx];
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        {/* Promo bar — single line on all screen sizes */}
+        {/* Promo bar — cycling slide show */}
         <div className="py-2 sm:py-2.5 overflow-hidden"
           style={{ background: 'linear-gradient(135deg, #881337 0%, #BE123C 50%, #881337 100%)', color: '#FFFFFF' }}>
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 whitespace-nowrap text-[11px] sm:text-[13px] font-medium tracking-wide">
-            <span className="shrink-0">🚀</span>
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 text-[13px] sm:text-[15px] font-medium tracking-wide"
+            style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.35s ease' }}>
             {/* Mobile: condensed */}
-            <span className="font-semibold sm:hidden">AI-Powered IT</span>
-            <span className="opacity-50 sm:hidden">·</span>
-            <span className="sm:hidden">200+ Clients</span>
+            <span className="font-semibold sm:hidden truncate max-w-[260px]">
+              {(() => {
+                const baseText = slide.text.split('–')[0].trim();
+                if (baseText.includes('Sales CRM') || baseText.includes('HRMS')) {
+                  return `Our Latest Product: ${baseText}`;
+                }
+                return baseText;
+              })()}
+            </span>
             {/* sm+: full text */}
-            <span className="font-semibold hidden sm:inline">AI-Powered Digital Transformation</span>
-            <span className="opacity-60 hidden sm:inline">—</span>
-            <span className="hidden sm:inline">Trusted by <strong>200+ Enterprises</strong></span>
-            <Link href="/contact"
-              className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:scale-105 ml-0.5"
+            <span className="font-semibold hidden sm:inline">{slide.text}</span>
+            <Link href={slide.href}
+              className="shrink-0 inline-flex items-center gap-1 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] font-bold transition-all hover:scale-105 ml-0.5 whitespace-nowrap"
               style={{ background: '#FFFFFF', color: '#BE123C', boxShadow: '0 2px 8px rgba(0,0,0,0.18)' }}>
-              Get Demo <ArrowRight size={11} strokeWidth={2.5} />
+              {slide.cta} <ArrowRight size={11} strokeWidth={2.5} />
             </Link>
           </div>
         </div>
@@ -83,24 +112,26 @@ export default function Navbar() {
 
               {/* Logo */}
               <Link href="/" className="shrink-0">
-                <Image
-                  src="/images/innovatiq-logo.png"
-                  alt="Innovatiq"
-                  width={150} height={50}
-                  className="h-11 w-auto object-contain"
-                  priority
-                />
+                <div style={{ position: 'relative', width: '132px', height: '44px' }}>
+                  <Image
+                    src="/images/innovatiq-logo.png"
+                    alt="Innovatiq"
+                    fill
+                    className="object-contain object-left"
+                    priority
+                  />
+                </div>
               </Link>
 
               {/* Desktop nav */}
-              <div className="hidden lg:flex items-center gap-0.5 text-sm font-semibold">
+              <div className="hidden lg:flex items-center gap-0.5 text-[15px] font-semibold">
                 {(['about', 'products', 'services'] as NonNullable<Key>[]).map(k => (
                   <div key={k} className="relative"
                     onMouseEnter={() => setDrop(k)}
                     onMouseLeave={() => setDrop(null)}>
                     <button
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg capitalize transition-all duration-200 cursor-pointer"
-                      style={{ color: drop === k ? '#BE123C' : '#1a1a1a', background: drop === k ? 'rgba(190,18,60,0.08)' : 'transparent' }}>
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-lg capitalize transition-all duration-200 cursor-pointer hover:!bg-[rgba(190,18,60,0.08)]"
+                      style={{ color: '#1a1a1a', background: drop === k ? 'rgba(190,18,60,0.08)' : 'transparent' }}>
                       {k === 'about' ? 'About Us' : k.charAt(0).toUpperCase() + k.slice(1)}
                       <ChevronDown size={13} className={`transition-transform duration-200 ${drop === k ? 'rotate-180' : ''}`} />
                     </button>
@@ -115,36 +146,37 @@ export default function Navbar() {
                           boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
                         }}>
                         {k === 'products'
-                          ? NAV.products.map(p => (
+                          ? NAV.products.map(p => {
+                            const NavIcon = p.Icon;
+                            return (
                             <Link key={p.href} href={p.href} onClick={() => setDrop(null)}
-                              className="flex items-center gap-3 px-4 py-3 transition-all group hover:bg-[rgba(190,18,60,0.06)]"
+                              className="flex items-center gap-3 px-4 py-3 transition-all group hover:bg-[rgba(190,18,60,0.08)]"
                               style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                               <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                                style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.08)' }}>
-                                {p.logo
-                                  ? <Image src={p.logo} alt={p.label} width={26} height={26} className="object-contain" />
-                                  : <span className="text-[9px] font-black text-[#BE123C]">LMP</span>}
+                                style={{ background: p.bg, border: `1.5px solid rgba(190,18,60,0.18)` }}>
+                                <NavIcon size={18} color={p.color} strokeWidth={1.75} />
                               </div>
-                              <div>
-                                <p className="text-sm group-hover:text-[#BE123C] transition-colors" style={{ color: '#1a1a1a', fontWeight: 550 }}>{p.label}</p>
-                                <p className="text-xs" style={{ color: '#1a1a1a' }}>{p.sub}</p>
-                              </div>
-                            </Link>
-                          ))
-                          : (NAV[k] as { label: string; href: string }[]).map(l => (
-                            <Link key={l.href} href={l.href} onClick={() => setDrop(null)}
-                              className="block px-4 py-2.5 text-sm hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.05)] transition-all" style={{ color: '#1a1a1a', fontWeight: 550 }}>
-                              {l.label}
-                            </Link>
-                          ))
-                        }
+                                <div>
+                                  <p className="text-[15px]" style={{ color: '#1a1a1a', fontWeight: 550 }}>{p.label}</p>
+                                  <p className="text-[13px]" style={{ color: '#1a1a1a' }}>{p.sub}</p>
+                                </div>
+                              </Link>
+                            );
+                            })
+                            : (NAV[k] as { label: string; href: string }[]).map(l => (
+                              <Link key={l.href} href={l.href} onClick={() => setDrop(null)}
+                                className="block px-4 py-2.5 text-[15px] hover:bg-[rgba(190,18,60,0.08)] transition-all" style={{ color: '#1a1a1a', fontWeight: 550 }}>
+                                {l.label}
+                              </Link>
+                            ))
+                          }
                       </div>
                       </div>
                     )}
                   </div>
                 ))}
-                <Link href="/careers" className="px-4 py-2 rounded-lg font-semibold hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Careers</Link>
-                <Link href="/contact" className="px-4 py-2 rounded-lg font-semibold hover:text-[#BE123C] hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Contact</Link>
+                <Link href="/careers" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Careers</Link>
+                <Link href="/contact" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Contact</Link>
               </div>
 
               {/* CTAs */}
@@ -152,7 +184,7 @@ export default function Navbar() {
                 <Link href="/contact"
                   className="px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
                   style={{ color: '#1a1a1a', border: '1px solid rgba(0,0,0,0.22)' }}>
-                  Free Trial
+                  Contact Us
                 </Link>
                 <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
@@ -200,12 +232,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-5 py-4"
           style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
           <Link href="/" onClick={closeDrawer}>
-            <Image
-              src="/images/innovatiq-logo.png"
-              alt="Innovatiq"
-              width={130} height={44}
-              className="h-9 w-auto object-contain"
-            />
+            <div style={{ position: 'relative', width: '114px', height: '36px' }}>
+              <Image
+                src="/images/innovatiq-logo.png"
+                alt="Innovatiq"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
           </Link>
           <button
             onClick={closeDrawer}
@@ -238,7 +272,7 @@ export default function Navbar() {
                 <div className="ml-3 pb-1">
                   {m.items.map((l: { label: string; href: string; sub?: string }) => (
                     <Link key={l.href} href={l.href} onClick={closeDrawer}
-                      className="block px-3 py-2.5 text-sm font-semibold hover:text-[#BE123C] rounded-xl hover:bg-[rgba(190,18,60,0.06)] transition-all" style={{ color: '#1a1a1a' }}>
+                      className="block px-3 py-2.5 text-[15px] font-semibold rounded-xl hover:bg-[rgba(190,18,60,0.08)] transition-all" style={{ color: '#1a1a1a' }}>
                       {l.label}{l.sub ? ` — ${l.sub}` : ''}
                     </Link>
                   ))}
@@ -258,9 +292,9 @@ export default function Navbar() {
           {/* CTA buttons */}
           <div className="pt-4 pb-6 space-y-2">
             <Link href="/contact" onClick={closeDrawer}
-              className="block text-center py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}
-              style={{ border: '1px solid rgba(0,0,0,0.12)' }}>
-              Free Trial
+              className="block text-center py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all"
+              style={{ color: '#1a1a1a', border: '1px solid rgba(0,0,0,0.12)' }}>
+              Contact Us
             </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"

@@ -4,6 +4,7 @@ import { useState, FormEvent, useRef, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { API, authFetch, getToken } from '@/lib/adminApi';
+import { getBlogImageUrl } from '@/lib/api';
 import { ArrowLeft, Plus, X, Upload } from 'lucide-react';
 
 const AUTHORS = ['Krishna Das', 'Srinivasa Rao', 'Innovatiq'];
@@ -32,6 +33,8 @@ export default function BlogEditPage() {
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
   const [image, setImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [existingImage, setExistingImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
   const [error, setError] = useState('');
@@ -47,6 +50,7 @@ export default function BlogEditPage() {
         setDescription(blog.description || '');
         setAuthor(blog.author || AUTHORS[0]);
         setTags(Array.isArray(blog.tags) ? blog.tags : []);
+        if (blog.image) setExistingImage(blog.image);
       } catch {
         setError('Failed to load blog');
       } finally {
@@ -192,18 +196,58 @@ export default function BlogEditPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">Cover Image (leave empty to keep current)</label>
+            <label className="block text-sm font-medium text-slate-700 mb-1.5">Cover Image</label>
             <div
-              className="relative flex flex-col items-center justify-center gap-3 py-8 rounded-xl cursor-pointer transition-all hover:bg-slate-50"
+              className="relative rounded-xl cursor-pointer transition-all overflow-hidden"
               style={{ border: '2px dashed #CBD5E1', background: '#F8FAFC' }}
               onClick={() => fileRef.current?.click()}
             >
-              <Upload size={24} className="text-slate-400" />
-              <span className="text-sm text-slate-500">
-                {image ? image.name : 'Click to upload new image'}
-              </span>
+              {(imagePreview || existingImage) ? (
+                <div className="flex items-center gap-4 p-4">
+                  <div className="relative shrink-0 rounded-xl overflow-hidden bg-slate-100"
+                    style={{ width: '180px', height: '135px' }}>
+                    <img
+                      src={imagePreview || getBlogImageUrl(existingImage!) || ''}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <Upload size={16} className="text-white" />
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    {image ? (
+                      <>
+                        <p className="text-sm font-semibold text-slate-700 truncate">{image.name}</p>
+                        <p className="text-xs text-slate-400 mt-0.5">{(image.size / 1024).toFixed(1)} KB · New image</p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-sm font-semibold text-slate-700">Current image</p>
+                        <p className="text-xs text-slate-400 mt-0.5">Click to replace</p>
+                      </>
+                    )}
+                    <p className="text-xs text-[#BE123C] mt-2 font-medium">Click anywhere to change</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center gap-3 py-8">
+                  <Upload size={24} className="text-slate-400" />
+                  <span className="text-sm text-slate-500">Click to upload image</span>
+                </div>
+              )}
               <input ref={fileRef} type="file" accept="image/*" className="hidden"
-                onChange={(e) => setImage(e.target.files?.[0] || null)} />
+                onChange={(e) => {
+                  const file = e.target.files?.[0] || null;
+                  setImage(file);
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onloadend = () => setImagePreview(reader.result as string);
+                    reader.readAsDataURL(file);
+                  } else {
+                    setImagePreview(null);
+                  }
+                }} />
             </div>
           </div>
         </div>

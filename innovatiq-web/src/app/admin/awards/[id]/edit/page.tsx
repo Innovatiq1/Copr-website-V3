@@ -4,6 +4,7 @@ import { useState, FormEvent, useRef, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { API, authFetch, getToken } from '@/lib/adminApi';
+import { getAwardImageUrl } from '@/lib/api';
 import { ArrowLeft, Upload } from 'lucide-react';
 
 const inputStyle: React.CSSProperties = {
@@ -29,7 +30,11 @@ export default function AwardEditPage() {
   const [description, setDescription] = useState('');
   const [year, setYear] = useState('');
   const [awardImage, setAwardImage] = useState<File | null>(null);
+  const [awardImagePreview, setAwardImagePreview] = useState<string | null>(null);
+  const [existingAwardImage, setExistingAwardImage] = useState<string | null>(null);
   const [optionalImage, setOptionalImage] = useState<File | null>(null);
+  const [optionalImagePreview, setOptionalImagePreview] = useState<string | null>(null);
+  const [existingOptionalImage, setExistingOptionalImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
   const [error, setError] = useState('');
@@ -44,6 +49,8 @@ export default function AwardEditPage() {
         setShortDescription(award.shortDescription || '');
         setDescription(award.description || '');
         setYear(award.year || '');
+        if (award.awardImage) setExistingAwardImage(award.awardImage);
+        if (award.optionalImage) setExistingOptionalImage(award.optionalImage);
       } catch {
         setError('Failed to load award');
       } finally {
@@ -147,29 +154,89 @@ export default function AwardEditPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Award Image (leave empty to keep current)</label>
-              <div className="flex flex-col items-center justify-center gap-3 py-8 rounded-xl cursor-pointer hover:bg-slate-50 transition-all"
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Award Image</label>
+              <div className="rounded-xl cursor-pointer transition-all overflow-hidden"
                 style={{ border: '2px dashed #CBD5E1', background: '#F8FAFC' }}
                 onClick={() => awardImageRef.current?.click()}>
-                <Upload size={24} className="text-slate-400" />
-                <span className="text-sm text-slate-500 text-center">
-                  {awardImage ? awardImage.name : 'Click to upload new image'}
-                </span>
+                {(awardImagePreview || existingAwardImage) ? (
+                  <div className="flex items-center gap-4 p-4">
+                    <div className="relative shrink-0 rounded-xl overflow-hidden bg-slate-100" style={{ width: '180px', height: '135px' }}>
+                      <img src={awardImagePreview || getAwardImageUrl(existingAwardImage!) || ''} alt="Preview" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                        <Upload size={16} className="text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      {awardImage ? (
+                        <>
+                          <p className="text-sm font-semibold text-slate-700 truncate">{awardImage.name}</p>
+                          <p className="text-xs text-slate-400 mt-0.5">{(awardImage.size / 1024).toFixed(1)} KB · New image</p>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-sm font-semibold text-slate-700">Current image</p>
+                          <p className="text-xs text-slate-400 mt-0.5">Click to replace</p>
+                        </>
+                      )}
+                      <p className="text-xs text-[#BE123C] mt-2 font-medium">Click anywhere to change</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center gap-3 py-8">
+                    <Upload size={24} className="text-slate-400" />
+                    <span className="text-sm text-slate-500">Click to upload image</span>
+                  </div>
+                )}
                 <input ref={awardImageRef} type="file" accept="image/*" className="hidden"
-                  onChange={(e) => setAwardImage(e.target.files?.[0] || null)} />
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    setAwardImage(file);
+                    if (file) { const r = new FileReader(); r.onloadend = () => setAwardImagePreview(r.result as string); r.readAsDataURL(file); }
+                    else setAwardImagePreview(null);
+                  }} />
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Optional Image (leave empty to keep current)</label>
-              <div className="flex flex-col items-center justify-center gap-3 py-8 rounded-xl cursor-pointer hover:bg-slate-50 transition-all"
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">Optional Image</label>
+              <div className="rounded-xl cursor-pointer transition-all overflow-hidden"
                 style={{ border: '2px dashed #CBD5E1', background: '#F8FAFC' }}
                 onClick={() => optionalImageRef.current?.click()}>
-                <Upload size={24} className="text-slate-400" />
-                <span className="text-sm text-slate-500 text-center">
-                  {optionalImage ? optionalImage.name : 'Click to upload new image'}
-                </span>
+                {(optionalImagePreview || existingOptionalImage) ? (
+                  <div className="flex items-center gap-4 p-4">
+                    <div className="relative shrink-0 rounded-xl overflow-hidden bg-slate-100" style={{ width: '180px', height: '135px' }}>
+                      <img src={optionalImagePreview || getAwardImageUrl(existingOptionalImage!) || ''} alt="Preview" className="w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                        <Upload size={16} className="text-white" />
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      {optionalImage ? (
+                        <>
+                          <p className="text-sm font-semibold text-slate-700 truncate">{optionalImage.name}</p>
+                          <p className="text-xs text-slate-400 mt-0.5">{(optionalImage.size / 1024).toFixed(1)} KB · New image</p>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-sm font-semibold text-slate-700">Current image</p>
+                          <p className="text-xs text-slate-400 mt-0.5">Click to replace</p>
+                        </>
+                      )}
+                      <p className="text-xs text-[#BE123C] mt-2 font-medium">Click anywhere to change</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center justify-center gap-3 py-8">
+                    <Upload size={24} className="text-slate-400" />
+                    <span className="text-sm text-slate-500">Click to upload optional image</span>
+                  </div>
+                )}
                 <input ref={optionalImageRef} type="file" accept="image/*" className="hidden"
-                  onChange={(e) => setOptionalImage(e.target.files?.[0] || null)} />
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    setOptionalImage(file);
+                    if (file) { const r = new FileReader(); r.onloadend = () => setOptionalImagePreview(r.result as string); r.readAsDataURL(file); }
+                    else setOptionalImagePreview(null);
+                  }} />
               </div>
             </div>
           </div>

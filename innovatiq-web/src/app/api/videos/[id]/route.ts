@@ -35,8 +35,8 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     const { id } = await params;
     const body = await req.json();
     const video = await Video.findByIdAndUpdate(id, body, { new: true }).lean();
-    revalidateTag('videos', {});
-    revalidateTag(`video-${id}`, {});
+    revalidateTag('videos');
+    revalidateTag(`video-${id}`);
     return NextResponse.json(video);
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });
@@ -51,8 +51,8 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
     await connectDB();
     const { id } = await params;
     await Video.findByIdAndDelete(id);
-    revalidateTag('videos', {});
-    revalidateTag(`video-${id}`, {});
+    revalidateTag('videos');
+    revalidateTag(`video-${id}`);
     return NextResponse.json({ message: 'Deleted' });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

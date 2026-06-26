@@ -1,6 +1,14 @@
 ﻿import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+
+function XLogo({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
 
 const CRIMSON = '#FDA4AF';
 const GOLD    = '#FECDD3';
@@ -26,12 +34,18 @@ export default function Footer() {
               We create, nurture, and supply teams to assist companies in their digital transformation journey.
             </p>
             <div className="flex gap-2.5">
-              {[Facebook, Instagram, Twitter, Linkedin, Youtube].map((Icon, i) => (
-                <a key={i} href="#"
+              {[
+                { Icon: Facebook,  href: 'https://www.facebook.com/people/Innovatiq-Technologies/61577504102126/', title: 'Facebook',   hoverBg: '#1877F2' },
+                { Icon: Instagram, href: 'https://www.instagram.com/innovatiq_technologies/',                           title: 'Instagram',  hoverBg: 'linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)' },
+                { Icon: XLogo,     href: 'https://x.com/innovatiq_tech',                                               title: 'X (Twitter)', hoverBg: '#14171A' },
+                { Icon: Linkedin,  href: 'https://www.linkedin.com/company/innovatiq-technologies-pte-ltd/',            title: 'LinkedIn',   hoverBg: '#0A66C2' },
+                { Icon: Youtube,   href: 'https://www.youtube.com/@Innovatiq_technologies',                            title: 'YouTube',    hoverBg: '#FF0000' },
+              ].map(({ Icon, href, title, hoverBg }) => (
+                <a key={title} href={href} title={title} target="_blank" rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110"
                   style={{ background: 'rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.90)' }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = CRIMSON; (e.currentTarget as HTMLElement).style.color = '#fff'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.12)'; (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.90)'; }}>
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = hoverBg; (e.currentTarget as HTMLElement).style.color = '#fff'; (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 14px rgba(0,0,0,0.35)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.12)'; (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.90)'; (e.currentTarget as HTMLElement).style.boxShadow = 'none'; }}>
                   <Icon size={15} />
                 </a>
               ))}
@@ -43,6 +57,7 @@ export default function Footer() {
             <h4 className="font-bold mb-5 text-sm uppercase tracking-widest" style={{ color: '#fff' }}>Services</h4>
             <ul className="space-y-2.5">
               {[
+                ['AI Services', '/services/ai-services'],
                 ['Digital Transformation', '/services/digital-transformation'],
                 ['Cloud Services', '/services/cloud'],
                 ['Cyber Security', '/services/cyber-security'],
@@ -69,6 +84,8 @@ export default function Footer() {
             <h4 className="font-bold mb-5 text-sm uppercase tracking-widest" style={{ color: '#fff' }}>Products</h4>
             <ul className="space-y-2.5">
               {[
+                ['Sales CRM', '/products/sales-crm'],
+                ['AI-ATS / HRMS', '/products/ai-ats'],
                 ['SkillEra (TMS)', '/products/skillera'],
                 ['LearnPro (LMS)', '/products/learnpro'],
                 ['SecurOn (PMS)', '/products/securon'],
@@ -118,9 +135,9 @@ export default function Footer() {
             <h4 className="font-bold mb-5 text-sm uppercase tracking-widest" style={{ color: '#fff' }}>Get in Touch</h4>
             <div className="space-y-4">
               {[
-                { Icon: Phone,  label: 'Call us',  value: '+(65) 674-20955',       href: 'tel:+6567420955' },
+                { Icon: Phone,  label: 'Call us',  value: '+65 6742 0955',          href: 'tel:+6567420955' },
                 { Icon: Mail,   label: 'Email us', value: 'info@innovatiq.com.sg',  href: 'mailto:info@innovatiq.com.sg' },
-                { Icon: MapPin, label: 'Office',   value: 'Singapore · India · Malaysia', href: '/about' },
+                { Icon: MapPin, label: 'Office',   value: 'Singapore · India · Malaysia', href: '/contact' },
               ].map(({ Icon, label, value, href }) => (
                 <a key={label} href={href}
                   className="flex items-center gap-3 group transition-all">
@@ -142,8 +159,8 @@ export default function Footer() {
 
         {/* Certifications */}
         <div className="pt-8 mb-8" style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-          <p className="text-xs font-semibold uppercase tracking-widest mb-5 text-center"
-            style={{ color: 'rgba(255,255,255,0.85)' }}>
+          <p className="font-bold text-sm uppercase tracking-widest mb-5 text-center"
+            style={{ color: '#fff' }}>
             Certifications &amp; Partnerships
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -156,10 +173,10 @@ export default function Footer() {
               { src: '/images/Data-Protection-Trustmark-Logo_Horizontal_Colour.png', alt: 'Data Protection' },
             ].map(c => (
               <div key={c.alt}
-                className="rounded-xl px-4 py-2.5 flex items-center justify-center transition-all hover:scale-105"
-                style={{ minWidth: '90px', maxHeight: '50px', background: '#fff', border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
-                <Image src={c.src} alt={c.alt} width={80} height={36}
-                  style={{ objectFit: 'contain', maxHeight: '34px', width: 'auto' }} />
+                className="rounded-xl px-5 py-3 flex items-center justify-center transition-all hover:scale-105"
+                style={{ minWidth: '100px', height: '62px', background: '#fff', border: '1px solid rgba(255,255,255,0.15)', boxShadow: '0 2px 12px rgba(0,0,0,0.3)' }}>
+                <Image src={c.src} alt={c.alt} width={100} height={46}
+                  style={{ objectFit: 'contain', maxHeight: '46px', width: 'auto' }} />
               </div>
             ))}
           </div>
@@ -169,11 +186,11 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-5"
           style={{ borderTop: '1px solid rgba(255,255,255,0.12)' }}>
           <p className="text-xs font-semibold" style={{ color: 'rgba(255,255,255,0.85)' }}>
-            © 2026 INNOVATIQ Technologies Pte Ltd. All rights reserved.
+            © 2026 INNOVATIQ TECHNOLOGIES PTE LTD. ALL RIGHTS RESERVED.
           </p>
-          <div className="flex gap-5 text-xs font-semibold" style={{ color: 'rgba(255,255,255,0.85)' }}>
-            <Link href="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</Link>
-            <Link href="/privacy-policy" className="transition-colors hover:text-white">Terms &amp; Conditions</Link>
+          <div className="flex gap-5 text-xs font-bold" style={{ color: 'rgba(255,255,255,0.85)' }}>
+            <Link href="/privacy-policy" className="font-bold transition-colors hover:text-white">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="font-bold transition-colors hover:text-white">Terms &amp; Conditions</Link>
           </div>
         </div>
       </div>

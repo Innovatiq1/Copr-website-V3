@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     await connectDB();
     const body = await req.json();
     const video = await Video.create(body);
-    revalidateTag('videos', {});
+    revalidateTag('videos');
     return NextResponse.json(video, { status: 201 });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

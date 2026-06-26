@@ -57,7 +57,10 @@ export default function AwardsPage() {
               awards.map((a) => ({
                 Title: a.title || '',
                 Year: a.year || '',
+                Organization: a.organization || '',
                 'Short Description': a.shortDescription || '',
+                Description: a.description || '',
+                'Added Date': a.createdAt ? new Date(a.createdAt).toLocaleDateString() : '',
               })),
               'awards'
             )}

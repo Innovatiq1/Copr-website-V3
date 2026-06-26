@@ -62,9 +62,14 @@ export default function CareersPage() {
               filtered.map((c) => ({
                 'Job Title': c.jobTitle || c.title || '',
                 Company: c.companyName || '',
+                Department: c.department || '',
                 Location: c.location || '',
                 Experience: c.experience || c.experienceLevel || '',
-                'Employment Type': c.employmentType || '',
+                'Employment Type': c.employmentType || c.type || '',
+                'Primary Skills': Array.isArray(c.primarySkills) ? c.primarySkills.join(', ') : (c.primarySkills || ''),
+                Salary: c.salary || '',
+                Status: c.active === false ? 'Inactive' : 'Active',
+                'Posted Date': c.createdAt ? new Date(c.createdAt).toLocaleDateString() : '',
               })),
               'careers'
             )}

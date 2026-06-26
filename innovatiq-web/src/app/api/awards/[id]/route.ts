@@ -3,18 +3,6 @@ import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Award from '@/models/Award';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
-
-async function saveFile(file: File, folder: string): Promise<string> {
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  const filename = `${Date.now()}-${file.name.replace(/\s/g, '_')}`;
-  const uploadDir = path.join(process.cwd(), 'public', 'uploads', folder);
-  await mkdir(uploadDir, { recursive: true });
-  await writeFile(path.join(uploadDir, filename), buffer);
-  return `/uploads/${folder}/${filename}`;
-}
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -22,7 +10,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     const getCachedAward = unstable_cache(
       async () => {
         await connectDB();
-        const award = await Award.findById(id).lean();
+        const award = await Award.findById(id).select('-awardImageData -optionalImageData').lean();
         return award ? JSON.parse(JSON.stringify(award)) : null;
       },
       [`award-${id}`],
@@ -30,9 +18,7 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ id:
     );
     const award = await getCachedAward();
     if (!award) return NextResponse.json({ message: 'Not found' }, { status: 404 });
-    return NextResponse.json(award, {
-      headers: { 'Cache-Control': 'no-store, max-age=0' },
-    });
+    return NextResponse.json(award, { headers: { 'Cache-Control': 'no-store, max-age=0' } });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });
   }
@@ -46,24 +32,13 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     await connectDB();
     const { id } = await params;
     const contentType = req.headers.get('content-type') || '';
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let awardData: Record<string, any> = {};
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await req.formData();
-
       const awardImageFile = formData.get('awardImage') as File | null;
       const optionalImageFile = formData.get('optionalImage') as File | null;
-
-      let awardImagePath = '';
-      let optionalImagePath = '';
-
-      if (awardImageFile && awardImageFile.size > 0) {
-        awardImagePath = await saveFile(awardImageFile, 'awards');
-      }
-      if (optionalImageFile && optionalImageFile.size > 0) {
-        optionalImagePath = await saveFile(optionalImageFile, 'awards');
-      }
 
       awardData = {
         title: formData.get('title'),
@@ -72,20 +47,24 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         year: formData.get('year'),
       };
 
-      if (awardImagePath) {
-        awardData.awardImage = awardImagePath;
-        awardData.image = awardImagePath; // sync with main image field if needed
+      if (awardImageFile && awardImageFile.size > 0) {
+        awardData.awardImageData = Buffer.from(await awardImageFile.arrayBuffer()).toString('base64');
+        awardData.awardImageMime = awardImageFile.type || 'image/jpeg';
+        awardData.awardImage = `/api/awards/${id}/image`;
+        awardData.image = `/api/awards/${id}/image`;
       }
-      if (optionalImagePath) {
-        awardData.optionalImage = optionalImagePath;
+      if (optionalImageFile && optionalImageFile.size > 0) {
+        awardData.optionalImageData = Buffer.from(await optionalImageFile.arrayBuffer()).toString('base64');
+        awardData.optionalImageMime = optionalImageFile.type || 'image/jpeg';
+        awardData.optionalImage = `/api/awards/${id}/optional-image`;
       }
     } else {
       awardData = await req.json();
     }
 
-    const award = await Award.findByIdAndUpdate(id, awardData, { new: true }).lean();
-    revalidateTag('awards', {});
-    revalidateTag(`award-${id}`, {});
+    const award = await Award.findByIdAndUpdate(id, awardData, { new: true }).select('-awardImageData -optionalImageData').lean();
+    revalidateTag('awards');
+    revalidateTag(`award-${id}`);
     return NextResponse.json(award);
   } catch (err) {
     console.error(err);
@@ -101,8 +80,8 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
     await connectDB();
     const { id } = await params;
     await Award.findByIdAndDelete(id);
-    revalidateTag('awards', {});
-    revalidateTag(`award-${id}`, {});
+    revalidateTag('awards');
+    revalidateTag(`award-${id}`);
     return NextResponse.json({ message: 'Deleted' });
   } catch {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

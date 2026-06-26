@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { API, authFetch } from '@/lib/adminApi';
-import { X, Eye, Download } from 'lucide-react';
+import { X, Eye, Download, Trash2 } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -13,6 +13,20 @@ export default function EnquiriesPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [selected, setSelected] = useState<Enquiry | null>(null);
+  const [deleting, setDeleting] = useState<string | null>(null);
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Delete this enquiry?')) return;
+    setDeleting(id);
+    try {
+      await authFetch(`${API}/enquiries/${id}`, { method: 'DELETE' });
+      setEnquiries(prev => prev.filter(e => e._id !== id));
+    } catch {
+      setError('Failed to delete');
+    } finally {
+      setDeleting(null);
+    }
+  };
 
   useEffect(() => {
     const fetchEnquiries = async () => {
@@ -46,8 +60,10 @@ export default function EnquiriesPage() {
               Phone: e.phone || e.phoneNumber || '',
               Location: e.location || e.country || '',
               Company: e.company || e.companyName || '',
+              Subject: e.subject || '',
               'Looking For': e.lookingFor || e.service || '',
               Message: e.message || '',
+              Read: e.read ? 'Yes' : 'No',
               Date: e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '',
             })),
             'enquiries'
@@ -116,13 +132,23 @@ export default function EnquiriesPage() {
                       {enquiry.createdAt ? new Date(enquiry.createdAt).toLocaleDateString() : '-'}
                     </td>
                     <td className="px-5 py-4">
-                      <button
-                        onClick={() => setSelected(enquiry)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 transition-all hover:bg-slate-100 cursor-pointer"
-                        style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}
-                      >
-                        <Eye size={12} /> View
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => setSelected(enquiry)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 transition-all hover:bg-slate-100 cursor-pointer"
+                          style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}
+                        >
+                          <Eye size={12} /> View
+                        </button>
+                        <button
+                          onClick={() => handleDelete(enquiry._id)}
+                          disabled={deleting === enquiry._id}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:bg-red-50 cursor-pointer"
+                          style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}
+                        >
+                          <Trash2 size={12} /> {deleting === enquiry._id ? '...' : 'Delete'}
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))

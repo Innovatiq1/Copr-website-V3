@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import Link from 'next/link';
 import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Cloud, Shield, BarChart2, Zap, Server, Network, Wrench } from 'lucide-react';
@@ -182,12 +182,12 @@ export default function ServicesSection() {
 
                     {/* Content */}
                     <h3 className="font-extrabold text-gray-900 text-[16px] mb-2 leading-snug">{s.title}</h3>
-                    <p className="text-[14.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{s.desc}</p>
+                    <p className="text-[15.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{s.desc}</p>
                     <div className="flex-1" />
 
                     {/* Footer */}
                     <div className="flex items-center gap-1.5 pt-4" style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                      <span className="text-[11.5px] font-bold uppercase tracking-wider" style={{ color: s.clr }}>
+                      <span className="text-[13px] font-bold uppercase tracking-wider" style={{ color: s.clr }}>
                         Learn More
                       </span>
                       <ArrowRight size={11} style={{ color: s.clr }} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -232,7 +232,7 @@ export default function ServicesSection() {
                 </div>
 
                 <h3 className="font-bold text-gray-900 text-[17px] mb-3">Custom Solution</h3>
-                <p className="text-gray-600 text-[13.5px] font-semibold leading-relaxed mb-7 max-w-55">
+                <p className="text-[14.5px] font-medium leading-relaxed mb-7 max-w-55" style={{ color: '#1a1a1a' }}>
                   Tell us your challenge — we&apos;ll design the perfect solution for you.
                 </p>
 

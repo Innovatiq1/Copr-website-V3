@@ -1,8 +1,8 @@
-﻿export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic';
 
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import { ThumbsUp, ThumbsDown, ArrowRight, FileText } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, ArrowRight, FileText, Sparkles, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogImageUrl } from '@/lib/api';
@@ -20,10 +20,10 @@ export default async function BlogsPage() {
       <PageHero
         badge="Insights & Perspectives"
         title="Technology Insights from Innovatiq"
-        subtitle="Expert perspectives on digital transformation, cloud, cyber security, and the future of enterprise IT."
+        subtitle="Expert perspectives on digital transformation, cloud, cybersecurity, and the future of enterprise IT."
       />
 
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
+      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(190,18,60,0.07) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="absolute top-0 left-0 w-162.5 h-162.5 pointer-events-none"
@@ -35,9 +35,9 @@ export default async function BlogsPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border"
-              style={{ color: '#BE123C', borderColor: 'rgba(190,18,60,0.25)', background: 'rgba(190,18,60,0.08)' }}>
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#BE123C' }} />
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+              style={{ color: '#9F1239', background: '#FFFFFF', border: '1.5px solid rgba(159,18,57,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
+              <Sparkles size={11} />
               Latest Insights
             </span>
             <h2 className="text-4xl font-bold text-gray-900">
@@ -46,7 +46,7 @@ export default async function BlogsPage() {
                 Perspectives
               </span>
             </h2>
-            <p className="text-gray-600 font-medium mt-3 max-w-xl mx-auto">
+            <p className="text-gray-700 font-medium mt-3 max-w-xl mx-auto">
               Stay ahead with insights on digital transformation, cloud computing, and enterprise technology.
             </p>
           </AnimatedSection>
@@ -71,18 +71,12 @@ export default async function BlogsPage() {
                   <Link href={`/blogs/${blog._id}`} className="h-full block">
                     <article className="group hover:-translate-y-1 transition-all duration-300 h-full flex flex-col relative"
                       style={{
-                        background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${color} 0%, ${color} 20%, ${color}CC 45%, ${color}55 70%, transparent 90%) border-box`,
-                        borderStyle: 'solid',
-                        borderColor: 'transparent',
-                        borderTopWidth: '4px',
-                        borderLeftWidth: '0',
-                        borderRightWidth: '0',
-                        borderBottomWidth: '0',
+                        background: '#FFFFFF',
                         borderRadius: '16px',
-                        boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
+                        boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(0,0,0,0.08)',
                       }}>
 
-                      <div className="relative h-48 overflow-hidden rounded-t-[14px]">
+                      <div className="relative w-full aspect-video overflow-hidden rounded-t-[14px] bg-gray-50">
                         {imageUrl ? (
                           <Image src={imageUrl} alt={blog.title} fill
                             className="object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -92,26 +86,28 @@ export default async function BlogsPage() {
                             📝
                           </div>
                         )}
-                        <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-medium"
-                          style={{ background: 'rgba(255,255,255,0.92)', color, border: `1px solid ${color}30`, backdropFilter: 'blur(8px)' }}>
-                          {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Recent'}
-                        </div>
                       </div>
 
                       <div className="p-6 flex flex-col flex-1">
-                        <h3 className="font-bold text-gray-900 mb-3 leading-snug group-hover:text-[#BE123C] transition-colors line-clamp-2">
+                        <h3 className="font-bold text-gray-900 text-[18px] mb-2 leading-snug group-hover:text-[#BE123C] transition-colors line-clamp-2">
                           {blog.title}
                         </h3>
-                        <p className="text-gray-600 font-medium text-sm leading-relaxed flex-1 line-clamp-3">
+                        {blog.createdAt && (
+                          <div className="flex items-center gap-1.5 text-[13px] text-gray-600 font-medium mb-3">
+                            <Calendar size={12} />
+                            {new Date(blog.createdAt).toLocaleDateString('en-SG', { day: 'numeric', month: 'short', year: 'numeric' })}
+                          </div>
+                        )}
+                        <p className="text-gray-600 font-semibold text-[15px] leading-relaxed flex-1 line-clamp-3">
                           {blog.shortDescription}
                         </p>
                         <div className="flex items-center justify-between mt-5 pt-4"
                           style={{ borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                          <div className="flex items-center gap-3 text-sm text-gray-600 font-medium">
+                          <div className="flex items-center gap-3 text-[14px] text-gray-600 font-medium">
                             <span className="flex items-center gap-1.5"><ThumbsUp size={13} /> {blog.likes || 0}</span>
                             <span className="flex items-center gap-1.5"><ThumbsDown size={13} /> {blog.dislikes || 0}</span>
                           </div>
-                          <span className="flex items-center gap-1 text-sm font-semibold group-hover:gap-2 transition-all" style={{ color: '#9F1239' }}>
+                          <span className="flex items-center gap-1 text-[14px] font-semibold group-hover:gap-2 transition-all" style={{ color: '#9F1239' }}>
                             Read more <ArrowRight size={13} />
                           </span>
                         </div>

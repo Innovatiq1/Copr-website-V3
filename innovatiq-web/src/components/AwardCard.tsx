@@ -69,7 +69,7 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
           <Star size={8} style={{ color, fill: color, opacity: 0.3 }} />
         </div>
         <h3 className="font-bold text-gray-900 mb-3 leading-snug text-lg">{award.title}</h3>
-        <p className="text-gray-600 text-sm leading-relaxed flex-1">{award.shortDescription}</p>
+        <p className="text-sm font-semibold leading-relaxed flex-1" style={{ color: '#374151' }}>{award.shortDescription}</p>
 
         {award.description && award.description !== award.shortDescription && (
           <div className="mt-4">
@@ -83,8 +83,9 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
             >
               <div style={{ overflow: 'hidden' }}>
                 <div
-                  className="text-gray-600 text-sm leading-relaxed pb-4 pt-1"
+                  className="text-sm font-semibold leading-relaxed pb-4 pt-1"
                   style={{
+                    color: '#374151',
                     opacity: open ? 1 : 0,
                     transform: open ? 'translateY(0)' : 'translateY(-6px)',
                     transition: 'opacity 0.32s ease 0.06s, transform 0.32s ease 0.06s',

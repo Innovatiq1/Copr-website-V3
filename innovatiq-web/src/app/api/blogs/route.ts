@@ -3,8 +3,6 @@ import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Blog from '@/models/Blog';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
 
 function getCachedBlogs(page: number, limit: number) {
   return unstable_cache(
@@ -12,7 +10,7 @@ function getCachedBlogs(page: number, limit: number) {
       await connectDB();
       const skip = (page - 1) * limit;
       const [blogs, total] = await Promise.all([
-        Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).select('-imageData').lean(),
         Blog.countDocuments(),
       ]);
       return JSON.parse(JSON.stringify({ blogs, total, page, pages: Math.ceil(total / limit) }));
@@ -27,14 +25,14 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '9');
-    
+
     const authHeader = req.headers.get('Authorization');
     let data;
     if (authHeader) {
       await connectDB();
       const skip = (page - 1) * limit;
       const [blogs, total] = await Promise.all([
-        Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).lean(),
+        Blog.find().sort({ createdAt: -1 }).skip(skip).limit(limit).select('-imageData').lean(),
         Blog.countDocuments(),
       ]);
       data = JSON.parse(JSON.stringify({ blogs, total, page, pages: Math.ceil(total / limit) }));
@@ -59,20 +57,16 @@ export async function POST(req: NextRequest) {
     const contentType = req.headers.get('content-type') || '';
 
     let blogData: Record<string, unknown> = {};
+    let imageBuffer: Buffer | null = null;
+    let imageMime = '';
 
     if (contentType.includes('multipart/form-data')) {
       const formData = await req.formData();
       const imageFile = formData.get('image') as File | null;
-      let imagePath = '';
 
       if (imageFile && imageFile.size > 0) {
-        const bytes = await imageFile.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-        const filename = `${Date.now()}-${imageFile.name.replace(/\s/g, '_')}`;
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'blogs');
-        await mkdir(uploadDir, { recursive: true });
-        await writeFile(path.join(uploadDir, filename), buffer);
-        imagePath = `/uploads/blogs/${filename}`;
+        imageBuffer = Buffer.from(await imageFile.arrayBuffer());
+        imageMime = imageFile.type || 'image/jpeg';
       }
 
       blogData = {
@@ -81,14 +75,22 @@ export async function POST(req: NextRequest) {
         description: formData.get('description'),
         author: formData.get('author'),
         tags: formData.getAll('tags[]'),
-        image: imagePath || undefined,
       };
     } else {
       blogData = await req.json();
     }
 
     const blog = await Blog.create(blogData);
-    revalidateTag('blogs', {});
+
+    if (imageBuffer) {
+      await Blog.findByIdAndUpdate(blog._id, {
+        imageData: imageBuffer.toString('base64'),
+        imageMime,
+        image: `/api/blogs/${blog._id}/image`,
+      });
+    }
+
+    revalidateTag('blogs');
     return NextResponse.json(blog, { status: 201 });
   } catch (err) {
     console.error(err);

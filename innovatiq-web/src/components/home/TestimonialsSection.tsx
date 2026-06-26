@@ -6,51 +6,57 @@ import TiltCard from '@/components/TiltCard';
 
 const testimonials = [
   {
-    name: 'Alex',
-    title: 'IT Operations Manager',
-    quote: 'Partnering with Innovatiq transformed our IT operations. Their proactive approach to infrastructure management and strategic business consulting helped us reduce downtime by 40% and improve overall efficiency. They\'re not just a vendor — they\'re a growth partner.',
-    rating: 5,
-    avatar: 'AL',
+    name: 'Daniel Tan',
+    title: 'IT Director | Manufacturing Company',
+    date: 'March 2025',
+    quote: 'Innovatiq made our technology upgrade process much smoother than we expected. Their team was responsive, knowledgeable, and always willing to help. It\'s been a pleasure working with them.',
+    rating: 3,
+    avatar: 'DT',
     color: '#BE123C',
   },
   {
-    name: 'Kalina',
-    title: 'Technology Leader',
-    quote: 'Innovatiq\'s business development team understood our goals from day one. Their tailored IT roadmap and seamless cloud migration strategy positioned us for scalability and growth across Southeast Asia. Truly impressed by their commitment and expertise.',
-    rating: 5,
-    avatar: 'KA',
+    name: 'Emma Williams',
+    title: 'Operations Manager | Logistics & Supply Chain Company',
+    date: 'July 2024',
+    quote: 'We appreciate how Innovatiq takes the time to understand our business before recommending solutions. Their support has helped us improve efficiency and focus on what matters most.',
+    rating: 4,
+    avatar: 'EW',
     color: '#F43F5E',
   },
   {
-    name: 'Thomas',
-    title: 'Chief Executive Officer',
-    quote: 'Innovatiq brought clarity and structure to our digital transformation journey. Their ability to align technology with our business objectives was exceptional. Every milestone was met with transparency and professionalism.',
+    name: 'Michael Anderson',
+    title: 'General Manager | Training Solutions Company',
+    date: 'January 2026',
+    quote: 'The team at Innovatiq feels like an extension of our own. They\'re proactive, reliable, and genuinely invested in our success.',
     rating: 5,
-    avatar: 'TH',
+    avatar: 'MA',
     color: '#10B981',
   },
   {
-    name: 'James',
-    title: 'IT Director',
-    quote: 'Our experience with Innovatiq has been outstanding. They helped us align technology with our growth plans, ensuring smooth operations and enhanced productivity. Their clear communication, quick response, and dependable service make them an invaluable partner for any organization.',
-    rating: 5,
-    avatar: 'JA',
+    name: 'Jennifer Lim',
+    title: 'Head of HR | Professional Services Company',
+    date: 'September 2023',
+    quote: 'From planning to implementation, Innovatiq guided us every step of the way. Their expertise and professionalism gave us confidence throughout the entire project.',
+    rating: 4,
+    avatar: 'JL',
     color: '#8B5CF6',
   },
   {
-    name: 'Anna Scott',
-    title: 'Head of Digital Transformation',
-    quote: 'The Innovatiq team consistently goes above and beyond. They brought structure, vision, and innovation to our IT processes, helping us scale our business with confidence. Their genuine dedication to client success sets them apart in today\'s fast-changing digital world.',
+    name: 'James Carter',
+    title: 'Managing Director | Healthcare Technology Company',
+    date: 'July 2025',
+    quote: 'Innovatiq has been a reliable technology partner for our business. Their team is knowledgeable, responsive, and always focused on delivering solutions that create real value.',
     rating: 5,
-    avatar: 'AS',
+    avatar: 'JC',
     color: '#F59E0B',
   },
   {
-    name: 'Clarke',
-    title: 'VP Technology',
-    quote: 'Innovatiq\'s business development team combines deep technical expertise with a clear understanding of business needs. They provided us with scalable solutions that improved performance across all departments. We admire their commitment, professionalism, and ability to deliver beyond expectations.',
+    name: 'Rachel Johnson',
+    title: 'Learning & Development Manager | Education & Training Company',
+    date: 'November 2024',
+    quote: 'We\'ve enjoyed working with Innovatiq from day one. They understand our needs, communicate clearly, and consistently deliver results that help our business move forward.',
     rating: 5,
-    avatar: 'CL',
+    avatar: 'RJ',
     color: '#06B6D4',
   },
 ];
@@ -126,46 +132,71 @@ export default function TestimonialsSection() {
 
         {/* Carousel */}
         <div className="relative">
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-3 gap-6">
             {visible.map((t, i) => (
-              <div key={visibleIndices[i]} className={i === 1 ? 'md:scale-[1.03]' : ''}>
-              <TiltCard intensity={16} className="h-full">
+              <div key={visibleIndices[i]} className={`transition-transform duration-300 ${i === 1 ? 'md:scale-[1.04]' : ''}`}>
+              <TiltCard intensity={12} className="h-full">
               <div
-                className="rounded-2xl p-7 flex flex-col h-full"
+                className="rounded-2xl flex flex-col h-full overflow-hidden"
                 style={{
                   background: '#FFFFFF',
-                  border: i === 1 ? '1px solid rgba(71, 85, 105, 0.25)' : '1px solid rgba(0,0,0,0.09)',
+                  border: i === 1 ? '1.5px solid rgba(190,18,60,0.22)' : '1px solid rgba(0,0,0,0.08)',
                   boxShadow: i === 1
-                    ? `0 2px 8px rgba(0,0,0,0.05), 0 16px 40px rgba(0,0,0,0.08)`
-                    : '0 1px 3px rgba(0,0,0,0.04), 0 6px 20px rgba(0,0,0,0.05)',
+                    ? '0 8px 32px rgba(190,18,60,0.10), 0 2px 8px rgba(0,0,0,0.06)'
+                    : '0 2px 12px rgba(0,0,0,0.06)',
                   transition: 'box-shadow 0.28s ease',
                 }}>
 
-                {/* Quote icon */}
-                <Quote size={28} className="mb-4 depth-pop" style={{ color: '#475569', opacity: i === 1 ? 0.9 : 0.6 }} />
+                {/* Coloured top accent bar */}
+                <div style={{
+                  height: '4px',
+                  background: i === 1
+                    ? 'linear-gradient(90deg, #9F1239, #BE123C, #F43F5E)'
+                    : 'linear-gradient(90deg, #CBD5E1, #E2E8F0)',
+                }} />
 
-                {/* Stars */}
-                <div className="flex gap-1 mb-4 depth-mid">
-                  {Array.from({ length: t.rating }).map((_, si) => (
-                    <Star key={si} size={14} fill="#F59E0B" stroke="none" />
-                  ))}
-                </div>
+                <div className="p-6 flex flex-col h-full">
 
-                <p className="text-[#3d3d3d] text-sm leading-relaxed mb-6 flex-1 italic font-semibold">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3 depth-low">
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-                    style={{ background: 'linear-gradient(135deg, #64748B, #475569)' }}>
-                    {t.avatar}
+                  {/* Top row: quote icon + date badge */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                      style={{ background: i === 1 ? 'rgba(190,18,60,0.08)' : 'rgba(100,116,139,0.08)', border: i === 1 ? '1px solid rgba(190,18,60,0.15)' : '1px solid rgba(100,116,139,0.15)' }}>
+                      <Quote size={16} style={{ color: i === 1 ? '#BE123C' : '#94A3B8' }} />
+                    </div>
+                    <span className="text-[12px] font-bold px-2.5 py-1 rounded-full"
+                      style={{ background: i === 1 ? 'rgba(190,18,60,0.07)' : '#F1F5F9', color: i === 1 ? '#BE123C' : '#64748B' }}>
+                      {t.date}
+                    </span>
                   </div>
-                  <div>
-                    <p className="font-semibold text-gray-800 text-sm">{t.name}</p>
-                    <p className="text-gray-600 text-xs font-medium">{t.title}</p>
+
+                  {/* Stars */}
+                  <div className="flex gap-0.5 mb-4">
+                    {Array.from({ length: 5 }).map((_, si) => (
+                      <Star key={si} size={13} fill={si < t.rating ? '#F59E0B' : '#E2E8F0'} stroke="none" />
+                    ))}
                   </div>
+
+                  {/* Quote */}
+                  <p className="text-[16px] leading-relaxed mb-6 flex-1 italic"
+                    style={{ color: '#374151', fontWeight: 600 }}>
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+
+                  {/* Divider */}
+                  <div className="mb-4" style={{ height: '1px', background: 'rgba(0,0,0,0.06)' }} />
+
+                  {/* Author */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+                      style={{ background: i === 1 ? 'linear-gradient(135deg, #9F1239, #BE123C)' : 'linear-gradient(135deg, #475569, #64748B)', boxShadow: i === 1 ? '0 4px 12px rgba(190,18,60,0.30)' : '0 2px 8px rgba(0,0,0,0.15)' }}>
+                      {t.avatar}
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 text-[14.5px] leading-tight">{t.name}</p>
+                      <p className="text-[13px] font-semibold leading-snug mt-0.5" style={{ color: '#64748B' }}>{t.title}</p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
               </TiltCard>
@@ -176,8 +207,8 @@ export default function TestimonialsSection() {
           {/* Controls */}
           <div className="flex items-center justify-center gap-4 mt-10">
             <button onClick={prev}
-              className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-900 transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.20)', color: '#BE123C', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
               <ChevronLeft size={18} />
             </button>
 
@@ -186,16 +217,16 @@ export default function TestimonialsSection() {
                 <button key={i} onClick={() => { setAutoPlay(false); setCurrent(i); }}
                   className="rounded-full transition-all duration-300"
                   style={{
-                    width: i === current ? '24px' : '8px',
+                    width: i === current ? '28px' : '8px',
                     height: '8px',
-                    background: i === current ? '#475569' : 'rgba(0,0,0,0.15)',
+                    background: i === current ? 'linear-gradient(90deg, #BE123C, #F43F5E)' : 'rgba(0,0,0,0.12)',
                   }} />
               ))}
             </div>
 
             <button onClick={next}
-              className="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-900 transition-all duration-200 hover:-translate-y-0.5"
-              style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.10)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.20)', color: '#BE123C', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
               <ChevronRight size={18} />
             </button>
           </div>

@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Phone, Mail, Shield, Clock, Award, Globe } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
@@ -114,7 +114,7 @@ export default function CtaSection() {
                   background: CTA_GRAD,
                   boxShadow: '0 8px 32px rgba(190,18,60,0.35), 0 2px 8px rgba(136,19,55,0.20)',
                 }}>
-                Get Free Consultation <ArrowRight size={17} />
+                Get a Free Consultation <ArrowRight size={17} />
               </Link>
               <a href="tel:+6567420955"
                 className="inline-flex items-center gap-2 px-8 py-4 text-gray-700 text-base font-semibold rounded-xl transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50"
@@ -134,15 +134,15 @@ export default function CtaSection() {
                 { icon: Award,  label: 'PDPA Compliant', sub: 'Data Protected' },
                 { icon: Globe,  label: 'SLA Guaranteed', sub: 'Performance Assured' },
               ].map(({ icon: Icon, label, sub }) => (
-                <div key={label} className="flex items-center gap-3 rounded-xl p-3.5"
-                  style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.09)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+                <div key={label} className="flex flex-col sm:flex-row items-center gap-3 rounded-xl p-3.5 text-center sm:text-left"
+                  style={{ background: '#FFFFFF', border: '1.5px solid rgba(0,0,0,0.14)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
                     style={{ background: 'rgba(190,18,60,0.10)', border: '1px solid rgba(190,18,60,0.20)' }}>
                     <Icon size={17} style={{ color: CTA_CLR }} />
                   </div>
                   <div>
-                    <p className="text-gray-800 text-sm font-semibold">{label}</p>
-                    <p className="text-gray-600 text-xs font-semibold">{sub}</p>
+                    <p className="text-gray-800 text-[15px] font-semibold">{label}</p>
+                    <p className="text-gray-600 text-[13px] font-semibold">{sub}</p>
                   </div>
                 </div>
               ))}
@@ -176,8 +176,8 @@ export default function CtaSection() {
                         <Icon size={16} style={{ color: CTA_CLR }} />
                       </div>
                       <div>
-                        <p className="text-xs text-gray-600 font-semibold mb-0.5">{label}</p>
-                        <a href={href} className="font-semibold text-gray-800 text-sm transition-colors hover:text-[#BE123C]">
+                        <p className="text-[14px] text-gray-600 font-semibold mb-0.5">{label}</p>
+                        <a href={href} className="font-semibold text-gray-800 text-[16px] transition-colors hover:text-[#BE123C]">
                           {value}
                         </a>
                       </div>
@@ -186,9 +186,9 @@ export default function CtaSection() {
                 </div>
 
                 <div className="flex items-center gap-3 pt-5" style={{ borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-                  <Image src="/images/innovatiq-logo.png" alt="Innovatiq" width={90} height={32}
-                    style={{ objectFit: 'contain', height: '28px', width: 'auto' }} />
-                  <span className="text-gray-600 text-xs font-semibold">Trusted IT Partner Since 2010</span>
+                  <Image src="/images/innovatiq-logo.png" alt="Innovatiq" width={110} height={40}
+                    style={{ objectFit: 'contain', height: '36px', width: 'auto' }} />
+                  <span className="text-gray-600 text-[14px] font-semibold">Trusted IT Partner Since 2014</span>
                 </div>
               </div>
             </TiltCard>

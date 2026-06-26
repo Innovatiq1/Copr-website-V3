@@ -16,6 +16,8 @@ interface Leader {
   expertise: string[];
   photo: string;
   accent: string;
+  linkedin?: string;
+  instagram?: string;
 }
 
 export default function LeadershipCard({ m }: { m: Leader }) {
@@ -42,6 +44,8 @@ export default function LeadershipCard({ m }: { m: Leader }) {
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
           style={{ objectPosition: '50% 15%' }}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={65}
         />
         <div
           className="absolute inset-0"
@@ -56,26 +60,34 @@ export default function LeadershipCard({ m }: { m: Leader }) {
       <div className="flex flex-col flex-1 p-6">
         <div className="flex items-start justify-between gap-2 mb-3">
           <div>
-            <h3 className="font-bold text-gray-900 text-xl leading-tight">{m.name}</h3>
-            <p className="text-sm mt-0.5 font-medium" style={{ color: m.accent }}>
+            <h3 className="font-bold text-gray-900 text-2xl leading-tight">{m.name}</h3>
+            <p className="text-[16px] mt-0.5" style={{ color: m.accent, fontWeight: 650 }}>
               {m.role}
             </p>
           </div>
           <div className="flex gap-2 shrink-0">
-            <a
-              href="#"
-              className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}
-            >
-              <LinkedinIcon size={13} />
-            </a>
-            <a
-              href="#"
-              className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
-              style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}
-            >
-              <Instagram size={13} />
-            </a>
+            {false && m.linkedin && (
+              <a
+                href={m.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
+                style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}
+              >
+                <LinkedinIcon size={13} />
+              </a>
+            )}
+            {false && m.instagram && (
+              <a
+                href={m.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-xl flex items-center justify-center transition-all hover:scale-110"
+                style={{ background: '#F1F5F9', border: '1px solid rgba(0,0,0,0.10)', color: '#64748B' }}
+              >
+                <Instagram size={13} />
+              </a>
+            )}
           </div>
         </div>
 
@@ -96,10 +108,10 @@ export default function LeadershipCard({ m }: { m: Leader }) {
                       {section.heading}
                     </h4>
                   )}
-                  <p className="text-gray-600 text-[15px] leading-relaxed">{section.text}</p>
+                  <p className="text-gray-600 text-[16px] font-medium leading-relaxed">{section.text}</p>
                 </div>
               )) : m.bio.split('\n\n').map((para, i) => (
-                <p key={i} className="text-gray-600 text-[15px] leading-relaxed mb-2 last:mb-0">
+                <p key={i} className="text-gray-600 text-[16px] font-medium leading-relaxed mb-2 last:mb-0">
                   {para}
                 </p>
               ))}

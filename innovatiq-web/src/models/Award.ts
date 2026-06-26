@@ -6,7 +6,11 @@ const AwardSchema = new mongoose.Schema({
   shortDescription: { type: String },
   image: { type: String },
   awardImage: { type: String },
+  awardImageData: { type: String },
+  awardImageMime: { type: String },
   optionalImage: { type: String },
+  optionalImageData: { type: String },
+  optionalImageMime: { type: String },
   year: { type: String },
   organization: { type: String },
 }, { timestamps: true, strict: false });

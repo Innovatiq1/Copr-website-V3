@@ -143,7 +143,7 @@ export default function Chatbot() {
             </div>
             <div>
               <p className="text-white font-semibold text-sm">Innovatiq Assistant</p>
-              <p className="text-white/70 text-xs flex items-center gap-1.5">
+              <p className="text-white/90 text-xs flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
                 Online
               </p>

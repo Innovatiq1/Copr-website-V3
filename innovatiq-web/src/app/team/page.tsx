@@ -72,7 +72,7 @@ const leadership = [
 const teamMembers = [
   {
     name: 'Abhishek',
-    role: 'Regional Sales Head - North',
+    role: 'Regional Sales Head - North India',
     bio: 'Abhishek is a seasoned IT professional with 16 years of diverse industry experience spanning sales, business development, and channel management. He combines strong technical expertise with strategic business acumen to align technology solutions with evolving client needs. Known for his consultative approach and results-oriented mindset, he consistently transforms opportunities into sustainable business growth.',
     expertise: ['Sales Leadership', 'Business Development', 'Channel Management'],
     photo: '/images/aboutUs/ourTeam/Abhishek.png',

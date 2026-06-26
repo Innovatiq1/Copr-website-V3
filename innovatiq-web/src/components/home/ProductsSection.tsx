@@ -331,15 +331,17 @@ export default function ProductsSection() {
                         {p.hasLandingPage ? 'View Product Page' : `Explore ${p.name}`}
                         <ArrowRight size={13} className="group-hover/link:translate-x-1 transition-transform" />
                       </Link>
-                      <Link href="/contact"
-                        className="sm:ml-auto text-center text-[14px] font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
-                        style={{
-                          background: p.clrLight,
-                          color: p.clr,
-                          border: `1px solid ${p.clr}30`,
-                        }}>
-                        {(p as {trialLabel?: string}).trialLabel || 'Free Trial'}
-                      </Link>
+                     {(p as {trialLabel?: string}).trialLabel && (
+  <Link href="/contact"
+    className="sm:ml-auto text-center text-[14px] font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
+    style={{
+      background: p.clrLight,
+      color: p.clr,
+      border: `1px solid ${p.clr}30`,
+    }}>
+    {(p as {trialLabel?: string}).trialLabel}
+  </Link>
+)}
                     </div>
                   </div>
                 </div>

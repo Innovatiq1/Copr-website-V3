@@ -63,7 +63,10 @@ export default async function BlogsPage() {
           )}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7 items-stretch">
             {blogs.map((blog, i) => {
-              const imageUrl = getBlogImageUrl(blog.image);
+              const baseImageUrl = getBlogImageUrl(blog.image);
+const imageUrl = baseImageUrl
+  ? `${baseImageUrl}${baseImageUrl.includes('?') ? '&' : '?'}v=${blog.updatedAt ? new Date(blog.updatedAt).getTime() : ''}`
+  : baseImageUrl;
               const color = tagColors[i % tagColors.length];
 
               return (

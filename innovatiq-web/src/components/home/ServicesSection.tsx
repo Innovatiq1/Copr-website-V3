@@ -8,7 +8,7 @@ const SERVICES = [
   {
     title: 'Cloud Services',
     desc: 'Scalable cloud infrastructure, seamless migration, and cost optimisation for growing businesses.',
-    href: '/services/cloud',
+    href: '/services/cloud-services',
     Icon: Cloud,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -17,7 +17,7 @@ const SERVICES = [
   {
     title: 'Cyber Security',
     desc: 'End-to-end security solutions protecting your data, users and business operations 24/7.',
-    href: '/services/cyber-security',
+    href: '/services/cyber-security-services',
     Icon: Shield,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -26,7 +26,7 @@ const SERVICES = [
   {
     title: 'IT Consulting',
     desc: 'Strategic technology advisory aligning your IT roadmap with core business goals.',
-    href: '/services/consulting',
+    href: '/services/it-consulting-services',
     Icon: BarChart2,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -35,7 +35,7 @@ const SERVICES = [
   {
     title: 'Digital Transformation',
     desc: 'Reimagine your business with AI, automation, and modern platforms at scale.',
-    href: '/services/digital-transformation',
+    href: '/services/digital-transformation-services',
     Icon: Zap,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -44,7 +44,7 @@ const SERVICES = [
   {
     title: 'Managed IT Services',
     desc: 'Proactive 24/7 IT management with guaranteed SLA performance and rapid response.',
-    href: '/services/managed-it',
+    href: '/services/managed-it-services',
     Icon: Server,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -53,7 +53,7 @@ const SERVICES = [
   {
     title: 'Advanced Infrastructure',
     desc: 'Enterprise-grade network and server infrastructure built to scale with your growth.',
-    href: '/services/advanced-infra',
+    href: '/services/infrastructure-network-solutions',
     Icon: Network,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -62,7 +62,7 @@ const SERVICES = [
   {
     title: 'Field Services',
     desc: 'Certified on-site technical support, maintenance, and deployment across the region.',
-    href: '/services/field-service',
+    href: '/services/field-service-management',
     Icon: Wrench,
     clr: '#BE123C',
     bg: 'linear-gradient(135deg, #FFF1F2, #FFE4E6)',
@@ -203,7 +203,7 @@ export default function ServicesSection() {
             className={gridVisible ? 'product-card-enter' : ''}
             style={{ opacity: gridVisible ? undefined : 0, animationDelay: `${SERVICES.length * 55}ms` }}
           >
-            <Link href="/contact" className="group block h-full">
+            <Link href="/contact-us" className="group block h-full">
               <div className="relative h-full rounded-2xl p-7 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-300 group-hover:-translate-y-1.5"
                 style={{
                   background: 'linear-gradient(145deg, rgba(190,18,60,0.04) 0%, rgba(255,140,66,0.03) 100%)',

@@ -8,33 +8,33 @@ type NavProduct = { label: string; sub: string; href: string; Icon: LucideIcon; 
 
 const NAV = {
   about: [
-    { label: 'Who We Are', href: '/about' },
-    { label: 'Our Team', href: '/team' },
+    { label: 'Who We Are', href: '/about-us' },
+    { label: 'Our Team', href: '/our-team' },
     { label: 'Blogs', href: '/blogs' },
     { label: 'Awards', href: '/awards' },
   ],
   products: [
     { label: 'Sales CRM', sub: 'AI-Powered CRM', href: '/products/sales-crm', Icon: BarChart3, color: '#BE123C', bg: '#FFF1F2' },
     { label: 'AI-ATS / HRMS', sub: 'AI-Powered Recruitment Platform', href: '/products/ai-ats', Icon: Users, color: '#BE123C', bg: '#FFF1F2' },
-    { label: 'SkillEra', sub: 'Training Management System', href: '/products/skillera', Icon: GraduationCap, color: '#BE123C', bg: '#FFF1F2' },
-    { label: 'LearnPro', sub: 'Learning Management System', href: '/products/learnpro', Icon: BookOpen, color: '#BE123C', bg: '#FFF1F2' },
-    { label: 'SecurOn', sub: 'Patch Management System', href: '/products/securon', Icon: Shield, color: '#BE123C', bg: '#FFF1F2' },
-    { label: 'LMP', sub: 'Learning Motivational Platform', href: '/products/lmp', Icon: Trophy, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'SkillEra', sub: 'Training Management System', href: '/product/skilera-training-management-system', Icon: GraduationCap, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'LearnPro', sub: 'Learning Management System', href: '/product/learnpro-learning-management-system', Icon: BookOpen, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'SecurOn', sub: 'Patch Management System', href: '/product/securon-patch-management-system', Icon: Shield, color: '#BE123C', bg: '#FFF1F2' },
+    { label: 'LMP', sub: 'Learning Motivational Platform', href: '/product/learning-motivational-platform', Icon: Trophy, color: '#BE123C', bg: '#FFF1F2' },
   ] as NavProduct[],
   services: [
     { label: 'AI Services', href: '/services/ai-services' },
-    { label: 'Cloud Services', href: '/services/cloud' },
-    { label: 'Cyber Security', href: '/services/cyber-security' },
-    { label: 'IT Consulting', href: '/services/consulting' },
-    { label: 'Digital Transformation', href: '/services/digital-transformation' },
-    { label: 'Managed IT Services', href: '/services/managed-it' },
-    { label: 'Advanced Infrastructure', href: '/services/advanced-infra' },
-    { label: 'Field Services', href: '/services/field-service' },
+    { label: 'Cloud Services', href: '/services/cloud-services' },
+    { label: 'Cyber Security', href: '/services/cyber-security-services' },
+    { label: 'IT Consulting', href: '/services/it-consulting-services' },
+    { label: 'Digital Transformation', href: '/services/digital-transformation-services' },
+    { label: 'Managed IT Services', href: '/services/managed-it-services' },
+    { label: 'Advanced Infrastructure', href: '/services/infrastructure-network-solutions' },
+    { label: 'Field Services', href: '/services/field-service-management' },
   ],
 };
 
 const SLIDES = [
-  { text: 'SkillEra TMS – Training Management System', cta: 'Claim Your 3-Month Free Trial Now!', href: '/products/skillera' },
+  { text: 'SkillEra TMS – Training Management System', cta: 'Claim Your 3-Month Free Trial Now!', href: '/product/skilera-training-management-system' },
   { text: 'Sales CRM – AI-Powered Customer Relationship Management', cta: 'Try Now', href: '/products/sales-crm' },
   { text: 'HRMS (ATS) – AI-Powered Recruitment Platform · Start Hiring Smarter Today', cta: 'Try Now', href: '/products/ai-ats' },
 ];
@@ -50,8 +50,17 @@ export default function Navbar() {
   const [fadeIn, setFadeIn] = useState(true);
 
   useEffect(() => {
-    const s = () => setScrolled(window.scrollY > 8);
-    window.addEventListener('scroll', s);
+    let ticking = false;
+    const s = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 8);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', s, { passive: true });
     return () => window.removeEventListener('scroll', s);
   }, []);
 
@@ -176,12 +185,12 @@ export default function Navbar() {
                   </div>
                 ))}
                 <Link href="/careers" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Careers</Link>
-                <Link href="/contact" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Contact</Link>
+                <Link href="/contact-us" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Contact</Link>
               </div>
 
               {/* CTAs */}
               <div className="hidden lg:flex items-center gap-3">
-                <Link href="/contact"
+                <Link href="/contact-us"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                   style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 18px rgba(190,18,60,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
                   Get Demo <ArrowRight size={14} />
@@ -279,14 +288,14 @@ export default function Navbar() {
             className="block px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
             Careers
           </Link>
-          <Link href="/contact" onClick={closeDrawer}
+          <Link href="/contact-us" onClick={closeDrawer}
             className="block px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
             Contact
           </Link>
 
           {/* CTA buttons */}
           <div className="pt-4 pb-6 space-y-2">
-            <Link href="/contact" onClick={closeDrawer}
+            <Link href="/contact-us" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
               style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}>
               Get Demo <ArrowRight size={14} />

@@ -381,10 +381,8 @@ export default function ContactPage() {
                       {/* Flag badge */}
                       <div className="shrink-0 rounded-xl overflow-hidden flex items-center justify-center"
                         style={{ background: '#F1F5F9', border: '1.5px solid #E2E8F0', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '5px 7px' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={`https://flagcdn.com/w40/${office.flag}.png`}
-                          srcSet={`https://flagcdn.com/w80/${office.flag}.png 2x`}
+                        <Image
+                          src={`https://flagcdn.com/w80/${office.flag}.png`}
                           width={38}
                           height={28}
                           alt={office.country}

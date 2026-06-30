@@ -3,6 +3,7 @@
 import { useState, FormEvent, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { API, getToken } from '@/lib/adminApi';
 import { ArrowLeft, Plus, X, Upload } from 'lucide-react';
 
@@ -172,7 +173,7 @@ export default function BlogCreatePage() {
                 <div className="flex items-center gap-4 p-4">
                   <div className="relative shrink-0 rounded-xl overflow-hidden bg-slate-100"
                     style={{ width: '180px', height: '135px' }}>
-                    <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                    <Image src={imagePreview} alt="Preview" fill unoptimized className="object-cover" />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                       <Upload size={16} className="text-white" />
                     </div>

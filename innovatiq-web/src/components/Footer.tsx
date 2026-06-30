@@ -58,12 +58,12 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 ['AI Services', '/services/ai-services'],
-                ['Digital Transformation', '/services/digital-transformation'],
-                ['Cloud Services', '/services/cloud'],
-                ['Cyber Security', '/services/cyber-security'],
-                ['Managed Services', '/services/managed-it'],
-                ['IT Consulting', '/services/consulting'],
-                ['Field Services', '/services/field-service'],
+                ['Digital Transformation', '/services/digital-transformation-services'],
+                ['Cloud Services', '/services/cloud-services'],
+                ['Cyber Security', '/services/cyber-security-services'],
+                ['Managed Services', '/services/managed-it-services'],
+                ['IT Consulting', '/services/it-consulting-services'],
+                ['Field Services', '/services/field-service-management'],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href}
@@ -86,10 +86,10 @@ export default function Footer() {
               {[
                 ['Sales CRM', '/products/sales-crm'],
                 ['AI-ATS / HRMS', '/products/ai-ats'],
-                ['SkillEra (TMS)', '/products/skillera'],
-                ['LearnPro (LMS)', '/products/learnpro'],
-                ['SecurOn (PMS)', '/products/securon'],
-                ['LMP', '/products/lmp'],
+                ['SkillEra (TMS)', '/product/skilera-training-management-system'],
+                ['LearnPro (LMS)', '/product/learnpro-learning-management-system'],
+                ['SecurOn (PMS)', '/product/securon-patch-management-system'],
+                ['LMP', '/product/learning-motivational-platform'],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href}
@@ -110,8 +110,8 @@ export default function Footer() {
             <h4 className="font-bold mb-5 text-sm uppercase tracking-widest" style={{ color: '#fff' }}>Company</h4>
             <ul className="space-y-2.5">
               {[
-                ['About Us', '/about'],
-                ['Our Team', '/team'],
+                ['About Us', '/about-us'],
+                ['Our Team', '/our-team'],
                 ['Careers', '/careers'],
                 ['Blogs', '/blogs'],
                 ['Awards', '/awards'],
@@ -137,7 +137,7 @@ export default function Footer() {
               {[
                 { Icon: Phone,  label: 'Call us',  value: '+65 6742 0955',          href: 'tel:+6567420955' },
                 { Icon: Mail,   label: 'Email us', value: 'info@innovatiq.com.sg',  href: 'mailto:info@innovatiq.com.sg' },
-                { Icon: MapPin, label: 'Office',   value: 'Singapore · India · Malaysia', href: '/contact' },
+                { Icon: MapPin, label: 'Office',   value: 'Singapore · India · Malaysia', href: '/contact-us' },
               ].map(({ Icon, label, value, href }) => (
                 <a key={label} href={href}
                   className="flex items-center gap-3 group transition-all">

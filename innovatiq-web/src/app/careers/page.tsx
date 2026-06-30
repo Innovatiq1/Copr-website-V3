@@ -6,6 +6,7 @@ import CtaSection from '@/components/home/CtaSection';
 import VideoSection from '@/components/VideoSection';
 import { MapPin, Briefcase, Clock, ChevronRight, Users } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getCareersDirect } from '@/lib/server-data';
 
 export default async function CareersPage() {
@@ -52,9 +53,9 @@ export default async function CareersPage() {
             <AnimatedSection delay={120}>
               <div className="relative rounded-2xl overflow-hidden"
                 style={{ boxShadow: '0 4px 32px rgba(0,0,0,0.12)' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/aboutUs/medium-shot-people-working-desk.jpg"
+                <Image src="/images/aboutUs/medium-shot-people-working-desk.jpg"
                   alt="Team collaborating at Innovatiq"
+                  width={800} height={288}
                   className="w-full h-72 object-cover object-center" />
                 {/* Brand colour overlay */}
                 <div className="absolute inset-0 pointer-events-none"
@@ -99,12 +100,12 @@ export default async function CareersPage() {
       </section>
 
       {/* Job Listings */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         {/* Background treatments */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/Carrer%20Hero%20Section%20Background%201.svg" alt="" aria-hidden="true"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[800px] h-auto opacity-[0.04] object-contain" />
+          <Image src="/images/Carrer%20Hero%20Section%20Background%201.svg" alt="" aria-hidden="true"
+            width={800} height={600}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[800px] h-auto opacity-0 object-contain" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[400px]"
             style={{ background: 'radial-gradient(ellipse at bottom left, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
           <div className="absolute top-0 right-0 w-[400px] h-[400px]"
@@ -125,7 +126,7 @@ export default async function CareersPage() {
 
           {careers.length === 0 && (
             <div className="flex flex-col items-center justify-center py-16 text-center rounded-2xl mb-6"
-              style={{ background: '#F8FAFC', border: '1px solid rgba(0,0,0,0.07)' }}>
+              style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.20)', boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
                 style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.40)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
                 <Briefcase size={28} className="text-[#BE123C]" />
@@ -245,8 +246,8 @@ export default async function CareersPage() {
               {/* Right: visible career image */}
               <div className="hidden sm:flex items-end justify-center w-64 shrink-0 overflow-hidden"
                 style={{ background: 'linear-gradient(to left, rgba(190,18,60,0.06), transparent)' }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/Carrer%20Image.svg" alt="" aria-hidden="true"
+                <Image src="/images/Carrer%20Image.svg" alt="" aria-hidden="true"
+                  width={256} height={256}
                   className="h-[95%] max-h-64 w-auto object-contain opacity-30 select-none pointer-events-none" />
               </div>
             </div>

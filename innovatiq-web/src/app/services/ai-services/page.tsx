@@ -38,6 +38,7 @@ import {
   Activity 
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const COLOR = '#BE123C';
 const GRADIENT = 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)';
@@ -152,7 +153,7 @@ export default function AIServicesPage() {
                 ))}
               </div>
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact"
+                <Link href="/contact-us"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                   style={{ background: GRADIENT, boxShadow: `0 8px 24px ${COLOR}35` }}>
                   Talk to an AI Expert <ArrowRight size={16} />
@@ -194,8 +195,8 @@ export default function AIServicesPage() {
         style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 22%, #FFFEFE 55%, #FFFFFF 100%)' }}>
         <div className="absolute bottom-0 left-0 w-125 h-125 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${COLOR}05 0%, transparent 70%)` }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/Design.svg" alt="" aria-hidden="true"
+        <Image src="/images/Design.svg" alt="" aria-hidden="true"
+          width={600} height={600}
           className="absolute right-0 bottom-0 h-[70%] max-h-100 w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
@@ -429,7 +430,7 @@ export default function AIServicesPage() {
               Talk to our AI practice team and get a clear-eyed view of where to start and what to build first.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact"
+              <Link href="/contact-us"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                 style={{ background: GRADIENT, boxShadow: `0 8px 24px ${COLOR}35` }}>
                 Talk to an AI Expert <ArrowRight size={16} />

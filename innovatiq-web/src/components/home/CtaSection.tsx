@@ -108,7 +108,7 @@ export default function CtaSection() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
-              <Link href="/contact"
+              <Link href="/contact-us"
                 className="inline-flex items-center gap-2 px-8 py-4 text-white text-base font-semibold rounded-xl transition-all duration-300 hover:-translate-y-1"
                 style={{
                   background: CTA_GRAD,

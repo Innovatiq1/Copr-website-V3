@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -92,8 +93,8 @@ export default function TestimonialsSection() {
         style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.04) 0%, transparent 70%)' }} />
 
       {/* Illustration */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/Group%2041053.svg" alt="" aria-hidden="true"
+      <Image src="/images/Group%2041053.svg" alt="" aria-hidden="true"
+        width={400} height={360}
         className="absolute left-0 bottom-0 h-[55%] max-h-[360px] w-auto opacity-[0.04] pointer-events-none select-none object-contain" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

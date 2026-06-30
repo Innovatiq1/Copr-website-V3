@@ -249,7 +249,7 @@ export default function WhyUsSection() {
             </div>
 
             {/* CTA */}
-            <Link href="/about"
+            <Link href="/about-us"
               className="inline-flex items-center gap-2.5 px-7 py-3.5 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-0.5"
               style={{ background:'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow:'0 8px 32px rgba(190,18,60,0.35)' }}>
               Learn More About Us <ArrowRight size={16} />

@@ -10,6 +10,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://innovatiq.com.sg'),
   title: "Innovatiq Technologies | AI-Powered Digital Transformation",
   description: "Innovatiq Technologies delivers cutting-edge IT solutions, cloud services, cyber security, and digital transformation services across Singapore, India, and Malaysia.",
   keywords: "IT solutions, digital transformation, cloud services, cyber security, managed IT, Singapore",

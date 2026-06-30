@@ -81,15 +81,24 @@ export default function TiltCard({ children, className, style, intensity = 22 }:
     // Refresh cached rect on resize
     const onResize = () => { rect = wrap.getBoundingClientRect(); };
 
+    function onEnterWithWillChange() {
+      wrap.style.willChange = 'transform';
+      onEnter();
+    }
+    function onLeaveWithWillChange() {
+      onLeave();
+      setTimeout(() => { wrap.style.willChange = 'auto'; }, 400);
+    }
+
     wrap.addEventListener('mousemove', onMove);
-    wrap.addEventListener('mouseenter', onEnter);
-    wrap.addEventListener('mouseleave', onLeave);
+    wrap.addEventListener('mouseenter', onEnterWithWillChange);
+    wrap.addEventListener('mouseleave', onLeaveWithWillChange);
     window.addEventListener('resize', onResize, { passive: true });
     return () => {
       cancelAnimationFrame(rafId);
       wrap.removeEventListener('mousemove', onMove);
-      wrap.removeEventListener('mouseenter', onEnter);
-      wrap.removeEventListener('mouseleave', onLeave);
+      wrap.removeEventListener('mouseenter', onEnterWithWillChange);
+      wrap.removeEventListener('mouseleave', onLeaveWithWillChange);
       window.removeEventListener('resize', onResize);
     };
   }, [intensity]);
@@ -98,7 +107,7 @@ export default function TiltCard({ children, className, style, intensity = 22 }:
     <div
       ref={wrapRef}
       className={`relative ${className ?? ''}`}
-      style={{ perspective: '700px', willChange: 'transform', ...style }}
+      style={{ perspective: '700px', ...style }}
     >
       <div
         ref={innerRef}

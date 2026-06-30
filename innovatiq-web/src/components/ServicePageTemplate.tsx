@@ -3,6 +3,7 @@ import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
 import { CheckCircle2 } from 'lucide-react';
+import Image from 'next/image';
 import * as LucideIcons from 'lucide-react';
 
 interface Benefit {
@@ -182,8 +183,8 @@ export default function ServicePageTemplate({
           style={{ background: `radial-gradient(ellipse at bottom left, ${color}05 0%, transparent 70%)` }} />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at top right, rgba(244,63,94,0.04) 0%, transparent 70%)' }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/Design.svg" alt="" aria-hidden="true"
+        <Image src="/images/Design.svg" alt="" aria-hidden="true"
+          width={600} height={600}
           className="absolute right-0 bottom-0 h-[70%] max-h-[400px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -237,8 +238,8 @@ export default function ServicePageTemplate({
         <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
           <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
             style={{ background: `radial-gradient(circle at top right, ${color}05 0%, transparent 60%)` }} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
+          <Image src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
+            width={400} height={400}
             className="absolute left-0 top-1/2 -translate-y-1/2 h-[80%] max-h-[400px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

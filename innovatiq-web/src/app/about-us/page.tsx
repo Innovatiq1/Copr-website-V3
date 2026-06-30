@@ -1,6 +1,5 @@
 ﻿import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
-import ParallaxLayer from '@/components/ParallaxLayer';
 import TiltCard from '@/components/TiltCard';
 import CounterSection from '@/components/CounterSection';
 import CtaSection from '@/components/home/CtaSection';
@@ -36,16 +35,10 @@ export default function AboutPage() {
 
       {/* Vision & Mission */}
       <section className="relative pt-8 pb-8 overflow-hidden" style={{ background: '#FFFFFF' }}>
-        <ParallaxLayer
-          speed={0.3}
-          className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }}
-        />
-        <ParallaxLayer
-          speed={0.2}
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }}
-        />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
@@ -129,11 +122,8 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="relative pt-0 pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
-        <ParallaxLayer
-          speed={0.35}
-          className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top left, rgba(190,18,60,0.05) 0%, transparent 60%)' }}
-        />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle at top left, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-14">
@@ -178,11 +168,8 @@ export default function AboutPage() {
 
       {/* Who We Are */}
       <section className="relative pt-24 pb-16 overflow-hidden" style={{ background: '#F8FAFC' }}>
-        <ParallaxLayer
-          speed={0.25}
-          className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
-          style={{ background: 'radial-gradient(circle at top left, rgba(245,158,11,0.04) 0%, transparent 60%)' }}
-        />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
+          style={{ background: 'radial-gradient(circle at top left, rgba(245,158,11,0.04) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">

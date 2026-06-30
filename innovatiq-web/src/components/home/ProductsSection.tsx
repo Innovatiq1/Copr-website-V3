@@ -51,7 +51,7 @@ const products = [
     name: 'SkillEra',
     sub: 'AI-Powered Training\nManagement System',
     desc: 'Supercharge your training programs with AI-driven course creation, personalised learning paths, and predictive performance analytics.',
-    href: '/products/skillera',
+    href: '/product/skilera-training-management-system',
     logo: null,
     heroImg: '/images/SkillEra.png',
     features: ['Course Scheduling', 'SCORM Compliance', 'Certification Management', 'Mobile Learning', 'AI-Generated Courses & Training Content', 'Personalised Learning Recommendations'],
@@ -69,7 +69,7 @@ const products = [
     name: 'LearnPro',
     sub: 'AI-Powered Learning\nManagement System',
     desc: 'Deliver intelligent learning experiences at scale with AI course generation, automated assessments, and predictive student success analytics.',
-    href: '/products/learnpro',
+    href: '/product/learnpro-learning-management-system',
     logo: null,
     heroImg: '/images/LMS.png',
     features: ['Course Builder', 'Quiz Management', 'Progress Tracking', 'Certificate Generation', 'AI Course Content Generation', 'Personalised Learning Paths'],
@@ -87,7 +87,7 @@ const products = [
     name: 'SecurOn',
     sub: 'AI-Powered Patch\nManagement System',
     desc: 'Protect your enterprise infrastructure with AI-driven vulnerability detection, intelligent patch recommendations, and predictive threat analysis.',
-    href: '/products/securon',
+    href: '/product/securon-patch-management-system',
     logo: null,
     heroImg: '/images/SecurOn.png',
     features: ['Auto Patching', 'Compliance Reports', 'Vulnerability Scan', 'Real-time Alerts', 'AI-Based Vulnerability Detection', 'Intelligent Patch Recommendations'],
@@ -105,7 +105,7 @@ const products = [
     name: 'LMP',
     sub: 'AI-Powered Learning Motivational Platform',
     desc: 'AI-enhanced gamification platform that predicts dropout risk, personalises motivation triggers, and drives training completion rates.',
-    href: '/products/lmp',
+    href: '/product/learning-motivational-platform',
     logo: null,
     heroImg: '/images/LMP.png',
     features: ['Gamification Engine', 'Leaderboards', 'Rewards System', 'Engagement Analytics', 'Personalised Learning Journeys', 'AI Learning Assistant'],
@@ -145,8 +145,8 @@ export default function ProductsSection() {
         style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(190,18,60,0.04) 0%, transparent 60%)' }} />
 
       {/* Decorative blob */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/Group%2041156.svg" alt="" aria-hidden="true"
+      <Image src="/images/Group%2041156.svg" alt="" aria-hidden="true"
+        width={500} height={500}
         className="absolute right-0 top-0 h-[55%] w-auto opacity-[0.04] pointer-events-none select-none object-contain" />
 
       <div className="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
@@ -336,7 +336,7 @@ export default function ProductsSection() {
                         <ArrowRight size={13} className="group-hover/link:translate-x-1 transition-transform" />
                       </Link>
                      {(p as {trialLabel?: string}).trialLabel && (
-  <Link href="/contact"
+  <Link href="/contact-us"
     className="sm:ml-auto text-center text-[14px] font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:-translate-y-0.5"
     style={{
       background: p.clrLight,
@@ -356,8 +356,8 @@ export default function ProductsSection() {
 
         {/* Talk to Expert CTA */}
         <AnimatedSection className="mt-14 text-center">
-          <p className="mb-5 text-sm font-medium" style={{ color: '#1a1a1a' }}>Unsure which product fits your needs?</p>
-          <Link href="/contact"
+          <p className="mb-5 text-[16px] font-semibold" style={{ color: '#374151' }}>Unsure which product fits your needs?</p>
+          <Link href="/contact-us"
             className="inline-flex items-center gap-2.5 px-8 py-4 font-semibold rounded-xl text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0"
             style={{
               background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)',

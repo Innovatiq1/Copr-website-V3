@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { API, authFetch, getToken } from '@/lib/adminApi';
 import { getBlogImageUrl } from '@/lib/api';
+import Image from 'next/image';
 import { ArrowLeft, Plus, X, Upload } from 'lucide-react';
 
 const AUTHORS = ['Krishna Das', 'Srinivasa Rao', 'Innovatiq'];
@@ -206,10 +207,12 @@ export default function BlogEditPage() {
                 <div className="flex items-center gap-4 p-4">
                   <div className="relative shrink-0 rounded-xl overflow-hidden bg-slate-100"
                     style={{ width: '180px', height: '135px' }}>
-                    <img
+                    <Image
                       src={imagePreview || getBlogImageUrl(existingImage!) || ''}
                       alt="Preview"
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      unoptimized
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                       <Upload size={16} className="text-white" />

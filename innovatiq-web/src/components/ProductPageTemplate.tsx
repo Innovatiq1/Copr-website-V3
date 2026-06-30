@@ -4,6 +4,7 @@ import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import * as LucideIcons from 'lucide-react';
 
 interface Feature {
@@ -127,8 +128,8 @@ export default function ProductPageTemplate({
           style={{ background: `radial-gradient(circle at top right, ${color}08 0%, transparent 60%)` }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/Design.svg" alt="" aria-hidden="true"
+        <Image src="/images/Design.svg" alt="" aria-hidden="true"
+          width={600} height={600}
           className="absolute right-0 bottom-0 h-[65%] max-h-105 w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,12 +161,12 @@ export default function ProductPageTemplate({
                 ))}
               </div>
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact"
+                <Link href="/contact-us"
                   className="inline-flex items-center gap-2 px-7 py-3.5 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                   style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 8px 24px ${color}35` }}>
                   Start Free Trial <ArrowRight size={16} />
                 </Link>
-                <Link href="/contact"
+                <Link href="/contact-us"
                   className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
                   style={{ border: `1.5px solid ${color}90`, color, background: 'transparent' }}>
                   Request Demo
@@ -177,8 +178,7 @@ export default function ProductPageTemplate({
               {heroImage ? (
                 <div className="rounded-3xl overflow-hidden relative"
                   style={{ boxShadow: `0 28px 70px ${color}30` }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={heroImage} alt={`${name} dashboard`} className="w-full h-auto object-cover" />
+                  <Image src={heroImage} alt={`${name} dashboard`} width={800} height={500} className="w-full h-auto object-cover" />
                 </div>
               ) : (
               <div className="rounded-3xl overflow-hidden text-white relative"
@@ -245,8 +245,8 @@ export default function ProductPageTemplate({
       <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at center, ${color}06 0%, transparent 70%)` }} />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
+        <Image src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
+          width={400} height={350}
           className="absolute left-0 bottom-0 h-[60%] max-h-[350px] w-auto opacity-[0.12] pointer-events-none select-none object-contain" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -318,12 +318,12 @@ export default function ProductPageTemplate({
               Start your free trial today — no credit card required.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact"
+              <Link href="/contact-us"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                 style={{ background: `linear-gradient(135deg, ${color}, ${color}cc)`, boxShadow: `0 8px 24px ${color}35` }}>
                 Start Free Trial <ArrowRight size={16} />
               </Link>
-              <Link href="/contact"
+              <Link href="/contact-us"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
                 style={{ border: `1px solid ${color}35`, color }}>
                 Schedule Demo

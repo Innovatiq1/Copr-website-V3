@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGO_URI = process.env.MONGO_URI!;
-
-if (!MONGO_URI) throw new Error('Please define MONGO_URI in .env.local');
+const MONGO_URI = process.env.MONGO_URI;
 
 let cached = (global as any).mongoose as { conn: typeof mongoose | null; promise: Promise<typeof mongoose> | null };
 
@@ -12,6 +10,8 @@ if (!cached) {
 
 export async function connectDB() {
   if (cached.conn) return cached.conn;
+  // Checked at request time (not import time) so `next build` doesn't require secrets.
+  if (!MONGO_URI) throw new Error('Please define MONGO_URI');
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGO_URI, {
       serverSelectionTimeoutMS: 5000,

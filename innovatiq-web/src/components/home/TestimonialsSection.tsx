@@ -134,7 +134,7 @@ export default function TestimonialsSection() {
         <div className="relative">
           <div className="grid md:grid-cols-3 gap-6">
             {visible.map((t, i) => (
-              <div key={visibleIndices[i]} className={`transition-transform duration-300 ${i === 1 ? 'md:scale-[1.04]' : ''}`}>
+              <div key={visibleIndices[i]} className={`transition-transform duration-300 ${i === 1 ? 'md:scale-[1.04]' : 'hidden md:block'}`}>
               <TiltCard intensity={12} className="h-full">
               <div
                 className="rounded-2xl flex flex-col h-full overflow-hidden"

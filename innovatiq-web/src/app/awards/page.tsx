@@ -7,6 +7,7 @@ import { getAwardImageUrl } from '@/lib/api';
 import { getAwardsDirect } from '@/lib/server-data';
 import { Trophy, Sparkles } from 'lucide-react';
 import AwardCard from '@/components/AwardCard';
+import HashScroll from '@/components/HashScroll';
 
 const awardColors = ['#BE123C', '#F59E0B', '#F43F5E', '#8B5CF6', '#10B981', '#F59E0B'];
 
@@ -15,6 +16,7 @@ export default async function AwardsPage() {
 
   return (
     <>
+      <HashScroll />
       <style>{`
         @keyframes award-blob-1 {
           0%,100% { transform: translate(0px,0px) scale(1); }
@@ -57,7 +59,7 @@ export default async function AwardsPage() {
       />
 
       {/* Awards Grid */}
-      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
+      <section id="recognition" className="relative pt-8 pb-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Static bg layers */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(190,18,60,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
@@ -153,7 +155,7 @@ export default async function AwardsPage() {
       </section>
 
       {/* Certifications */}
-      <section className="relative pt-10 pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section id="certified-excellence" className="relative pt-10 pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(245,158,11,0.12) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-125 pointer-events-none"

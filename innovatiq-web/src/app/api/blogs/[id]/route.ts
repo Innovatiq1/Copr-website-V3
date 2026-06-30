@@ -3,6 +3,16 @@ import { revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Blog from '@/models/Blog';
+import sharp from 'sharp';
+
+async function compressImage(file: File): Promise<{ data: string; mime: string }> {
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const compressed = await sharp(buffer)
+    .resize({ width: 1200, withoutEnlargement: true })
+    .jpeg({ quality: 80 })
+    .toBuffer();
+  return { data: compressed.toString('base64'), mime: 'image/jpeg' };
+}
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -34,9 +44,9 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       const imageFile = formData.get('image') as File | null;
 
       if (imageFile && imageFile.size > 0) {
-        const imageBuffer = Buffer.from(await imageFile.arrayBuffer());
-        blogData.imageData = imageBuffer.toString('base64');
-        blogData.imageMime = imageFile.type || 'image/jpeg';
+        const { data, mime } = await compressImage(imageFile);
+        blogData.imageData = data;
+        blogData.imageMime = mime;
         blogData.image = `/api/blogs/${id}/image`;
       }
 
@@ -52,7 +62,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       blogData = await req.json();
     }
 
-    const blog = await Blog.findByIdAndUpdate(id, blogData, { new: true }).select('-imageData').lean();
+    const blog = await Blog.findByIdAndUpdate(id, blogData, { returnDocument: 'after' }).select('-imageData').lean();
     revalidateTag('blogs');
     revalidateTag(`blog-${id}`);
     return NextResponse.json(JSON.parse(JSON.stringify(blog)));
@@ -69,13 +79,13 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     const body = await req.json();
     let blog;
     if ('like' in body) {
-      blog = await Blog.findByIdAndUpdate(id, { $inc: { likes: 1 } }, { new: true }).select('-imageData').lean();
+      blog = await Blog.findByIdAndUpdate(id, { $inc: { likes: 1 } }, { returnDocument: 'after' }).select('-imageData').lean();
     } else if ('dislike' in body) {
-      blog = await Blog.findByIdAndUpdate(id, { $inc: { dislikes: 1 } }, { new: true }).select('-imageData').lean();
+      blog = await Blog.findByIdAndUpdate(id, { $inc: { dislikes: 1 } }, { returnDocument: 'after' }).select('-imageData').lean();
     } else {
       const admin = requireAuth(req);
       if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-      blog = await Blog.findByIdAndUpdate(id, body, { new: true }).select('-imageData').lean();
+      blog = await Blog.findByIdAndUpdate(id, body, { returnDocument: 'after' }).select('-imageData').lean();
     }
     revalidateTag('blogs');
     revalidateTag(`blog-${id}`);

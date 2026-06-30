@@ -190,6 +190,7 @@ export default function AwardEditPage() {
                 <input ref={awardImageRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => {
                     const file = e.target.files?.[0] || null;
+                    if (file && file.size > 10 * 1024 * 1024) { setError('Image too large (max 10MB). Please compress it first.'); e.target.value = ''; return; }
                     setAwardImage(file);
                     if (file) { const r = new FileReader(); r.onloadend = () => setAwardImagePreview(r.result as string); r.readAsDataURL(file); }
                     else setAwardImagePreview(null);
@@ -233,6 +234,7 @@ export default function AwardEditPage() {
                 <input ref={optionalImageRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => {
                     const file = e.target.files?.[0] || null;
+                    if (file && file.size > 10 * 1024 * 1024) { setError('Image too large (max 10MB). Please compress it first.'); e.target.value = ''; return; }
                     setOptionalImage(file);
                     if (file) { const r = new FileReader(); r.onloadend = () => setOptionalImagePreview(r.result as string); r.readAsDataURL(file); }
                     else setOptionalImagePreview(null);

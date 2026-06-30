@@ -24,7 +24,7 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
       }}
     >
       {/* Image / trophy section */}
-      <div className="relative h-52 flex items-center justify-center overflow-hidden"
+      <div className="relative h-64 flex items-center justify-center overflow-hidden"
         style={{ background: 'linear-gradient(160deg, #F8FAFC 0%, #EEF2F7 100%)' }}>
         <Trophy size={100} className="absolute right-2 bottom-0 pointer-events-none"
           style={{ color, opacity: 0.07 }} />
@@ -33,7 +33,7 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
 
         {imageUrl ? (
           <Image src={imageUrl} alt={award.title} fill
-            className="object-contain p-8 group-hover:scale-105 transition-transform duration-500" />
+            className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" />
         ) : (
           <div className="flex flex-col items-center gap-3 relative z-10">
             <div className="w-20 h-20 rounded-2xl flex items-center justify-center"
@@ -98,7 +98,7 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
             {/* Toggle button */}
             <button
               onClick={() => setOpen(o => !o)}
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full transition-all duration-200 hover:gap-2"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-1.5 rounded-full transition-all duration-200 hover:gap-2 cursor-pointer"
               style={{
                 color,
                 background: `${color}0D`,

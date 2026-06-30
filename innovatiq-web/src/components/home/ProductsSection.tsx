@@ -25,6 +25,7 @@ const products = [
     hasLandingPage: true,
     objectFit: 'cover' as const,
     objectPosition: 'right 10%',
+    trialLabel: 'Free Trial',
   },
   {
     num: '02',
@@ -43,6 +44,7 @@ const products = [
     hasLandingPage: true,
     objectFit: 'cover' as const,
     objectPosition: 'right 10%',
+    trialLabel: 'Free Trial',
   },
   {
     num: '03',
@@ -78,6 +80,7 @@ const products = [
     badgeLatest: false,
     objectFit: 'cover' as const,
     objectPosition: 'right center',
+    trialLabel: 'Free Trial',
   },
   {
     num: '05',
@@ -95,6 +98,7 @@ const products = [
     badgeLatest: false,
     objectFit: 'cover' as const,
     objectPosition: 'right center',
+    trialLabel: 'Free Trial',
   },
   {
     num: '06',

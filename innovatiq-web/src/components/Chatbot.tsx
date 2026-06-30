@@ -118,7 +118,7 @@ export default function Chatbot() {
         )}
         <button
           onClick={() => setOpen(o => !o)}
-          className="w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
+          className="w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
           style={{
             background: 'linear-gradient(145deg, #FB7185 0%, #E11D48 55%, #9F1239 100%)',
             boxShadow:
@@ -143,17 +143,17 @@ export default function Chatbot() {
             </div>
             <div>
               <p className="text-white font-semibold text-sm">Innovatiq Assistant</p>
-              <p className="text-white/90 text-xs flex items-center gap-1.5">
+              <p className="text-white/75 text-xs font-semibold flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
                 Online
               </p>
             </div>
             <button
               onClick={() => setOpen(false)}
-              className="ml-auto text-white/70 hover:text-white transition-colors"
+              className="ml-auto text-white/85 hover:text-white transition-colors cursor-pointer"
               aria-label="Close"
             >
-              <X size={18} />
+              <X size={18} strokeWidth={2.5} />
             </button>
           </div>
 
@@ -179,7 +179,7 @@ export default function Chatbot() {
                   <button
                     key={i}
                     onClick={() => selectInterest(i)}
-                    className="text-xs px-3 py-1.5 rounded-full border transition-all hover:-translate-y-0.5 font-medium"
+                    className="text-xs px-3 py-1.5 rounded-full border transition-all hover:-translate-y-0.5 font-medium cursor-pointer"
                     style={{ borderColor: 'rgba(190,18,60,0.4)', color: '#BE123C', background: 'rgba(190,18,60,0.05)' }}
                   >
                     {i}
@@ -212,7 +212,7 @@ export default function Chatbot() {
                 <button
                   onClick={handleSubmit}
                   disabled={!form.name.trim() || !form.email.trim() || submitting}
-                  className="w-full py-2.5 rounded-lg text-sm font-semibold text-white flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-2.5 rounded-lg text-sm font-semibold text-white flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
                 >
                   {submitting ? 'Sending...' : <><Send size={14} /> Send Message</>}
@@ -239,7 +239,7 @@ export default function Chatbot() {
               />
               <button
                 onClick={sendMessage}
-                className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105"
+                className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105 cursor-pointer"
                 style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
                 aria-label="Send"
               >
@@ -252,7 +252,7 @@ export default function Chatbot() {
             <div className="shrink-0 p-3 text-center border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
               <button
                 onClick={() => { reset(); }}
-                className="text-sm font-medium transition-colors hover:underline"
+                className="text-sm font-medium transition-colors hover:underline cursor-pointer"
                 style={{ color: '#BE123C' }}
               >
                 Start a new conversation

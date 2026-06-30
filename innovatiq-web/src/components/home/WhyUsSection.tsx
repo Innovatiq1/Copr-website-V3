@@ -6,11 +6,12 @@ import { useRef, useEffect, useState } from 'react';
 import { ArrowRight, Target, Award, Users, Globe, Clock, Star, Zap, Shield } from 'lucide-react';
 import TiltCard from '@/components/TiltCard';
 
+
 const reasons = [
   { num: '01', Icon: Target, title: 'Outcome Driven',         desc: 'Measured by real business results, not just delivery milestones.' },
-  { num: '02', Icon: Award,  title: 'Award-Winning',          desc: 'Recognized by industry bodies across Singapore & Asia Pacific.'   },
-  { num: '03', Icon: Users,  title: '100+ Certified Experts', desc: 'Specialists across cloud, cybersecurity, DevOps & AI.'            },
-  { num: '04', Icon: Globe,  title: 'Regional Presence',      desc: 'On-the-ground operations in Singapore, India & Malaysia.'         },
+  { num: '02', Icon: Award,  title: 'Award-Winning',          desc: 'Recognized by industry bodies across Singapore & Asia Pacific.',  href: '/awards#recognition' },
+  { num: '03', Icon: Users,  title: '100+ Certified Experts', desc: 'Specialists across cloud, cybersecurity, DevOps & AI.'           },
+  { num: '04', Icon: Globe,  title: 'Regional Presence',      desc: 'On-the-ground operations in Singapore, India & Malaysia.'        },
 ];
 
 const checks = [
@@ -112,51 +113,53 @@ export default function WhyUsSection() {
                 </div>
 
                 {/* Badge: ISO 27001 — top-left */}
-                <div className="absolute top-3 left-3 lg:-top-4 lg:-left-4 float rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
-                  style={{ background:'#FFFFFF', border:'1.5px solid rgba(0,0,0,0.10)', boxShadow:'0 4px 24px rgba(0,0,0,0.14)', backdropFilter:'none', WebkitBackdropFilter:'none', isolation:'isolate' }}>
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-white flex items-center justify-center shrink-0"
+                <div className="absolute float flex -top-3 left-3 lg:-top-4 lg:-left-4 rounded-xl lg:rounded-2xl px-3 py-2 lg:px-4 lg:py-3 items-center gap-2 lg:gap-3"
+                  style={{ backgroundColor:'#FFFFFF', backgroundImage:'none', border:'1.5px solid rgba(0,0,0,0.10)', boxShadow:'0 4px 24px rgba(0,0,0,0.14)', isolation:'isolate', backdropFilter:'none', WebkitBackdropFilter:'none', zIndex: 20 }}>
+                  <div className="w-9 h-9 lg:w-14 lg:h-14 rounded-lg lg:rounded-xl bg-white flex items-center justify-center shrink-0"
                     style={{ border:'1px solid rgba(0,0,0,0.07)' }}>
                     <Image src="/images/image004-preview-1.png" alt="ISO 27001" width={52} height={52} style={{ objectFit:'contain' }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
-                    <p className="text-gray-600 text-[11px] font-semibold">27001:2022</p>
+                    <p className="font-semibold text-gray-800 text-[11px] lg:text-sm leading-none mb-0.5">ISO Certified</p>
+                    <p className="text-gray-600 text-[10px] lg:text-[11px] font-semibold">27001:2022</p>
                   </div>
                 </div>
 
                 {/* Badge: ISO 9001 — top-right */}
-                <div className="absolute top-3 right-3 lg:-top-4 lg:-right-4 float-d rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
-                  style={{ background:'#FFFFFF', border:'1.5px solid rgba(0,0,0,0.10)', boxShadow:'0 4px 24px rgba(0,0,0,0.14)', backdropFilter:'none', WebkitBackdropFilter:'none', isolation:'isolate' }}>
-                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-white flex items-center justify-center shrink-0"
-                    style={{ border:'1px solid rgba(0,0,0,0.07)' }}>
+                <div className="absolute float-d flex -top-3 right-3 lg:-top-4 lg:-right-4 rounded-xl lg:rounded-2xl px-3 py-2 lg:px-4 lg:py-3 items-center gap-2 lg:gap-3"
+                  style={{ backgroundColor:'#FFFFFF', backgroundImage:'none', border:'1.5px solid rgba(0,0,0,0.10)', boxShadow:'0 4px 24px rgba(0,0,0,0.14)', isolation:'isolate', backdropFilter:'none', WebkitBackdropFilter:'none', zIndex: 20 }}>
+                  <div className="w-9 h-9 lg:w-14 lg:h-14 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background:'#FFFFFF', border:'1px solid rgba(0,0,0,0.07)' }}>
                     <Image src="/logo/image003-preview (1).png" alt="ISO" width={52} height={52} style={{ objectFit:'contain' }} />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-800 text-xs lg:text-sm leading-none mb-0.5">ISO Certified</p>
-                    <p className="text-gray-600 text-[11px] font-semibold">9001:2015</p>
+                    <p className="font-semibold text-gray-800 text-[11px] lg:text-sm leading-none mb-0.5">ISO Certified</p>
+                    <p className="text-gray-600 text-[10px] lg:text-[11px] font-semibold">9001:2015</p>
                   </div>
                 </div>
 
-                {/* Badge: 24/7 support */}
-                <div className="absolute bottom-3 left-3 lg:-bottom-4 lg:-left-4 float rounded-2xl px-3 py-2 lg:px-4 lg:py-3 flex items-center gap-2 lg:gap-3"
+                {/* Badge: 24/7 support — bottom-left */}
+                <div className="absolute float flex -bottom-3 left-3 lg:-bottom-4 lg:-left-4 rounded-xl lg:rounded-2xl px-3 py-2 lg:px-4 lg:py-3 items-center gap-2 lg:gap-3"
                   style={{ background:'#FFFFFF', border:'1.5px solid rgba(190,18,60,0.18)', boxShadow:'0 6px 28px rgba(190,18,60,0.14), 0 2px 8px rgba(0,0,0,0.08)' }}>
-                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-xl flex items-center justify-center shrink-0"
+                  <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg lg:rounded-xl flex items-center justify-center shrink-0"
                     style={{ background:'linear-gradient(135deg, #FFF5F6, #FFF1F2)', border:'1.5px solid rgba(190,18,60,0.22)' }}>
-                    <Clock size={16} style={{ color:'#BE123C' }} />
+                    <Clock size={14} className="lg:hidden" style={{ color:'#BE123C' }} />
+                    <Clock size={16} className="hidden lg:block" style={{ color:'#BE123C' }} />
                   </div>
                   <div>
-                    <p className="font-bold text-gray-900 text-xs lg:text-sm leading-none mb-0.5">24/7 Support</p>
-                    <p className="text-slate-700 font-medium text-[11px]">Always Available</p>
+                    <p className="font-bold text-gray-900 text-[11px] lg:text-sm leading-none mb-0.5">24/7 Support</p>
+                    <p className="text-slate-700 font-medium text-[10px] lg:text-[11px]">Always Available</p>
                   </div>
                 </div>
 
-                {/* Badge: Award — hidden on mobile to avoid overflow, shows sm+ */}
-                <div className="hidden sm:flex absolute bottom-10 right-3 lg:right-0 lg:translate-x-4 float-d rounded-2xl px-3 py-2 lg:px-4 lg:py-3 items-center gap-2 lg:gap-2.5"
+                {/* Badge: Award — bottom-right */}
+                <div className="absolute float-d flex bottom-4 -right-2 lg:right-0 lg:translate-x-4 rounded-xl lg:rounded-2xl px-3 py-2 lg:px-4 lg:py-3 items-center gap-2 lg:gap-2.5"
                   style={{ background:'linear-gradient(135deg, #881337 0%, #BE123C 50%, #E11D48 100%)', boxShadow:'0 8px 28px rgba(190,18,60,0.45)', animationDelay:'1.5s' }}>
-                  <Star size={15} className="text-white" fill="currentColor" />
+                  <Star size={13} className="text-white lg:hidden" fill="currentColor" />
+                  <Star size={15} className="text-white hidden lg:block" fill="currentColor" />
                   <div>
-                    <p className="font-bold text-white text-xs lg:text-sm leading-none mb-0.5">Award Winning</p>
-                    <p className="text-white font-medium text-[11px]">Asia Pacific 2024</p>
+                    <p className="font-bold text-white text-[11px] lg:text-sm leading-none mb-0.5">Award Winning</p>
+                    <p className="text-white font-medium text-[10px] lg:text-[11px]">Asia Pacific 2024</p>
                   </div>
                 </div>
 
@@ -165,6 +168,7 @@ export default function WhyUsSection() {
                   style={{ background:'radial-gradient(circle, rgba(190,18,60,0.15) 0%, transparent 70%)' }} />
               </div>
             </TiltCard>
+
           </div>
 
           {/* ── RIGHT: Content ── */}
@@ -210,35 +214,38 @@ export default function WhyUsSection() {
 
             {/* Reason cards — icon left, text right */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
-              {reasons.map((r) => (
-                <div key={r.title}
-                  className="group relative flex items-start gap-4 rounded-2xl p-4 overflow-hidden transition-all duration-300 hover:-translate-y-1 cursor-default"
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid rgba(190,18,60,0.12)',
-                    boxShadow: '0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(190,18,60,0.06)',
-                    borderRadius: '16px',
-                  }}
-                  onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 28px rgba(190,18,60,0.14), 0 2px 8px rgba(0,0,0,0.05)'}
-                  onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(190,18,60,0.06)'}
-                >
-                  {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'radial-gradient(ellipse at top left, rgba(190,18,60,0.05) 0%, transparent 65%)' }} />
-
-                  {/* Icon — left */}
-                  <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-4deg] relative z-10"
-                    style={{ background: 'linear-gradient(135deg, #FFF5F6, #FFF1F2)', border: '1.5px solid rgba(190,18,60,0.20)', boxShadow: '0 2px 8px rgba(190,18,60,0.12)' }}>
-                    <r.Icon size={19} style={{ color: '#BE123C' }} strokeWidth={1.75} />
+              {reasons.map((r) => {
+                const sharedClass = "group relative flex items-start gap-4 rounded-2xl p-4 overflow-hidden transition-all duration-300 hover:-translate-y-1";
+                const sharedStyle = { background: '#FFFFFF', border: '1px solid rgba(190,18,60,0.12)', boxShadow: '0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(190,18,60,0.06)', borderRadius: '16px' };
+                const onEnter = (e: React.MouseEvent<HTMLElement>) => (e.currentTarget.style.boxShadow = '0 8px 28px rgba(190,18,60,0.14), 0 2px 8px rgba(0,0,0,0.05)');
+                const onLeave = (e: React.MouseEvent<HTMLElement>) => (e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.04), 0 4px 16px rgba(190,18,60,0.06)');
+                const inner = (
+                  <>
+                    <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{ background: 'radial-gradient(ellipse at top left, rgba(190,18,60,0.05) 0%, transparent 65%)' }} />
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-4deg] relative z-10"
+                      style={{ background: 'linear-gradient(135deg, #FFF5F6, #FFF1F2)', border: '1.5px solid rgba(190,18,60,0.20)', boxShadow: '0 2px 8px rgba(190,18,60,0.12)' }}>
+                      <r.Icon size={19} style={{ color: '#BE123C' }} strokeWidth={1.75} />
+                    </div>
+                    <div className="relative z-10 min-w-0">
+                      <p className="font-extrabold text-gray-800 text-[16px] leading-snug mb-1">{r.title}</p>
+                      <p className="text-[13.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{r.desc}</p>
+                    </div>
+                  </>
+                );
+                return (r as { href?: string }).href ? (
+                  <Link key={r.title} href={(r as { href?: string }).href!}
+                    className={sharedClass + ' cursor-pointer'} style={sharedStyle}
+                    onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                    {inner}
+                  </Link>
+                ) : (
+                  <div key={r.title} className={sharedClass + ' cursor-default'} style={sharedStyle}
+                    onMouseEnter={onEnter} onMouseLeave={onLeave}>
+                    {inner}
                   </div>
-
-                  {/* Text — right */}
-                  <div className="relative z-10 min-w-0">
-                    <p className="font-extrabold text-gray-800 text-[16px] leading-snug mb-1">{r.title}</p>
-                    <p className="text-[13.5px] font-medium leading-relaxed" style={{ color: '#1a1a1a' }}>{r.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* CTA */}

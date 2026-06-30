@@ -3,6 +3,16 @@ import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Blog from '@/models/Blog';
+import sharp from 'sharp';
+
+async function compressImage(file: File): Promise<{ data: string; mime: string }> {
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const compressed = await sharp(buffer)
+    .resize({ width: 1200, withoutEnlargement: true })
+    .jpeg({ quality: 80 })
+    .toBuffer();
+  return { data: compressed.toString('base64'), mime: 'image/jpeg' };
+}
 
 function getCachedBlogs(page: number, limit: number) {
   return unstable_cache(
@@ -65,8 +75,9 @@ export async function POST(req: NextRequest) {
       const imageFile = formData.get('image') as File | null;
 
       if (imageFile && imageFile.size > 0) {
-        imageBuffer = Buffer.from(await imageFile.arrayBuffer());
-        imageMime = imageFile.type || 'image/jpeg';
+        const { data, mime } = await compressImage(imageFile);
+        imageBuffer = Buffer.from(data, 'base64');
+        imageMime = mime;
       }
 
       blogData = {

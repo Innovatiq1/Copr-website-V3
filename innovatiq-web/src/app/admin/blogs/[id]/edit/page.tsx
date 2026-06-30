@@ -239,6 +239,7 @@ export default function BlogEditPage() {
               <input ref={fileRef} type="file" accept="image/*" className="hidden"
                 onChange={(e) => {
                   const file = e.target.files?.[0] || null;
+                  if (file && file.size > 10 * 1024 * 1024) { setError('Image too large (max 10MB).'); e.target.value = ''; return; }
                   setImage(file);
                   if (file) {
                     const reader = new FileReader();

@@ -360,11 +360,11 @@ export default function SalesCRMPage() {
                   <div className="p-5 rounded-2xl border transition-all duration-300 group hover:-translate-y-1 hover:shadow-md h-full flex flex-col justify-between relative z-10"
                     style={{ background: '#FFFFFF', borderColor: 'rgba(0,0,0,0.15)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
                     <div className="flex justify-between items-start mb-3">
-                      <span className="font-mono text-xs font-black px-2 py-0.5 rounded-md"
+                      <span className="font-mono text-[14.5px] font-black px-2 py-0.5 rounded-md -mt-1"
                         style={{ background: s.bg, color: s.text, border: `1px solid ${s.border}30` }}>
                         {String(i + 1).padStart(2, '0')}
                       </span>
-                      <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider"
+                      <div className="flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider"
                         style={{ color: s.text }}>
                         <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${stage.type === 'active' ? 'animate-pulse animate-duration-1000' : ''}`}
                           style={{ background: s.text }} />
@@ -460,11 +460,11 @@ export default function SalesCRMPage() {
                     style={{ background: '#FFFFFF', borderColor: 'rgba(0,0,0,0.15)', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
                     <div>
                       <div className="flex justify-between items-start mb-4">
-                        <span className="font-mono text-xs font-black px-2 py-0.5 rounded-md"
+                        <span className="font-mono text-[14.5px] font-black px-2 py-0.5 rounded-md -mt-1"
                           style={{ background: s.bg, color: s.text, border: `1px solid ${s.border}30` }}>
                           OUTCOME
                         </span>
-                        <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider"
+                        <div className="flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wider"
                           style={{ color: s.text }}>
                           <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: s.text }} />
                           {stage.label === 'Lost' ? 'Lost' : stage.label === 'On Hold' ? 'On Hold' : 'Dropped'}

@@ -8,10 +8,10 @@ import { MapPin, Phone, Mail, Send } from 'lucide-react';
 
 const offices = [
   {
-    flag: '🇸🇬',
+    flag: 'sg',
     country: 'Singapore',
     role: 'Headquarters',
-    address: '60, Paya Lebar Road, #04-44, Paya Lebar Square, Singapore 409051',
+    address: '60, Paya Lebar Road, #04-44, Paya Lebar Square, Singapore 409051.',
     phone: '(+65) 6742 0955',
     email: 'info@innovatiq.com.sg',
     color: '#BE123C',
@@ -19,21 +19,21 @@ const offices = [
     emailNote: '',
   },
   {
-    flag: '🇮🇳',
+    flag: 'in',
     country: 'India',
-    role: 'Development Center',
-    address: 'Level 1, Unit 2, Salarpuria Sattva Knowledge City, Inorbit Mall Road, Raidurg Village, HITEC City, Hyderabad',
+    role: 'Regional Office',
+    address: 'Level 1, Unit 2, Salarpuria Sattva Knowledge City, Inorbit Mall Road, Raidurg Village, HITEC City, Hyderabad, Telangana - 500081.',
     phone: '+91 90005 34494',
-    email: 'info@innovatiqconsulting.com',
+    email: 'info@innovatiq.com.sg',
     color: '#BE123C',
     phoneNote: '',
     emailNote: '',
   },
   {
-    flag: '🇲🇾',
+    flag: 'my',
     country: 'Malaysia',
     role: 'Regional Office',
-    address: 'Office 41, Level 1, Resource Centre - IIC Technology Park Malaysia, Bukit Jalil, KL 57000',
+    address: 'Office 41, Level 1, Resource Centre - IIC Technology Park Malaysia, Bukit Jalil Kuala Lumpur, Malaysia - 57000.',
     phone: '',
     email: 'info@innovatiq.com.sg',
     color: '#BE123C',
@@ -157,29 +157,25 @@ export default function ContactPage() {
 
               {/* Direct Contact Channels */}
               <div className="space-y-4">
-                {[
-                  { label: 'Singapore & Malaysia HQ', email: 'info@innovatiq.com.sg', desc: 'General & regional enquiries', color: '#BE123C', bg: 'rgba(190,18,60,0.06)', border: 'rgba(190,18,60,0.18)' },
-                  { label: 'India Development Center', email: 'info@innovatiqconsulting.com', desc: 'Development & general consulting', color: '#0891B2', bg: 'rgba(8,145,178,0.06)', border: 'rgba(8,145,178,0.18)' },
-                ].map(channel => (
-                  <AnimatedSection key={channel.label}>
-                    <div className="p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.04)] flex gap-4 items-center group"
-                      style={{ 
-                        background: '#FFFFFF', 
-                        borderColor: 'rgba(0,0,0,0.08)',
-                        borderLeft: `4px solid ${channel.color}`
-                      }}>
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
-                        style={{ background: channel.bg, border: `1.5px solid ${channel.border}` }}>
-                        <Mail size={20} style={{ color: channel.color }} strokeWidth={2} />
-                      </div>
-                      <div className="flex-1 min-w-0 space-y-0.5">
-                        <p className="text-[12px] font-extrabold uppercase tracking-widest" style={{ color: channel.color }}>{channel.label}</p>
-                        <a href={`mailto:${channel.email}`} className="block text-[16px] font-bold text-slate-800 hover:text-[#BE123C] transition-colors">{channel.email}</a>
-                        <p className="text-[13px] text-slate-600 font-medium">{channel.desc}</p>
-                      </div>
+                <AnimatedSection>
+                  <div className="p-5 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.04)] flex gap-4 items-center group"
+                    style={{
+                      background: '#FFFFFF',
+                      borderColor: 'rgba(0,0,0,0.08)',
+                      borderLeft: '4px solid #BE123C',
+                    }}>
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                      style={{ background: 'rgba(190,18,60,0.06)', border: '1.5px solid rgba(190,18,60,0.18)' }}>
+                      <Mail size={20} style={{ color: '#BE123C' }} strokeWidth={2} />
                     </div>
-                  </AnimatedSection>
-                ))}
+                    <div className="flex-1 min-w-0 space-y-0.5">
+                      <p className="text-[12px] font-extrabold uppercase tracking-widest" style={{ color: '#BE123C' }}>Singapore, India &amp; Malaysia</p>
+                      <a href="mailto:info@innovatiq.com.sg" className="block text-[16px] font-bold text-slate-800 hover:text-[#BE123C] transition-colors">info@innovatiq.com.sg</a>
+                      <p className="text-[13px] text-slate-600 font-semibold">General Enquiries</p>
+                      <p className="text-[13px] text-slate-500 font-semibold">Sales, Product &amp; Business Enquiries</p>
+                    </div>
+                  </div>
+                </AnimatedSection>
               </div>
 
               {/* Premium Photo banner */}
@@ -382,11 +378,19 @@ export default function ContactPage() {
                         </span>
                       </div>
                       
-                      {/* Flag / Country Code badge */}
-                      <span className="font-mono text-sm font-black px-2.5 py-1 rounded-lg shrink-0 border uppercase tracking-wider"
-                        style={{ background: 'rgba(190,18,60,0.04)', color: office.color, borderColor: 'rgba(190,18,60,0.15)' }}>
-                        {office.flag}
-                      </span>
+                      {/* Flag badge */}
+                      <div className="shrink-0 rounded-xl overflow-hidden flex items-center justify-center"
+                        style={{ background: '#F1F5F9', border: '1.5px solid #E2E8F0', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '5px 7px' }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={`https://flagcdn.com/w40/${office.flag}.png`}
+                          srcSet={`https://flagcdn.com/w80/${office.flag}.png 2x`}
+                          width={38}
+                          height={28}
+                          alt={office.country}
+                          style={{ display: 'block', objectFit: 'cover', borderRadius: '4px' }}
+                        />
+                      </div>
                     </div>
 
                     {/* Content / Details */}

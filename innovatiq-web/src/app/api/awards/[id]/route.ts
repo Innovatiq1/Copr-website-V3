@@ -3,6 +3,16 @@ import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Award from '@/models/Award';
+import sharp from 'sharp';
+
+async function compressImage(file: File): Promise<{ data: string; mime: string }> {
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const compressed = await sharp(buffer)
+    .resize({ width: 1200, withoutEnlargement: true })
+    .jpeg({ quality: 80 })
+    .toBuffer();
+  return { data: compressed.toString('base64'), mime: 'image/jpeg' };
+}
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -48,21 +58,23 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       };
 
       if (awardImageFile && awardImageFile.size > 0) {
-        awardData.awardImageData = Buffer.from(await awardImageFile.arrayBuffer()).toString('base64');
-        awardData.awardImageMime = awardImageFile.type || 'image/jpeg';
+        const { data, mime } = await compressImage(awardImageFile);
+        awardData.awardImageData = data;
+        awardData.awardImageMime = mime;
         awardData.awardImage = `/api/awards/${id}/image`;
         awardData.image = `/api/awards/${id}/image`;
       }
       if (optionalImageFile && optionalImageFile.size > 0) {
-        awardData.optionalImageData = Buffer.from(await optionalImageFile.arrayBuffer()).toString('base64');
-        awardData.optionalImageMime = optionalImageFile.type || 'image/jpeg';
+        const { data, mime } = await compressImage(optionalImageFile);
+        awardData.optionalImageData = data;
+        awardData.optionalImageMime = mime;
         awardData.optionalImage = `/api/awards/${id}/optional-image`;
       }
     } else {
       awardData = await req.json();
     }
 
-    const award = await Award.findByIdAndUpdate(id, awardData, { new: true }).select('-awardImageData -optionalImageData').lean();
+    const award = await Award.findByIdAndUpdate(id, awardData, { returnDocument: 'after' }).select('-awardImageData -optionalImageData').lean();
     revalidateTag('awards');
     revalidateTag(`award-${id}`);
     return NextResponse.json(award);

@@ -157,11 +157,6 @@ export default function AIServicesPage() {
                   style={{ background: GRADIENT, boxShadow: `0 8px 24px ${COLOR}35` }}>
                   Talk to an AI Expert <ArrowRight size={16} />
                 </Link>
-                <Link href="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
-                  style={{ border: `1.5px solid ${COLOR}90`, color: COLOR }}>
-                  View Case Studies
-                </Link>
               </div>
             </AnimatedSection>
 
@@ -438,11 +433,6 @@ export default function AIServicesPage() {
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                 style={{ background: GRADIENT, boxShadow: `0 8px 24px ${COLOR}35` }}>
                 Talk to an AI Expert <ArrowRight size={16} />
-              </Link>
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
-                style={{ border: `1.5px solid ${COLOR}35`, color: COLOR }}>
-                View Case Studies
               </Link>
             </div>
           </AnimatedSection>

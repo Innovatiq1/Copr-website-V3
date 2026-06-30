@@ -82,6 +82,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
   return (
     <div
       ref={ref}
+      className="sm:text-left text-center *:mx-auto sm:*:mx-0"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -97,7 +98,6 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
         WebkitBackdropFilter: 'blur(24px)',
         borderRadius: '20px',
         padding: 'clamp(14px, 3vw, 24px) clamp(12px, 2.5vw, 20px) clamp(14px, 3vw, 22px)',
-        textAlign: 'left' as const,
         position: 'relative' as const,
         overflow: 'hidden',
         ...borderProps,
@@ -128,7 +128,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       }} />
 
       {/* Icon row */}
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 'clamp(10px, 2vw, 20px)' }}>
+      <div className="justify-center sm:justify-start" style={{ display: 'flex', alignItems: 'center', marginBottom: 'clamp(10px, 2vw, 20px)' }}>
         <div style={{
           width: 'clamp(34px, 5vw, 46px)', height: 'clamp(34px, 5vw, 46px)', borderRadius: '13px',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -146,22 +146,22 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
       <Counter target={stat.val} suffix={stat.suffix} color={stat.color} visible={visible} />
 
       {/* Divider */}
-      <div style={{
-        height: '2px', borderRadius: '2px', margin: '10px 0 10px',
+      <div className="mx-auto sm:mx-0" style={{
+        height: '2px', borderRadius: '2px', marginTop: '10px', marginBottom: '10px',
         width: hovered ? '44px' : '24px',
         background: `linear-gradient(90deg, ${stat.color}, rgba(190,18,60,0.20))`,
         transition: 'width 0.3s ease',
       }} />
 
       {/* Label */}
-      <p style={{
+      <p className="justify-center sm:justify-start" style={{
         fontSize: '14px', fontWeight: 700, letterSpacing: '0.08em',
         textTransform: 'uppercase', color: '#1a1a1a', margin: 0,
         display: 'flex', alignItems: 'center', gap: '4px',
       }}>
         {stat.label === 'AI Use Cases' ? (
           <>
-            <span style={{ fontSize: '17px', position: 'relative', top: '-1px' }}>AI</span>
+            <span style={{ fontSize: '17px', fontWeight: 900, color: '#BE123C', position: 'relative', top: '-1px' }}>AI</span>
             {' USE CASES'}
           </>
         ) : stat.label}

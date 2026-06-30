@@ -182,11 +182,6 @@ export default function Navbar() {
               {/* CTAs */}
               <div className="hidden lg:flex items-center gap-3">
                 <Link href="/contact"
-                  className="px-5 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-gray-50"
-                  style={{ color: '#1a1a1a', border: '1px solid rgba(0,0,0,0.22)' }}>
-                  Contact Us
-                </Link>
-                <Link href="/contact"
                   className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition-all duration-200 hover:-translate-y-0.5"
                   style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 18px rgba(190,18,60,0.40), inset 0 1px 0 rgba(255,255,255,0.20)' }}>
                   Get Demo <ArrowRight size={14} />
@@ -291,11 +286,6 @@ export default function Navbar() {
 
           {/* CTA buttons */}
           <div className="pt-4 pb-6 space-y-2">
-            <Link href="/contact" onClick={closeDrawer}
-              className="block text-center py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all"
-              style={{ color: '#1a1a1a', border: '1px solid rgba(0,0,0,0.12)' }}>
-              Contact Us
-            </Link>
             <Link href="/contact" onClick={closeDrawer}
               className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white rounded-xl"
               style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}>

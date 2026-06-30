@@ -59,20 +59,28 @@ export default function AboutPage() {
                     border: '1px solid rgba(0,0,0,0.07)',
                     boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
                   }}>
-                  <div className="relative h-52 overflow-hidden" style={{ background: '#FFF1F2' }}>
-                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-[#BE123C] opacity-60" />
-                    <Image src="/images/aboutUs/visionimg.svg" alt="Vision" fill style={{ objectFit: 'contain', padding: '24px' }} />
+                  <div className="relative flex items-center justify-center overflow-hidden" style={{ height: '300px', background: 'linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%)' }}>
+                    <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-30" style={{ background: 'radial-gradient(circle, #fda4af 0%, transparent 70%)', transform: 'translate(30%, -30%)' }} />
+                    <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #fb7185 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }} />
+                    <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #BE123C 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                    <Image src="/images/ourVision.png" alt="Vision" fill style={{ objectFit: 'contain', padding: '20px' }} sizes="50vw" />
                   </div>
                   <div className="p-8">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-4 text-xs font-semibold"
-                      style={{ background: 'rgba(190,18,60,0.08)', color: '#BE123C', border: '1px solid rgba(190,18,60,0.15)' }}>
-                      🎯 Our Vision
+                    <div className="inline-flex items-center gap-2.5 mb-5">
+                      <span className="flex items-center justify-center w-9 h-9 rounded-xl"
+                        style={{ background: '#fce7ea', border: '1.5px solid rgba(190,18,60,0.22)' }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BE123C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                          <path d="M9 18h6"/><path d="M10 22h4"/>
+                        </svg>
+                      </span>
+                      <span className="text-base font-bold tracking-tight" style={{ color: '#BE123C' }}>Our Vision</span>
                     </div>
-                    <p className="leading-relaxed text-[17px] font-medium" style={{ color: '#1a1a1a' }}>
-                      Our vision at Innovatiq is to be the trailblazer in leading the way towards a digitally empowered future.
-                      We envision a world where businesses seamlessly integrate technology into every aspect of their operations,
-                      driving growth, innovation, and sustainability. Through our relentless pursuit of excellence and innovation,
-                      we aim to be the driving force behind this transformation, shaping the digital destiny of businesses worldwide.
+                    <p className="leading-relaxed text-[16px] font-medium" style={{ color: '#1a1a1a' }}>
+                      Our vision is to be the trailblazer leading the way towards a digitally empowered future.
+                      We envision a world where businesses integrate technology into every aspect of their operations,
+                      driving growth, innovation, and sustainability. Through pursuit of excellence, we aim to be
+                      the driving force behind this transformation — shaping the digital destiny of businesses worldwide.
                     </p>
                   </div>
                 </div>
@@ -88,16 +96,24 @@ export default function AboutPage() {
                     border: '1px solid rgba(0,0,0,0.07)',
                     boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
                   }}>
-                  <div className="relative h-52 overflow-hidden" style={{ background: '#EEF2FF' }}>
-                    <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-indigo-400 opacity-70" />
-                    <Image src="/images/aboutUs/missionImg.svg" alt="Mission" fill style={{ objectFit: 'contain', padding: '24px' }} />
+                  <div className="relative flex items-center justify-center overflow-hidden" style={{ height: '300px', background: 'linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #c7d2fe 100%)' }}>
+                    <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-30" style={{ background: 'radial-gradient(circle, #a5b4fc 0%, transparent 70%)', transform: 'translate(30%, -30%)' }} />
+                    <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }} />
+                    <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #4F46E5 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                    <Image src="/images/ourMission.png" alt="Mission" fill style={{ objectFit: 'contain', padding: '20px' }} sizes="50vw" />
                   </div>
                   <div className="p-8">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-4 text-xs font-semibold"
-                      style={{ background: 'rgba(79,70,229,0.08)', color: '#4F46E5', border: '1px solid rgba(79,70,229,0.18)' }}>
-                      🚀 Our Mission
+                    <div className="inline-flex items-center gap-2.5 mb-5">
+                      <span className="flex items-center justify-center w-9 h-9 rounded-xl"
+                        style={{ background: '#e8eafd', border: '1.5px solid rgba(79,70,229,0.22)' }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"/>
+                          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                        </svg>
+                      </span>
+                      <span className="text-base font-bold tracking-tight" style={{ color: '#4F46E5' }}>Our Mission</span>
                     </div>
-                    <p className="leading-relaxed text-[17px] font-medium" style={{ color: '#1a1a1a' }}>
+                    <p className="leading-relaxed text-[16px] font-medium" style={{ color: '#1a1a1a' }}>
                       Driven by a passion for innovation and a commitment to excellence, our mission at Innovatiq is to be
                       the trusted partner in digital transformation. Through our tailored IT-enabled services, we enable
                       businesses to navigate the complexities of digital disruption, unlocking new opportunities, and
@@ -133,10 +149,10 @@ export default function AboutPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: '/images/aboutUs/innovationicon.svg', title: 'Innovation', desc: 'We are driven by a passion for innovation, constantly pushing the boundaries of what\'s possible to deliver transformative digital transformation solutions and services.', color: '#BE123C' },
-              { icon: '/images/aboutUs/respecticon.svg', title: 'Respect', desc: 'We treat all individuals with respect, fostering an inclusive and supportive environment where everyone feels valued and empowered to contribute their best.', color: '#F59E0B' },
-              { icon: '/images/aboutUs/agilityicon.svg', title: 'Agility', desc: 'We embrace agility as a core value, adapting quickly to changing circumstances and leveraging emerging technologies to stay ahead of the curve.', color: '#F43F5E' },
-              { icon: '/images/aboutUs/Integrityicon.svg', title: 'Integrity', desc: 'We act with integrity, ensuring honesty, transparency, and ethical practices in everything we do.', color: '#10B981' },
+              { icon: '/images/aboutUs/innovationicon.svg', title: 'Innovation', desc: 'We are driven by innovation, pushing the boundaries of what\'s possible to deliver bold digital solutions that create meaningful impact.', color: '#BE123C' },
+              { icon: '/images/aboutUs/respecticon.svg', title: 'Respect', desc: 'We treat all individuals with respect, fostering an inclusive and supportive environment where everyone feels valued and empowered to contribute.', color: '#F59E0B' },
+              { icon: '/images/aboutUs/agilityicon.svg', title: 'Agility', desc: 'We embrace agility as a core value, adapting quickly to change and leveraging emerging technologies to stay ahead of the curve every day.', color: '#F43F5E' },
+              { icon: '/images/aboutUs/Integrityicon.svg', title: 'Integrity', desc: 'We act with integrity, ensuring honesty, transparency, and ethical practices in everything we do, building trust with clients and partners alike.', color: '#10B981' },
             ].map((v, i) => (
               <AnimatedSection key={v.title} delay={i * 80}>
                 <TiltCard intensity={12} className="h-full">
@@ -214,7 +230,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0"
                     style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 60%)' }} />
                 </div>
-                <div className="absolute -bottom-5 -left-5 rounded-2xl p-4"
+                <div className="absolute -bottom-5 left-3 sm:-bottom-5 sm:-left-5 rounded-2xl p-4"
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid rgba(0,0,0,0.08)',
@@ -223,7 +239,7 @@ export default function AboutPage() {
                   <p className="text-3xl font-bold" style={{ color: '#BE123C' }}>15+</p>
                   <p className="text-xs text-gray-600 font-semibold mt-0.5">Years of Excellence</p>
                 </div>
-                <div className="absolute -top-5 -right-5 rounded-2xl p-4"
+                <div className="absolute -top-5 right-3 sm:-top-5 sm:-right-5 rounded-2xl p-4"
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid rgba(0,0,0,0.08)',

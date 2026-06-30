@@ -87,7 +87,7 @@ const teamMembers = [
     expertise: ['Strategic Account Management', 'Business Development', 'Team Leadership'],
     photo: '/images/aboutUs/ourTeam/Thomas-1195x1536.png',
     accent: '#BE123C',
-    photoPosition: 'center 15%',
+    photoPosition: 'center 22%',
     linkedin: 'https://www.linkedin.com/in/thomas-chee-197b93210/',
     instagram: 'https://www.instagram.com/dracohunk/?hl=en',
   },

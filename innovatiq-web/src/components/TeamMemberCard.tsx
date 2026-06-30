@@ -26,7 +26,7 @@ export default function TeamMemberCard({
 
   return (
     <div
-      className="group relative flex flex-col transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+      className="group relative flex flex-col h-full transition-all duration-300 hover:-translate-y-1 overflow-hidden"
       style={{
         background: '#FFFFFF',
         border: '1px solid rgba(0,0,0,0.07)',
@@ -58,8 +58,8 @@ export default function TeamMemberCard({
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-2 mb-3">
           <div>
-            <h3 className="font-bold text-gray-900 text-xl leading-tight">{m.name}</h3>
-            <p className="text-[15px] mt-0.5" style={{ color: m.accent, fontWeight: 650 }}>
+            <h3 className="font-bold text-gray-900 text-[22px] leading-tight">{m.name}</h3>
+            <p className="text-[14px] mt-0.5" style={{ color: m.accent, fontWeight: 650 }}>
               {m.role}
             </p>
           </div>

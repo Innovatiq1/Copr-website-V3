@@ -46,7 +46,7 @@ export default async function CareersPage() {
                 At Innovatiq, we put our people first — they are the heart of everything we do. We encourage a diverse and inclusive culture working together in an open-minded environment.
               </p>
               <p className="text-[#1a1a1a] font-medium leading-relaxed text-[17px]">
-                If you&apos;re passionate about innovation and technology, you&apos;ll thrive here — we offer the right challenges, training, and opportunities to grow your career.
+                If you&apos;re passionate about innovation and technology, you&apos;ll thrive here. We offer the right challenges, training, and opportunities to grow your career.
               </p>
             </AnimatedSection>
 
@@ -62,7 +62,7 @@ export default async function CareersPage() {
                   style={{ background: 'linear-gradient(135deg, rgba(190,18,60,0.12) 0%, transparent 60%)' }} />
                 {/* Bottom caption strip */}
                 <div className="absolute bottom-0 left-0 right-0 px-5 pb-4 pt-16"
-                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.15) 70%, transparent 100%)' }}>
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.60) 25%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.08) 80%, transparent 100%)' }}>
                   <p className="text-white text-sm font-medium drop-shadow-sm">People-first culture · Asia Pacific</p>
                 </div>
               </div>

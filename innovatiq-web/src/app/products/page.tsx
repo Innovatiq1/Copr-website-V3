@@ -130,7 +130,7 @@ export default function ProductsPage() {
         subtitle="Innovative software platforms designed to transform how enterprises learn, secure, and grow their workforce."
       />
 
-      <section className="relative py-24 overflow-hidden"
+      <section className="relative py-12 md:py-24 overflow-hidden"
         style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 50%, #FFFFFF 100%)' }}>
 
         <div className="absolute inset-0 pointer-events-none"

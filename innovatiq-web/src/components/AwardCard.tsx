@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Trophy, Star, ChevronDown } from 'lucide-react';
+import { Trophy, ChevronDown } from 'lucide-react';
 
 interface AwardCardProps {
   award: any;
@@ -26,8 +26,6 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
       {/* Image / trophy section */}
       <div className="relative h-64 flex items-center justify-center overflow-hidden"
         style={{ background: 'linear-gradient(160deg, #F8FAFC 0%, #EEF2F7 100%)' }}>
-        <Trophy size={100} className="absolute right-2 bottom-0 pointer-events-none"
-          style={{ color, opacity: 0.07 }} />
         <div className="absolute top-0 left-0 w-28 h-28 pointer-events-none"
           style={{ background: `radial-gradient(circle at top left, ${color}18 0%, transparent 70%)` }} />
 
@@ -63,11 +61,6 @@ export default function AwardCard({ award, color, imageUrl }: AwardCardProps) {
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
-        <div className="flex items-center gap-1.5 mb-3">
-          <Star size={12} style={{ color, fill: color }} />
-          <Star size={10} style={{ color, fill: color, opacity: 0.6 }} />
-          <Star size={8} style={{ color, fill: color, opacity: 0.3 }} />
-        </div>
         <h3 className="font-bold text-gray-900 mb-3 leading-snug text-lg">{award.title}</h3>
         <p className="text-sm font-semibold leading-relaxed flex-1" style={{ color: '#374151' }}>{award.shortDescription}</p>
 

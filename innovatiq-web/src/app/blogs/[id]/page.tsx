@@ -79,15 +79,17 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
         <div className="aurora a2" />
         <div className="aurora a3" />
 
-        {/* Accent shapes — edges only */}
-        <div className="acc-shape acc-tri-tl" />
-        <div className="acc-shape acc-tri-br" />
-        <div className="acc-shape acc-ring-tr" />
-        <div className="acc-shape acc-ring-bl" />
-        <div className="acc-shape acc-sq-tr" />
-        <div className="acc-shape acc-sq-bl" />
-        <div className="acc-dot d1" /><div className="acc-dot d2" />
-        <div className="acc-dot d3" /><div className="acc-dot d4" />
+        {/* Floating shapes — hidden on mobile, scattered randomly like product/service pages */}
+        <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="spin-s absolute" style={{ top: '14%', right: '7%', width: '80px', height: '80px', border: '1px solid rgba(190,18,60,0.14)', borderRadius: '12px' }} />
+          <div className="float absolute rounded-full" style={{ top: '38%', left: '4%', width: '54px', height: '54px', background: 'rgba(244,63,94,0.05)', border: '1px solid rgba(244,63,94,0.18)' }} />
+          <div className="float-d absolute" style={{ bottom: '22%', right: '9%', width: '38px', height: '38px', background: 'rgba(190,18,60,0.05)', border: '1px solid rgba(190,18,60,0.18)', transform: 'rotate(45deg)' }} />
+          <div className="spin-s absolute rounded-full" style={{ top: '8%', left: '7%', width: '58px', height: '58px', border: '1px solid rgba(245,158,11,0.22)' }} />
+          <div className="float-d absolute" style={{ top: '65%', right: '5%', width: '30px', height: '30px', background: 'rgba(99,102,241,0.07)', border: '1px solid rgba(99,102,241,0.18)', transform: 'rotate(15deg)', borderRadius: '6px' }} />
+          <div className="float absolute rounded-full" style={{ top: '22%', left: '42%', width: '6px', height: '6px', background: '#F43F5E', opacity: 0.5, boxShadow: '0 0 7px rgba(244,63,94,0.4)' }} />
+          <div className="float absolute rounded-full" style={{ top: '58%', left: '3%', width: '8px', height: '8px', background: '#BE123C', opacity: 0.45, boxShadow: '0 0 8px rgba(190,18,60,0.4)' }} />
+          <div className="float-d absolute rounded-full" style={{ top: '48%', right: '20%', width: '6px', height: '6px', background: '#F59E0B', opacity: 0.55, boxShadow: '0 0 7px rgba(245,158,11,0.4)' }} />
+        </div>
 
         {/* Brand accent top bar */}
         <div className="absolute top-0 left-0 right-0 h-1"
@@ -106,8 +108,15 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-5">
             {(blog.tags?.length ? blog.tags : ['Technology Insights']).map((tag: string) => (
-              <span key={tag} className="text-[10px] font-black uppercase tracking-[0.14em] px-3.5 py-1.5 rounded-full"
-                style={{ color: '#BE123C', background: 'rgba(212,23,74,0.09)', border: '1.5px solid rgba(212,23,74,0.22)' }}>
+              <span key={tag}
+                className="inline-flex items-center gap-1.5 text-[11px] sm:text-[11.5px] font-semibold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full"
+                style={{
+                  color: '#9F1239',
+                  background: 'linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%)',
+                  border: '1px solid #FECDD3',
+                  boxShadow: '0 1px 4px rgba(190,18,60,0.10)',
+                }}>
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#BE123C', boxShadow: '0 0 4px rgba(190,18,60,0.40)' }} />
                 {tag}
               </span>
             ))}
@@ -147,8 +156,8 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
 
       {/* ─── FEATURE IMAGE ─── */}
       {imageUrl && (
-        <div className="max-w-4xl mx-auto px-0 -mt-4 mb-10">
-          <div className="relative h-60 md:h-[460px] w-full rounded-2xl overflow-hidden"
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-0 -mt-4 mb-10">
+          <div className="relative h-52 sm:h-72 md:h-[460px] w-full rounded-2xl overflow-hidden"
             style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.15)', border: '1px solid rgba(0,0,0,0.08)' }}>
             <Image src={imageUrl} alt={blog.title} fill className="object-cover" />
           </div>
@@ -249,73 +258,6 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
           animation: auroraFloat 10s ease-in-out infinite 8s;
         }
 
-        /* ── Edge accent shapes — only near the margins ── */
-        .acc-shape { position:absolute; pointer-events:none; }
-
-        /* Top-left triangle */
-        .acc-tri-tl {
-          width:0; height:0;
-          border-left:22px solid transparent;
-          border-right:22px solid transparent;
-          border-bottom:38px solid rgba(212,23,74,0.16);
-          top:8%; left:2%;
-          animation: floatY 7s ease-in-out infinite 0s;
-        }
-        /* Bottom-right triangle */
-        .acc-tri-br {
-          width:0; height:0;
-          border-left:16px solid transparent;
-          border-right:16px solid transparent;
-          border-top:28px solid rgba(99,102,241,0.16);
-          bottom:8%; right:2%;
-          animation: floatY 9s ease-in-out infinite 2s;
-        }
-        /* Top-right ring */
-        .acc-ring-tr {
-          width:70px; height:70px; border-radius:50%;
-          border:3px solid rgba(245,158,11,0.22);
-          top:5%; right:4%;
-          animation: floatY 8s ease-in-out infinite 1s, spinSlow 20s linear infinite;
-        }
-        /* Bottom-left ring */
-        .acc-ring-bl {
-          width:50px; height:50px; border-radius:50%;
-          border:2.5px solid rgba(16,185,129,0.22);
-          bottom:12%; left:2%;
-          animation: floatY 6s ease-in-out infinite 3s, spinSlow 16s linear infinite reverse;
-        }
-        /* Top-right rotated square */
-        .acc-sq-tr {
-          width:24px; height:24px;
-          background:rgba(99,102,241,0.18);
-          border-radius:4px;
-          top:15%; right:2%;
-          animation: floatY 7s ease-in-out infinite 0.5s, spinSlow 14s linear infinite;
-        }
-        /* Bottom-left rotated square */
-        .acc-sq-bl {
-          width:18px; height:18px;
-          background:rgba(245,158,11,0.20);
-          border-radius:3px;
-          bottom:20%; left:1.5%;
-          animation: floatY 8s ease-in-out infinite 2.5s, spinSlow 18s linear infinite reverse;
-        }
-
-        /* ── Tiny accent dots — edge positions ── */
-        .acc-dot { position:absolute; border-radius:50%; pointer-events:none; }
-        .d1 { width:8px;height:8px; background:rgba(212,23,74,0.38);  top:30%; left:1.5%; animation:floatY 6s ease-in-out infinite 1s; }
-        .d2 { width:6px;height:6px; background:rgba(99,102,241,0.35); top:55%; right:1.5%; animation:floatY 7s ease-in-out infinite 2s; }
-        .d3 { width:7px;height:7px; background:rgba(245,158,11,0.35); top:20%; right:3%;   animation:floatY 5s ease-in-out infinite 0s; }
-        .d4 { width:5px;height:5px; background:rgba(16,185,129,0.38); bottom:30%; left:3%; animation:floatY 8s ease-in-out infinite 3s; }
-
-        @keyframes floatY {
-          0%,100% { transform: translateY(0px); }
-          50%      { transform: translateY(-16px); }
-        }
-        @keyframes spinSlow {
-          from { transform: rotate(0deg); }
-          to   { transform: rotate(360deg); }
-        }
         @keyframes auroraFloat {
           0%,100% { transform: translate(0px, 0px) scale(1); }
           33%      { transform: translate(20px,-15px) scale(1.04); }

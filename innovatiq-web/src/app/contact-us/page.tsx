@@ -131,7 +131,7 @@ export default function ContactPage() {
       />
 
       {/* Contact Form */}
-      <section className="relative pt-8 pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-8 pb-10 md:pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.04) 0%, transparent 70%)' }} />
 
@@ -179,7 +179,7 @@ export default function ContactPage() {
               </div>
 
               {/* Premium Photo banner */}
-              <AnimatedSection className="relative rounded-2xl overflow-hidden h-44 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] shrink-0">
+              <AnimatedSection className="relative rounded-2xl overflow-hidden h-56 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.02)] shrink-0">
                 <Image
                   src="/images/contact_photo_premium.png"
                   alt="Innovatiq support workspace"
@@ -187,7 +187,7 @@ export default function ContactPage() {
                   style={{ objectFit: 'cover' }}
                   className="brightness-95 hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={65}
+                  quality={95}
                   priority
                 />
               </AnimatedSection>
@@ -337,7 +337,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office Locations */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
 

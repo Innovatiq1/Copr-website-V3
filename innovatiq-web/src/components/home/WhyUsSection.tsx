@@ -37,7 +37,7 @@ export default function WhyUsSection() {
   }, []);
 
   return (
-    <section className="relative py-24 overflow-hidden"
+    <section className="relative py-12 md:py-24 overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 40%, #FFFFFF 100%)' }}>
 
       {/* ── Color blobs ── */}
@@ -49,7 +49,7 @@ export default function WhyUsSection() {
         style={{ backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.045) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
 
       {/* ── Geometric shapes ── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
         {/* Filled circles */}
         <div className="absolute rounded-full" style={{ top:'15%',  left:'3%',   width:80,  height:80,  background:'rgba(190,18,60,0.08)',   border:'1.5px solid rgba(190,18,60,0.16)',   animation:'why-float   12s ease-in-out infinite' }} />
         <div className="absolute rounded-full" style={{ bottom:'20%', right:'4%', width:64,  height:64,  background:'rgba(100,116,139,0.07)', border:'1.5px solid rgba(100,116,139,0.14)', animation:'why-float-r 14s ease-in-out infinite', animationDelay:'-4s' }} />
@@ -92,7 +92,7 @@ export default function WhyUsSection() {
             style={{ opacity: visible ? undefined : 0 }}
           >
             <TiltCard intensity={12}>
-              <div className="relative">
+              <div className="relative pt-8 sm:pt-0">
                 {/* Image */}
                 <div className="rounded-3xl overflow-hidden h-[300px] sm:h-[400px] lg:h-[520px]">
                   <Image

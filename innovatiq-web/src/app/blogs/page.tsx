@@ -79,7 +79,7 @@ const imageUrl = baseImageUrl
                         boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05), inset 0 0 0 1px rgba(0,0,0,0.08)',
                       }}>
 
-                      <div className="relative w-full aspect-video overflow-hidden rounded-t-[14px] bg-gray-50">
+                      <div className="relative w-full h-52 sm:h-56 lg:h-64 overflow-hidden rounded-t-[14px] bg-gray-50">
                         {imageUrl ? (
                           <Image src={imageUrl} alt={blog.title} fill
                             className="object-cover group-hover:scale-105 transition-transform duration-500" />

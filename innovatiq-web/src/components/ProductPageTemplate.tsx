@@ -123,7 +123,7 @@ export default function ProductPageTemplate({
       <PageHero badge={subtitle} title={name} subtitle={tagline} />
 
       {/* Overview */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: `radial-gradient(circle at top right, ${color}08 0%, transparent 60%)` }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
@@ -242,7 +242,7 @@ export default function ProductPageTemplate({
       </section>
 
       {/* Features Grid */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at center, ${color}06 0%, transparent 70%)` }} />
         <Image src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
@@ -296,7 +296,7 @@ export default function ProductPageTemplate({
       </section>
 
       {/* Product CTA */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at center, ${color}05 0%, transparent 65%)` }} />
         <div className="absolute top-0 left-0 right-0 h-px"

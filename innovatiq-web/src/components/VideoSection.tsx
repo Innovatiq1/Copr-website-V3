@@ -57,7 +57,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   const d = defaults[filterType] || defaults.home;
 
   return (
-    <section className="relative pt-6 pb-20 overflow-hidden" style={{ background: bg }}>
+    <section className="relative pt-6 pb-10 md:pb-20 overflow-hidden" style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10">
           <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-5">

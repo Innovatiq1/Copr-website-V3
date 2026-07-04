@@ -23,7 +23,7 @@ export default async function CareersPage() {
       />
 
       {/* Why Join Us */}
-      <section className="relative pt-8 pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-8 pb-10 md:pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
@@ -32,7 +32,7 @@ export default async function CareersPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Two-column top: heading left, image right */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-14">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center mb-8 lg:mb-14">
             <AnimatedSection>
               <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
@@ -56,14 +56,14 @@ export default async function CareersPage() {
                 <Image src="/images/aboutUs/medium-shot-people-working-desk.jpg"
                   alt="Team collaborating at Innovatiq"
                   width={800} height={288}
-                  className="w-full h-72 object-cover object-center" />
+                  className="w-full h-64 sm:h-72 object-cover object-center" />
                 {/* Brand colour overlay */}
                 <div className="absolute inset-0 pointer-events-none"
                   style={{ background: 'linear-gradient(135deg, rgba(190,18,60,0.12) 0%, transparent 60%)' }} />
                 {/* Bottom caption strip */}
-                <div className="absolute bottom-0 left-0 right-0 px-5 py-3"
-                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55), transparent)' }}>
-                  <p className="text-white text-sm font-medium">People-first culture · Asia Pacific</p>
+                <div className="absolute bottom-0 left-0 right-0 px-5 pb-4 pt-16"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.15) 70%, transparent 100%)' }}>
+                  <p className="text-white text-sm font-medium drop-shadow-sm">People-first culture · Asia Pacific</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -100,7 +100,7 @@ export default async function CareersPage() {
       </section>
 
       {/* Job Listings */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-4 pb-10 md:pt-0 md:pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         {/* Background treatments */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
           <Image src="/images/Carrer%20Hero%20Section%20Background%201.svg" alt="" aria-hidden="true"
@@ -132,7 +132,7 @@ export default async function CareersPage() {
                 <Briefcase size={28} className="text-[#BE123C]" />
               </div>
               <h3 className="text-lg font-semibold text-[#1a1a1a] mb-2">No open positions right now</h3>
-              <p className="text-[#1a1a1a] font-medium text-sm">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
+              <p className="text-[#1a1a1a] font-medium text-sm px-6 sm:px-0">We&apos;re not actively hiring at the moment. Submit your profile and we&apos;ll contact you.</p>
             </div>
           )}
 

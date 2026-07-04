@@ -116,26 +116,26 @@ export default function TeamPage() {
           33% { transform: translate(-30px,30px) scale(1.06); }
           66% { transform: translate(30px,-25px) scale(0.96); }
         }
-        @keyframes diamond-spin-1 {
+        @keyframes ot-diamond-spin-1 {
           0%,100% { transform: rotate(45deg) translate(0px,0px); }
           33% { transform: rotate(72deg) translate(12px,-18px); }
           66% { transform: rotate(18deg) translate(-10px,14px); }
         }
-        @keyframes diamond-spin-2 {
+        @keyframes ot-diamond-spin-2 {
           0%,100% { transform: rotate(45deg) translate(0px,0px); }
           33% { transform: rotate(18deg) translate(-14px,12px); }
           66% { transform: rotate(72deg) translate(10px,-10px); }
         }
-        @keyframes tri-drift {
+        @keyframes ot-tri-drift {
           0%,100% { transform: translate(0px,0px) rotate(0deg); }
           33% { transform: translate(10px,-14px) rotate(20deg); }
           66% { transform: translate(-8px,10px) rotate(-14deg); }
         }
-        @keyframes hex-float {
+        @keyframes ot-hex-float {
           0%,100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-18px) rotate(30deg); }
         }
-        @keyframes hex-float-rev {
+        @keyframes ot-hex-float-rev {
           0%,100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(18px) rotate(-30deg); }
         }
@@ -147,7 +147,7 @@ export default function TeamPage() {
       />
 
       {/* Leadership */}
-      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
+      <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(190,18,60,0.07) 1px, transparent 1px)', backgroundSize: '36px 36px' }} />
@@ -158,82 +158,62 @@ export default function TeamPage() {
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at center, rgba(190,18,60,0.03) 0%, transparent 70%)' }} />
 
-        {/* Soft ambient blobs */}
-        {/* Blob 1: mobile=bottom-left, desktop=top-right */}
-        <div className="absolute bottom-8 left-4 sm:top-16 sm:bottom-auto sm:left-auto sm:right-16 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.11) 0%, transparent 70%)', animation: 'blob-drift-1 9s ease-in-out infinite' }} />
-        {/* Blob 2: stays bottom-left, fine on mobile */}
-        <div className="absolute bottom-12 left-16 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 12s ease-in-out infinite' }} />
-        {/* Shapes scattered — mobile positions spread to corners/edges away from top-center title */}
-        {/* Diamond 1: mobile=bottom-left-corner, desktop=top-left-edge */}
-        <div className="absolute bottom-[30%] left-[4%] sm:top-10 sm:bottom-auto sm:left-[7%] w-9 h-9 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.16)', borderRadius: '3px', animation: 'diamond-spin-1 9s ease-in-out infinite' }} />
-        {/* Diamond 2: mobile=bottom-center, desktop=top-center-left */}
-        <div className="absolute bottom-[18%] left-[38%] sm:top-8 sm:bottom-auto sm:left-[38%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 8s ease-in-out infinite', animationDelay: '-1s' }} />
-        {/* Diamond 3: mobile=mid-right-edge, desktop=upper-right-area */}
-        <div className="absolute top-[48%] right-[5%] sm:top-[18%] sm:right-auto sm:left-[63%] w-5 h-5 pointer-events-none"
-          style={{ background: 'rgba(245,158,11,0.26)', borderRadius: '2px', animation: 'diamond-spin-1 7s ease-in-out infinite', animationDelay: '-2s' }} />
-        {/* Diamond 4: stays mid-left, good on mobile */}
-        <div className="absolute top-[42%] left-[22%] w-5 h-5 pointer-events-none"
-          style={{ background: 'rgba(245,158,11,0.22)', borderRadius: '2px', animation: 'diamond-spin-2 10s ease-in-out infinite', animationDelay: '-4s' }} />
-        {/* Diamond 5: stays mid-right, good on mobile */}
-        <div className="absolute top-[50%] right-[9%] w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.20)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
-        {/* Diamond 6: stays bottom-center-right, fine on mobile */}
-        <div className="absolute bottom-14 left-[57%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.18)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite', animationDelay: '-6s' }} />
-        {/* Diamond 7: stays bottom-right-edge, fine on mobile */}
-        <div className="absolute bottom-16 right-[7%] w-8 h-8 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.15)', borderRadius: '3px', animation: 'diamond-spin-1 12s ease-in-out infinite', animationDelay: '-2s' }} />
-
-        {/* Hex 1: mobile=bottom-right-edge, desktop=top-right */}
-        <svg className="absolute bottom-[22%] right-[5%] sm:top-16 sm:bottom-auto sm:right-[9%] pointer-events-none" width="60" height="60" style={{ animation: 'hex-float 11s ease-in-out infinite' }}>
-          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(190,18,60,0.22)" strokeWidth="1.5" />
-        </svg>
-        {/* Hex 2: stays mid-left, good on mobile */}
-        <svg className="absolute top-[32%] left-[4%] pointer-events-none" width="44" height="44" style={{ animation: 'hex-float 8s ease-in-out infinite', animationDelay: '-2s' }}>
-          <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(245,158,11,0.28)" strokeWidth="1.5" />
-        </svg>
-        {/* Hex 3: mobile=bottom-left, desktop=upper-center */}
-        <svg className="absolute bottom-[35%] left-[8%] sm:top-[28%] sm:bottom-auto sm:left-[46%] pointer-events-none" width="52" height="52" style={{ animation: 'hex-float-rev 14s ease-in-out infinite', animationDelay: '-3s' }}>
-          <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(244,63,94,0.18)" strokeWidth="1.5" />
-        </svg>
-        {/* Hex 4: stays bottom-left-quarter, fine on mobile */}
-        <svg className="absolute bottom-20 left-[26%] pointer-events-none" width="72" height="72" style={{ animation: 'hex-float-rev 15s ease-in-out infinite', animationDelay: '-5s' }}>
-          <polygon points="36,2 67,19 67,53 36,70 5,53 5,19" fill="none" stroke="rgba(244,63,94,0.16)" strokeWidth="1" />
-        </svg>
-        {/* Hex 5: stays bottom-center-right, fine on mobile */}
-        <svg className="absolute bottom-10 right-[28%] pointer-events-none" width="40" height="40" style={{ animation: 'hex-float 9s ease-in-out infinite', animationDelay: '-7s' }}>
-          <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="rgba(245,158,11,0.24)" strokeWidth="1.5" />
-        </svg>
-
-        {/* Triangle 1: mobile=bottom-right, desktop=top-left-area */}
-        <div className="absolute bottom-[42%] right-[6%] sm:top-20 sm:bottom-auto sm:right-auto sm:left-[22%] w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(245,158,11,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 10s ease-in-out infinite', animationDelay: '-4s' }} />
-        {/* Triangle 2: stays mid-left, good on mobile */}
-        <div className="absolute top-[55%] left-[36%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 8s ease-in-out infinite', animationDelay: '-1s' }} />
-        {/* Triangle 3: mobile=bottom-right-area, desktop=upper-right */}
-        <div className="absolute bottom-[55%] right-[8%] sm:top-[12%] sm:bottom-auto sm:right-[30%] w-5 h-5 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 11s ease-in-out infinite', animationDelay: '-5s' }} />
-        {/* Triangle 4: stays lower-right, fine on mobile */}
-        <div className="absolute bottom-[25%] right-[20%] w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(245,158,11,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 9s ease-in-out infinite', animationDelay: '-3s' }} />
-        {/* Triangle 5: stays bottom-left, fine on mobile */}
-        <div className="absolute bottom-8 left-[11%] w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 7s ease-in-out infinite', animationDelay: '-2s' }} />
-
-        {/* Ring 1: mobile=bottom-right, desktop=upper-center */}
-        <div className="absolute bottom-[40%] right-[8%] sm:top-[15%] sm:bottom-auto sm:right-auto sm:left-[51%] w-20 h-20 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(190,18,60,0.13)', animation: 'hex-float 13s ease-in-out infinite', animationDelay: '-6s' }} />
-        {/* Ring 2: stays lower-right, fine on mobile */}
-        <div className="absolute top-[62%] right-[16%] w-14 h-14 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(244,63,94,0.16)', animation: 'hex-float-rev 11s ease-in-out infinite', animationDelay: '-4s' }} />
-        {/* Ring 3: stays bottom-center, fine on mobile */}
-        <div className="absolute bottom-12 left-[43%] w-10 h-10 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(245,158,11,0.20)', animation: 'hex-float 10s ease-in-out infinite', animationDelay: '-4s' }} />
+        <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Soft ambient blobs */}
+          <div className="absolute top-16 right-16 w-72 h-72 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.11) 0%, transparent 70%)', animation: 'blob-drift-1 9s ease-in-out infinite' }} />
+          <div className="absolute bottom-12 left-16 w-80 h-80 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 12s ease-in-out infinite' }} />
+          {/* Spinning diamonds */}
+          <div className="absolute top-10 left-[7%] w-9 h-9"
+            style={{ background: 'rgba(190,18,60,0.16)', borderRadius: '3px', animation: 'ot-diamond-spin-1 9s ease-in-out infinite' }} />
+          <div className="absolute top-8 left-[38%] w-6 h-6"
+            style={{ background: 'rgba(190,18,60,0.18)', borderRadius: '2px', animation: 'ot-diamond-spin-2 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          <div className="absolute top-[18%] left-[63%] w-5 h-5"
+            style={{ background: 'rgba(245,158,11,0.26)', borderRadius: '2px', animation: 'ot-diamond-spin-1 7s ease-in-out infinite', animationDelay: '-2s' }} />
+          <div className="absolute top-[42%] left-[22%] w-5 h-5"
+            style={{ background: 'rgba(245,158,11,0.22)', borderRadius: '2px', animation: 'ot-diamond-spin-2 10s ease-in-out infinite', animationDelay: '-4s' }} />
+          <div className="absolute top-[50%] right-[9%] w-7 h-7"
+            style={{ background: 'rgba(59,130,246,0.20)', borderRadius: '2px', animation: 'ot-diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
+          <div className="absolute bottom-14 left-[57%] w-6 h-6"
+            style={{ background: 'rgba(59,130,246,0.18)', borderRadius: '2px', animation: 'ot-diamond-spin-2 9s ease-in-out infinite', animationDelay: '-6s' }} />
+          <div className="absolute bottom-16 right-[7%] w-8 h-8"
+            style={{ background: 'rgba(190,18,60,0.15)', borderRadius: '3px', animation: 'ot-diamond-spin-1 12s ease-in-out infinite', animationDelay: '-2s' }} />
+          {/* SVG hexagons */}
+          <svg className="absolute top-16 right-[9%]" width="60" height="60" style={{ animation: 'ot-hex-float 11s ease-in-out infinite' }}>
+            <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(190,18,60,0.22)" strokeWidth="1.5" />
+          </svg>
+          <svg className="absolute top-[32%] left-[4%]" width="44" height="44" style={{ animation: 'ot-hex-float 8s ease-in-out infinite', animationDelay: '-2s' }}>
+            <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(245,158,11,0.28)" strokeWidth="1.5" />
+          </svg>
+          <svg className="absolute top-[28%] left-[46%]" width="52" height="52" style={{ animation: 'ot-hex-float-rev 14s ease-in-out infinite', animationDelay: '-3s' }}>
+            <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(59,130,246,0.18)" strokeWidth="1.5" />
+          </svg>
+          <svg className="absolute bottom-20 left-[26%]" width="72" height="72" style={{ animation: 'ot-hex-float-rev 15s ease-in-out infinite', animationDelay: '-5s' }}>
+            <polygon points="36,2 67,19 67,53 36,70 5,53 5,19" fill="none" stroke="rgba(59,130,246,0.16)" strokeWidth="1" />
+          </svg>
+          <svg className="absolute bottom-10 right-[28%]" width="40" height="40" style={{ animation: 'ot-hex-float 9s ease-in-out infinite', animationDelay: '-7s' }}>
+            <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="none" stroke="rgba(245,158,11,0.24)" strokeWidth="1.5" />
+          </svg>
+          {/* Triangles */}
+          <div className="absolute top-20 left-[22%] w-7 h-7"
+            style={{ background: 'rgba(245,158,11,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'ot-tri-drift 10s ease-in-out infinite', animationDelay: '-4s' }} />
+          <div className="absolute top-[55%] left-[36%] w-6 h-6"
+            style={{ background: 'rgba(190,18,60,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'ot-tri-drift 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          <div className="absolute top-[12%] right-[30%] w-5 h-5"
+            style={{ background: 'rgba(59,130,246,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'ot-tri-drift 11s ease-in-out infinite', animationDelay: '-5s' }} />
+          <div className="absolute bottom-[25%] right-[20%] w-7 h-7"
+            style={{ background: 'rgba(245,158,11,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'ot-tri-drift 9s ease-in-out infinite', animationDelay: '-3s' }} />
+          <div className="absolute bottom-8 left-[11%] w-6 h-6"
+            style={{ background: 'rgba(190,18,60,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'ot-tri-drift 7s ease-in-out infinite', animationDelay: '-2s' }} />
+          {/* Hollow circles */}
+          <div className="absolute top-[15%] left-[51%] w-20 h-20 rounded-full"
+            style={{ border: '1px solid rgba(190,18,60,0.13)', animation: 'ot-hex-float 13s ease-in-out infinite', animationDelay: '-6s' }} />
+          <div className="absolute top-[62%] right-[16%] w-14 h-14 rounded-full"
+            style={{ border: '1px solid rgba(59,130,246,0.16)', animation: 'ot-hex-float-rev 11s ease-in-out infinite', animationDelay: '-4s' }} />
+          <div className="absolute bottom-12 left-[43%] w-10 h-10 rounded-full"
+            style={{ border: '1px solid rgba(245,158,11,0.20)', animation: 'ot-hex-float 10s ease-in-out infinite', animationDelay: '-4s' }} />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-16">
@@ -272,7 +252,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-      <section className="relative pt-12 pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative pt-2 md:pt-8 pb-10 md:pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle, rgba(244,63,94,0.06) 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="absolute bottom-0 right-0 w-125 h-100 pointer-events-none"
@@ -280,32 +260,28 @@ export default function TeamPage() {
         <div className="absolute top-0 left-0 w-125 h-100 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at top left, rgba(244,63,94,0.07) 0%, transparent 60%)' }} />
 
-        {/* Soft ambient blobs */}
-        {/* Blob 1: mobile=bottom-right, desktop=top-right */}
-        <div className="absolute bottom-6 right-4 sm:top-10 sm:bottom-auto sm:right-10 w-64 h-64 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 11s ease-in-out infinite' }} />
-        {/* Blob 2: stays bottom-left, fine on mobile */}
-        <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.08) 0%, transparent 70%)', animation: 'blob-drift-1 13s ease-in-out infinite', animationDelay: '-4s' }} />
-        {/* Diamonds */}
-        {/* Diamond 1: mobile=bottom-right, desktop=top-right */}
-        <div className="absolute bottom-28 right-8 sm:top-16 sm:bottom-auto sm:right-20 w-8 h-8 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.20)', borderRadius: '2px', animation: 'diamond-spin-2 9s ease-in-out infinite' }} />
-        {/* Diamond 2: stays bottom-left, fine on mobile */}
-        <div className="absolute bottom-20 left-24 w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.18)', borderRadius: '2px', animation: 'diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
-        {/* Hollow hexagons */}
-        {/* Hex 1: mobile=bottom-center, desktop=top-right-third */}
-        <svg className="absolute bottom-10 right-[40%] sm:top-16 sm:bottom-auto sm:right-1/3 pointer-events-none" width="56" height="56" style={{ animation: 'hex-float 12s ease-in-out infinite' }}>
-          <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" fill="none" stroke="rgba(244,63,94,0.20)" strokeWidth="1.5" />
-        </svg>
-        {/* Hex 2: stays bottom-left-third, fine on mobile */}
-        <svg className="absolute bottom-16 left-1/3 pointer-events-none" width="72" height="72" style={{ animation: 'hex-float-rev 16s ease-in-out infinite', animationDelay: '-6s' }}>
-          <polygon points="36,2 68,19 68,53 36,70 4,53 4,19" fill="none" stroke="rgba(190,18,60,0.16)" strokeWidth="1" />
-        </svg>
-        {/* Triangle: stays mid-right, fine on mobile */}
-        <div className="absolute top-1/2 right-16 w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'tri-drift 10s ease-in-out infinite', animationDelay: '-2s' }} />
+        <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Soft ambient blobs */}
+          <div className="absolute top-10 right-10 w-64 h-64 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.09) 0%, transparent 70%)', animation: 'blob-drift-2 11s ease-in-out infinite' }} />
+          <div className="absolute bottom-10 left-10 w-72 h-72 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.08) 0%, transparent 70%)', animation: 'blob-drift-1 13s ease-in-out infinite', animationDelay: '-4s' }} />
+          {/* Spinning diamonds */}
+          <div className="absolute top-16 right-20 w-8 h-8"
+            style={{ background: 'rgba(59,130,246,0.20)', borderRadius: '2px', animation: 'ot-diamond-spin-2 9s ease-in-out infinite' }} />
+          <div className="absolute bottom-20 left-24 w-6 h-6"
+            style={{ background: 'rgba(190,18,60,0.18)', borderRadius: '2px', animation: 'ot-diamond-spin-1 11s ease-in-out infinite', animationDelay: '-3s' }} />
+          {/* SVG hexagons */}
+          <svg className="absolute top-16 right-1/3" width="56" height="56" style={{ animation: 'ot-hex-float 12s ease-in-out infinite' }}>
+            <polygon points="28,2 52,15 52,41 28,54 4,41 4,15" fill="none" stroke="rgba(59,130,246,0.20)" strokeWidth="1.5" />
+          </svg>
+          <svg className="absolute bottom-16 left-1/3" width="72" height="72" style={{ animation: 'ot-hex-float-rev 16s ease-in-out infinite', animationDelay: '-6s' }}>
+            <polygon points="36,2 68,19 68,53 36,70 4,53 4,19" fill="none" stroke="rgba(190,18,60,0.16)" strokeWidth="1" />
+          </svg>
+          {/* Triangle */}
+          <div className="absolute top-1/2 right-16 w-7 h-7"
+            style={{ background: 'rgba(59,130,246,0.22)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'ot-tri-drift 10s ease-in-out infinite', animationDelay: '-2s' }} />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection className="text-center mb-12">
@@ -313,7 +289,7 @@ export default function TeamPage() {
               Our{' '}
               <span className="bg-gradient-to-r from-[#9F1239] via-[#BE123C] to-[#E11D48] bg-clip-text text-transparent">Expert Team</span>
             </h2>
-            <p className="text-[#3d3d3d] font-semibold mt-3 text-[18px]">100+ certified professionals delivering excellence daily.</p>
+            <p className="text-[#3d3d3d] font-medium mt-3 text-lg leading-relaxed">100+ certified professionals delivering excellence daily.</p>
           </AnimatedSection>
 
           <ExpertTeamGrid members={teamMembers} />
@@ -327,7 +303,7 @@ export default function TeamPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               Want to Join Our Team?
             </h2>
-            <p className="text-gray-600 font-medium mb-8 max-w-md mx-auto">
+            <p className="text-gray-600 font-semibold text-[17px] mb-8 max-w-md mx-auto">
               We&apos;re always looking for talented individuals passionate about technology and innovation.
             </p>
             <Link href="/careers"

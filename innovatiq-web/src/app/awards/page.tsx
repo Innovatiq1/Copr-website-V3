@@ -50,6 +50,12 @@ export default async function AwardsPage() {
           0%,100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-12px) rotate(20deg); }
         }
+        @keyframes star-dance {
+          0%,100% { transform: translateY(0px) rotate(0deg) scale(1); }
+          25% { transform: translateY(-10px) rotate(8deg) scale(1.06); }
+          50% { transform: translateY(-4px) rotate(-4deg) scale(0.96); }
+          75% { transform: translateY(-12px) rotate(6deg) scale(1.04); }
+        }
       `}</style>
 
       <PageHero
@@ -68,43 +74,31 @@ export default async function AwardsPage() {
         <div className="absolute bottom-0 left-0 w-125 h-125 pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.06) 0%, transparent 60%)' }} />
 
-        {/* Animated shapes */}
-        {/* Blob 1: mobile=bottom-left, desktop=top-right */}
-        <div className="absolute bottom-8 left-4 sm:top-16 sm:bottom-auto sm:left-auto sm:right-20 w-64 h-64 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.09) 0%, transparent 70%)', animation: 'award-blob-1 9s ease-in-out infinite' }} />
-        {/* Blob 2: mobile=top-right corner, desktop=bottom-left */}
-        <div className="absolute top-4 right-4 sm:top-auto sm:right-auto sm:bottom-12 sm:left-20 w-72 h-72 rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.07) 0%, transparent 70%)', animation: 'award-blob-2 12s ease-in-out infinite' }} />
-        {/* Diamonds */}
-        {/* Diamond 1: mobile=bottom-left, desktop=top-left */}
-        <div className="absolute bottom-24 left-6 sm:top-24 sm:bottom-auto sm:left-32 w-10 h-10 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.16)', borderRadius: '3px', animation: 'award-diamond 9s ease-in-out infinite' }} />
-        {/* Diamond 2: stays bottom-right, fine on mobile */}
-        <div className="absolute bottom-32 right-32 w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.20)', borderRadius: '2px', animation: 'award-diamond 11s ease-in-out infinite', animationDelay: '-3s' }} />
-        {/* Hollow hexagons */}
-        {/* Hex 1: mobile=bottom-right, desktop=top-right */}
-        <svg className="absolute bottom-16 right-6 sm:top-32 sm:bottom-auto sm:right-32 pointer-events-none" width="60" height="60" style={{ animation: 'award-hex 11s ease-in-out infinite' }}>
-          <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(190,18,60,0.20)" strokeWidth="1.5" />
-        </svg>
-        {/* Hex 2: stays bottom-left quarter, fine on mobile */}
-        <svg className="absolute bottom-24 left-1/4 pointer-events-none" width="76" height="76" style={{ animation: 'award-hex-rev 14s ease-in-out infinite', animationDelay: '-5s' }}>
-          <polygon points="38,2 72,20 72,56 38,74 4,56 4,20" fill="none" stroke="rgba(244,63,94,0.18)" strokeWidth="1" />
-        </svg>
-        {/* Hex 3: mobile=mid-right, desktop=mid-left */}
-        <svg className="absolute top-[55%] right-4 sm:top-1/3 sm:right-auto sm:left-20 pointer-events-none" width="44" height="44" style={{ animation: 'award-hex 8s ease-in-out infinite', animationDelay: '-2s' }}>
-          <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(244,63,94,0.22)" strokeWidth="1.5" />
-        </svg>
-        {/* Triangles */}
-        {/* Triangle 1: mobile=bottom-left, desktop=top-right-third */}
-        <div className="absolute bottom-36 left-8 sm:top-20 sm:bottom-auto sm:left-auto sm:right-1/3 w-8 h-8 pointer-events-none"
-          style={{ background: 'rgba(244,63,94,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 10s ease-in-out infinite', animationDelay: '-4s' }} />
-        {/* Triangle 2: stays bottom-right, fine on mobile */}
-        <div className="absolute bottom-20 right-24 w-6 h-6 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 8s ease-in-out infinite', animationDelay: '-1s' }} />
-        {/* Ring: mobile=bottom-right, desktop=top-left-third */}
-        <div className="absolute bottom-[15%] right-[10%] sm:top-1/4 sm:bottom-auto sm:right-auto sm:left-1/3 w-24 h-24 rounded-full pointer-events-none"
-          style={{ border: '1px solid rgba(190,18,60,0.13)', animation: 'award-hex 13s ease-in-out infinite', animationDelay: '-6s' }} />
+        <div className="hidden sm:block absolute inset-0 pointer-events-none">
+          <div className="absolute bottom-8 left-4 sm:top-16 sm:bottom-auto sm:left-auto sm:right-20 w-64 h-64 rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(190,18,60,0.09) 0%, transparent 70%)', animation: 'award-blob-1 9s ease-in-out infinite' }} />
+          <div className="absolute top-4 right-4 sm:top-auto sm:right-auto sm:bottom-12 sm:left-20 w-72 h-72 rounded-full pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(244,63,94,0.07) 0%, transparent 70%)', animation: 'award-blob-2 12s ease-in-out infinite' }} />
+          <div className="absolute bottom-24 left-6 sm:top-24 sm:bottom-auto sm:left-32 w-10 h-10 pointer-events-none"
+            style={{ background: 'rgba(190,18,60,0.16)', borderRadius: '3px', animation: 'award-diamond 9s ease-in-out infinite' }} />
+          <div className="absolute bottom-48 right-16 w-7 h-7 pointer-events-none"
+            style={{ background: 'rgba(244,63,94,0.20)', borderRadius: '2px', animation: 'award-diamond 11s ease-in-out infinite', animationDelay: '-3s' }} />
+          <svg className="absolute bottom-16 right-6 sm:top-32 sm:bottom-auto sm:right-32 pointer-events-none" width="60" height="60" style={{ animation: 'award-hex 11s ease-in-out infinite' }}>
+            <polygon points="30,2 56,16 56,44 30,58 4,44 4,16" fill="none" stroke="rgba(190,18,60,0.20)" strokeWidth="1.5" />
+          </svg>
+          <svg className="absolute bottom-24 left-1/4 pointer-events-none" width="76" height="76" style={{ animation: 'award-hex-rev 14s ease-in-out infinite', animationDelay: '-5s' }}>
+            <polygon points="38,2 72,20 72,56 38,74 4,56 4,20" fill="none" stroke="rgba(244,63,94,0.18)" strokeWidth="1" />
+          </svg>
+          <svg className="absolute top-[55%] right-4 sm:top-1/3 sm:right-auto sm:left-20 pointer-events-none" width="44" height="44" style={{ animation: 'award-hex 8s ease-in-out infinite', animationDelay: '-2s' }}>
+            <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(244,63,94,0.22)" strokeWidth="1.5" />
+          </svg>
+          <div className="absolute bottom-36 left-8 sm:top-20 sm:bottom-auto sm:left-auto sm:right-1/3 w-8 h-8 pointer-events-none"
+            style={{ background: 'rgba(244,63,94,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 10s ease-in-out infinite', animationDelay: '-4s' }} />
+          <div className="absolute bottom-8 right-40 w-6 h-6 pointer-events-none"
+            style={{ background: 'rgba(190,18,60,0.20)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 8s ease-in-out infinite', animationDelay: '-1s' }} />
+          <div className="absolute bottom-[15%] right-[10%] sm:top-1/4 sm:bottom-auto sm:right-auto sm:left-1/3 w-24 h-24 rounded-full pointer-events-none"
+            style={{ border: '1px solid rgba(190,18,60,0.13)', animation: 'award-hex 13s ease-in-out infinite', animationDelay: '-6s' }} />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
@@ -164,21 +158,18 @@ export default async function AwardsPage() {
           style={{ background: 'radial-gradient(circle at top left, rgba(245,158,11,0.09) 0%, transparent 65%)' }} />
         <div className="absolute bottom-0 right-0 w-100 h-100 pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom right, rgba(190,18,60,0.06) 0%, transparent 65%)' }} />
-        {/* Animated hexagons for cert section */}
-        {/* Cert hex 1: mobile=bottom-right, desktop=top-right */}
-        <svg className="absolute bottom-10 right-6 sm:top-8 sm:bottom-auto sm:right-24 pointer-events-none" width="52" height="52" style={{ animation: 'cert-hex 10s ease-in-out infinite' }}>
-          <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(245,158,11,0.25)" strokeWidth="1.5" />
-        </svg>
-        {/* Cert hex 2: stays bottom-left, fine on mobile */}
-        <svg className="absolute bottom-8 left-24 pointer-events-none" width="44" height="44" style={{ animation: 'cert-hex 13s ease-in-out infinite', animationDelay: '-4s' }}>
-          <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(190,18,60,0.18)" strokeWidth="1.5" />
-        </svg>
-        {/* Diamond: mobile=bottom-left, desktop=top-left-third */}
-        <div className="absolute bottom-20 left-6 sm:top-12 sm:bottom-auto sm:left-1/3 w-7 h-7 pointer-events-none"
-          style={{ background: 'rgba(245,158,11,0.22)', borderRadius: '2px', animation: 'award-diamond 10s ease-in-out infinite', animationDelay: '-3s' }} />
-        {/* Triangle: stays bottom-right, fine on mobile */}
-        <div className="absolute bottom-12 right-1/3 w-5 h-5 pointer-events-none"
-          style={{ background: 'rgba(190,18,60,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 9s ease-in-out infinite', animationDelay: '-2s' }} />
+        <div className="hidden sm:block absolute inset-0 pointer-events-none">
+          <svg className="absolute bottom-10 right-6 sm:top-8 sm:bottom-auto sm:right-24 pointer-events-none" width="52" height="52" style={{ animation: 'cert-hex 10s ease-in-out infinite' }}>
+            <polygon points="26,2 48,14 48,38 26,50 4,38 4,14" fill="none" stroke="rgba(245,158,11,0.25)" strokeWidth="1.5" />
+          </svg>
+          <svg className="absolute bottom-8 left-24 pointer-events-none" width="44" height="44" style={{ animation: 'cert-hex 13s ease-in-out infinite', animationDelay: '-4s' }}>
+            <polygon points="22,2 40,12 40,32 22,42 4,32 4,12" fill="none" stroke="rgba(190,18,60,0.18)" strokeWidth="1.5" />
+          </svg>
+          <div className="absolute bottom-20 left-6 sm:top-12 sm:bottom-auto sm:left-1/3 w-7 h-7 pointer-events-none"
+            style={{ background: 'rgba(245,158,11,0.22)', borderRadius: '2px', animation: 'award-diamond 10s ease-in-out infinite', animationDelay: '-3s' }} />
+          <div className="absolute bottom-12 right-1/3 w-5 h-5 pointer-events-none"
+            style={{ background: 'rgba(190,18,60,0.18)', clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', animation: 'award-tri 9s ease-in-out infinite', animationDelay: '-2s' }} />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>

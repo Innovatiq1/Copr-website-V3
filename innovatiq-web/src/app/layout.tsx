@@ -15,14 +15,14 @@ export const metadata: Metadata = {
   description: "Innovatiq Technologies delivers cutting-edge IT solutions, cloud services, cyber security, and digital transformation services across Singapore, India, and Malaysia.",
   keywords: "IT solutions, digital transformation, cloud services, cyber security, managed IT, Singapore",
   icons: {
-    icon: "/images/innovatiq-logo.png",
-    apple: "/images/innovatiq-logo.png",
-    shortcut: "/images/innovatiq-logo.png",
+    icon: [{ url: '/logo/logo.png', type: 'image/png' }],
+    apple: [{ url: '/logo/logo.png' }],
+    shortcut: '/logo/logo.png',
   },
   openGraph: {
     title: "Innovatiq Technologies",
     description: "AI-Powered Digital Transformation & IT Solutions",
-    images: ["/images/innovatiq-logo.png"],
+    images: ["/logo/logo.png"],
   },
 };
 

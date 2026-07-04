@@ -8,7 +8,7 @@ const CTA_CLR  = '#BE123C';
 
 export default function CtaSection() {
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFDFD 30%, #FFFBFC 55%, #FFFDFD 80%, #FFFFFF 100%)' }}>
+    <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFDFD 30%, #FFFBFC 55%, #FFFDFD 80%, #FFFFFF 100%)' }}>
 
       {/* Ambient glows */}
       <div className="absolute inset-0 pointer-events-none"
@@ -28,7 +28,7 @@ export default function CtaSection() {
         }} />
 
       {/* Floating geometric shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="hidden sm:block absolute inset-0 pointer-events-none overflow-hidden">
         {/* Solid diamonds */}
         <div className="float absolute"
           style={{ top: '10%', left: '8%', width: '14px', height: '14px', background: '#F43F5E', opacity: 0.38, transform: 'rotate(45deg)', borderRadius: '2px', boxShadow: '0 0 18px rgba(244,63,94,0.50)' }} />

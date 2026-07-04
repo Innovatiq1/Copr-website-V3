@@ -176,7 +176,7 @@ export default function AIATSPage() {
       <PageHero badge="AI-ATS / HRMS" title="From CV to Placement. Faster. Smarter." subtitle="Innovatiq AI-ATS gives recruitment teams a single AI-powered platform to manage candidates, track hiring pipelines, and submit shortlists to clients — without the spreadsheets." />
 
       {/* Overview — matches ProductPageTemplate layout */}
-      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: `radial-gradient(circle at top right, ${COLOR}08 0%, transparent 60%)` }} />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] pointer-events-none"
@@ -271,7 +271,7 @@ export default function AIATSPage() {
       </section>
 
       {/* Candidate Management */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="mb-12">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border"
@@ -305,7 +305,7 @@ export default function AIATSPage() {
       </section>
 
       {/* Pipeline & Shortlisting */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${COLOR}04 0%, transparent 70%)` }} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -354,7 +354,7 @@ export default function AIATSPage() {
       </section>
 
       {/* Hiring Pipeline Stages */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-10">
             <span className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border"
@@ -528,7 +528,7 @@ export default function AIATSPage() {
       </section>
 
       {/* User Roles */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-10">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border"
@@ -578,7 +578,7 @@ export default function AIATSPage() {
       </section>
 
       {/* Ideal For */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at center, ${COLOR}06 0%, transparent 70%)` }} />
         <Image src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
@@ -616,7 +616,7 @@ export default function AIATSPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at center, ${COLOR}05 0%, transparent 65%)` }} />
         <div className="absolute top-0 left-0 right-0 h-px"

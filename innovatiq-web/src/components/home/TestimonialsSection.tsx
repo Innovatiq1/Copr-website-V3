@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
   const visible = visibleIndices.map(idx => testimonials[idx]);
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+    <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
 
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] pointer-events-none"

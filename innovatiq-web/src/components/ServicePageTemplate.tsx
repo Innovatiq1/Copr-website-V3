@@ -118,7 +118,7 @@ export default function ServicePageTemplate({
       <PageHero badge={badge} title={title} subtitle={subtitle} />
 
       {/* Overview */}
-      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -144,7 +144,7 @@ export default function ServicePageTemplate({
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div className="rounded-2xl p-8"
+              <div className="rounded-2xl p-3 sm:p-8"
                 style={{
                   background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${color} 0%, ${color} 20%, ${color}CC 45%, ${color}55 70%, transparent 90%) border-box`,
                   borderStyle: 'solid',
@@ -156,7 +156,7 @@ export default function ServicePageTemplate({
                   borderRadius: '16px',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                 }}>
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {benefits.slice(0, 4).map(b => (
                     <div key={b.title} className="p-3 sm:p-4 rounded-xl flex flex-col gap-2 sm:gap-3"
                       style={{ background: `${color}06`, border: `1px solid ${color}12` }}>
@@ -178,7 +178,7 @@ export default function ServicePageTemplate({
       </section>
 
       {/* All Benefits */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${color}05 0%, transparent 70%)` }} />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none"
@@ -235,7 +235,7 @@ export default function ServicePageTemplate({
 
       {/* Process Steps */}
       {processSteps && (
-        <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+        <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
           <div className="absolute top-0 right-0 w-[500px] h-[500px] pointer-events-none"
             style={{ background: `radial-gradient(circle at top right, ${color}05 0%, transparent 60%)` }} />
           <Image src="/images/ImageUpdated.svg" alt="" aria-hidden="true"
@@ -285,7 +285,7 @@ export default function ServicePageTemplate({
 
       {/* Detail Cards */}
       {detailCards && detailCards.length > 0 && (
-        <section className="relative py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+        <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
           <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
             style={{ background: `radial-gradient(ellipse at top left, ${color}04 0%, transparent 70%)` }} />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -325,7 +325,7 @@ export default function ServicePageTemplate({
 
       {/* Protect Your Investments */}
       {investmentCards && investmentCards.length > 0 && (
-        <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+        <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
           <div className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
             style={{ background: `radial-gradient(ellipse at bottom right, ${color}05 0%, transparent 70%)` }} />
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

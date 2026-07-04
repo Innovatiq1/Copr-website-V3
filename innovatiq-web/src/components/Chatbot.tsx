@@ -133,7 +133,7 @@ export default function Chatbot() {
       {/* Chat panel */}
       {open && (
         <div
-          className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+          className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 max-w-[calc(100vw-3rem)] rounded-2xl overflow-hidden shadow-2xl flex flex-col"
           style={{ border: '1px solid rgba(0,0,0,0.10)', maxHeight: '520px', background: '#fff' }}
         >
           {/* Header */}
@@ -162,7 +162,7 @@ export default function Chatbot() {
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div
-                  className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed"
+                  className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed break-words"
                   style={m.role === 'user'
                     ? { background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
                     : { background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}

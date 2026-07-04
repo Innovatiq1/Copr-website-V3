@@ -34,14 +34,14 @@ export default function AboutPage() {
       />
 
       {/* Vision & Mission */}
-      <section className="relative pt-8 pb-8 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-8 pb-10 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 right-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at bottom left, rgba(244,63,94,0.04) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 mb-8">
+          <div className="grid lg:grid-cols-2 gap-8">
 
             {/* Vision */}
             <AnimatedSection direction="left">
@@ -121,7 +121,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="relative pt-0 pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-10 md:pt-14 pb-10 md:pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at top left, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />
 
@@ -167,12 +167,12 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are */}
-      <section className="relative pt-24 pb-16 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative pt-12 md:pt-24 pb-16 md:pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
           style={{ background: 'radial-gradient(circle at top left, rgba(245,158,11,0.04) 0%, transparent 60%)' }} />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <AnimatedSection direction="left">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
                 style={{ color: '#BE123C', background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.38)', boxShadow: '0 2px 10px rgba(190,18,60,0.12)' }}>
@@ -244,7 +244,7 @@ export default function AboutPage() {
       <CounterSection />
 
       {/* Why Us? */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: 'linear-gradient(160deg, #FFFFFF 0%, #F8FAFC 100%)' }}>
         {/* Ambient decorations */}
         <div className="absolute top-0 right-0 w-125 h-125 pointer-events-none"
           style={{ background: 'radial-gradient(circle at top right, rgba(190,18,60,0.05) 0%, transparent 60%)' }} />

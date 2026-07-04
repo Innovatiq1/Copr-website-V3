@@ -136,7 +136,7 @@ export default function ProductsSection() {
 
   return (
     <section
-      className="relative py-24 overflow-hidden"
+      className="relative py-12 md:py-24 overflow-hidden"
       style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 50%, #FFFFFF 100%)' }}
     >
 

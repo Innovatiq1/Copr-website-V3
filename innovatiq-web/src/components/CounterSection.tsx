@@ -172,7 +172,7 @@ function StatCard({ stat, index }: { stat: typeof stats[0]; index: number }) {
 
 export default function CounterSection() {
   return (
-    <section className="relative py-14 md:py-20 lg:py-24 overflow-hidden" style={{
+    <section className="relative py-10 md:py-20 lg:py-24 overflow-hidden" style={{
       background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF5F6 40%, #FFF8F9 70%, #FFFFFF 100%)'
     }}>
 

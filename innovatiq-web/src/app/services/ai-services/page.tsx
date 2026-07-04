@@ -125,7 +125,7 @@ export default function AIServicesPage() {
       />
 
       {/* Overview — matches ServicePageTemplate layout */}
-      <section className="relative pt-8 pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
@@ -162,14 +162,14 @@ export default function AIServicesPage() {
             </AnimatedSection>
 
             <AnimatedSection direction="right">
-              <div className="rounded-2xl p-8"
+              <div className="rounded-2xl p-3 sm:p-8"
                 style={{
                   background: `linear-gradient(#FFFFFF, #FFFFFF) padding-box, linear-gradient(to right, ${COLOR} 0%, ${COLOR} 20%, ${COLOR}CC 45%, ${COLOR}55 70%, transparent 90%) border-box`,
                   borderStyle: 'solid', borderColor: 'transparent', borderTopWidth: '4px',
                   borderLeftWidth: '0', borderRightWidth: '0', borderBottomWidth: '0', borderRadius: '16px',
                   boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06), inset 1px 0 0 0 rgba(0,0,0,0.08), inset -1px 0 0 0 rgba(0,0,0,0.08), inset 0 -1px 0 0 rgba(0,0,0,0.08)',
                 }}>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-2 sm:gap-4">
                   {overviewPills.map(b => (
                     <div key={b.title} className="p-3 sm:p-4 rounded-xl flex flex-col gap-2 sm:gap-3"
                       style={{ background: `${COLOR}06`, border: `1px solid ${COLOR}12` }}>
@@ -191,7 +191,7 @@ export default function AIServicesPage() {
       </section>
 
       {/* AI Strategy & Advisory */}
-      <section className="relative py-24 overflow-hidden"
+      <section className="relative py-12 md:py-24 overflow-hidden"
         style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 22%, #FFFEFE 55%, #FFFFFF 100%)' }}>
         <div className="absolute bottom-0 left-0 w-125 h-125 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${COLOR}05 0%, transparent 70%)` }} />
@@ -225,7 +225,7 @@ export default function AIServicesPage() {
       </section>
 
       {/* AI Solutions & Development — premium split sticky layout */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="absolute top-0 right-0 w-125 h-100 pointer-events-none"
           style={{ background: `radial-gradient(circle at top right, ${COLOR}06 0%, transparent 60%)` }} />
         <div className="absolute bottom-0 left-0 w-125 h-100 pointer-events-none"
@@ -288,7 +288,7 @@ export default function AIServicesPage() {
       </section>
 
       {/* Data & Model Enablement — premium standard grid layout */}
-      <section className="relative py-24 overflow-hidden"
+      <section className="relative py-12 md:py-24 overflow-hidden"
         style={{ background: 'linear-gradient(180deg, #FFF8F9 0%, #FFFCFD 22%, #FFFEFE 55%, #FFFFFF 100%)' }}>
         <div className="absolute bottom-0 left-0 w-125 h-125 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom left, ${COLOR}05 0%, transparent 70%)` }} />
@@ -319,7 +319,7 @@ export default function AIServicesPage() {
       </section>
 
       {/* AI Agents — premium white cards on radial gradient background */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF5F7 50%, #FFFFFF 100%)' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #FFF5F7 50%, #FFFFFF 100%)' }}>
         <div className="absolute bottom-0 right-0 w-125 h-125 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at bottom right, ${COLOR}05 0%, transparent 70%)` }} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -375,7 +375,7 @@ export default function AIServicesPage() {
       </section>
 
       {/* Industries — 2-col horizontal strips */}
-      <section className="relative py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
+      <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#F8FAFC' }}>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border"
@@ -409,7 +409,7 @@ export default function AIServicesPage() {
       </section>
 
       {/* Bottom CTA — matches ServicePageTemplate */}
-      <section className="relative py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
+      <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: `radial-gradient(ellipse at center, ${COLOR}05 0%, transparent 65%)` }} />
         <div className="absolute top-0 left-0 right-0 h-px"

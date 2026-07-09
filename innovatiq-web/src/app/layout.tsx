@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import SiteShell from "@/components/SiteShell";
 
@@ -33,6 +34,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={plusJakartaSans.variable}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6P7TMDL8DF" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6P7TMDL8DF');
+        `}</Script>
+      </head>
       <body className="antialiased font-[family-name:var(--font-sans)]">
         <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
           <div style={{ position: 'absolute', top: 0, right: 0, width: '60vw', height: '50vh', background: 'radial-gradient(ellipse at top right, rgba(190,18,60,0.04) 0%, transparent 65%)', }} />

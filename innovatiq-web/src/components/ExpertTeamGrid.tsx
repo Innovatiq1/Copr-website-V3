@@ -19,7 +19,7 @@ export default function ExpertTeamGrid({ members }: { members: TeamMember[] }) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch justify-items-center sm:justify-items-stretch max-w-4xl mx-auto w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch justify-items-center sm:justify-items-stretch max-w-2xl mx-auto w-full">
       {members.map((m, i) => (
         <AnimatedSection
           key={m.name}

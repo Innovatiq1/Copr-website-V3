@@ -71,16 +71,6 @@ const leadership = [
 
 const teamMembers = [
   {
-    name: 'Abhishek',
-    role: 'Regional Sales Head - North India',
-    bio: 'Abhishek is a seasoned IT professional with 16 years of diverse industry experience spanning sales, business development, and channel management. He combines strong technical expertise with strategic business acumen to align technology solutions with evolving client needs. Known for his consultative approach and results-oriented mindset, he consistently transforms opportunities into sustainable business growth.',
-    expertise: ['Sales Leadership', 'Business Development', 'Channel Management'],
-    photo: '/images/aboutUs/ourTeam/Abhishek.png',
-    accent: '#BE123C',
-    photoPosition: 'center 35%',
-    linkedin: 'https://www.linkedin.com/in/kumaar-abhishek-5a7b6569/',
-  },
-  {
     name: 'Thomas Chee',
     role: 'Sr. Sales Account Manager',
     bio: 'A dynamic and results-oriented sales leader, Thomas brings extensive experience in driving business growth and fostering long-term client success. With a strong track record in sales and marketing, he has consistently delivered multi-million-dollar revenues and secured key strategic accounts across competitive markets.',

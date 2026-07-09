@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+Disallow: /wp-login.php
+Disallow: /readme.html
+Disallow: /license.txt
+
+Sitemap: https://innovatiq.com.sg/sitemap.xml

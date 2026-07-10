@@ -10,6 +10,7 @@ interface TeamMember {
   photo: string;
   accent: string;
   photoPosition?: string;
+  photoHeight?: string;
   linkedin?: string;
   instagram?: string;
 }
@@ -36,8 +37,8 @@ export default function TeamMemberCard({
     >
       {/* Photo */}
       <div
-        className="relative h-56 shrink-0 overflow-hidden"
-        style={{ background: '#E2E8F0', transform: 'translateZ(0)' }}
+        className="relative shrink-0 overflow-hidden"
+        style={{ background: '#E2E8F0', transform: 'translateZ(0)', height: m.photoHeight ?? '17rem' }}
       >
         <Image
           src={m.photo}

@@ -11,6 +11,7 @@ interface TeamMember {
   photo: string;
   accent: string;
   photoPosition?: string;
+  photoHeight?: string;
   linkedin?: string;
   instagram?: string;
 }

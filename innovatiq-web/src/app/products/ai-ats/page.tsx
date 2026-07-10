@@ -1,4 +1,85 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
+
+export const metadata: Metadata = {
+  title: 'AI-Powered Applicant Tracking System | Innovatiq Technologies',
+  description: 'Innovatiq AI-ATS is an intelligent Applicant Tracking System that automates CV parsing, candidate ranking, and pipeline management for recruitment firms and in-house talent acquisition teams.',
+  keywords: 'Applicant Tracking System, ATS, AI Recruitment Software, CV Parsing, Candidate Management, Recruitment Pipeline Singapore, HRMS',
+  alternates: { canonical: 'https://innovatiq.com.sg/products/ai-ats' },
+  openGraph: {
+    title: 'AI-Powered Applicant Tracking System',
+    description: 'Automate CV parsing, rank candidates with AI, and manage your recruitment pipeline with Innovatiq AI-ATS.',
+    url: 'https://innovatiq.com.sg/products/ai-ats',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI ATS | Applicant Tracking System | Innovatiq',
+    description: 'Streamline recruitment with AI resume parsing, candidate scoring, and automated pipeline management.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://innovatiq.com.sg/products/ai-ats#software',
+      name: 'Innovatiq AI-ATS',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description: 'Innovatiq AI-ATS is an intelligent Applicant Tracking System that automates CV parsing, candidate ranking, and recruitment pipeline management for staffing teams.',
+      url: 'https://innovatiq.com.sg/products/ai-ats',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'SGD', description: 'Free trial available' },
+      publisher: { '@id': 'https://innovatiq.com.sg/#organization' },
+    },
+    {
+      '@type': 'Product',
+      '@id': 'https://innovatiq.com.sg/products/ai-ats#product',
+      name: 'AI-Powered Applicant Tracking System',
+      description: 'Intelligent ATS for automating CV parsing, candidate fitment scoring, pipeline management, and client submission workflows in recruitment operations.',
+      brand: { '@type': 'Brand', name: 'Innovatiq Technologies' },
+      url: 'https://innovatiq.com.sg/products/ai-ats',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is Innovatiq AI-ATS?',
+          acceptedAnswer: { '@type': 'Answer', text: 'Innovatiq AI-ATS is an intelligent Applicant Tracking System that automates CV parsing, candidate ranking, and recruitment pipeline management for staffing firms and in-house HR teams.' },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does AI-ATS use artificial intelligence for candidate screening?',
+          acceptedAnswer: { '@type': 'Answer', text: 'Yes, AI-ATS uses AI to parse CVs, score candidates against job requirements, and provide fitment recommendations so recruiters can shortlist faster.' },
+        },
+        {
+          '@type': 'Question',
+          name: 'What types of organisations benefit from AI-ATS?',
+          acceptedAnswer: { '@type': 'Answer', text: 'AI-ATS is ideal for recruitment firms, staffing agencies, and in-house HR teams managing multiple open roles who want to replace spreadsheet-based hiring workflows.' },
+        },
+      ],
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://innovatiq.com.sg/#products' },
+        { '@type': 'ListItem', position: 3, name: 'AI-Powered Applicant Tracking System', item: 'https://innovatiq.com.sg/products/ai-ats' },
+      ],
+    },
+  ],
+};
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import {
@@ -147,6 +228,10 @@ const getTabletDirection = (i: number) => {
 export default function AIATSPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes flowRight {
           0% { transform: translateX(-10px); opacity: 0.2; }
@@ -173,7 +258,7 @@ export default function AIATSPage() {
           animation: flowDown 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
       `}} />
-      <PageHero badge="AI-ATS / HRMS" title="From CV to Placement. Faster. Smarter." subtitle="Innovatiq AI-ATS gives recruitment teams a single AI-powered platform to manage candidates, track hiring pipelines, and submit shortlists to clients — without the spreadsheets." />
+      <PageHero badge="AI-ATS / HRMS" title="AI-Powered Applicant Tracking System" subtitle="Innovatiq AI-ATS gives recruitment teams a single AI-powered platform to manage candidates, track hiring pipelines, and submit shortlists to clients — without the spreadsheets." />
 
       {/* Overview — matches ProductPageTemplate layout */}
       <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>

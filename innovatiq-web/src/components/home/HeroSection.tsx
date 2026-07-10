@@ -315,6 +315,7 @@ export default function HeroSection() {
 
             {/* Heading */}
             <h1 className="text-[33px] md:text-[37px] lg:text-[42px] font-extrabold leading-[1.14] mb-5 tracking-tight"
+              aria-label="AI-Powered Digital Transformation & IT Solutions"
               style={{ color: '#0F172A' }}>
               <span className="block">AI-POWERED</span>
               <span
@@ -417,7 +418,7 @@ export default function HeroSection() {
 
               {/* Central AI image */}
               <div className="absolute" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '300px', height: '300px', zIndex: 3, borderRadius: '50%', overflow: 'hidden' }}>
-                <Image src="/images/better_ai_hub_user.png" alt="AI Powered Products"
+                <Image src="/images/better_ai_hub_user.png" alt="AI Digital Transformation Services"
                   fill style={{ objectFit: 'contain', mixBlendMode: 'multiply' }} priority />
               </div>
 

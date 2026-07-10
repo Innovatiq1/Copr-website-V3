@@ -1,6 +1,55 @@
 export const dynamic = 'force-dynamic';
 
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
+
+export const metadata: Metadata = {
+  title: 'Technology Blogs | AI, Cloud & Cyber Security | Innovatiq',
+  description: 'Read expert blogs from Innovatiq Technologies covering AI, Cloud Computing, Cyber Security, Digital Transformation, Enterprise Software, and emerging technologies.',
+  keywords: 'Technology Blogs, AI Blogs Singapore, Cloud Computing Blog, Cyber Security Blog, Digital Transformation Blog, Enterprise Software, Managed IT Blog, Innovatiq Technologies',
+  alternates: { canonical: 'https://innovatiq.com.sg/blogs' },
+  openGraph: {
+    title: 'Technology Blogs | Innovatiq Technologies',
+    description: 'Explore AI, Cloud, Cyber Security, and Digital Transformation insights from Innovatiq experts.',
+    url: 'https://innovatiq.com.sg/blogs',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Technology Blogs | Innovatiq',
+    description: 'Stay updated with the latest technology trends and business insights.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Blog',
+      '@id': 'https://innovatiq.com.sg/blogs#blog',
+      url: 'https://innovatiq.com.sg/blogs',
+      name: 'Technology Blogs & Industry Insights',
+      description: 'Expert blogs from Innovatiq Technologies covering AI, Cloud Computing, Cyber Security, Digital Transformation, and Enterprise Software.',
+      publisher: { '@id': 'https://innovatiq.com.sg/#organization' },
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'Blogs', item: 'https://innovatiq.com.sg/blogs' },
+      ],
+    },
+  ],
+};
 import AnimatedSection from '@/components/AnimatedSection';
 import { ThumbsUp, ThumbsDown, ArrowRight, FileText, Sparkles, Calendar } from 'lucide-react';
 import Link from 'next/link';
@@ -17,9 +66,13 @@ export default async function BlogsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHero
         badge="Insights & Perspectives"
-        title="Technology Insights from Innovatiq"
+        title="Technology Blogs & Industry Insights"
         subtitle="Expert perspectives on digital transformation, cloud, cybersecurity, and the future of enterprise IT."
       />
 

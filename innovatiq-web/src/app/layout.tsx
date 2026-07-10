@@ -23,7 +23,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Innovatiq Technologies",
     description: "AI-Powered Digital Transformation & IT Solutions",
-    images: ["/logo/logo.png"],
+    url: "https://innovatiq.com.sg",
+    siteName: "Innovatiq Technologies",
+    images: [
+      {
+        url: "/logo/logo.png",
+        width: 716,
+        height: 646,
+        alt: "Innovatiq Technologies Logo",
+        type: "image/png",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
 };
 

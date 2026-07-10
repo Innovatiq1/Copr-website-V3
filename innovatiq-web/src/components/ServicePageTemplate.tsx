@@ -20,6 +20,7 @@ interface DetailCard {
 interface Props {
   badge: string;
   title: string;
+  h1Title?: string;
   subtitle: string;
   overview: string;
   overviewPoints: string[];
@@ -103,6 +104,7 @@ const renderIcon = (iconName: string, size: number = 24, style?: React.CSSProper
 export default function ServicePageTemplate({
   badge,
   title,
+  h1Title,
   subtitle,
   overview,
   overviewPoints,
@@ -115,7 +117,7 @@ export default function ServicePageTemplate({
 }: Props) {
   return (
     <>
-      <PageHero badge={badge} title={title} subtitle={subtitle} />
+      <PageHero badge={badge} title={h1Title ?? title} subtitle={subtitle} />
 
       {/* Overview */}
       <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>

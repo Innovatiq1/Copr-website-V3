@@ -11,6 +11,7 @@ const products = [
   {
     num: '01',
     name: 'Sales CRM',
+    imgAlt: 'AI Business Automation',
     sub: 'AI-Powered Customer Relationship Management',
     desc: 'Empower your sales team with an intelligent, AI-powered CRM designed to streamline customer interactions, manage pipelines, and accelerate revenue growth.',
     href: '/products/sales-crm',
@@ -30,6 +31,7 @@ const products = [
   {
     num: '02',
     name: 'HRMS (ATS)',
+    imgAlt: 'AI-Powered ATS Software',
     sub: 'AI-Powered Recruitment\nPlatform',
     desc: 'Transform your hiring process with intelligent recruitment automation. Streamline candidate sourcing, screening, evaluation, and hiring from a single platform.',
     href: '/products/ai-ats',
@@ -49,6 +51,7 @@ const products = [
   {
     num: '03',
     name: 'SkillEra',
+    imgAlt: 'SkillEra Training Management System',
     sub: 'AI-Powered Training\nManagement System',
     desc: 'Supercharge your training programs with AI-driven course creation, personalised learning paths, and predictive performance analytics.',
     href: '/product/skilera-training-management-system',
@@ -67,6 +70,7 @@ const products = [
   {
     num: '04',
     name: 'LearnPro',
+    imgAlt: 'LearnPro Learning Management System',
     sub: 'AI-Powered Learning\nManagement System',
     desc: 'Deliver intelligent learning experiences at scale with AI course generation, automated assessments, and predictive student success analytics.',
     href: '/product/learnpro-learning-management-system',
@@ -85,6 +89,7 @@ const products = [
   {
     num: '05',
     name: 'SecurOn',
+    imgAlt: 'Cyber Security Solutions',
     sub: 'AI-Powered Patch\nManagement System',
     desc: 'Protect your enterprise infrastructure with AI-driven vulnerability detection, intelligent patch recommendations, and predictive threat analysis.',
     href: '/product/securon-patch-management-system',
@@ -103,6 +108,7 @@ const products = [
   {
     num: '06',
     name: 'LMP',
+    imgAlt: 'AI Business Automation',
     sub: 'AI-Powered Learning Motivational Platform',
     desc: 'AI-enhanced gamification platform that predicts dropout risk, personalises motivation triggers, and drives training completion rates.',
     href: '/product/learning-motivational-platform',
@@ -211,7 +217,7 @@ export default function ProductsSection() {
                     }} />
 
                     {p.heroImg ? (
-                      <Image src={p.heroImg} alt={p.name} fill
+                      <Image src={p.heroImg} alt={p.imgAlt} fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         quality={70}
                         style={{

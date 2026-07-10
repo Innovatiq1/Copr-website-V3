@@ -1,4 +1,85 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
+
+export const metadata: Metadata = {
+  title: 'AI-Powered Sales CRM Software | Innovatiq Technologies',
+  description: 'Innovatiq Sales CRM is an AI-driven CRM platform that provides deal guidance, pipeline analytics, and performance coaching tools for sales teams and managers.',
+  keywords: 'Sales CRM, AI CRM Software, Deal Management, Pipeline Management, Sales Forecasting, CRM Singapore, AI Sales Platform',
+  alternates: { canonical: 'https://innovatiq.com.sg/products/sales-crm' },
+  openGraph: {
+    title: 'AI-Powered Sales CRM Software',
+    description: 'Close more deals with AI deal guidance, real-time pipeline visibility, and manager performance coaching tools.',
+    url: 'https://innovatiq.com.sg/products/sales-crm',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Sales CRM | Innovatiq Technologies',
+    description: 'AI-powered CRM for sales teams — deal scoring, pipeline health, and coaching insights.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://innovatiq.com.sg/products/sales-crm#software',
+      name: 'Innovatiq Sales CRM',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description: 'Innovatiq Sales CRM is an AI-driven CRM platform that provides deal guidance, pipeline analytics, and performance coaching tools for sales teams and managers.',
+      url: 'https://innovatiq.com.sg/products/sales-crm',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'SGD', description: 'Free trial available' },
+      publisher: { '@id': 'https://innovatiq.com.sg/#organization' },
+    },
+    {
+      '@type': 'Product',
+      '@id': 'https://innovatiq.com.sg/products/sales-crm#product',
+      name: 'AI-Powered Sales CRM Software',
+      description: 'AI-driven CRM platform with deal guidance, win probability scoring, pipeline health monitoring, and manager coaching tools for B2B sales teams.',
+      brand: { '@type': 'Brand', name: 'Innovatiq Technologies' },
+      url: 'https://innovatiq.com.sg/products/sales-crm',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is Innovatiq Sales CRM?',
+          acceptedAnswer: { '@type': 'Answer', text: 'Innovatiq Sales CRM is an AI-powered customer relationship management platform providing deal guidance, pipeline analytics, and performance coaching for sales teams and managers.' },
+        },
+        {
+          '@type': 'Question',
+          name: 'How does AI assist in Innovatiq Sales CRM?',
+          acceptedAnswer: { '@type': 'Answer', text: 'The AI flags what each open deal is missing, recommends next best actions, and provides win probability scores to help reps focus on the right opportunities and close more deals.' },
+        },
+        {
+          '@type': 'Question',
+          name: 'Who is Sales CRM designed for?',
+          acceptedAnswer: { '@type': 'Answer', text: 'Sales CRM is designed for B2B sales executives, sales managers, and administrators managing enterprise deal pipelines who want AI guidance without complex setup.' },
+        },
+      ],
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://innovatiq.com.sg/#products' },
+        { '@type': 'ListItem', position: 3, name: 'AI-Powered Sales CRM Software', item: 'https://innovatiq.com.sg/products/sales-crm' },
+      ],
+    },
+  ],
+};
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import {
@@ -132,6 +213,10 @@ const getTabletDirection = (i: number) => {
 export default function SalesCRMPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <style dangerouslySetInnerHTML={{ __html: `
         @keyframes flowRight {
           0% { transform: translateX(-10px); opacity: 0.2; }
@@ -158,7 +243,7 @@ export default function SalesCRMPage() {
           animation: flowDown 1.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
         }
       `}} />
-      <PageHero badge="Sales CRM" title="Close More Deals. Coach Better. Forecast with Confidence." subtitle="Innovatiq Sales CRM gives your sales team AI-powered deal guidance and gives managers real-time pipeline visibility — so nothing slips through the cracks." />
+      <PageHero badge="Sales CRM" title="AI-Powered Sales CRM Software" subtitle="Innovatiq Sales CRM gives your sales team AI-powered deal guidance and gives managers real-time pipeline visibility — so nothing slips through the cracks." />
 
       {/* Overview — matches ProductPageTemplate layout */}
       <section className="relative pt-8 pb-12 md:pb-24 overflow-hidden" style={{ background: '#FFFFFF' }}>

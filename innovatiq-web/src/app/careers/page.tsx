@@ -1,8 +1,64 @@
 export const dynamic = 'force-dynamic';
 
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
+
+export const metadata: Metadata = {
+  title: 'Careers at Innovatiq Technologies | AI & IT Jobs Singapore',
+  description: 'Join Innovatiq Technologies and build your career in AI, Cloud Computing, Cyber Security, Software Development, and Digital Transformation. Apply today.',
+  keywords: 'Innovatiq Careers, IT Jobs Singapore, AI Careers, Software Developer Jobs, Cloud Computing Jobs, Cyber Security Careers, Digital Transformation Careers, Technology Careers Singapore, Managed IT Jobs, Innovatiq Technologies',
+  alternates: { canonical: 'https://innovatiq.com.sg/careers' },
+  openGraph: {
+    title: 'AI & IT Careers | Innovatiq Technologies',
+    description: 'Join Innovatiq Technologies and build your career with AI-powered software, cloud, cybersecurity, and digital transformation solutions.',
+    url: 'https://innovatiq.com.sg/careers',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Careers at Innovatiq Technologies',
+    description: 'Explore exciting career opportunities in AI, Cloud, Cyber Security, and Software Development.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+    },
+    {
+      '@type': 'JobPosting',
+      '@id': 'https://innovatiq.com.sg/careers#jobposting',
+      title: 'Various IT & AI Positions',
+      description: 'Join Innovatiq Technologies and build your career in AI, Cloud Computing, Cyber Security, Software Development, and Digital Transformation.',
+      hiringOrganization: { '@id': 'https://innovatiq.com.sg/#organization' },
+      jobLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Singapore',
+          addressCountry: 'SG',
+        },
+      },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'Careers', item: 'https://innovatiq.com.sg/careers' },
+      ],
+    },
+  ],
+};
 import VideoSection from '@/components/VideoSection';
 import { MapPin, Briefcase, Clock, ChevronRight, Users } from 'lucide-react';
 import Link from 'next/link';
@@ -16,9 +72,13 @@ export default async function CareersPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHero
         badge="Join Our Team"
-        title="Build Your Career at Innovatiq"
+        title="Build Your Career at Innovatiq Technologies"
         subtitle="Join a team of innovators, technologists, and problem-solvers working on challenging projects across Asia Pacific."
       />
 
@@ -54,7 +114,7 @@ export default async function CareersPage() {
               <div className="relative rounded-2xl overflow-hidden"
                 style={{ boxShadow: '0 4px 32px rgba(0,0,0,0.12)' }}>
                 <Image src="/images/aboutUs/medium-shot-people-working-desk.jpg"
-                  alt="Team collaborating at Innovatiq"
+                  alt="Careers at Innovatiq Technologies"
                   width={800} height={288}
                   className="w-full h-64 sm:h-72 object-cover object-center" />
                 {/* Brand colour overlay */}

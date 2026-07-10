@@ -1,6 +1,47 @@
 ﻿export const dynamic = 'force-dynamic';
 
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
+
+export const metadata: Metadata = {
+  title: 'Awards & Recognition | Innovatiq Technologies Singapore',
+  description: 'Discover the awards and recognitions earned by Innovatiq Technologies for excellence in AI, Cloud Solutions, Cyber Security, and Digital Transformation.',
+  keywords: 'Innovatiq Awards, Technology Awards Singapore, AI Innovation, IT Excellence, Cyber Security Awards, Cloud Computing Awards, Digital Transformation, Innovatiq Technologies',
+  alternates: { canonical: 'https://innovatiq.com.sg/awards' },
+  openGraph: {
+    title: 'Awards & Recognition | Innovatiq Technologies',
+    description: 'Discover our achievements in AI, Cloud, Cyber Security, and Digital Transformation.',
+    url: 'https://innovatiq.com.sg/awards',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Awards & Recognition',
+    description: 'Recognized for innovation and excellence in enterprise technology solutions.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'Awards', item: 'https://innovatiq.com.sg/awards' },
+      ],
+    },
+  ],
+};
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import { getAwardImageUrl } from '@/lib/api';
@@ -16,6 +57,10 @@ export default async function AwardsPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HashScroll />
       <style>{`
         @keyframes award-blob-1 {
@@ -60,7 +105,7 @@ export default async function AwardsPage() {
 
       <PageHero
         badge="Recognition & Excellence"
-        title="Awards & Recognitions"
+        title="Awards & Recognition"
         subtitle="Industry recognition for our commitment to delivering exceptional technology solutions and outstanding client outcomes."
       />
 

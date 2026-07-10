@@ -1,6 +1,7 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect } from 'react';
+import { Play } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 
 interface VideoSectionProps {
@@ -45,8 +46,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   if (!loaded || !video) return null;
 
   const bg = dark ? '#0A1628' : '#F8FAFC';
-  const headingColor = dark ? '#FFFFFF' : '#111827';
-  const subColor = dark ? 'rgba(255,255,255,0.6)' : '#1F2937';
+  const subColor = dark ? 'rgba(255,255,255,0.6)' : '#1a1a1a';
 
   const defaults: Record<string, { heading: string; sub: string }> = {
     home: { heading: 'Our Latest Video', sub: 'Explore our newest insight and success story' },
@@ -56,21 +56,62 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   };
   const d = defaults[filterType] || defaults.home;
 
+  const fullHeading = heading || d.heading;
+  const words = fullHeading.split(' ');
+  const mainWords = words.length > 1 ? words.slice(0, -1).join(' ') : '';
+  const accentWord = words[words.length - 1];
+
   return (
-    <section className="relative pt-6 pb-10 md:pb-20 overflow-hidden" style={{ background: bg }}>
+    <section className="relative pt-2 pb-16 md:pt-0 md:pb-24 overflow-hidden" style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center mb-10">
-          <span className="inline-flex items-center gap-2 text-xs font-bold text-[#BE123C] uppercase tracking-widest bg-white border-[1.5px] border-blue-400/60 shadow-[0_2px_10px_rgba(190,18,60,0.12)] px-4 py-1.5 rounded-full mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C]" />
+        <AnimatedSection className="text-center mb-10 md:mb-14">
+
+          {/* Badge — matches ProductsSection outline style */}
+          <span
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5"
+            style={{
+              color: '#9F1239',
+              background: '#FFFFFF',
+              border: '1.5px solid rgba(159,18,57,0.38)',
+              boxShadow: '0 2px 10px rgba(190,18,60,0.12)',
+            }}
+          >
+            <Play size={11} className="fill-current" />
             Video
           </span>
-          <h2 className="text-3xl font-bold mb-2" style={{ color: headingColor }}>
-            {heading || d.heading}
+
+          {/* Heading with gradient accent word + SVG wavy underline */}
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold text-gray-900 mb-5 leading-tight">
+            {mainWords && <span>{mainWords} </span>}
+            <span className="relative inline-block">
+              <span style={{
+                backgroundImage: 'linear-gradient(135deg, #F43F5E 0%, #E11D48 45%, #881337 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                {accentWord}
+              </span>
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 10" fill="none" preserveAspectRatio="none" style={{ height: '8px' }}>
+                <path d="M2 7 Q75 2 150 6 Q225 10 298 4" stroke="url(#vug)" strokeWidth="3" strokeLinecap="round" fill="none" />
+                <defs>
+                  <linearGradient id="vug" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#F43F5E" />
+                    <stop offset="50%" stopColor="#E11D48" />
+                    <stop offset="100%" stopColor="#881337" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </span>
           </h2>
-          <p className="text-[15px] font-medium" style={{ color: subColor }}>
+
+          {/* Subtitle */}
+          <p className="text-lg font-medium leading-relaxed max-w-2xl mx-auto" style={{ color: subColor }}>
             {subheading || d.sub}
           </p>
+
         </AnimatedSection>
+
         <AnimatedSection>
           <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%', height: 0 }}>
             <iframe

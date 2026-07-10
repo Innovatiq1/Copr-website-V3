@@ -97,7 +97,7 @@ export default function WhyUsSection() {
                 <div className="rounded-3xl overflow-hidden h-[300px] sm:h-[400px] lg:h-[520px]">
                   <Image
                     src="/images/showing-good-results-group-young-freelancers-office-have-conversation-smiling (1).jpg"
-                    alt="Innovatiq team" fill style={{ objectFit: 'cover' }}
+                    alt="Managed IT Services Singapore" fill style={{ objectFit: 'cover' }}
                     className="brightness-[0.82]"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={65}

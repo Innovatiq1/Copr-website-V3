@@ -1,10 +1,61 @@
-﻿import PageHero from '@/components/PageHero';
+﻿import type { Metadata } from 'next';
+import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import TiltCard from '@/components/TiltCard';
 import CounterSection from '@/components/CounterSection';
 import CtaSection from '@/components/home/CtaSection';
 import Image from 'next/image';
 import { CheckCircle2 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'About Innovatiq Technologies | AI-Powered IT Solutions',
+  description: 'Learn about Innovatiq Technologies, delivering AI-powered IT solutions, Digital Transformation, Managed IT Services, Cloud, and Cyber Security across Singapore.',
+  keywords: 'About Innovatiq, IT Company Singapore, AI Solutions Company, Digital Transformation Company, Managed IT Provider, Cloud Services, Cyber Security, Enterprise Software, Innovatiq Technologies',
+  alternates: { canonical: 'https://innovatiq.com.sg/about-us' },
+  openGraph: {
+    title: 'About Innovatiq Technologies',
+    description: 'Discover how Innovatiq Technologies empowers businesses with AI, Cloud, Cyber Security, Managed IT Services, and Digital Transformation.',
+    url: 'https://innovatiq.com.sg/about-us',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Innovatiq Technologies',
+    description: 'Learn about our expertise in AI-powered enterprise software and digital transformation services.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+      email: 'info@innovatiq.com.sg',
+      telephone: '+6567420955',
+    },
+    {
+      '@type': 'AboutPage',
+      '@id': 'https://innovatiq.com.sg/about-us#aboutpage',
+      url: 'https://innovatiq.com.sg/about-us',
+      name: 'About Innovatiq Technologies',
+      description: 'Learn about Innovatiq Technologies, delivering AI-powered IT solutions, Digital Transformation, Managed IT Services, Cloud, and Cyber Security across Singapore.',
+      isPartOf: { '@id': 'https://innovatiq.com.sg/#website' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'About Us', item: 'https://innovatiq.com.sg/about-us' },
+      ],
+    },
+  ],
+};
 
 const WHY_US = [
   {
@@ -27,9 +78,13 @@ const WHY_US = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHero
         badge="About Us"
-        title="Innovatiq – Shaping Tomorrow's Digital Landscape, Today"
+        title="About Innovatiq Technologies"
         subtitle="At Innovatiq, we believe in the power of innovation to transform businesses and elevate their digital presence. As a premier Information Technology Enabled Service (ITES) provider, we specialise in delivering cutting-edge solutions that drive digital transformation for our clients."
       />
 
@@ -56,7 +111,7 @@ export default function AboutPage() {
                     <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-30" style={{ background: 'radial-gradient(circle, #fda4af 0%, transparent 70%)', transform: 'translate(30%, -30%)' }} />
                     <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #fb7185 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }} />
                     <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #BE123C 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-                    <Image src="/images/ourVision.png" alt="Vision" fill style={{ objectFit: 'contain', padding: '20px' }} sizes="50vw" />
+                    <Image src="/images/ourVision.png" alt="Innovatiq Technologies Office" fill style={{ objectFit: 'contain', padding: '20px' }} sizes="50vw" />
                   </div>
                   <div className="p-8">
                     <div className="inline-flex items-center gap-2.5 mb-5">
@@ -93,7 +148,7 @@ export default function AboutPage() {
                     <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-30" style={{ background: 'radial-gradient(circle, #a5b4fc 0%, transparent 70%)', transform: 'translate(30%, -30%)' }} />
                     <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full opacity-20" style={{ background: 'radial-gradient(circle, #818cf8 0%, transparent 70%)', transform: 'translate(-30%, 30%)' }} />
                     <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle, #4F46E5 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-                    <Image src="/images/ourMission.png" alt="Mission" fill style={{ objectFit: 'contain', padding: '20px' }} sizes="50vw" />
+                    <Image src="/images/ourMission.png" alt="AI Solutions Team" fill style={{ objectFit: 'contain', padding: '20px' }} sizes="50vw" />
                   </div>
                   <div className="p-8">
                     <div className="inline-flex items-center gap-2.5 mb-5">
@@ -212,7 +267,7 @@ export default function AboutPage() {
               <TiltCard intensity={6} className="relative">
                 <div className="rounded-3xl overflow-hidden"
                   style={{ height: '420px', boxShadow: '0 4px 24px rgba(0,0,0,0.10)', border: '1px solid rgba(0,0,0,0.06)' }}>
-                  <Image src="/images/aboutUs/AboutUsHeroSection.jpg" alt="About Innovatiq" fill
+                  <Image src="/images/aboutUs/AboutUsHeroSection.jpg" alt="Digital Transformation Experts" fill
                     style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 50vw" quality={65} priority />
                   <div className="absolute inset-0"
                     style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 60%)' }} />

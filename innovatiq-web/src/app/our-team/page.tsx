@@ -1,9 +1,56 @@
-﻿import PageHero from '@/components/PageHero';
+﻿import type { Metadata } from 'next';
+import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
 import Link from 'next/link';
 import LeadershipCard from '@/components/LeadershipCard';
 import ExpertTeamGrid from '@/components/ExpertTeamGrid';
+
+export const metadata: Metadata = {
+  title: 'Meet Our Team | AI & IT Experts | Innovatiq Technologies',
+  description: 'Meet the experienced professionals at Innovatiq Technologies delivering AI, Cloud, Cyber Security, Managed IT Services, and Digital Transformation solutions.',
+  keywords: 'Innovatiq Team, AI Experts Singapore, IT Consultants, Cloud Specialists, Cyber Security Experts, Software Development Team, Technology Experts, Innovatiq Technologies',
+  alternates: { canonical: 'https://innovatiq.com.sg/our-team' },
+  openGraph: {
+    title: 'Meet Our Expert Team | Innovatiq Technologies',
+    description: 'Meet the professionals driving AI innovation, Digital Transformation, Cloud, Cyber Security, and Enterprise Software solutions.',
+    url: 'https://innovatiq.com.sg/our-team',
+    siteName: 'Innovatiq Technologies',
+    images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Meet Our Expert Team | Innovatiq',
+    description: 'Our experienced professionals help businesses succeed with AI-powered technology solutions.',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://innovatiq.com.sg/#organization',
+      name: 'Innovatiq Technologies',
+      url: 'https://innovatiq.com.sg',
+      logo: 'https://innovatiq.com.sg/logo/logo.png',
+      employee: [
+        { '@type': 'Person', name: 'Krishna Das', jobTitle: 'CEO', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
+        { '@type': 'Person', name: 'Prashanth', jobTitle: 'Director', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
+        { '@type': 'Person', name: 'Srinivasa Rao', jobTitle: 'Business Head India', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
+        { '@type': 'Person', name: 'Sujatha', jobTitle: 'HR Manager', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
+      ],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://innovatiq.com.sg' },
+        { '@type': 'ListItem', position: 2, name: 'Our Team', item: 'https://innovatiq.com.sg/our-team' },
+      ],
+    },
+  ],
+};
 
 const leadership = [
   {
@@ -95,6 +142,10 @@ const teamMembers = [
 export default function TeamPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <style>{`
         @keyframes blob-drift-1 {
           0%,100% { transform: translate(0px,0px) scale(1); }
@@ -132,7 +183,7 @@ export default function TeamPage() {
       `}</style>
       <PageHero
         badge="Our People"
-        title="Meet the Team Behind Innovatiq"
+        title="Meet the Experts Behind Innovatiq Technologies"
         subtitle="Our leadership team brings together decades of technology, business, and digital transformation expertise."
       />
 

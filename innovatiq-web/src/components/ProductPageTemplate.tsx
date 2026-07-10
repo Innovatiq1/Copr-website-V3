@@ -31,6 +31,8 @@ interface Props {
   productType?: string;
   overviewPills?: OverviewPill[];
   heroImage?: string;
+  heroImageAlt?: string;
+  h1Title?: string;
   trialBadge?: string;
 }
 
@@ -116,11 +118,13 @@ export default function ProductPageTemplate({
   productType,
   overviewPills,
   heroImage,
+  heroImageAlt,
+  h1Title,
   trialBadge,
 }: Props) {
   return (
     <>
-      <PageHero badge={subtitle} title={name} subtitle={tagline} />
+      <PageHero badge={subtitle} title={h1Title ?? name} subtitle={tagline} />
 
       {/* Overview */}
       <section className="relative py-12 md:py-24 overflow-hidden" style={{ background: '#FFFFFF' }}>
@@ -178,7 +182,7 @@ export default function ProductPageTemplate({
               {heroImage ? (
                 <div className="rounded-3xl overflow-hidden relative"
                   style={{ boxShadow: `0 28px 70px ${color}30` }}>
-                  <Image src={heroImage} alt={`${name} dashboard`} width={800} height={500} className="w-full h-auto object-cover" />
+                  <Image src={heroImage} alt={heroImageAlt ?? `${name} dashboard`} width={800} height={500} className="w-full h-auto object-cover" />
                 </div>
               ) : (
               <div className="rounded-3xl overflow-hidden text-white relative"

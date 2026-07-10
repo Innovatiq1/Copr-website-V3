@@ -16,8 +16,12 @@ export const metadata: Metadata = {
   description: "Innovatiq Technologies delivers cutting-edge IT solutions, cloud services, cyber security, and digital transformation services across Singapore, India, and Malaysia.",
   keywords: "IT solutions, digital transformation, cloud services, cyber security, managed IT, Singapore",
   icons: {
-    icon: [{ url: '/logo/logo.png', type: 'image/png' }],
-    apple: [{ url: '/logo/logo.png' }],
+    icon: [
+      { url: '/logo/logo.png', type: 'image/png', sizes: '716x646' },
+      { url: '/logo/logo.png', type: 'image/png', sizes: '32x32' },
+      { url: '/logo/logo.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: [{ url: '/logo/logo.png', sizes: '180x180' }],
     shortcut: '/logo/logo.png',
   },
   openGraph: {
@@ -36,6 +40,12 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Innovatiq Technologies",
+    description: "AI-Powered Digital Transformation & IT Solutions",
+    images: ["/logo/logo.png"],
   },
 };
 

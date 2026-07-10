@@ -1,9 +1,12 @@
 import { MetadataRoute } from 'next';
+import { connectDB } from '@/lib/mongodb';
+import Blog from '@/models/Blog';
+import Career from '@/models/Career';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://innovatiq.com.sg';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/`,                                                    priority: 1.0,  changeFrequency: 'weekly' },
     { url: `${BASE_URL}/about-us`,                                            priority: 0.9,  changeFrequency: 'monthly' },
     { url: `${BASE_URL}/our-team`,                                            priority: 0.8,  changeFrequency: 'monthly' },
@@ -33,4 +36,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/services/infrastructure-network-solutions`,           priority: 0.8,  changeFrequency: 'monthly' },
     { url: `${BASE_URL}/services/field-service-management`,                   priority: 0.8,  changeFrequency: 'monthly' },
   ];
+
+  let blogRoutes: MetadataRoute.Sitemap = [];
+  let careerRoutes: MetadataRoute.Sitemap = [];
+
+  try {
+    await connectDB();
+
+    const [blogs, careers] = await Promise.all([
+      Blog.find({ published: { $ne: false } }).select('_id updatedAt').lean(),
+      Career.find({ active: { $ne: false } }).select('_id updatedAt').lean(),
+    ]);
+
+    blogRoutes = blogs.map((blog) => ({
+      url: `${BASE_URL}/blogs/${blog._id}`,
+      lastModified: blog.updatedAt,
+      priority: 0.7,
+      changeFrequency: 'monthly' as const,
+    }));
+
+    careerRoutes = careers.map((career) => ({
+      url: `${BASE_URL}/careers/${career._id}`,
+      lastModified: career.updatedAt,
+      priority: 0.6,
+      changeFrequency: 'weekly' as const,
+    }));
+  } catch {
+    // If DB is unavailable during build, fall back to static routes only
+  }
+
+  return [...staticRoutes, ...blogRoutes, ...careerRoutes];
 }

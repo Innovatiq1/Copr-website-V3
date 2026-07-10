@@ -208,7 +208,7 @@ export default function TestimonialsSection() {
           {/* Controls */}
           <div className="flex items-center justify-center gap-4 mt-10">
             <button onClick={prev}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
               style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.20)', color: '#BE123C', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
               <ChevronLeft size={18} />
             </button>
@@ -226,7 +226,7 @@ export default function TestimonialsSection() {
             </div>
 
             <button onClick={next}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
               style={{ background: '#FFFFFF', border: '1.5px solid rgba(190,18,60,0.20)', color: '#BE123C', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
               <ChevronRight size={18} />
             </button>

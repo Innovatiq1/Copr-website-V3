@@ -79,7 +79,7 @@ const leadership = [
       },
     ],
     expertise: ['Sales & Business Development', 'Enterprise IT', 'Strategic Leadership'],
-    photo: '/images/aboutUs/ourTeam/Krishna.jpeg',
+    photo: '/images/aboutUs/ourTeam/KrishnaDas.jpg',
     accent: '#BE123C',
     linkedin: 'https://www.linkedin.com/in/krishna-das-1426625/',
     instagram: 'https://www.instagram.com/krishsg1/?hl=en',

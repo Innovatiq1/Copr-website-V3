@@ -187,7 +187,18 @@ export default function VideoEditPage() {
 
               {/* Products */}
               <div className="p-4" style={{ borderBottom: '1px solid #F1F5F9' }}>
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">Products</p>
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-xs font-bold text-slate-600 uppercase tracking-wider">Products</p>
+                  <button type="button" onClick={() => {
+                    const allSelected = PRODUCT_OPTIONS.every(o => !!productTypes[o.key]);
+                    const next: Record<string, boolean> = {};
+                    PRODUCT_OPTIONS.forEach(o => { next[o.key] = !allSelected; });
+                    setProductTypes(next);
+                  }} className="text-xs font-medium px-2.5 py-1 rounded-lg cursor-pointer transition-colors"
+                    style={{ color: '#BE123C', background: 'rgba(190,18,60,0.07)', border: '1px solid rgba(190,18,60,0.2)' }}>
+                    {PRODUCT_OPTIONS.every(o => !!productTypes[o.key]) ? 'Deselect All' : 'Select All'}
+                  </button>
+                </div>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                   {PRODUCT_OPTIONS.map(o => (
                     <CheckItem key={o.key} label={o.label} checked={!!productTypes[o.key]} onChange={() => toggle(setProductTypes, o.key)} />
@@ -197,7 +208,18 @@ export default function VideoEditPage() {
 
               {/* Services */}
               <div className="p-4">
-                <p className="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">Services</p>
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-xs font-bold text-slate-600 uppercase tracking-wider">Services</p>
+                  <button type="button" onClick={() => {
+                    const allSelected = SERVICE_OPTIONS.every(o => !!serviceTypes[o.key]);
+                    const next: Record<string, boolean> = {};
+                    SERVICE_OPTIONS.forEach(o => { next[o.key] = !allSelected; });
+                    setServiceTypes(next);
+                  }} className="text-xs font-medium px-2.5 py-1 rounded-lg cursor-pointer transition-colors"
+                    style={{ color: '#BE123C', background: 'rgba(190,18,60,0.07)', border: '1px solid rgba(190,18,60,0.2)' }}>
+                    {SERVICE_OPTIONS.every(o => !!serviceTypes[o.key]) ? 'Deselect All' : 'Select All'}
+                  </button>
+                </div>
                 <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                   {SERVICE_OPTIONS.map(o => (
                     <CheckItem key={o.key} label={o.label} checked={!!serviceTypes[o.key]} onChange={() => toggle(setServiceTypes, o.key)} />

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -441,7 +441,7 @@ export default function AIServicesClient() {
         </div>
       </section>
 
-      <VideoSection filterType="services" filterKey="ai" sectionClassName="py-16 md:py-24" />
+      <VideoSection filterType="services" filterKey="ai" sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />
       <CtaSection />
     </>
   );

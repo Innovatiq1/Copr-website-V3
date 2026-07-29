@@ -1,4 +1,4 @@
-import PageHero from './PageHero';
+﻿import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
@@ -370,7 +370,7 @@ export default function ServicePageTemplate({
         </section>
       )}
 
-      {serviceType && <VideoSection filterType="services" filterKey={serviceType} sectionClassName="py-16 md:py-24" />}
+      {serviceType && <VideoSection filterType="services" filterKey={serviceType} sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />}
       <CtaSection />
     </>
   );

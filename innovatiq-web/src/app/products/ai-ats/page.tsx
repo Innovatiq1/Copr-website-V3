@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 
 export const metadata: Metadata = {
@@ -738,7 +738,7 @@ export default function AIATSPage() {
         </div>
       </section>
 
-      <VideoSection filterType="products" filterKey="aiAts" sectionClassName="py-16 md:py-24" />
+      <VideoSection filterType="products" filterKey="aiAts" sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />
       <CtaSection />
     </>
   );

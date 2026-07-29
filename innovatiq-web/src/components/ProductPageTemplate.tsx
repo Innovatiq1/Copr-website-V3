@@ -1,4 +1,4 @@
-import PageHero from './PageHero';
+﻿import PageHero from './PageHero';
 import AnimatedSection from './AnimatedSection';
 import CtaSection from './home/CtaSection';
 import VideoSection from './VideoSection';
@@ -337,7 +337,7 @@ export default function ProductPageTemplate({
         </div>
       </section>
 
-      {productType && <VideoSection filterType="products" filterKey={productType} sectionClassName="py-16 md:py-24" />}
+      {productType && <VideoSection filterType="products" filterKey={productType} sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />}
       <CtaSection />
     </>
   );

@@ -337,7 +337,7 @@ export default function ContactPageClient() {
         </div>
       </section>
 
-      <VideoSection filterType="contact" heading="Connect with Innovatiq" subheading="See how we partner with businesses to deliver impactful technology solutions." />
+      <VideoSection filterType="contact" heading="Connect with Innovatiq" subheading="See how we partner with businesses to deliver impactful technology solutions." sectionClassName="py-16 md:py-24" />
 
       {/* Office Locations */}
       <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>

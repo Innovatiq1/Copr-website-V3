@@ -10,6 +10,7 @@ interface VideoSectionProps {
   heading?: string;
   subheading?: string;
   dark?: boolean;
+  sectionClassName?: string;
 }
 
 function getEmbedUrl(url: string): string {
@@ -20,7 +21,7 @@ function getEmbedUrl(url: string): string {
   return url;
 }
 
-export default function VideoSection({ filterType, filterKey, heading, subheading, dark = false }: VideoSectionProps) {
+export default function VideoSection({ filterType, filterKey, heading, subheading, dark = false, sectionClassName }: VideoSectionProps) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [video, setVideo] = useState<any>(null);
   const [loaded, setLoaded] = useState(false);
@@ -66,7 +67,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   const accentWord = words[words.length - 1];
 
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden" style={{ background: bg }}>
+    <section className={`relative overflow-hidden ${sectionClassName ?? 'pt-6 pb-10 md:pb-20'}`} style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10 md:mb-14">
 

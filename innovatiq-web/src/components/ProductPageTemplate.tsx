@@ -337,7 +337,7 @@ export default function ProductPageTemplate({
         </div>
       </section>
 
-      {productType && <VideoSection filterType="products" filterKey={productType} />}
+      {productType && <VideoSection filterType="products" filterKey={productType} sectionClassName="py-16 md:py-24" />}
       <CtaSection />
     </>
   );

@@ -10,6 +10,13 @@ const TalentProfile = mongoose.models.TalentProfile || mongoose.model('TalentPro
 }, { strict: false }));
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  // Accept token from query param so Excel links are directly clickable
+  const queryToken = req.nextUrl.searchParams.get('token');
+  if (queryToken) {
+    req = new NextRequest(req.url, {
+      headers: { ...Object.fromEntries(req.headers), authorization: `Bearer ${queryToken}` },
+    });
+  }
   const admin = requireAuth(req);
   if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 

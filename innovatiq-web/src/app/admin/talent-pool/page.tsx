@@ -60,19 +60,24 @@ export default function TalentPoolPage() {
         <div className="flex items-center gap-3">
           {profiles.length > 0 && (
             <button
-              onClick={() => exportToExcel(
-                profiles.map((p) => ({
-                  'Full Name': p.fullName || '',
-                  Email: p.email || '',
-                  Phone: p.phone || '',
-                  Skills: p.skills || '',
-                  Experience: p.experience || '',
-                  'About / Statement': p.statement || '',
-                  'Resume File': p.resumeName || '',
-                  'Submitted Date': p.createdAt ? new Date(p.createdAt).toLocaleDateString() : '',
-                })),
-                'talent-pool'
-              )}
+              onClick={() => {
+                const token = getToken();
+                const base = typeof window !== 'undefined' ? window.location.origin : '';
+                exportToExcel(
+                  profiles.map((p) => ({
+                    'Full Name': p.fullName || '',
+                    Email: p.email || '',
+                    Phone: p.phone || '',
+                    Skills: p.skills || '',
+                    Experience: p.experience || '',
+                    'About / Statement': p.statement || '',
+                    'Resume File': p.resumeName || '',
+                    'Resume URL': p.resumeName ? `${base}/api/talent-profiles/${p._id}/resume?token=${token}` : '',
+                    'Submitted Date': p.createdAt ? new Date(p.createdAt).toLocaleDateString() : '',
+                  })),
+                  'talent-pool'
+                );
+              }}
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold cursor-pointer"
               style={{ background: 'rgba(16,185,129,0.1)', color: '#059669', border: '1px solid rgba(16,185,129,0.25)' }}
             >

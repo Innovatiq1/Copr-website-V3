@@ -337,7 +337,7 @@ export default function ProductPageTemplate({
         </div>
       </section>
 
-      {productType && <VideoSection filterType="products" filterKey={productType} sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />}
+      {productType && <VideoSection filterType="products" filterKey={productType} sectionClassName="pt-10 pb-16 md:pt-13 md:pb-24" />}
       <CtaSection />
     </>
   );

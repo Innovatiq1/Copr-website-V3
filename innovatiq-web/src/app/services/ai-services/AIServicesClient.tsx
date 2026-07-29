@@ -441,7 +441,7 @@ export default function AIServicesClient() {
         </div>
       </section>
 
-      <VideoSection filterType="services" filterKey="ai" sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />
+      <VideoSection filterType="services" filterKey="ai" sectionClassName="pt-10 pb-16 md:pt-13 md:pb-24" />
       <CtaSection />
     </>
   );

@@ -664,7 +664,7 @@ export default function SalesCRMPage() {
         </div>
       </section>
 
-      <VideoSection filterType="products" filterKey="salesCrm" sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />
+      <VideoSection filterType="products" filterKey="salesCrm" sectionClassName="pt-10 pb-16 md:pt-13 md:pb-24" />
       <CtaSection />
     </>
   );

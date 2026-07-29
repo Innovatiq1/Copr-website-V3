@@ -67,7 +67,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   const accentWord = words[words.length - 1];
 
   return (
-    <section className={`relative overflow-hidden ${sectionClassName ?? 'pt-2 pb-10 md:pb-20'}`} style={{ background: bg }}>
+    <section className={`relative overflow-hidden ${sectionClassName ?? 'pt-0 pb-10 md:pb-20'}`} style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10 md:mb-14">
 

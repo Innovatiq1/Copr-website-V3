@@ -370,7 +370,7 @@ export default function ServicePageTemplate({
         </section>
       )}
 
-      {serviceType && <VideoSection filterType="services" filterKey={serviceType} sectionClassName="pt-10 pb-16 md:pt-10 md:pb-24" />}
+      {serviceType && <VideoSection filterType="services" filterKey={serviceType} sectionClassName="pt-10 pb-16 md:pt-13 md:pb-24" />}
       <CtaSection />
     </>
   );

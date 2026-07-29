@@ -297,7 +297,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <VideoSection filterType="aboutUs" filterKey="whoWeAre" heading="Who We Are" subheading="Learn more about the people and purpose behind Innovatiq Technologies." sectionClassName="pt-6 pb-10 md:pb-20" />
+      <VideoSection filterType="aboutUs" filterKey="whoWeAre" heading="Who We Are" subheading="Learn more about the people and purpose behind Innovatiq Technologies." sectionClassName="pt-6 pb-14 md:pb-20" />
 
       <CounterSection />
 

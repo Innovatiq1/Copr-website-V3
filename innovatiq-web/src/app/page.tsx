@@ -85,7 +85,7 @@ export default function HomePage() {
       <ProductsSection />
       <CounterSection />
       <TestimonialsSection />
-      <VideoSection filterType="home" />
+      <VideoSection filterType="home" sectionClassName="pt-0 pb-14 md:pb-20" />
       <CtaSection />
     </>
   );

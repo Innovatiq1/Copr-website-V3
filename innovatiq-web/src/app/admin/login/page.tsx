@@ -201,7 +201,7 @@ export default function AdminLoginPage() {
 
         {/* Abstract: dot grid */}
         <div className="absolute inset-0 pointer-events-none select-none" style={{
-          backgroundImage: 'radial-gradient(circle, rgba(148,163,184,0.28) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(159,18,57,0.22) 1px, transparent 1px)',
           backgroundSize: '26px 26px',
         }} />
         <div className="w-full max-w-md relative z-10">

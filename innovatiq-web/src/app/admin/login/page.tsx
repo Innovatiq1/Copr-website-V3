@@ -178,8 +178,33 @@ export default function AdminLoginPage() {
       </div>
 
       {/* ── Right Form Section (Original Card UI) ── */}
-      <div className="flex-1 flex items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md">
+      <div className="flex-1 flex items-center justify-center px-4 py-10 relative overflow-hidden">
+
+        {/* Abstract: same circles pattern used on left panel — top-right */}
+        <div className="absolute top-0 right-0 w-[340px] h-[340px] pointer-events-none select-none" style={{
+          backgroundImage: "url('/images/bg-pattern-circles.svg')",
+          backgroundSize: 'contain',
+          backgroundPosition: 'top right',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.18,
+        }} />
+
+        {/* Abstract: same circles pattern — bottom-left, flipped */}
+        <div className="absolute bottom-0 left-0 w-[240px] h-[240px] pointer-events-none select-none" style={{
+          backgroundImage: "url('/images/bg-pattern-circles.svg')",
+          backgroundSize: 'contain',
+          backgroundPosition: 'bottom left',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.1,
+          transform: 'rotate(180deg)',
+        }} />
+
+        {/* Abstract: dot grid */}
+        <div className="absolute inset-0 pointer-events-none select-none" style={{
+          backgroundImage: 'radial-gradient(circle, rgba(148,163,184,0.28) 1px, transparent 1px)',
+          backgroundSize: '26px 26px',
+        }} />
+        <div className="w-full max-w-md relative z-10">
 
           {/* Mobile logo */}
           <div className="flex lg:hidden items-center justify-center gap-3 mb-8">

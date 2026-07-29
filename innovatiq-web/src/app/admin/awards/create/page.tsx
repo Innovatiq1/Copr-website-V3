@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { API, getToken } from '@/lib/adminApi';
 import { ArrowLeft, Upload } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 const inputStyle: React.CSSProperties = {
   background: '#F8FAFC',
@@ -32,12 +33,10 @@ export default function AwardCreatePage() {
   const [optionalImage, setOptionalImage] = useState<File | null>(null);
   const [optionalImagePreview, setOptionalImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (!awardImage) { setError('Award image is required'); return; }
-    setError('');
+    if (!awardImage) { toast.error('Award image is required'); return; }
     setLoading(true);
     try {
       const fd = new FormData();
@@ -56,9 +55,10 @@ export default function AwardCreatePage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to create award');
+      toast.success('Created successfully');
       router.push('/admin/awards');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      toast.error(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -88,12 +88,6 @@ export default function AwardCreatePage() {
       <form onSubmit={handleSubmit}>
         <div className="rounded-2xl p-6 space-y-6"
           style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-          {error && (
-            <div className="px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-              {error}
-            </div>
-          )}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Title *</label>

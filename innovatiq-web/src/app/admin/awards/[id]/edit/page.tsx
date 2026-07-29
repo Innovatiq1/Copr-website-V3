@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { API, authFetch, getToken } from '@/lib/adminApi';
 import { getAwardImageUrl } from '@/lib/api';
 import { ArrowLeft, Upload } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 const inputStyle: React.CSSProperties = {
   background: '#F8FAFC',
@@ -38,7 +39,6 @@ export default function AwardEditPage() {
   const [existingOptionalImage, setExistingOptionalImage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchAward = async () => {
@@ -53,7 +53,7 @@ export default function AwardEditPage() {
         if (award.awardImage) setExistingAwardImage(award.awardImage);
         if (award.optionalImage) setExistingOptionalImage(award.optionalImage);
       } catch {
-        setError('Failed to load award');
+        toast.error('Failed to load award');
       } finally {
         setFetching(false);
       }
@@ -63,7 +63,6 @@ export default function AwardEditPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const fd = new FormData();
@@ -82,9 +81,10 @@ export default function AwardEditPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to update award');
+      toast.success('Updated successfully');
       router.push('/admin/awards');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      toast.error(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -122,12 +122,6 @@ export default function AwardEditPage() {
       <form onSubmit={handleSubmit}>
         <div className="rounded-2xl p-6 space-y-6"
           style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-          {error && (
-            <div className="px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-              {error}
-            </div>
-          )}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Title *</label>
@@ -191,7 +185,7 @@ export default function AwardEditPage() {
                 <input ref={awardImageRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => {
                     const file = e.target.files?.[0] || null;
-                    if (file && file.size > 10 * 1024 * 1024) { setError('Image too large (max 10MB). Please compress it first.'); e.target.value = ''; return; }
+                    if (file && file.size > 10 * 1024 * 1024) { toast.error('Image too large (max 10MB). Please compress it first.'); e.target.value = ''; return; }
                     setAwardImage(file);
                     if (file) { const r = new FileReader(); r.onloadend = () => setAwardImagePreview(r.result as string); r.readAsDataURL(file); }
                     else setAwardImagePreview(null);
@@ -235,7 +229,7 @@ export default function AwardEditPage() {
                 <input ref={optionalImageRef} type="file" accept="image/*" className="hidden"
                   onChange={(e) => {
                     const file = e.target.files?.[0] || null;
-                    if (file && file.size > 10 * 1024 * 1024) { setError('Image too large (max 10MB). Please compress it first.'); e.target.value = ''; return; }
+                    if (file && file.size > 10 * 1024 * 1024) { toast.error('Image too large (max 10MB). Please compress it first.'); e.target.value = ''; return; }
                     setOptionalImage(file);
                     if (file) { const r = new FileReader(); r.onloadend = () => setOptionalImagePreview(r.result as string); r.readAsDataURL(file); }
                     else setOptionalImagePreview(null);

@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { API, authFetch } from '@/lib/adminApi';
-import { FileText, Briefcase, Trophy, Video, Plus, TrendingUp, AlertCircle, RefreshCw } from 'lucide-react';
+import { FileText, Briefcase, Trophy, Video, Plus, TrendingUp, RefreshCw } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 interface Stats {
   blogs: number;
@@ -29,18 +30,16 @@ const quickActions = [
 export default function DashboardPage() {
   const [stats, setStats] = useState<Stats>({ blogs: 0, careers: 0, awards: 0, videos: 0 });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchStats = async () => {
     setLoading(true);
-    setError(null);
     try {
       const res = await authFetch(`${API}/admin/stats`);
       if (!res.ok) throw new Error('Failed');
       const data = await res.json();
       setStats({ blogs: data.blogs || 0, careers: data.careers || 0, awards: data.awards || 0, videos: data.videos || 0 });
     } catch {
-      setError('Failed to load dashboard stats.');
+      toast.error('Failed to load dashboard stats.');
     } finally {
       setLoading(false);
     }
@@ -70,23 +69,6 @@ export default function DashboardPage() {
         </button>
       </div>
 
-      {/* Error banner */}
-      {error && (
-        <div
-          className="flex items-start gap-3 px-5 py-4 rounded-2xl mb-6 text-sm"
-          style={{
-            background: 'rgba(245,158,11,0.06)',
-            border: '1px solid rgba(245,158,11,0.25)',
-          }}
-        >
-          <AlertCircle size={16} className="text-amber-500 shrink-0 mt-0.5" />
-          <div>
-            <p className="text-amber-600 font-medium">Server Unreachable</p>
-            <p className="text-amber-500 text-xs mt-0.5">{error}</p>
-          </div>
-        </div>
-      )}
-
       {/* Stats grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
         {statCards.map(({ key, label, icon: Icon, color, glow, href }) => (
@@ -113,7 +95,7 @@ export default function DashboardPage() {
                 <span className="inline-block w-10 h-8 rounded-lg animate-pulse"
                   style={{ background: '#F1F5F9' }} />
               ) : (
-                <span style={{ color }}>{error ? '—' : stats[key as keyof Stats]}</span>
+                <span style={{ color }}>{stats[key as keyof Stats]}</span>
               )}
             </div>
             <p className="text-slate-500 text-sm font-medium">{label}</p>
@@ -184,9 +166,9 @@ export default function DashboardPage() {
           </div>
           <div className="space-y-3">
             {[
-              { label: 'API Server', ok: !error },
+              { label: 'API Server', ok: true },
               { label: 'Authentication', ok: true },
-              { label: 'Database', ok: !error },
+              { label: 'Database', ok: true },
             ].map(({ label, ok }) => (
               <div key={label} className="flex items-center justify-between py-2.5 px-4 rounded-xl"
                 style={{ background: '#F8FAFC', border: '1px solid #E2E8F0' }}>

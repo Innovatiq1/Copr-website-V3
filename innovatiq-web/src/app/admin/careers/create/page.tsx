@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { API, authHeaders } from '@/lib/adminApi';
 import { ArrowLeft, Plus, X } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 const EMPLOYMENT_TYPES = ['Full-time', 'Part-time', 'Internship', 'Contract', 'Remote'];
 
@@ -32,7 +33,6 @@ export default function CareerCreatePage() {
   const [experience, setExperience] = useState('');
   const [employmentType, setEmploymentType] = useState(EMPLOYMENT_TYPES[0]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const addSkill = () => {
     const newSkills = skillInput.split(',').map((s) => s.trim()).filter((s) => s.length > 0 && !skills.includes(s));
@@ -44,7 +44,6 @@ export default function CareerCreatePage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const payload = { jobTitle, companyName, location, shortDescription, description, primarySkills: skills.join(', '), experience, employmentType };
@@ -55,9 +54,10 @@ export default function CareerCreatePage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to create career');
+      toast.success('Created successfully');
       router.push('/admin/careers');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      toast.error(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -87,12 +87,6 @@ export default function CareerCreatePage() {
       <form onSubmit={handleSubmit}>
         <div className="rounded-2xl p-6 space-y-6"
           style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-          {error && (
-            <div className="px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-              {error}
-            </div>
-          )}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Job Title *</label>

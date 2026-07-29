@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { API, authFetch, authHeaders } from '@/lib/adminApi';
 import { ArrowLeft, Plus, X } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 const EMPLOYMENT_TYPES = ['Full-time', 'Part-time', 'Internship', 'Contract', 'Remote'];
 
@@ -35,7 +36,6 @@ export default function CareerEditPage() {
   const [employmentType, setEmploymentType] = useState(EMPLOYMENT_TYPES[0]);
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchCareer = async () => {
@@ -58,7 +58,7 @@ export default function CareerEditPage() {
         setExperience(career.experience || career.experienceLevel || '');
         setEmploymentType(career.employmentType || EMPLOYMENT_TYPES[0]);
       } catch {
-        setError('Failed to load career');
+        toast.error('Failed to load career');
       } finally {
         setFetching(false);
       }
@@ -76,7 +76,6 @@ export default function CareerEditPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const payload = { jobTitle, companyName, location, shortDescription, description, primarySkills: skills.join(', '), experience, employmentType };
@@ -87,9 +86,10 @@ export default function CareerEditPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to update career');
+      toast.success('Updated successfully');
       router.push('/admin/careers');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      toast.error(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -127,12 +127,6 @@ export default function CareerEditPage() {
       <form onSubmit={handleSubmit}>
         <div className="rounded-2xl p-6 space-y-6"
           style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-          {error && (
-            <div className="px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-              {error}
-            </div>
-          )}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Job Title *</label>

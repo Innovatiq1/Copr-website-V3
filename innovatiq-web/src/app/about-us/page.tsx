@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
+import VideoSection from '@/components/VideoSection';
 import TiltCard from '@/components/TiltCard';
 import CounterSection from '@/components/CounterSection';
 import CtaSection from '@/components/home/CtaSection';
@@ -295,6 +296,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <VideoSection filterType="aboutUs" filterKey="whoWeAre" heading="Who We Are" subheading="Learn more about the people and purpose behind Innovatiq Technologies." />
 
       <CounterSection />
 

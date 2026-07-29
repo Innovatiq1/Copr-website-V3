@@ -2,27 +2,37 @@
 
 import { useEffect, useState } from 'react';
 import { API, authFetch } from '@/lib/adminApi';
+import ConfirmModal from '@/components/admin/ConfirmModal';
 import { X, Eye, Download, Trash2 } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
+import { toast } from '@/lib/toast';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Enquiry = any;
 
+const PAGE_SIZE = 5;
+
 export default function EnquiriesPage() {
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const [selected, setSelected] = useState<Enquiry | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [confirmId, setConfirmId] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(enquiries.length / PAGE_SIZE);
+  const paginated = enquiries.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Delete this enquiry?')) return;
+  const doDelete = async () => {
+    if (!confirmId) return;
+    const id = confirmId;
+    setConfirmId(null);
     setDeleting(id);
     try {
       await authFetch(`${API}/enquiries/${id}`, { method: 'DELETE' });
       setEnquiries(prev => prev.filter(e => e._id !== id));
+      toast.success('Deleted successfully');
     } catch {
-      setError('Failed to delete');
+      toast.error('Failed to delete');
     } finally {
       setDeleting(null);
     }
@@ -37,7 +47,7 @@ export default function EnquiriesPage() {
         const list = Array.isArray(data) ? data : [];
         setEnquiries(list);
       } catch {
-        setError('Failed to load enquiries');
+        toast.error('Failed to load enquiries');
       } finally {
         setLoading(false);
       }
@@ -75,12 +85,6 @@ export default function EnquiriesPage() {
         </button>
       </div>
 
-      {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-          {error}
-        </div>
-      )}
-
       <div
         className="rounded-2xl overflow-hidden"
         style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
@@ -112,7 +116,7 @@ export default function EnquiriesPage() {
                   <td colSpan={7} className="px-5 py-10 text-center text-slate-400">No enquiries found</td>
                 </tr>
               ) : (
-                enquiries.map((enquiry) => (
+                paginated.map((enquiry) => (
                   <tr
                     key={enquiry._id}
                     style={{ borderBottom: '1px solid #F1F5F9' }}
@@ -141,7 +145,7 @@ export default function EnquiriesPage() {
                           <Eye size={12} /> View
                         </button>
                         <button
-                          onClick={() => handleDelete(enquiry._id)}
+                          onClick={() => setConfirmId(enquiry._id)}
                           disabled={deleting === enquiry._id}
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:bg-red-50 cursor-pointer"
                           style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}
@@ -156,6 +160,36 @@ export default function EnquiriesPage() {
             </tbody>
           </table>
         </div>
+        {!loading && totalPages > 1 && (
+          <div className="flex items-center justify-between px-5 py-3.5" style={{ borderTop: '1px solid #E2E8F0', background: '#FAFAFA' }}>
+            <span className="text-xs text-slate-500">
+              {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, enquiries.length)} of {enquiries.length}
+            </span>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>←</button>
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                let p = i + 1;
+                if (totalPages > 5) {
+                  if (page <= 3) p = i + 1;
+                  else if (page >= totalPages - 2) p = totalPages - 4 + i;
+                  else p = page - 2 + i;
+                }
+                return (
+                  <button key={p} onClick={() => setPage(p)}
+                    className="w-8 h-8 rounded-lg text-xs font-medium cursor-pointer"
+                    style={page === p ? { background: 'linear-gradient(135deg,#9F1239,#BE123C,#E11D48)', color: '#fff', border: 'none' } : { background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>
+                    {p}
+                  </button>
+                );
+              })}
+              <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>→</button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Detail Modal */}
@@ -222,6 +256,14 @@ export default function EnquiriesPage() {
           </div>
         </div>
       )}
+      <ConfirmModal
+        open={confirmId !== null}
+        title="Confirm Delete"
+        message="This action cannot be undone. Are you sure you want to delete this item?"
+        confirmLabel="Delete"
+        onConfirm={doDelete}
+        onCancel={() => setConfirmId(null)}
+      />
     </div>
   );
 }

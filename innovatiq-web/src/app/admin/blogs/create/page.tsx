@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { API, getToken } from '@/lib/adminApi';
 import { ArrowLeft, Plus, X, Upload } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 const AUTHORS = ['Krishna Das', 'Srinivasa Rao', 'Innovatiq'];
 
@@ -33,7 +34,6 @@ export default function BlogCreatePage() {
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const addTag = () => {
     const t = tagInput.trim();
@@ -45,7 +45,6 @@ export default function BlogCreatePage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
       const fd = new FormData();
@@ -64,9 +63,10 @@ export default function BlogCreatePage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to create blog');
+      toast.success('Created successfully');
       router.push('/admin/blogs');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      toast.error(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -89,12 +89,6 @@ export default function BlogCreatePage() {
           className="rounded-2xl p-6 space-y-6"
           style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
         >
-          {error && (
-            <div className="px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-              {error}
-            </div>
-          )}
-
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1.5">Title *</label>
             <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required
@@ -193,7 +187,7 @@ export default function BlogCreatePage() {
               <input ref={fileRef} type="file" accept="image/*" className="hidden"
                 onChange={(e) => {
                   const file = e.target.files?.[0] || null;
-                  if (file && file.size > 10 * 1024 * 1024) { setError('Image too large (max 10MB).'); e.target.value = ''; return; }
+                  if (file && file.size > 10 * 1024 * 1024) { toast.error('Image too large (max 10MB).'); e.target.value = ''; return; }
                   setImage(file);
                   if (file) {
                     const reader = new FileReader();

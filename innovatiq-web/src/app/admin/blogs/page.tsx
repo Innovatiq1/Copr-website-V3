@@ -3,17 +3,22 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { API, authFetch } from '@/lib/adminApi';
+import ConfirmModal from '@/components/admin/ConfirmModal';
 import { Plus, Pencil, Trash2, Search, Download } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
+import { toast } from '@/lib/toast';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Blog = any;
+
+const PAGE_SIZE = 5;
 
 export default function BlogsPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const [error, setError] = useState('');
+  const [page, setPage] = useState(1);
+  const [confirmId, setConfirmId] = useState<string | null>(null);
 
   const fetchBlogs = async () => {
     setLoading(true);
@@ -23,7 +28,7 @@ export default function BlogsPage() {
       const list = data?.blogs || data?.data || (Array.isArray(data) ? data : []);
       setBlogs(list);
     } catch {
-      setError('Failed to load blogs');
+      toast.error('Failed to load blogs');
     } finally {
       setLoading(false);
     }
@@ -31,8 +36,10 @@ export default function BlogsPage() {
 
   useEffect(() => { fetchBlogs(); }, []);
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Delete this blog?')) return;
+  const doDelete = async () => {
+    if (!confirmId) return;
+    const id = confirmId;
+    setConfirmId(null);
     try {
       const res = await authFetch(`${API}/blogs/${id}`, { method: 'DELETE' });
       if (!res.ok) {
@@ -40,14 +47,20 @@ export default function BlogsPage() {
         throw new Error(data.message || 'Failed to delete blog');
       }
       setBlogs((prev) => prev.filter((b) => b._id !== id));
+      toast.success('Deleted successfully');
     } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : 'Failed to delete blog');
+      toast.error(err instanceof Error ? err.message : 'Failed to delete blog');
     }
   };
 
   const filtered = blogs.filter((b) =>
     (b.title || '').toLowerCase().includes(search.toLowerCase())
   );
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  // reset page when search changes
+  useEffect(() => setPage(1), [search]);
 
   return (
     <div className="min-h-screen">
@@ -102,12 +115,6 @@ export default function BlogsPage() {
         />
       </div>
 
-      {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-          {error}
-        </div>
-      )}
-
       {/* Table */}
       <div
         className="rounded-2xl overflow-hidden"
@@ -140,7 +147,7 @@ export default function BlogsPage() {
                   <td colSpan={6} className="px-5 py-10 text-center text-slate-400">No blogs found</td>
                 </tr>
               ) : (
-                filtered.map((blog) => (
+                paginated.map((blog) => (
                   <tr
                     key={blog._id}
                     style={{ borderBottom: '1px solid #F1F5F9' }}
@@ -180,7 +187,7 @@ export default function BlogsPage() {
                           <Pencil size={12} /> Edit
                         </Link>
                         <button
-                          onClick={() => handleDelete(blog._id)}
+                          onClick={() => setConfirmId(blog._id)}
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer"
                           style={{ background: 'rgba(220,38,38,0.08)', color: '#DC2626', border: '1px solid rgba(220,38,38,0.18)' }}
                         >
@@ -194,7 +201,45 @@ export default function BlogsPage() {
             </tbody>
           </table>
         </div>
+        {!loading && totalPages > 1 && (
+          <div className="flex items-center justify-between px-5 py-3.5" style={{ borderTop: '1px solid #E2E8F0', background: '#FAFAFA' }}>
+            <span className="text-xs text-slate-500">
+              {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, filtered.length)} of {filtered.length}
+            </span>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>←</button>
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                let p = i + 1;
+                if (totalPages > 5) {
+                  if (page <= 3) p = i + 1;
+                  else if (page >= totalPages - 2) p = totalPages - 4 + i;
+                  else p = page - 2 + i;
+                }
+                return (
+                  <button key={p} onClick={() => setPage(p)}
+                    className="w-8 h-8 rounded-lg text-xs font-medium cursor-pointer"
+                    style={page === p ? { background: 'linear-gradient(135deg,#9F1239,#BE123C,#E11D48)', color: '#fff', border: 'none' } : { background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>
+                    {p}
+                  </button>
+                );
+              })}
+              <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>→</button>
+            </div>
+          </div>
+        )}
       </div>
+      <ConfirmModal
+        open={confirmId !== null}
+        title="Confirm Delete"
+        message="This action cannot be undone. Are you sure you want to delete this item?"
+        confirmLabel="Delete"
+        onConfirm={doDelete}
+        onCancel={() => setConfirmId(null)}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { API, authFetch, getToken } from '@/lib/adminApi';
 import { ArrowLeft, ChevronDown, Eye, ExternalLink, FileText, ChevronUp, Download } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
+import { toast } from '@/lib/toast';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Applicant = any;
@@ -29,7 +30,6 @@ export default function ApplicantsPage() {
 
   const [applicants, setApplicants] = useState<Applicant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const [updating, setUpdating] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
 
@@ -40,7 +40,7 @@ export default function ApplicantsPage() {
         const data = await res.json();
         setApplicants(Array.isArray(data) ? data : []);
       } catch {
-        setError('Failed to load applicants');
+        toast.error('Failed to load applicants');
       } finally {
         setLoading(false);
       }
@@ -60,7 +60,7 @@ export default function ApplicantsPage() {
       if (!res.ok) throw new Error('Failed to update status');
       setApplicants((prev) => prev.map((a) => (a._id === applicationId ? { ...a, status: status.toLowerCase() } : a)));
     } catch {
-      alert('Failed to update status');
+      toast.error('Failed to update status');
     } finally {
       setUpdating(null);
     }
@@ -100,12 +100,6 @@ export default function ApplicantsPage() {
           </button>
         )}
       </div>
-
-      {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-          {error}
-        </div>
-      )}
 
       {loading ? (
         <div className="space-y-3">
@@ -168,7 +162,7 @@ export default function ApplicantsPage() {
                           const res = await fetch(`/api/job-applications/application/${applicant._id}/resume`, {
                             headers: { Authorization: `Bearer ${token}` },
                           });
-                          if (!res.ok) { alert('Failed to load resume'); return; }
+                          if (!res.ok) { toast.error('Failed to load resume'); return; }
                           const blob = await res.blob();
                           const url = URL.createObjectURL(blob);
                           window.open(url, '_blank');

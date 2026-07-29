@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { API, authHeaders } from '@/lib/adminApi';
 import { ArrowLeft } from 'lucide-react';
+import { toast } from '@/lib/toast';
 
 const inputStyle: React.CSSProperties = {
   background: '#F8FAFC',
@@ -17,37 +18,69 @@ const inputStyle: React.CSSProperties = {
   fontSize: '14px',
 };
 
-interface ProductTypes { tms: boolean; lms: boolean; lmp: boolean; pms: boolean; }
-interface ServiceTypes { cloud: boolean; cyber: boolean; consulting: boolean; digital: boolean; managedIT: boolean; infrastructure: boolean; field: boolean; }
+const PRODUCT_OPTIONS = [
+  { key: 'tms', label: 'TMS (SkillEra)' },
+  { key: 'lms', label: 'LMS (LearnPro)' },
+  { key: 'lmp', label: 'LMP (Learning Motivational Platform)' },
+  { key: 'pms', label: 'PMS (SecurOn)' },
+  { key: 'salesCrm', label: 'Sales CRM' },
+  { key: 'aiAts', label: 'AI ATS' },
+];
+const SERVICE_OPTIONS = [
+  { key: 'cloud', label: 'Cloud' },
+  { key: 'cyber', label: 'Cyber Security' },
+  { key: 'consulting', label: 'Consulting' },
+  { key: 'digital', label: 'Digital Transformation' },
+  { key: 'managedIT', label: 'Managed IT' },
+  { key: 'infrastructure', label: 'Infrastructure' },
+  { key: 'field', label: 'Field Services' },
+  { key: 'ai', label: 'AI Services' },
+];
+const ABOUT_OPTIONS = [
+  { key: 'whoWeAre', label: 'Who We Are' },
+  { key: 'awards', label: 'Awards' },
+];
+
+const CheckItem = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
+  <div className="flex items-center gap-2.5 cursor-pointer group" onClick={onChange}>
+    <div className="w-4.5 h-4.5 rounded flex items-center justify-center transition-all shrink-0"
+      style={{ background: checked ? '#BE123C' : '#F1F5F9', border: checked ? '1px solid #BE123C' : '1px solid #CBD5E1' }}>
+      {checked && (
+        <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+          <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )}
+    </div>
+    <span className="text-sm text-slate-700 group-hover:text-slate-900 transition-colors">{label}</span>
+  </div>
+);
 
 export default function VideoCreatePage() {
   const router = useRouter();
 
   const [videoName, setVideoName] = useState('');
-  const [title, setTitle] = useState('');
   const [videoLink, setVideoLink] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
   const [home, setHome] = useState(false);
-  const [career, setCareer] = useState(false);
-  const [products, setProducts] = useState(false);
-  const [productTypes, setProductTypes] = useState<ProductTypes>({ tms: false, lms: false, lmp: false, pms: false });
-  const [services, setServices] = useState(false);
-  const [serviceTypes, setServiceTypes] = useState<ServiceTypes>({
-    cloud: false, cyber: false, consulting: false, digital: false, managedIT: false, infrastructure: false, field: false,
-  });
+  const [contact, setContact] = useState(false);
+  const [aboutUsTypes, setAboutUsTypes] = useState<Record<string, boolean>>({});
+  const [productTypes, setProductTypes] = useState<Record<string, boolean>>({});
+  const [serviceTypes, setServiceTypes] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
-  const toggleProductType = (key: keyof ProductTypes) => setProductTypes((prev) => ({ ...prev, [key]: !prev[key] }));
-  const toggleServiceType = (key: keyof ServiceTypes) => setServiceTypes((prev) => ({ ...prev, [key]: !prev[key] }));
+  const toggle = (setter: React.Dispatch<React.SetStateAction<Record<string, boolean>>>, key: string) =>
+    setter(prev => ({ ...prev, [key]: !prev[key] }));
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
     try {
-      const payload = { videoName, title, videoLink, date, time, home, career, products, productTypes, services, serviceTypes };
+      const payload = {
+        videoName, title: videoName, videoLink,
+        home, contact,
+        aboutUs: Object.values(aboutUsTypes).some(Boolean), aboutUsTypes,
+        products: Object.values(productTypes).some(Boolean), productTypes,
+        services: Object.values(serviceTypes).some(Boolean), serviceTypes,
+      };
       const res = await fetch(`${API}/videos`, {
         method: 'POST',
         headers: authHeaders() as Record<string, string>,
@@ -55,9 +88,10 @@ export default function VideoCreatePage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || 'Failed to create video');
+      toast.success('Created successfully');
       router.push('/admin/videos');
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      toast.error(err instanceof Error ? err.message : 'An error occurred');
     } finally {
       setLoading(false);
     }
@@ -71,37 +105,6 @@ export default function VideoCreatePage() {
     e.currentTarget.style.borderColor = '#E2E8F0';
     e.currentTarget.style.boxShadow = 'none';
   };
-
-  const CheckboxGroup = ({ label, checked, onChange, children }: { label: string; checked: boolean; onChange: () => void; children?: React.ReactNode }) => (
-    <div className="space-y-3">
-      <div className="flex items-center gap-3 cursor-pointer group" onClick={onChange}>
-        <div className="w-5 h-5 rounded flex items-center justify-center transition-all shrink-0"
-          style={{ background: checked ? '#BE123C' : '#F1F5F9', border: checked ? '1px solid #BE123C' : '1px solid #CBD5E1' }}>
-          {checked && (
-            <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-              <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          )}
-        </div>
-        <span className="text-sm text-slate-700 group-hover:text-slate-900 transition-colors">{label}</span>
-      </div>
-      {checked && children && <div className="ml-8 space-y-2">{children}</div>}
-    </div>
-  );
-
-  const SubCheckbox = ({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) => (
-    <div className="flex items-center gap-3 cursor-pointer group" onClick={onChange}>
-      <div className="w-4 h-4 rounded flex items-center justify-center transition-all shrink-0"
-        style={{ background: checked ? 'rgba(190,18,60,0.8)' : '#F1F5F9', border: checked ? '1px solid rgba(190,18,60,0.8)' : '1px solid #E2E8F0' }}>
-        {checked && (
-          <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-            <path d="M1 3L2.8 4.8L7 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        )}
-      </div>
-      <span className="text-xs text-slate-600 group-hover:text-slate-800 transition-colors">{label}</span>
-    </div>
-  );
 
   return (
     <div className="min-h-screen">
@@ -118,59 +121,59 @@ export default function VideoCreatePage() {
       <form onSubmit={handleSubmit}>
         <div className="rounded-2xl p-6 space-y-6"
           style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-          {error && (
-            <div className="px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-              {error}
-            </div>
-          )}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Video Name *</label>
               <input type="text" value={videoName} onChange={(e) => setVideoName(e.target.value)} required
-                placeholder="e.g. intro-video" style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Title *</label>
-              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required
-                placeholder="Video display title" style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
+                placeholder="e.g. Innovatiq Introduction" style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-slate-700 mb-1.5">Video Link *</label>
               <input type="text" value={videoLink} onChange={(e) => setVideoLink(e.target.value)} required
                 placeholder="https://youtube.com/watch?v=..." style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
             </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Date</label>
-              <input type="date" value={date} onChange={(e) => setDate(e.target.value)} style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Time</label>
-              <input type="time" value={time} onChange={(e) => setTime(e.target.value)} style={inputStyle} onFocus={focusStyle} onBlur={blurStyle} />
-            </div>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-3">Display Locations</label>
-            <div className="p-5 rounded-xl space-y-4"
-              style={{ background: '#F8FAFC', border: '1px solid #E2E8F0' }}>
-              <CheckboxGroup label="Home Page" checked={home} onChange={() => setHome(!home)} />
-              <CheckboxGroup label="Career Page" checked={career} onChange={() => setCareer(!career)} />
-              <CheckboxGroup label="Products" checked={products} onChange={() => setProducts(!products)}>
-                <SubCheckbox label="TMS" checked={productTypes.tms} onChange={() => toggleProductType('tms')} />
-                <SubCheckbox label="LMS" checked={productTypes.lms} onChange={() => toggleProductType('lms')} />
-                <SubCheckbox label="LMP" checked={productTypes.lmp} onChange={() => toggleProductType('lmp')} />
-                <SubCheckbox label="PMS" checked={productTypes.pms} onChange={() => toggleProductType('pms')} />
-              </CheckboxGroup>
-              <CheckboxGroup label="Services" checked={services} onChange={() => setServices(!services)}>
-                <SubCheckbox label="Cloud" checked={serviceTypes.cloud} onChange={() => toggleServiceType('cloud')} />
-                <SubCheckbox label="Cyber Security" checked={serviceTypes.cyber} onChange={() => toggleServiceType('cyber')} />
-                <SubCheckbox label="Consulting" checked={serviceTypes.consulting} onChange={() => toggleServiceType('consulting')} />
-                <SubCheckbox label="Digital Transformation" checked={serviceTypes.digital} onChange={() => toggleServiceType('digital')} />
-                <SubCheckbox label="Managed IT" checked={serviceTypes.managedIT} onChange={() => toggleServiceType('managedIT')} />
-                <SubCheckbox label="Infrastructure" checked={serviceTypes.infrastructure} onChange={() => toggleServiceType('infrastructure')} />
-                <SubCheckbox label="Field Services" checked={serviceTypes.field} onChange={() => toggleServiceType('field')} />
-              </CheckboxGroup>
+            <div className="rounded-xl overflow-hidden" style={{ border: '1px solid #E2E8F0' }}>
+
+              {/* Simple pages */}
+              <div className="p-4 flex flex-wrap gap-6" style={{ borderBottom: '1px solid #F1F5F9' }}>
+                <CheckItem label="Home Page" checked={home} onChange={() => setHome(!home)} />
+                <CheckItem label="Contact" checked={contact} onChange={() => setContact(!contact)} />
+              </div>
+
+              {/* About Us */}
+              <div className="p-4" style={{ borderBottom: '1px solid #F1F5F9' }}>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">About Us</p>
+                <div className="flex flex-wrap gap-5">
+                  {ABOUT_OPTIONS.map(o => (
+                    <CheckItem key={o.key} label={o.label} checked={!!aboutUsTypes[o.key]} onChange={() => toggle(setAboutUsTypes, o.key)} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Products */}
+              <div className="p-4" style={{ borderBottom: '1px solid #F1F5F9' }}>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">Products</p>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                  {PRODUCT_OPTIONS.map(o => (
+                    <CheckItem key={o.key} label={o.label} checked={!!productTypes[o.key]} onChange={() => toggle(setProductTypes, o.key)} />
+                  ))}
+                </div>
+              </div>
+
+              {/* Services */}
+              <div className="p-4">
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-wider mb-3">Services</p>
+                <div className="grid grid-cols-2 gap-x-8 gap-y-3">
+                  {SERVICE_OPTIONS.map(o => (
+                    <CheckItem key={o.key} label={o.label} checked={!!serviceTypes[o.key]} onChange={() => toggle(setServiceTypes, o.key)} />
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

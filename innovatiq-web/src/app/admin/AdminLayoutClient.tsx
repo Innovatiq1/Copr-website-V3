@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { Toaster } from '@/lib/toast';
 import {
   LayoutDashboard,
   FileText,
@@ -184,6 +185,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
 
         <main className="flex-1 p-6 overflow-auto">{children}</main>
       </div>
+      <Toaster />
     </div>
   );
 }

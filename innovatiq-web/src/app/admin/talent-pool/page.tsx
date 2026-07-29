@@ -1,32 +1,42 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { API, authFetch, getToken } from '@/lib/adminApi';
+import ConfirmModal from '@/components/admin/ConfirmModal';
 import { Users, Eye, ChevronDown, ChevronUp, FileText, Trash2, Mail, Phone, Briefcase, Cpu, Download } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
+import { toast } from '@/lib/toast';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Profile = any;
 
+const PAGE_SIZE = 5;
+
 export default function TalentPoolPage() {
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const [expanded, setExpanded] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [confirmId, setConfirmId] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(profiles.length / PAGE_SIZE);
+  const paginated = profiles.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-  const deleteProfile = async (id: string) => {
-    if (!confirm('Delete this profile? This cannot be undone.')) return;
+  const doDelete = async () => {
+    if (!confirmId) return;
+    const id = confirmId;
+    setConfirmId(null);
     setDeleting(id);
     try {
-      const token = localStorage.getItem('admin_token');
+      const token = getToken();
       await fetch(`/api/talent-profiles/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
       setProfiles(prev => prev.filter(p => p._id !== id));
+      toast.success('Deleted successfully');
     } catch {
-      alert('Failed to delete profile.');
+      toast.error('Failed to delete profile.');
     } finally {
       setDeleting(null);
     }
@@ -36,7 +46,7 @@ export default function TalentPoolPage() {
     authFetch(`${API}/talent-profiles`)
       .then(r => r.json())
       .then(d => setProfiles(Array.isArray(d) ? d : []))
-      .catch(() => setError('Failed to load talent profiles'))
+      .catch(() => toast.error('Failed to load talent profiles'))
       .finally(() => setLoading(false));
   }, []);
 
@@ -58,7 +68,7 @@ export default function TalentPoolPage() {
                   Skills: p.skills || '',
                   Experience: p.experience || '',
                   'About / Statement': p.statement || '',
-                  'Resume URL': p.resume || '',
+                  'Resume File': p.resumeName || '',
                   'Submitted Date': p.createdAt ? new Date(p.createdAt).toLocaleDateString() : '',
                 })),
                 'talent-pool'
@@ -70,24 +80,30 @@ export default function TalentPoolPage() {
             </button>
           )}
           {profiles.length > 0 && (
-            <span className="px-3 py-1 rounded-full text-xs font-bold"
-              style={{ background: 'rgba(190,18,60,0.08)', color: '#BE123C', border: '1px solid rgba(190,18,60,0.18)' }}>
-              {profiles.length} profile{profiles.length !== 1 ? 's' : ''}
-            </span>
+            <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold cursor-default"
+              style={{ background: 'rgba(190,18,60,0.08)', color: '#BE123C', border: '1px solid rgba(190,18,60,0.22)' }}>
+              <div className="w-2 h-2 rounded-full shrink-0" style={{ background: '#BE123C' }} />
+              <span className="font-bold">{profiles.length}</span>
+              <span className="font-semibold" style={{ color: '#9F1239' }}>profile{profiles.length !== 1 ? 's' : ''}</span>
+            </div>
           )}
         </div>
       </div>
 
-      {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-          {error}
-        </div>
-      )}
-
       {loading ? (
         <div className="space-y-3">
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={i} className="h-28 rounded-2xl animate-pulse" style={{ background: '#F1F5F9' }} />
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div key={i} className="rounded-2xl px-5 py-4 flex items-center gap-5" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0' }}>
+              <div className="w-10 h-10 rounded-full animate-pulse shrink-0" style={{ background: '#F1F5F9' }} />
+              <div className="flex-1 space-y-2">
+                <div className="h-4 rounded animate-pulse" style={{ background: '#F1F5F9', width: '30%' }} />
+                <div className="h-3 rounded animate-pulse" style={{ background: '#F1F5F9', width: '60%' }} />
+              </div>
+              <div className="flex gap-2 shrink-0">
+                <div className="h-7 w-20 rounded-lg animate-pulse" style={{ background: '#F1F5F9' }} />
+                <div className="h-7 w-16 rounded-lg animate-pulse" style={{ background: '#F1F5F9' }} />
+              </div>
+            </div>
           ))}
         </div>
       ) : profiles.length === 0 ? (
@@ -97,8 +113,9 @@ export default function TalentPoolPage() {
           <p className="text-slate-500 font-medium">No profiles submitted yet</p>
         </div>
       ) : (
-        <div className="space-y-3">
-          {profiles.map((p) => {
+        <>
+        <div className="space-y-3 overflow-y-auto pr-1" style={{ maxHeight: '620px' }}>
+          {paginated.map((p) => {
             const isExpanded = expanded === p._id;
             return (
               <div key={p._id} className="rounded-2xl overflow-hidden transition-all"
@@ -164,7 +181,7 @@ export default function TalentPoolPage() {
                           const res = await fetch(`/api/talent-profiles/${p._id}/resume`, {
                             headers: { Authorization: `Bearer ${token}` },
                           });
-                          if (!res.ok) { alert('Failed to load resume'); return; }
+                          if (!res.ok) { toast.error('Failed to load resume'); return; }
                           const blob = await res.blob();
                           const url = URL.createObjectURL(blob);
                           window.open(url, '_blank');
@@ -188,7 +205,7 @@ export default function TalentPoolPage() {
                     )}
 
                     <button
-                      onClick={() => deleteProfile(p._id)}
+                      onClick={() => setConfirmId(p._id)}
                       disabled={deleting === p._id}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all cursor-pointer disabled:opacity-60 hover:-translate-y-0.5"
                       style={{ background: 'rgba(220,38,38,0.07)', color: '#DC2626', border: '1px solid rgba(220,38,38,0.18)' }}>
@@ -214,7 +231,46 @@ export default function TalentPoolPage() {
             );
           })}
         </div>
+        {!loading && totalPages > 1 && (
+          <div className="flex items-center justify-between px-2 py-3.5 mt-3">
+            <span className="text-xs text-slate-500">
+              {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, profiles.length)} of {profiles.length}
+            </span>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>←</button>
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                let p = i + 1;
+                if (totalPages > 5) {
+                  if (page <= 3) p = i + 1;
+                  else if (page >= totalPages - 2) p = totalPages - 4 + i;
+                  else p = page - 2 + i;
+                }
+                return (
+                  <button key={p} onClick={() => setPage(p)}
+                    className="w-8 h-8 rounded-lg text-xs font-medium cursor-pointer"
+                    style={page === p ? { background: 'linear-gradient(135deg,#9F1239,#BE123C,#E11D48)', color: '#fff', border: 'none' } : { background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>
+                    {p}
+                  </button>
+                );
+              })}
+              <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>→</button>
+            </div>
+          </div>
+        )}
+        </>
       )}
+      <ConfirmModal
+        open={confirmId !== null}
+        title="Confirm Delete"
+        message="This action cannot be undone. Are you sure you want to delete this item?"
+        confirmLabel="Delete"
+        onConfirm={doDelete}
+        onCancel={() => setConfirmId(null)}
+      />
     </div>
   );
 }

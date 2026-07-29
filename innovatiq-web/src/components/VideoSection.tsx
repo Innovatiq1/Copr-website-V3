@@ -5,7 +5,7 @@ import { Play } from 'lucide-react';
 import AnimatedSection from '@/components/AnimatedSection';
 
 interface VideoSectionProps {
-  filterType: 'home' | 'career' | 'services' | 'products';
+  filterType: 'home' | 'career' | 'contact' | 'aboutUs' | 'services' | 'products';
   filterKey?: string;
   heading?: string;
   subheading?: string;
@@ -33,6 +33,8 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
         const found = videos.find(v => {
           if (filterType === 'home') return v.home === true;
           if (filterType === 'career') return v.career === true;
+          if (filterType === 'contact') return v.contact === true;
+          if (filterType === 'aboutUs' && filterKey) return v.aboutUs === true && v.aboutUsTypes?.[filterKey] === true;
           if (filterType === 'services' && filterKey) return v.services === true && v.serviceTypes?.[filterKey] === true;
           if (filterType === 'products' && filterKey) return v.products === true && v.productTypes?.[filterKey] === true;
           return false;
@@ -51,6 +53,8 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   const defaults: Record<string, { heading: string; sub: string }> = {
     home: { heading: 'Our Latest Video', sub: 'Explore our newest insight and success story' },
     career: { heading: 'Life at Innovatiq', sub: 'Explore our culture, people and career opportunities' },
+    contact: { heading: 'Get in Touch', sub: 'See how we work with our clients' },
+    aboutUs: { heading: 'About Innovatiq', sub: 'Learn more about who we are and what drives us' },
     services: { heading: 'Latest Video', sub: 'Watch our latest service insights' },
     products: { heading: 'Product Overview', sub: 'See our product in action' },
   };
@@ -62,7 +66,7 @@ export default function VideoSection({ filterType, filterKey, heading, subheadin
   const accentWord = words[words.length - 1];
 
   return (
-    <section className="relative pt-2 pb-16 md:pt-0 md:pb-24 overflow-hidden" style={{ background: bg }}>
+    <section className="relative py-16 md:py-24 overflow-hidden" style={{ background: bg }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="text-center mb-10 md:mb-14">
 

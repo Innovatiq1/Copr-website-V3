@@ -2,17 +2,24 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { API, authFetch, getToken } from '@/lib/adminApi';
+import { API, authFetch } from '@/lib/adminApi';
+import ConfirmModal from '@/components/admin/ConfirmModal';
 import { Plus, Pencil, Trash2, ExternalLink, Download } from 'lucide-react';
 import { exportToExcel } from '@/lib/exportExcel';
+import { toast } from '@/lib/toast';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Video = any;
 
+const PAGE_SIZE = 5;
+
 export default function VideosPage() {
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [page, setPage] = useState(1);
+  const [confirmId, setConfirmId] = useState<string | null>(null);
+  const totalPages = Math.ceil(videos.length / PAGE_SIZE);
+  const paginated = videos.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const fetchVideos = async () => {
     setLoading(true);
@@ -22,7 +29,7 @@ export default function VideosPage() {
       const list = data?.videos || data?.data || (Array.isArray(data) ? data : []);
       setVideos(list);
     } catch {
-      setError('Failed to load videos');
+      toast.error('Failed to load videos');
     } finally {
       setLoading(false);
     }
@@ -30,8 +37,10 @@ export default function VideosPage() {
 
   useEffect(() => { fetchVideos(); }, []);
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Delete this video?')) return;
+  const doDelete = async () => {
+    if (!confirmId) return;
+    const id = confirmId;
+    setConfirmId(null);
     try {
       const res = await authFetch(`${API}/videos/${id}`, { method: 'DELETE' });
       if (!res.ok) {
@@ -39,17 +48,32 @@ export default function VideosPage() {
         throw new Error(data.message || 'Failed to delete video');
       }
       setVideos((prev) => prev.filter((v) => v._id !== id));
+      toast.success('Deleted successfully');
     } catch (err: unknown) {
-      alert(err instanceof Error ? err.message : 'Failed to delete video');
+      toast.error(err instanceof Error ? err.message : 'Failed to delete video');
     }
   };
 
   const getLocations = (video: Video): string[] => {
     const locs: string[] = [];
     if (video.home) locs.push('Home');
-    if (video.career) locs.push('Career');
-    if (video.products) locs.push('Products');
-    if (video.services) locs.push('Services');
+    if (video.contact) locs.push('Contact');
+    if (video.aboutUsTypes?.whoWeAre) locs.push('Who We Are');
+    if (video.aboutUsTypes?.awards) locs.push('Awards');
+    if (video.productTypes?.tms) locs.push('TMS');
+    if (video.productTypes?.lms) locs.push('LMS');
+    if (video.productTypes?.lmp) locs.push('LMP');
+    if (video.productTypes?.pms) locs.push('PMS');
+    if (video.productTypes?.salesCrm) locs.push('Sales CRM');
+    if (video.productTypes?.aiAts) locs.push('AI ATS');
+    if (video.serviceTypes?.cloud) locs.push('Cloud');
+    if (video.serviceTypes?.cyber) locs.push('Cyber Security');
+    if (video.serviceTypes?.consulting) locs.push('Consulting');
+    if (video.serviceTypes?.digital) locs.push('Digital Transformation');
+    if (video.serviceTypes?.managedIT) locs.push('Managed IT');
+    if (video.serviceTypes?.infrastructure) locs.push('Infrastructure');
+    if (video.serviceTypes?.field) locs.push('Field Services');
+    if (video.serviceTypes?.ai) locs.push('AI Services');
     return locs;
   };
 
@@ -65,7 +89,6 @@ export default function VideosPage() {
             onClick={() => exportToExcel(
               videos.map((v) => ({
                 'Video Name': v.videoName || '',
-                Title: v.title || '',
                 Link: v.videoLink || '',
                 Locations: getLocations(v).join(', '),
               })),
@@ -86,12 +109,6 @@ export default function VideosPage() {
         </div>
       </div>
 
-      {error && (
-        <div className="mb-4 px-4 py-3 rounded-xl text-sm" style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.2)', color: '#DC2626' }}>
-          {error}
-        </div>
-      )}
-
       <div
         className="rounded-2xl overflow-hidden"
         style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
@@ -100,7 +117,7 @@ export default function VideosPage() {
           <table className="w-full">
             <thead>
               <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
-                {['Video Name', 'Title', 'Link', 'Locations', 'Actions'].map((h) => (
+                {['Video Name', 'Link', 'Locations', 'Actions'].map((h) => (
                   <th key={h} className="text-left px-5 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">
                     {h}
                   </th>
@@ -111,7 +128,7 @@ export default function VideosPage() {
               {loading ? (
                 Array.from({ length: 5 }).map((_, i) => (
                   <tr key={i} style={{ borderBottom: '1px solid #F1F5F9' }}>
-                    {Array.from({ length: 5 }).map((__, j) => (
+                    {Array.from({ length: 4 }).map((__, j) => (
                       <td key={j} className="px-5 py-4">
                         <div className="h-4 rounded animate-pulse" style={{ background: '#F1F5F9', width: j === 0 ? '50%' : '30%' }} />
                       </td>
@@ -120,10 +137,10 @@ export default function VideosPage() {
                 ))
               ) : videos.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-5 py-10 text-center text-slate-400">No videos found</td>
+                  <td colSpan={4} className="px-5 py-10 text-center text-slate-400">No videos found</td>
                 </tr>
               ) : (
-                videos.map((video) => (
+                paginated.map((video) => (
                   <tr
                     key={video._id}
                     style={{ borderBottom: '1px solid #F1F5F9' }}
@@ -131,9 +148,6 @@ export default function VideosPage() {
                     onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
                   >
                     <td className="px-5 py-4 text-slate-800 text-sm font-medium">{video.videoName || '-'}</td>
-                    <td className="px-5 py-4 text-slate-500 text-sm max-w-xs">
-                      <div className="truncate">{video.title || '-'}</div>
-                    </td>
                     <td className="px-5 py-4 text-sm">
                       {video.videoLink ? (
                         <a href={video.videoLink} target="_blank" rel="noopener noreferrer"
@@ -164,7 +178,7 @@ export default function VideosPage() {
                           <Pencil size={12} /> Edit
                         </Link>
                         <button
-                          onClick={() => handleDelete(video._id)}
+                          onClick={() => setConfirmId(video._id)}
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer"
                           style={{ background: 'rgba(220,38,38,0.08)', color: '#DC2626', border: '1px solid rgba(220,38,38,0.18)' }}
                         >
@@ -178,7 +192,45 @@ export default function VideosPage() {
             </tbody>
           </table>
         </div>
+        {!loading && totalPages > 1 && (
+          <div className="flex items-center justify-between px-5 py-3.5" style={{ borderTop: '1px solid #E2E8F0', background: '#FAFAFA' }}>
+            <span className="text-xs text-slate-500">
+              {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, videos.length)} of {videos.length}
+            </span>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>←</button>
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                let p = i + 1;
+                if (totalPages > 5) {
+                  if (page <= 3) p = i + 1;
+                  else if (page >= totalPages - 2) p = totalPages - 4 + i;
+                  else p = page - 2 + i;
+                }
+                return (
+                  <button key={p} onClick={() => setPage(p)}
+                    className="w-8 h-8 rounded-lg text-xs font-medium cursor-pointer"
+                    style={page === p ? { background: 'linear-gradient(135deg,#9F1239,#BE123C,#E11D48)', color: '#fff', border: 'none' } : { background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>
+                    {p}
+                  </button>
+                );
+              })}
+              <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages}
+                className="px-2.5 py-1.5 rounded-lg text-xs font-medium disabled:opacity-40 cursor-pointer"
+                style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#64748B' }}>→</button>
+            </div>
+          </div>
+        )}
       </div>
+      <ConfirmModal
+        open={confirmId !== null}
+        title="Confirm Delete"
+        message="This action cannot be undone. Are you sure you want to delete this item?"
+        confirmLabel="Delete"
+        onConfirm={doDelete}
+        onCancel={() => setConfirmId(null)}
+      />
     </div>
   );
 }

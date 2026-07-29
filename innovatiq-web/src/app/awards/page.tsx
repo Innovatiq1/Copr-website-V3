@@ -43,6 +43,7 @@ const jsonLd = {
   ],
 };
 import AnimatedSection from '@/components/AnimatedSection';
+import VideoSection from '@/components/VideoSection';
 import CtaSection from '@/components/home/CtaSection';
 import { getAwardImageUrl } from '@/lib/api';
 import { getAwardsDirect } from '@/lib/server-data';
@@ -192,6 +193,8 @@ export default async function AwardsPage() {
           </div>
         </div>
       </section>
+
+      <VideoSection filterType="aboutUs" filterKey="awards" heading="Awards Highlights" subheading="Watch our journey of recognition and industry excellence." />
 
       {/* Certifications */}
       <section id="certified-excellence" className="relative pt-10 pb-20 overflow-hidden" style={{ background: '#F8FAFC' }}>

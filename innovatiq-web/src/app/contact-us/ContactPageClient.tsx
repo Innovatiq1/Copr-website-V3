@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
 import AnimatedSection from '@/components/AnimatedSection';
+import VideoSection from '@/components/VideoSection';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 
 const offices = [
@@ -335,6 +336,8 @@ export default function ContactPageClient() {
           </div>
         </div>
       </section>
+
+      <VideoSection filterType="contact" heading="Connect with Innovatiq" subheading="See how we partner with businesses to deliver impactful technology solutions." />
 
       {/* Office Locations */}
       <section className="relative py-10 md:py-20 overflow-hidden" style={{ background: '#F8FAFC' }}>

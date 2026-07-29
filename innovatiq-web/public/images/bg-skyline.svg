@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 180" width="100%" height="100%" fill="none" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="skylineGlowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.25" />
+      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.03" />
+    </linearGradient>
+    <linearGradient id="mbsTowerGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.2" />
+      <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.02" />
+    </linearGradient>
+  </defs>
+
+  <!-- Far Left City Buildings (x: 0 to 80) -->
+  <g stroke="rgba(255,230,240,0.4)" stroke-width="1" fill="url(#skylineGlowGrad)">
+    <rect x="0" y="110" width="16" height="70" rx="1" />
+    <rect x="18" y="122" width="12" height="58" rx="1" />
+    <rect x="32" y="98" width="18" height="82" rx="1" />
+    <rect x="52" y="112" width="12" height="68" rx="1" />
+    <rect x="66" y="88" width="20" height="92" rx="1" />
+  </g>
+
+  <!-- Marina Bay Sands — 3 Towers with Detailed Window Mesh (x: 90 to 260) -->
+  <g stroke="rgba(255,235,245,0.6)" stroke-width="1.2" fill="url(#mbsTowerGrad)">
+    <!-- Tower 1 -->
+    <rect x="92" y="45" width="24" height="135" rx="1" />
+    <path d="M92,58 H116 M92,72 H116 M92,86 H116 M92,100 H116 M92,114 H116 M92,128 H116 M92,142 H116 M92,156 H116 M92,170 H116" stroke="rgba(255,220,230,0.3)" stroke-width="0.8" />
+
+    <!-- Tower 2 -->
+    <rect x="124" y="25" width="24" height="155" rx="1" />
+    <path d="M124,38 H148 M124,52 H148 M124,66 H148 M124,80 H148 M124,94 H148 M124,108 H148 M124,122 H148 M124,136 H148 M124,150 H148 M124,164 H148" stroke="rgba(255,220,230,0.3)" stroke-width="0.8" />
+
+    <!-- Tower 3 -->
+    <rect x="156" y="48" width="24" height="132" rx="1" />
+    <path d="M156,60 H180 M156,74 H180 M156,88 H180 M156,102 H180 M156,116 H180 M156,130 H180 M156,144 H180 M156,158 H180 M156,172 H180" stroke="rgba(255,220,230,0.3)" stroke-width="0.8" />
+
+    <!-- SkyPark Boat Roof Platform -->
+    <path d="M78,42 Q136,20 238,18 C262,18 270,30 270,40 L270,48 Q220,34 78,56 Z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,245,250,0.8)" stroke-width="1.5" />
+    <path d="M230,18 L230,26 M245,19 L245,27 M260,22 L260,30" stroke="rgba(255,230,240,0.5)" stroke-width="1" />
+  </g>
+
+  <!-- Mid Skyline Skyscrapers (x: 190 to 300) -->
+  <g stroke="rgba(255,220,230,0.35)" stroke-width="1" fill="url(#skylineGlowGrad)">
+    <rect x="190" y="100" width="16" height="80" rx="1" />
+    <rect x="210" y="85" width="20" height="95" rx="1" />
+    <rect x="234" y="108" width="14" height="72" rx="1" />
+    <rect x="252" y="94" width="18" height="86" rx="1" />
+    <rect x="274" y="112" width="16" height="68" rx="1" />
+  </g>
+
+  <!-- Singapore Flyer Giant Ferris Wheel (x: 290 to 420) -->
+  <g stroke="rgba(255,235,245,0.7)">
+    <!-- Outer Rims -->
+    <circle cx="355" cy="62" r="54" stroke-width="1.8" fill="none" />
+    <circle cx="355" cy="62" r="47" stroke-width="1" stroke-dasharray="3,3" fill="none" />
+    <circle cx="355" cy="62" r="6" fill="white" fill-opacity="0.85" stroke-width="1.2" />
+
+    <!-- 16 Radial Spokes -->
+    <line x1="355" y1="56" x2="355" y2="8" stroke-width="1" />
+    <line x1="355" y1="68" x2="355" y2="116" stroke-width="1" />
+    <line x1="349" y1="62" x2="301" y2="62" stroke-width="1" />
+    <line x1="361" y1="62" x2="409" y2="62" stroke-width="1" />
+
+    <line x1="351" y1="58" x2="317" y2="24" stroke-width="1" />
+    <line x1="359" y1="66" x2="393" y2="100" stroke-width="1" />
+    <line x1="359" y1="58" x2="393" y2="24" stroke-width="1" />
+    <line x1="351" y1="66" x2="317" y2="100" stroke-width="1" />
+
+    <!-- Gondola Capsules -->
+    <rect x="351" y="5" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="351" y="113" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="298" y="59" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="406" y="59" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="314" y="21" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="390" y="97" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="390" y="21" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+    <rect x="314" y="97" width="8" height="6" rx="2" fill="white" fill-opacity="0.9" />
+
+    <!-- Support Legs Frame -->
+    <path d="M325,112 L355,180 L385,112" stroke-width="2.5" fill="none" />
+  </g>
+
+  <!-- Far Right Buildings (x: 410 to 440) -->
+  <g stroke="rgba(255,220,230,0.35)" stroke-width="1" fill="url(#skylineGlowGrad)">
+    <rect x="412" y="108" width="16" height="72" rx="1" />
+    <rect x="430" y="120" width="10" height="60" rx="1" />
+  </g>
+
+  <!-- 100% Full-Width Base Line (x1: 0 to x2: 440) -->
+  <line x1="0" y1="179" x2="440" y2="179" stroke="rgba(255,245,250,0.6)" stroke-width="1.5" />
+</svg>

@@ -19,22 +19,22 @@ const inputStyle: React.CSSProperties = {
 };
 
 const PRODUCT_OPTIONS = [
-  { key: 'tms', label: 'TMS (SkillEra)' },
-  { key: 'lms', label: 'LMS (LearnPro)' },
-  { key: 'lmp', label: 'LMP (Learning Motivational Platform)' },
-  { key: 'pms', label: 'PMS (SecurOn)' },
   { key: 'salesCrm', label: 'Sales CRM' },
-  { key: 'aiAts', label: 'AI ATS' },
+  { key: 'aiAts',    label: 'AI ATS / HRMS' },
+  { key: 'tms',      label: 'SkillEra (TMS)' },
+  { key: 'lms',      label: 'LearnPro (LMS)' },
+  { key: 'pms',      label: 'SecurOn (PMS)' },
+  { key: 'lmp',      label: 'LMP (Learning Motivational Platform)' },
 ];
 const SERVICE_OPTIONS = [
-  { key: 'cloud', label: 'Cloud' },
-  { key: 'cyber', label: 'Cyber Security' },
-  { key: 'consulting', label: 'Consulting' },
-  { key: 'digital', label: 'Digital Transformation' },
-  { key: 'managedIT', label: 'Managed IT' },
-  { key: 'infrastructure', label: 'Infrastructure' },
-  { key: 'field', label: 'Field Services' },
-  { key: 'ai', label: 'AI Services' },
+  { key: 'ai',             label: 'AI Services' },
+  { key: 'cloud',          label: 'Cloud Services' },
+  { key: 'cyber',          label: 'Cyber Security' },
+  { key: 'consulting',     label: 'IT Consulting' },
+  { key: 'digital',        label: 'Digital Transformation' },
+  { key: 'managedIT',      label: 'Managed IT Services' },
+  { key: 'infrastructure', label: 'Advanced Infrastructure' },
+  { key: 'field',          label: 'Field Services' },
 ];
 const ABOUT_OPTIONS = [
   { key: 'whoWeAre', label: 'Who We Are' },

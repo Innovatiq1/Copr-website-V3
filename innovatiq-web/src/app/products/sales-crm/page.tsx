@@ -82,6 +82,7 @@ const jsonLd = {
 };
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
+import VideoSection from '@/components/VideoSection';
 import {
   CheckCircle2,
   ArrowRight,
@@ -663,6 +664,7 @@ export default function SalesCRMPage() {
         </div>
       </section>
 
+      <VideoSection filterType="products" filterKey="salesCrm" sectionClassName="py-16 md:py-24" />
       <CtaSection />
     </>
   );

@@ -82,6 +82,7 @@ const jsonLd = {
 };
 import AnimatedSection from '@/components/AnimatedSection';
 import CtaSection from '@/components/home/CtaSection';
+import VideoSection from '@/components/VideoSection';
 import {
   CheckCircle2,
   ArrowRight,
@@ -737,6 +738,7 @@ export default function AIATSPage() {
         </div>
       </section>
 
+      <VideoSection filterType="products" filterKey="aiAts" sectionClassName="py-16 md:py-24" />
       <CtaSection />
     </>
   );

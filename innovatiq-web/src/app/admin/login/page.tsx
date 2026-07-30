@@ -284,7 +284,7 @@ export default function AdminLoginPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      placeholder="admin@innovatiq.com"
+                      placeholder="Enter your email"
                       style={inp('email')}
                       onFocus={() => setFocused('email')}
                       onBlur={()  => setFocused(null)}

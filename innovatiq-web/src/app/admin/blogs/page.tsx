@@ -166,16 +166,16 @@ export default function BlogsPage() {
                           fontSize: '11px', fontWeight: 800, color: AVATAR_COLORS[idx % AVATAR_COLORS.length],
                         }}>{initials(blog.title)}</div>
                         <div className="min-w-0">
-                          <p className="text-sm font-semibold text-slate-800 truncate" style={{ maxWidth: '260px' }}>{blog.title || '-'}</p>
+                          <p className="text-sm font-semibold text-slate-800">{blog.title || '-'}</p>
                           {blog.shortDescription && (
-                            <p className="text-xs text-slate-500 font-medium truncate mt-0.5" style={{ maxWidth: '260px' }}>{blog.shortDescription}</p>
+                            <p className="text-xs text-slate-500 font-medium mt-0.5">{blog.shortDescription}</p>
                           )}
                         </div>
                       </div>
                     </td>
                     <td className="px-5 py-3.5 text-slate-700 text-sm font-semibold whitespace-nowrap">{blog.author || '-'}</td>
                     <td className="px-5 py-3.5 text-sm">
-                      <div className="flex flex-wrap gap-1" style={{ maxWidth: '140px' }}>
+                      <div className="flex flex-wrap gap-1">
                         {(blog.tags || []).slice(0, 2).map((tag: string, i: number) => (
                           <span key={i} className="px-2 py-0.5 rounded-full text-xs text-slate-700 font-semibold"
                             style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>{tag}</span>

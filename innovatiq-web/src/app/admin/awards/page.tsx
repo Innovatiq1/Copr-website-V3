@@ -158,7 +158,7 @@ export default function AwardsPage() {
                         <div style={{ width: '36px', height: '36px', borderRadius: '11px', flexShrink: 0, background: 'rgba(245,158,11,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                           <Trophy size={16} style={{ color: '#D97706' }} strokeWidth={1.8} />
                         </div>
-                        <p className="text-sm font-semibold text-slate-800 truncate" style={{ maxWidth: '200px' }}>{award.title || '—'}</p>
+                        <p className="text-sm font-semibold text-slate-800">{award.title || '—'}</p>
                       </div>
                     </td>
                     <td className="px-5 py-3.5">
@@ -169,8 +169,8 @@ export default function AwardsPage() {
                         </span>
                       ) : <span className="text-slate-400 text-xs">—</span>}
                     </td>
-                    <td className="px-5 py-3.5 text-slate-700 text-sm font-semibold" style={{ maxWidth: '280px' }}>
-                      <p className="truncate">{award.shortDescription || '—'}</p>
+                    <td className="px-5 py-3.5 text-slate-700 text-sm font-semibold">
+                      <p>{award.shortDescription || '—'}</p>
                     </td>
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-2">

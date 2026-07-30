@@ -168,12 +168,12 @@ export default function EnquiriesPage() {
                       </td>
                       <td className="px-5 py-3.5">
                         <div className="space-y-1">
-                          <span className="flex items-center gap-1.5 text-xs text-slate-600">
+                          <span className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                             <Mail size={10} className="text-slate-400 shrink-0" />
                             <span>{enquiry.email || '—'}</span>
                           </span>
                           {(enquiry.phone || enquiry.phoneNumber) && (
-                            <span className="flex items-center gap-1.5 text-xs text-slate-500">
+                            <span className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
                               <Phone size={10} className="text-slate-400 shrink-0" />
                               {enquiry.phone || enquiry.phoneNumber}
                             </span>
@@ -182,7 +182,7 @@ export default function EnquiriesPage() {
                       </td>
                       <td className="px-5 py-3.5">
                         {(enquiry.location || enquiry.country) ? (
-                          <span className="inline-flex items-center gap-1.5 text-xs text-slate-600">
+                          <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                             <MapPin size={10} className="text-slate-400 shrink-0" />
                             {enquiry.location || enquiry.country}
                           </span>
@@ -200,7 +200,7 @@ export default function EnquiriesPage() {
                           </p>
                         )}
                       </td>
-                      <td className="px-5 py-3.5 text-xs text-slate-500 whitespace-nowrap">
+                      <td className="px-5 py-3.5 text-xs text-slate-500 font-semibold whitespace-nowrap">
                         {enquiry.createdAt ? new Date(enquiry.createdAt).toLocaleDateString('en-GB') : '—'}
                       </td>
                       <td className="px-5 py-3.5">
@@ -249,8 +249,8 @@ export default function EnquiriesPage() {
                   <MessageSquare size={18} style={{ color: '#BE123C' }} />
                 </div>
                 <div>
-                  <h2 className="text-base font-bold text-slate-900">Enquiry Details</h2>
-                  <p className="text-xs text-slate-400 mt-0.5">{selected.createdAt ? new Date(selected.createdAt).toLocaleString() : ''}</p>
+                  <h2 className="text-base font-bold" style={{ color: '#BE123C' }}>Enquiry Details</h2>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">{selected.createdAt ? new Date(selected.createdAt).toLocaleString() : ''}</p>
                 </div>
               </div>
               <button onClick={() => setSelected(null)}
@@ -289,11 +289,6 @@ export default function EnquiriesPage() {
                 )}
             </div>
 
-            <button onClick={() => setSelected(null)}
-              className="mt-5 w-full py-2.5 rounded-xl text-sm font-semibold text-slate-600 transition-colors cursor-pointer"
-              style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>
-              Close
-            </button>
           </div>
         </div>
       )}

@@ -179,14 +179,14 @@ export default function CareersPage() {
                         </div>
                       </td>
                       <td className="px-5 py-3.5">
-                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
-                          <MapPin size={11} className="text-slate-500 shrink-0" />
+                        <span className="inline-flex items-center gap-1.5 text-sm text-slate-700 font-semibold">
+                          <MapPin size={13} className="text-slate-500 shrink-0" />
                           {career.location || '—'}
                         </span>
                       </td>
                       <td className="px-5 py-3.5">
-                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
-                          <Clock size={11} className="text-slate-500 shrink-0" />
+                        <span className="inline-flex items-center gap-1.5 text-sm text-slate-700 font-semibold">
+                          <Clock size={13} className="text-slate-500 shrink-0" />
                           {career.experience || career.experienceLevel || '—'}
                         </span>
                       </td>

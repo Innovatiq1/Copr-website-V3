@@ -188,27 +188,27 @@ export default function TalentPoolPage() {
                       <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
                         <p className="text-sm font-bold text-slate-900">{p.fullName || '-'}</p>
                         {p.createdAt && (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-xs font-semibold text-slate-700"
-                            style={{ background: '#F1F5F9', border: '1px solid #CBD5E1' }}>
-                            <Calendar size={11} className="text-slate-500 shrink-0" />
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold"
+                            style={{ background: 'rgba(99,102,241,0.08)', color: '#4338CA', border: '1px solid rgba(99,102,241,0.2)' }}>
+                            <Calendar size={11} className="shrink-0" />
                             {new Date(p.createdAt).toLocaleDateString('en-GB')}
                           </span>
                         )}
                       </div>
                       <div className="flex flex-wrap items-center gap-3">
-                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
+                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                           <Mail size={11} className="text-slate-500 shrink-0" />
                           {p.email || '-'}
                         </span>
                         <span className="text-slate-300 text-xs hidden sm:inline">|</span>
-                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
+                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                           <Phone size={11} className="text-slate-500 shrink-0" />
                           {p.phone || '-'}
                         </span>
                         {p.experience && (
                           <>
                             <span className="text-slate-300 text-xs hidden sm:inline">|</span>
-                            <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
+                            <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                               <Briefcase size={11} className="text-slate-500 shrink-0" />
                               {formatExp(p.experience)}
                             </span>
@@ -217,7 +217,7 @@ export default function TalentPoolPage() {
                         {p.skills && (
                           <>
                             <span className="text-slate-300 text-xs hidden sm:inline">|</span>
-                            <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
+                            <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
                               <Cpu size={11} className="text-slate-500 shrink-0" />
                               <span>{p.skills}</span>
                             </span>

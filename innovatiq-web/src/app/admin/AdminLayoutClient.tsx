@@ -518,7 +518,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                       }}>A</div>
                       <div style={{ minWidth: 0 }}>
                         <p style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Admin</p>
-                        <p style={{ fontSize: '11.5px', color: '#64748B', marginTop: '1px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <p style={{ fontSize: '11.5px', fontWeight: 600, color: '#64748B', marginTop: '1px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {adminEmail || 'admin@innovatiq.com'}
                         </p>
                       </div>

@@ -235,7 +235,7 @@ export default function AdminLoginPage() {
                   <h1 style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', lineHeight: 1.2, margin: 0 }}>
                     Welcome back
                   </h1>
-                  <p style={{ fontSize: '13.5px', color: '#64748B', marginTop: '3px' }}>
+                  <p style={{ fontSize: '13.5px', fontWeight: 600, color: '#64748B', marginTop: '3px' }}>
                     Sign in to your admin account
                   </p>
                 </div>
@@ -362,8 +362,8 @@ export default function AdminLoginPage() {
                 borderTop: '1px solid #F1F5F9',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
               }}>
-                <Shield size={11} color="#CBD5E1" />
-                <p style={{ color: '#94A3B8', fontSize: '11.5px', textAlign: 'center' }}>
+                <Shield size={13} color="#94A3B8" />
+                <p style={{ color: '#64748B', fontSize: '11.5px', fontWeight: 600, textAlign: 'center' }}>
                   Authorized personnel only &middot; Innovatiq Technologies &copy; {new Date().getFullYear()}
                 </p>
               </div>

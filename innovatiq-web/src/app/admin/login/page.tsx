@@ -129,7 +129,7 @@ export default function AdminLoginPage() {
               </div>
               <div>
                 <p className="text-white font-bold text-base leading-none">Innovatiq</p>
-                <p className="text-white/80 text-xs mt-0.5 font-semibold">Technologies</p>
+                <p className="text-white/80 text-xs mt-0.5 font-medium">Technologies</p>
               </div>
             </div>
 

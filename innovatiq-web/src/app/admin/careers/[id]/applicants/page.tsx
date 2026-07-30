@@ -228,16 +228,16 @@ export default function ApplicantsPage() {
 
                         {/* Update Status */}
                         <td className="px-5 py-4 whitespace-nowrap">
-                          <div className="relative inline-block w-36">
+                          <div className="relative inline-block w-28">
                             <select
                               value={applicant.status ? applicant.status.charAt(0).toUpperCase() + applicant.status.slice(1) : 'Pending'}
                               disabled={updating === applicant._id}
                               onChange={(e) => updateStatus(applicant._id, e.target.value)}
-                              className="w-full appearance-none pl-3 pr-8 py-1.5 rounded-lg text-xs font-bold text-slate-800 outline-none cursor-pointer disabled:opacity-60 transition-all hover:border-slate-400"
+                              className="w-full appearance-none pl-2.5 pr-6 py-1 rounded-lg text-xs font-semibold text-slate-800 outline-none cursor-pointer disabled:opacity-60 transition-all hover:border-slate-400"
                               style={{ background: '#F8FAFC', border: '1.5px solid #CBD5E1' }}>
                               {STATUS_OPTIONS.map((st) => <option key={st} value={st}>{st}</option>)}
                             </select>
-                            <ChevronDown size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
+                            <ChevronDown size={12} className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" />
                           </div>
                         </td>
 

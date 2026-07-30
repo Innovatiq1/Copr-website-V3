@@ -315,7 +315,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                     style={{
                       color: idx === arr.length - 1 ? '#9F1239' : '#0F172A',
                       fontSize: '13.5px',
-                      fontWeight: idx === arr.length - 1 ? 700 : 800,
+                      fontWeight: idx === arr.length - 1 ? 500 : 600,
                       padding: idx === arr.length - 1 ? '4px 12px' : '0',
                       borderRadius: idx === arr.length - 1 ? '8px' : '0',
                       background: idx === arr.length - 1 ? 'rgba(159,18,57,0.08)' : 'transparent',
@@ -334,7 +334,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                   {idx > 0 && <ChevronRight size={12} strokeWidth={2.5} style={{ color: '#64748B' }} />}
                   <span style={{
                     color: idx === arr.length - 1 ? '#9F1239' : '#0F172A',
-                    fontWeight: 700,
+                    fontWeight: 600,
                     fontSize: '14px',
                   }} className="truncate">
                     {crumb.label}

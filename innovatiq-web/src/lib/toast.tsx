@@ -101,7 +101,7 @@ function ToastCard({ item }: { item: ToastItem }) {
           <p style={{ margin: '0 0 3px', color: '#0F172A', fontSize: '14px', fontWeight: 700, lineHeight: 1.2 }}>
             {c.label}
           </p>
-          <p style={{ margin: 0, color: '#64748B', fontSize: '13.5px', fontWeight: 500, lineHeight: 1.5 }}>
+          <p style={{ margin: 0, color: '#64748B', fontSize: '13.5px', fontWeight: 600, lineHeight: 1.5 }}>
             {item.message}
           </p>
         </div>

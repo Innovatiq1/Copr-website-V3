@@ -108,7 +108,7 @@ export default function ApplicantsPage() {
                 'Portfolio Link': a.portfolioLink || '',
                 'Resume URL': a.resume || '',
                 Status: a.status || 'pending',
-                'Cover Letter': a.coverLetter || '',
+                'Personal Statement': a.coverLetter || '',
                 'Applied Date': a.createdAt ? new Date(a.createdAt).toLocaleDateString() : '',
               })),
               'applicants'
@@ -241,7 +241,7 @@ export default function ApplicantsPage() {
                           </div>
                         </td>
 
-                        {/* Action / Cover Letter Toggle */}
+                        {/* Action / Personal Statement Toggle */}
                         <td className="px-5 py-4 whitespace-nowrap text-right">
                           {applicant.coverLetter ? (
                             <button
@@ -253,7 +253,7 @@ export default function ApplicantsPage() {
                                 color: '#334155'
                               }}>
                               {isExpanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                              Cover Letter
+                              Personal Statement
                             </button>
                           ) : (
                             <span className="text-xs font-semibold text-slate-400">—</span>
@@ -267,7 +267,7 @@ export default function ApplicantsPage() {
                           <td colSpan={8} className="px-6 py-4">
                             <div className="space-y-2 p-4 rounded-xl" style={{ background: '#FFFFFF', border: '1px solid #CBD5E1', boxShadow: '0 2px 8px rgba(0,0,0,0.03)' }}>
                               <p className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                                Cover Letter / Note — <span className="text-rose-700 font-bold">{applicant.name}</span>
+                                Personal Statement — <span className="text-rose-700 font-bold">{applicant.name}</span>
                               </p>
                               <p className="text-sm text-slate-800 leading-relaxed font-medium pt-1 whitespace-pre-wrap">
                                 {applicant.coverLetter}

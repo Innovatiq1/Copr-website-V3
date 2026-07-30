@@ -129,7 +129,7 @@ export default function AdminLoginPage() {
               </div>
               <div>
                 <p className="text-white font-bold text-base leading-none">Innovatiq</p>
-                <p className="text-white/80 text-xs mt-0.5">Technologies</p>
+                <p className="text-white/80 text-xs mt-0.5 font-semibold">Technologies</p>
               </div>
             </div>
 
@@ -235,7 +235,7 @@ export default function AdminLoginPage() {
                   <h1 style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', lineHeight: 1.2, margin: 0 }}>
                     Welcome back
                   </h1>
-                  <p style={{ fontSize: '13.5px', fontWeight: 600, color: '#64748B', marginTop: '3px' }}>
+                  <p style={{ fontSize: '13.5px', fontWeight: 500, color: '#64748B', marginTop: '3px' }}>
                     Sign in to your admin account
                   </p>
                 </div>

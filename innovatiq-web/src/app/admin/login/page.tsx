@@ -2,46 +2,45 @@
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { AnimatePresence, motion } from 'framer-motion';
 import { API } from '@/lib/adminApi';
-import { Eye, EyeOff, Lock, Mail, FileText, Users, Briefcase, BarChart2 } from 'lucide-react';
+import {
+  Eye, EyeOff, Lock, Mail,
+  FileText, Users, Briefcase, BarChart2,
+  Shield, XCircle,
+} from 'lucide-react';
 
 const FEATURES = [
-  { icon: FileText, label: 'Manage Blogs & Videos' },
-  { icon: Users, label: 'Track Enquiries & Talent' },
-  { icon: Briefcase, label: 'Control Careers & Awards' },
-  { icon: BarChart2, label: 'Export Reports to Excel' },
+  { icon: FileText,  label: 'Manage Blogs & Videos'     },
+  { icon: Users,     label: 'Track Enquiries & Talent'   },
+  { icon: Briefcase, label: 'Control Careers & Awards'   },
+  { icon: BarChart2, label: 'Export Reports to Excel'    },
 ];
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
+  const [email,    setEmail]    = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [error,    setError]    = useState('');
+  const [loading,  setLoading]  = useState(false);
+  const [focused,  setFocused]  = useState<string | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
     try {
-      const res = await fetch(`${API}/admin/login`, {
-        method: 'POST',
+      const res  = await fetch(`${API}/admin/login`, {
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body:    JSON.stringify({ email, password }),
       });
       const data = await res.json();
-      if (!res.ok) {
-        setError(data?.message || 'Invalid credentials. Please try again.');
-        return;
-      }
+      if (!res.ok) { setError(data?.message || 'Invalid credentials. Please try again.'); return; }
       const token = data.token || data.accessToken || data.data?.token;
-      if (token) {
-        localStorage.setItem('admin_token', token);
-        router.replace('/admin/dashboard');
-      } else {
-        setError('Login failed: no token received from server.');
-      }
+      if (token) { localStorage.setItem('admin_token', token); router.replace('/admin/dashboard'); }
+      else setError('Login failed: no token received from server.');
     } catch {
       setError('Cannot connect to server. Please check if the backend is running.');
     } finally {
@@ -49,267 +48,329 @@ export default function AdminLoginPage() {
     }
   };
 
-  const inputBase: React.CSSProperties = {
-    background: '#F8FAFC',
-    border: '1.5px solid #E2E8F0',
-    color: '#0F172A',
-    borderRadius: '12px',
-    padding: '11px 14px',
-    width: '100%',
-    fontSize: '14px',
-    outline: 'none',
-    transition: 'all 0.2s',
-  };
+  const inp = (field: string): React.CSSProperties => ({
+    background:   focused === field ? '#FFFFFF' : '#F8FAFC',
+    border:       `1.5px solid ${focused === field ? '#BE123C' : '#E2E8F0'}`,
+    boxShadow:    focused === field
+      ? '0 0 0 4px rgba(190,18,60,0.09), 0 1px 3px rgba(0,0,0,0.04)'
+      : '0 1px 2px rgba(0,0,0,0.03)',
+    color:        '#0F172A',
+    borderRadius: '14px',
+    padding:      '12px 16px 12px 44px',
+    width:        '100%',
+    fontSize:     '14px',
+    outline:      'none',
+    transition:   'all 0.18s ease',
+  });
 
   return (
-    <div className="min-h-screen flex w-full" style={{ background: '#F1F5F9' }}>
+    <>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-      {/* ── Left Brand Panel (Rose Section) ── */}
-      <div
-        className="hidden lg:flex flex-col justify-between w-[440px] shrink-0 p-10 relative overflow-hidden select-none"
-        style={{
-          background: 'linear-gradient(180deg, #580820 0%, #7A0E2E 35%, #A80E38 70%, #CC1244 100%)',
-        }}
-      >
-        {/* Layer 1: Ambient Top-Right Radial Glow */}
+        .sb {
+          background: linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%);
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .sb:hover:not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 36px rgba(190,18,60,0.38) !important;
+        }
+        .sb:active:not(:disabled) { transform: translateY(0); }
+        .sb:disabled { opacity: 0.65; cursor: not-allowed; }
+
+        input::placeholder { color: #94a3b8; }
+      `}</style>
+
+      <div style={{ minHeight: '100vh', display: 'flex', width: '100%', background: '#EDF1F7' }}>
+
+        {/* ════════════════════════════════════
+            LEFT — Brand Panel
+        ════════════════════════════════════ */}
         <div
-          className="absolute top-0 right-0 w-[350px] h-[350px] pointer-events-none z-0"
-          style={{
-            background: 'radial-gradient(circle at top right, rgba(255,255,255,0.08) 0%, transparent 70%)',
-          }}
-        />
+          className="hidden lg:flex flex-col justify-between w-[440px] shrink-0 p-10 relative overflow-hidden select-none"
+          style={{ background: 'linear-gradient(180deg, #3D0712 0%, #6B0C27 30%, #9C1235 65%, #C81242 100%)' }}
+        >
+          {/* Deep centre-left warmth */}
+          <div className="absolute inset-0 pointer-events-none z-0"
+            style={{ background: 'radial-gradient(ellipse 80% 60% at 20% 50%, rgba(180,12,52,0.45) 0%, transparent 70%)' }} />
 
-        {/* Layer 2: Top-Right Circular Arcs & Dots Pattern */}
-        <div
-          className="absolute top-0 right-0 w-[380px] h-[380px] pointer-events-none z-0 opacity-80"
-          style={{
-            backgroundImage: "url('/images/bg-pattern-circles.svg')",
-            backgroundSize: 'contain',
-            backgroundPosition: 'top right',
-            backgroundRepeat: 'no-repeat',
-            mixBlendMode: 'overlay',
-          }}
-        />
+          {/* Top-right ambient glow */}
+          <div className="absolute top-0 right-0 w-[340px] h-[340px] pointer-events-none z-0"
+            style={{ background: 'radial-gradient(circle at top right, rgba(255,255,255,0.10) 0%, transparent 65%)' }} />
 
-        {/* Layer 3: Dot Matrix Pattern Grid */}
-        <div
-          className="absolute inset-0 pointer-events-none z-0 opacity-50"
-          style={{
-            backgroundImage: "url('/images/bg-dots.svg')",
-            backgroundRepeat: 'repeat',
-            mixBlendMode: 'overlay',
-          }}
-        />
+          {/* Circular arcs — top-right */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] pointer-events-none z-0"
+            style={{
+              backgroundImage: "url('/images/bg-pattern-circles.svg')",
+              backgroundSize: 'contain', backgroundPosition: 'top right', backgroundRepeat: 'no-repeat',
+              opacity: 0.85, mixBlendMode: 'overlay',
+            }} />
 
-        {/* Bottom Crimson Accent Glow */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-[70px] pointer-events-none z-0"
-          style={{
-            background: 'linear-gradient(0deg, rgba(212, 20, 69, 0.45) 0%, transparent 100%)',
-          }}
-        />
+          {/* Dot matrix — full panel */}
+          <div className="absolute inset-0 pointer-events-none z-0"
+            style={{ backgroundImage: "url('/images/bg-dots.svg')", backgroundRepeat: 'repeat', opacity: 0.55, mixBlendMode: 'overlay' }} />
 
-        {/* Top — Header Logo & Heading */}
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 mb-8">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-              style={{
-                background: 'rgba(255,255,255,0.15)',
-                border: '1px solid rgba(255,255,255,0.25)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              }}
-            >
-              <img src="/logo/logo.png" alt="Innovatiq logo" className="w-6 h-6 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+          {/* Bottom crimson bloom */}
+          <div className="absolute bottom-0 left-0 right-0 pointer-events-none z-0"
+            style={{ height: '180px', background: 'linear-gradient(0deg, rgba(180,10,50,0.75) 0%, transparent 100%)' }} />
+
+          {/* Singapore Skyline */}
+          <img src="/images/bg-skyline.png" alt="Singapore skyline silhouette"
+            className="absolute bottom-0 left-0 pointer-events-none select-none z-0"
+            style={{ width: '100%', height: 'auto', mixBlendMode: 'screen', opacity: 0.90 }} />
+
+          {/* Top — Logo & Heading */}
+          <div className="relative z-10">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)', boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}>
+                <img src="/logo/logo.png" alt="Innovatiq logo" className="w-6 h-6 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
+              </div>
+              <div>
+                <p className="text-white font-bold text-base leading-none">Innovatiq</p>
+                <p className="text-white/80 text-xs mt-0.5">Technologies</p>
+              </div>
             </div>
-            <div>
-              <p className="text-white font-bold text-base leading-none">Innovatiq</p>
-              <p className="text-white/80 text-xs mt-0.5">Technologies</p>
+
+            <h1 className="text-white text-3xl font-bold leading-snug mb-3">
+              Admin<br />Control Panel
+            </h1>
+
+            <div className="w-10 h-1 rounded-full mb-4"
+              style={{ background: '#F43F7E', boxShadow: '0 0 10px rgba(244,63,126,0.7)' }} />
+
+            <p className="text-white/90 text-sm leading-relaxed max-w-xs mb-8">
+              Manage your website content, enquiries, careers, awards, blogs and more from one place.
+            </p>
+
+            <div className="space-y-4 mb-6">
+              {FEATURES.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-3.5">
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(255,255,255,0.13)', border: '1.5px solid rgba(255,255,255,0.28)', backdropFilter: 'blur(4px)', boxShadow: '0 4px 14px rgba(0,0,0,0.18)' }}>
+                    <Icon size={16} color="white" />
+                  </div>
+                  <span className="text-white text-sm font-medium tracking-wide">{label}</span>
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          <h1 className="text-white text-3xl font-bold leading-snug mb-3">
-            Admin<br />Control Panel
-          </h1>
+        {/* ════════════════════════════════════
+            RIGHT — Form Panel
+        ════════════════════════════════════ */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 16px', position: 'relative', overflow: 'hidden' }}>
 
-          {/* Accent Line */}
-          <div
-            className="w-10 h-1 rounded-full mb-4"
-            style={{ background: '#D41445', boxShadow: '0 0 8px rgba(212,20,69,0.6)' }}
+          {/* Rose bleed — left edge, creates continuity with left panel */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            background: 'linear-gradient(90deg, rgba(160,14,50,0.12) 0%, rgba(160,14,50,0.04) 25%, transparent 55%)',
+          }} />
+
+          {/* Soft top-right cool tint */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            background: 'radial-gradient(ellipse 70% 50% at 100% 0%, rgba(220,220,235,0.6) 0%, transparent 70%)',
+          }} />
+
+          {/* Merlion — bottom-right watermark, facing left — hidden on mobile */}
+          <img
+            src="/images/singapore-merlion.png"
+            alt=""
+            aria-hidden
+            className="absolute pointer-events-none select-none hidden lg:block"
+            style={{
+              bottom: '-10px',
+              right: '-10px',
+              width: '360px',
+              height: 'auto',
+              maxHeight: '68vh',
+              objectFit: 'contain',
+              mixBlendMode: 'multiply',
+              opacity: 0.22,
+              transform: 'scaleX(-1)',
+            }}
           />
 
-          <p className="text-white/90 text-sm leading-relaxed max-w-xs mb-8">
-            Manage your website content, enquiries, careers, awards, blogs and more from one place.
-          </p>
+          <div style={{ width: '100%', maxWidth: '420px', position: 'relative', zIndex: 10 }}>
 
-          {/* Middle — Feature List */}
-          <div className="space-y-4 mb-6">
-            {FEATURES.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3.5">
-                <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+            {/* Mobile logo */}
+            <div className="flex lg:hidden items-center justify-center gap-3" style={{ marginBottom: '28px' }}>
+              <div style={{
+                width: '42px', height: '42px', borderRadius: '12px',
+                background: 'linear-gradient(135deg,#9F1239,#E11D48)',
+                boxShadow: '0 4px 16px rgba(190,18,60,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <img src="/logo/logo.png" alt="Innovatiq" style={{ width: '24px', height: '24px', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+              </div>
+              <div>
+                <p style={{ fontWeight: 700, fontSize: '15px', color: '#0F172A', lineHeight: 1 }}>Innovatiq</p>
+                <p style={{ color: '#64748B', fontSize: '12px', marginTop: '4px' }}>Technologies</p>
+              </div>
+            </div>
+
+            {/* ── CARD ── */}
+            <div
+              style={{
+                background:    'rgba(255,255,255,0.97)',
+                backdropFilter:'blur(24px) saturate(1.15)',
+                border:        '1px solid rgba(226,232,240,0.85)',
+                boxShadow:     '0 4px 6px rgba(0,0,0,0.04), 0 24px 64px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,1)',
+                borderRadius:  '28px',
+                padding:       '40px',
+              }}
+            >
+              {/* Card header */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '28px' }}>
+                <div style={{
+                  width: '48px', height: '48px', borderRadius: '16px', flexShrink: 0,
+                  background: 'linear-gradient(135deg, rgba(159,18,57,0.07) 0%, rgba(225,29,72,0.13) 100%)',
+                  border: '1.5px solid rgba(190,18,60,0.18)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  <Lock size={20} color="#BE123C" />
+                </div>
+                <div>
+                  <h1 style={{ fontSize: '22px', fontWeight: 800, color: '#0F172A', lineHeight: 1.2, margin: 0 }}>
+                    Welcome back
+                  </h1>
+                  <p style={{ fontSize: '13.5px', color: '#64748B', marginTop: '3px' }}>
+                    Sign in to your admin account
+                  </p>
+                </div>
+              </div>
+
+              {/* Error message */}
+              <AnimatePresence mode="wait">
+                {error && (
+                  <motion.div
+                    key="err"
+                    initial={{ opacity: 0, y: -10, height: 0  }}
+                    animate={{ opacity: 1, y: 0,   height: 'auto' }}
+                    exit={{    opacity: 0, y: -10, height: 0  }}
+                    transition={{ duration: 0.22 }}
+                    style={{ overflow: 'hidden', marginBottom: '20px' }}
+                  >
+                    <div style={{
+                      display: 'flex', alignItems: 'flex-start', gap: '10px',
+                      background: 'rgba(220,38,38,0.05)',
+                      border: '1px solid rgba(220,38,38,0.20)',
+                      borderRadius: '12px', padding: '12px 14px',
+                    }}>
+                      <XCircle size={16} color="#DC2626" style={{ flexShrink: 0, marginTop: '1px' }} />
+                      <span style={{ fontSize: '13.5px', color: '#B91C1C', lineHeight: 1.5 }}>{error}</span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Form */}
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+
+                {/* Email */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '7px', letterSpacing: '0.01em' }}>
+                    Email Address
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <Mail size={15} style={{
+                      position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)',
+                      color: focused === 'email' ? '#BE123C' : '#94A3B8',
+                      pointerEvents: 'none', transition: 'color 0.15s',
+                    }} />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="admin@innovatiq.com"
+                      style={inp('email')}
+                      onFocus={() => setFocused('email')}
+                      onBlur={()  => setFocused(null)}
+                    />
+                  </div>
+                </div>
+
+                {/* Password */}
+                <div>
+                  <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '7px', letterSpacing: '0.01em' }}>
+                    Password
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <Lock size={15} style={{
+                      position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)',
+                      color: focused === 'password' ? '#BE123C' : '#94A3B8',
+                      pointerEvents: 'none', transition: 'color 0.15s',
+                    }} />
+                    <input
+                      type={showPass ? 'text' : 'password'}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      placeholder="••••••••••"
+                      style={{ ...inp('password'), paddingRight: '46px' }}
+                      onFocus={() => setFocused('password')}
+                      onBlur={()  => setFocused(null)}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPass(!showPass)}
+                      style={{
+                        position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)',
+                        color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer',
+                        padding: 0, display: 'flex', alignItems: 'center',
+                      }}
+                    >
+                      {showPass ? <EyeOff size={15} /> : <Eye size={15} />}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="sb"
                   style={{
-                    background: 'rgba(255,255,255,0.12)',
-                    border: '1.5px solid rgba(255,255,255,0.25)',
-                    backdropFilter: 'blur(4px)',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
+                    width: '100%', padding: '14px 24px',
+                    borderRadius: '14px', border: 'none',
+                    color: '#FFFFFF', fontSize: '15px', fontWeight: 700,
+                    boxShadow: '0 6px 24px rgba(190,18,60,0.30)',
+                    marginTop: '4px', letterSpacing: '0.02em',
                   }}
                 >
-                  <Icon size={16} color="white" />
-                </div>
-                <span className="text-white text-sm font-medium tracking-wide">{label}</span>
+                  {loading ? (
+                    <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '9px' }}>
+                      <span style={{
+                        width: '16px', height: '16px', borderRadius: '50%',
+                        border: '2.5px solid rgba(255,255,255,0.3)',
+                        borderTopColor: '#ffffff',
+                        animation: 'spin 0.65s linear infinite',
+                        display: 'inline-block',
+                      }} />
+                      Signing in…
+                    </span>
+                  ) : 'Sign In'}
+                </button>
+              </form>
+
+              {/* Footer */}
+              <div style={{
+                marginTop: '24px', paddingTop: '20px',
+                borderTop: '1px solid #F1F5F9',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+              }}>
+                <Shield size={11} color="#CBD5E1" />
+                <p style={{ color: '#94A3B8', fontSize: '11.5px', textAlign: 'center' }}>
+                  Authorized personnel only &middot; Innovatiq Technologies &copy; {new Date().getFullYear()}
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom — Singapore Skyline Image */}
-        <img
-          src="/images/bg-skyline.png"
-          alt="Singapore skyline silhouette"
-          className="absolute bottom-0 left-0 pointer-events-none select-none"
-          style={{
-            width: '100%',
-            height: 'auto',
-            mixBlendMode: 'screen',
-            opacity: 0.82,
-          }}
-        />
-      </div>
-
-      {/* ── Right Form Section (Original Card UI) ── */}
-      <div className="flex-1 flex items-center justify-center px-4 py-10 relative overflow-hidden">
-
-        {/* Abstract: same circles pattern used on left panel — top-right */}
-        <div className="absolute top-0 right-0 w-[340px] h-[340px] pointer-events-none select-none" style={{
-          backgroundImage: "url('/images/bg-pattern-circles.svg')",
-          backgroundSize: 'contain',
-          backgroundPosition: 'top right',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.18,
-        }} />
-
-        {/* Abstract: same circles pattern — bottom-left, flipped */}
-        <div className="absolute bottom-0 left-0 w-[240px] h-[240px] pointer-events-none select-none" style={{
-          backgroundImage: "url('/images/bg-pattern-circles.svg')",
-          backgroundSize: 'contain',
-          backgroundPosition: 'bottom left',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.1,
-          transform: 'rotate(180deg)',
-        }} />
-
-        {/* Abstract: dot grid */}
-        <div className="absolute inset-0 pointer-events-none select-none" style={{
-          backgroundImage: 'radial-gradient(circle, rgba(159,18,57,0.22) 1px, transparent 1px)',
-          backgroundSize: '26px 26px',
-        }} />
-        <div className="w-full max-w-md relative z-10">
-
-          {/* Mobile logo */}
-          <div className="flex lg:hidden items-center justify-center gap-3 mb-8">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center"
-              style={{ background: 'linear-gradient(135deg,#9F1239,#E11D48)', boxShadow: '0 4px 16px rgba(190,18,60,0.3)' }}
-            >
-              <img src="/logo/logo.png" alt="Innovatiq logo" className="w-6 h-6 object-contain" style={{ filter: 'brightness(0) invert(1)' }} />
-            </div>
-            <div>
-              <p className="text-slate-900 font-bold text-base leading-none">Innovatiq</p>
-              <p className="text-slate-500 text-xs mt-0.5 font-medium">Technologies</p>
-            </div>
-          </div>
-
-          {/* Card */}
-          <div
-            className="rounded-2xl p-8"
-            style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 8px 40px rgba(0,0,0,0.08)' }}
-          >
-            <div className="mb-7">
-              <h1 className="text-2xl font-bold text-slate-900 mb-1">Welcome back</h1>
-              <p className="text-slate-500 text-sm">Sign in to your admin account to continue.</p>
-            </div>
-
-            {error && (
-              <div
-                className="flex items-start gap-3 mb-5 px-4 py-3.5 rounded-xl text-sm"
-                style={{ background: 'rgba(220,38,38,0.06)', border: '1px solid rgba(220,38,38,0.18)' }}
-              >
-                <div
-                  className="w-4 h-4 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                  style={{ background: 'rgba(220,38,38,0.1)' }}
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
-                </div>
-                <span className="text-red-600">{error}</span>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-                <div className="relative">
-                  <Mail size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    placeholder="Enter your email address"
-                    style={{ ...inputBase, paddingLeft: '38px' }}
-                    onFocus={(e) => { e.currentTarget.style.borderColor = '#BE123C'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(190,18,60,0.1)'; }}
-                    onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Password</label>
-                <div className="relative">
-                  <Lock size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
-                  <input
-                    type={showPass ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    placeholder="••••••••"
-                    style={{ ...inputBase, paddingLeft: '38px', paddingRight: '44px' }}
-                    onFocus={(e) => { e.currentTarget.style.borderColor = '#BE123C'; e.currentTarget.style.boxShadow = '0 0 0 3px rgba(190,18,60,0.1)'; }}
-                    onBlur={(e) => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.boxShadow = 'none'; }}
-                  />
-                  <button
-                    type="button"
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
-                    onClick={() => setShowPass(!showPass)}
-                  >
-                    {showPass ? <EyeOff size={15} /> : <Eye size={15} />}
-                  </button>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer hover:-translate-y-0.5"
-                style={{ background: 'linear-gradient(135deg,#9F1239 0%,#BE123C 50%,#E11D48 100%)', boxShadow: '0 6px 24px rgba(190,18,60,0.28)', marginTop: '8px' }}
-              >
-                {loading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    Signing in...
-                  </span>
-                ) : 'Sign In'}
-              </button>
-            </form>
-
-            <div className="mt-6 pt-5" style={{ borderTop: '1px solid #F1F5F9' }}>
-              <p className="text-center text-slate-500 text-xs">
-                Authorized personnel only &middot; Innovatiq Technologies &copy; {new Date().getFullYear()}
-              </p>
             </div>
           </div>
         </div>
+
       </div>
-    </div>
+    </>
   );
 }

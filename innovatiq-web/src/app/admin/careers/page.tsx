@@ -173,7 +173,7 @@ export default function CareersPage() {
                             <Briefcase size={16} style={{ color: '#059669' }} strokeWidth={1.8} />
                           </div>
                           <div className="min-w-0">
-                            <p className="text-sm font-bold text-slate-900 truncate" style={{ maxWidth: '200px' }}>{career.jobTitle || career.title || '—'}</p>
+                            <p className="text-sm font-bold text-slate-900">{career.jobTitle || career.title || '—'}</p>
                             <p className="text-xs text-slate-500 font-medium mt-0.5">{career.companyName || ''}</p>
                           </div>
                         </div>

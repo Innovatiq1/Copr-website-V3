@@ -173,10 +173,10 @@ export default function VideosPage() {
                           <div style={{ width: '36px', height: '36px', borderRadius: '11px', flexShrink: 0, background: 'rgba(124,58,237,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <Video size={16} style={{ color: '#7C3AED' }} strokeWidth={1.8} />
                           </div>
-                          <p className="text-sm font-semibold text-slate-800 truncate" style={{ maxWidth: '200px' }}>{video.videoName || '—'}</p>
+                          <p className="text-sm font-semibold text-slate-800">{video.videoName || '—'}</p>
                         </div>
                       </td>
-                      <td className="px-5 py-3.5 text-sm" style={{ minWidth: '200px', maxWidth: '300px' }}>
+                      <td className="px-5 py-3.5 text-sm" style={{ minWidth: '200px' }}>
                         {video.videoLink ? (
                           <a href={video.videoLink} target="_blank" rel="noopener noreferrer"
                             className="inline-flex items-start gap-1.5 text-xs font-semibold transition-colors break-all leading-normal"

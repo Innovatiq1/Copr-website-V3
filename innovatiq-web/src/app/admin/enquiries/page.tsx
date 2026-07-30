@@ -170,7 +170,7 @@ export default function EnquiriesPage() {
                         <div className="space-y-1">
                           <span className="flex items-center gap-1.5 text-xs text-slate-600">
                             <Mail size={10} className="text-slate-400 shrink-0" />
-                            <span className="truncate" style={{ maxWidth: '160px' }}>{enquiry.email || '—'}</span>
+                            <span>{enquiry.email || '—'}</span>
                           </span>
                           {(enquiry.phone || enquiry.phoneNumber) && (
                             <span className="flex items-center gap-1.5 text-xs text-slate-500">
@@ -188,14 +188,14 @@ export default function EnquiriesPage() {
                           </span>
                         ) : <span className="text-slate-400 text-xs">—</span>}
                       </td>
-                      <td className="px-5 py-3.5 text-sm" style={{ maxWidth: '200px' }}>
+                      <td className="px-5 py-3.5 text-sm">
                         {(enquiry.lookingFor || enquiry.service) ? (
-                          <span className="inline-block px-2.5 py-1 rounded-lg text-xs font-semibold truncate"
-                            style={{ background: 'rgba(190,18,60,0.08)', color: '#9F1239', border: '1px solid rgba(190,18,60,0.15)', maxWidth: '180px' }}>
+                          <span className="inline-block px-2.5 py-1 rounded-lg text-xs font-semibold"
+                            style={{ background: 'rgba(190,18,60,0.08)', color: '#9F1239', border: '1px solid rgba(190,18,60,0.15)' }}>
                             {enquiry.lookingFor || enquiry.service}
                           </span>
                         ) : (
-                          <p className="text-xs text-slate-400 truncate" style={{ maxWidth: '180px' }}>
+                          <p className="text-xs text-slate-400">
                             {enquiry.message?.substring(0, 50) || '—'}
                           </p>
                         )}

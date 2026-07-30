@@ -169,7 +169,7 @@ export default function AwardsPage() {
                         </span>
                       ) : <span className="text-slate-400 text-xs">—</span>}
                     </td>
-                    <td className="px-5 py-3.5 text-slate-700 text-sm font-semibold">
+                    <td className="px-5 py-3.5 text-slate-700 text-sm font-medium">
                       <p>{award.shortDescription || '—'}</p>
                     </td>
                     <td className="px-5 py-3.5">

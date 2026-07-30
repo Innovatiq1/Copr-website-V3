@@ -175,12 +175,17 @@ export default function BlogsPage() {
                     </td>
                     <td className="px-5 py-3.5 text-slate-700 text-sm font-semibold whitespace-nowrap">{blog.author || '-'}</td>
                     <td className="px-5 py-3.5 text-sm">
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-1.5 items-center">
                         {(blog.tags || []).slice(0, 2).map((tag: string, i: number) => (
-                          <span key={i} className="px-2 py-0.5 rounded-full text-xs text-slate-700 font-semibold"
-                            style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }}>{tag}</span>
+                          <span key={i} className="px-2.5 py-1 rounded-full text-xs font-semibold whitespace-nowrap"
+                            style={{ background: 'rgba(99,102,241,0.08)', color: '#4338CA', border: '1px solid rgba(99,102,241,0.2)' }}>{tag}</span>
                         ))}
-                        {(blog.tags || []).length > 2 && <span className="text-xs text-slate-600 font-semibold self-center">+{blog.tags.length - 2}</span>}
+                        {(blog.tags || []).length > 2 && (
+                          <span className="px-2 py-1 rounded-full text-xs font-bold"
+                            style={{ background: 'rgba(100,116,139,0.08)', color: '#475569', border: '1px solid rgba(100,116,139,0.2)' }}>
+                            +{blog.tags.length - 2}
+                          </span>
+                        )}
                         {!(blog.tags || []).length && <span className="text-slate-400 text-xs">—</span>}
                       </div>
                     </td>

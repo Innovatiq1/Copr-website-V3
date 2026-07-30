@@ -361,9 +361,10 @@ export default function AdminLoginPage() {
                 marginTop: '24px', paddingTop: '20px',
                 borderTop: '1px solid #F1F5F9',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                whiteSpace: 'nowrap',
               }}>
-                <Shield size={13} color="#94A3B8" />
-                <p style={{ color: '#64748B', fontSize: '11.5px', fontWeight: 600, textAlign: 'center' }}>
+                <Shield size={12} color="#94A3B8" style={{ flexShrink: 0 }} />
+                <p style={{ color: '#64748B', fontSize: '11px', fontWeight: 500 }}>
                   Authorized personnel only &middot; Innovatiq Technologies &copy; {new Date().getFullYear()}
                 </p>
               </div>

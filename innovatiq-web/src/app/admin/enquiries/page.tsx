@@ -168,13 +168,13 @@ export default function EnquiriesPage() {
                       </td>
                       <td className="px-5 py-3.5">
                         <div className="space-y-1">
-                          <span className="flex items-center gap-1.5 text-xs text-slate-600 font-medium">
-                            <Mail size={10} className="text-slate-400 shrink-0" />
+                          <span className="flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
+                            <Mail size={13} className="text-slate-400 shrink-0" />
                             <span>{enquiry.email || '—'}</span>
                           </span>
                           {(enquiry.phone || enquiry.phoneNumber) && (
-                            <span className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-                              <Phone size={10} className="text-slate-400 shrink-0" />
+                            <span className="flex items-center gap-1.5 text-xs text-slate-600 font-semibold">
+                              <Phone size={13} className="text-slate-400 shrink-0" />
                               {enquiry.phone || enquiry.phoneNumber}
                             </span>
                           )}
@@ -182,8 +182,8 @@ export default function EnquiriesPage() {
                       </td>
                       <td className="px-5 py-3.5">
                         {(enquiry.location || enquiry.country) ? (
-                          <span className="inline-flex items-center gap-1.5 text-xs text-slate-600 font-medium">
-                            <MapPin size={10} className="text-slate-400 shrink-0" />
+                          <span className="inline-flex items-center gap-1.5 text-xs text-slate-700 font-semibold">
+                            <MapPin size={13} className="text-slate-400 shrink-0" />
                             {enquiry.location || enquiry.country}
                           </span>
                         ) : <span className="text-slate-400 text-xs">—</span>}
@@ -249,7 +249,7 @@ export default function EnquiriesPage() {
                   <MessageSquare size={18} style={{ color: '#BE123C' }} />
                 </div>
                 <div>
-                  <h2 className="text-base font-bold" style={{ color: '#BE123C' }}>Enquiry Details</h2>
+                  <h2 className="text-base font-bold" style={{ color: '#9F1239' }}>Enquiry Details</h2>
                   <p className="text-xs font-medium text-slate-500 mt-0.5">{selected.createdAt ? new Date(selected.createdAt).toLocaleString() : ''}</p>
                 </div>
               </div>
@@ -272,8 +272,8 @@ export default function EnquiriesPage() {
                 value ? (
                   <div key={label} className="rounded-xl p-3.5"
                     style={{ background: '#F8FAFC', border: '1px solid #EEF2F7' }}>
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">{label}</p>
-                    <p className="text-sm text-slate-700 leading-relaxed break-words">{value}</p>
+                    <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#9F1239' }}>{label}</p>
+                    <p className="text-sm font-semibold text-slate-800 leading-relaxed break-words">{value}</p>
                   </div>
                 ) : null
               )}
@@ -282,8 +282,8 @@ export default function EnquiriesPage() {
                 .map(([key, value]) =>
                   value && typeof value !== 'object' ? (
                     <div key={key} className="rounded-xl p-3.5" style={{ background: '#F8FAFC', border: '1px solid #EEF2F7' }}>
-                      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1.5">{key}</p>
-                      <p className="text-sm text-slate-700 break-words">{String(value)}</p>
+                      <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#9F1239' }}>{key}</p>
+                      <p className="text-sm font-semibold text-slate-800 break-words">{String(value)}</p>
                     </div>
                   ) : null
                 )}

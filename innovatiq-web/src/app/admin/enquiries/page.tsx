@@ -200,7 +200,7 @@ export default function EnquiriesPage() {
                           </p>
                         )}
                       </td>
-                      <td className="px-5 py-3.5 text-xs text-slate-500 font-semibold whitespace-nowrap">
+                      <td className="px-5 py-3.5 text-xs text-slate-700 font-semibold whitespace-nowrap">
                         {enquiry.createdAt ? new Date(enquiry.createdAt).toLocaleDateString('en-GB') : '—'}
                       </td>
                       <td className="px-5 py-3.5">
@@ -250,7 +250,7 @@ export default function EnquiriesPage() {
                 </div>
                 <div>
                   <h2 className="text-base font-bold" style={{ color: '#9F1239' }}>Enquiry Details</h2>
-                  <p className="text-xs font-medium text-slate-500 mt-0.5">{selected.createdAt ? new Date(selected.createdAt).toLocaleString() : ''}</p>
+                  <p className="text-xs font-semibold text-slate-500 mt-0.5">{selected.createdAt ? new Date(selected.createdAt).toLocaleString() : ''}</p>
                 </div>
               </div>
               <button onClick={() => setSelected(null)}
@@ -273,7 +273,7 @@ export default function EnquiriesPage() {
                   <div key={label} className="rounded-xl p-3.5"
                     style={{ background: '#F8FAFC', border: '1px solid #EEF2F7' }}>
                     <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#9F1239' }}>{label}</p>
-                    <p className="text-sm font-semibold text-slate-800 leading-relaxed break-words">{value}</p>
+                    <p className="text-sm text-slate-700 leading-relaxed break-words">{value}</p>
                   </div>
                 ) : null
               )}
@@ -283,7 +283,7 @@ export default function EnquiriesPage() {
                   value && typeof value !== 'object' ? (
                     <div key={key} className="rounded-xl p-3.5" style={{ background: '#F8FAFC', border: '1px solid #EEF2F7' }}>
                       <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#9F1239' }}>{key}</p>
-                      <p className="text-sm font-semibold text-slate-800 break-words">{String(value)}</p>
+                      <p className="text-sm text-slate-700 break-words">{String(value)}</p>
                     </div>
                   ) : null
                 )}

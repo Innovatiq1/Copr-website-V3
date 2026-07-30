@@ -206,7 +206,7 @@ export default function AdminLoginPage() {
               </div>
               <div>
                 <p style={{ fontWeight: 700, fontSize: '15px', color: '#0F172A', lineHeight: 1 }}>Innovatiq</p>
-                <p style={{ color: '#64748B', fontSize: '12px', marginTop: '4px' }}>Technologies</p>
+                <p style={{ color: '#64748B', fontSize: '12px', fontWeight: 600, marginTop: '4px' }}>Technologies</p>
               </div>
             </div>
 

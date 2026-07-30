@@ -1,10 +1,10 @@
-﻿'use client';
+'use client';
 
 import { useState, FormEvent, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { API, authFetch, authHeaders } from '@/lib/adminApi';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Loader2 } from 'lucide-react';
 import { toast } from '@/lib/toast';
 
 const inputStyle: React.CSSProperties = {
@@ -54,6 +54,44 @@ const CheckItem = ({ label, checked, onChange }: { label: string; checked: boole
     <span className="text-sm text-slate-700 group-hover:text-slate-900 transition-colors">{label}</span>
   </div>
 );
+
+function FormSkeleton() {
+  return (
+    <div className="min-h-screen">
+      <div className="flex items-center gap-3 mb-8">
+        <div className="w-9 h-9 rounded-xl animate-pulse" style={{ background: '#F1F5F9', border: '1px solid #E2E8F0' }} />
+        <div className="space-y-2">
+          <div className="h-6 w-28 rounded animate-pulse" style={{ background: '#EEF2F7' }} />
+          <div className="h-3.5 w-32 rounded animate-pulse" style={{ background: '#EEF2F7' }} />
+        </div>
+      </div>
+      <div className="rounded-2xl p-6 space-y-6" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2 md:col-span-2">
+            <div className="h-3.5 w-24 rounded animate-pulse" style={{ background: '#EEF2F7' }} />
+            <div className="h-10 rounded-xl animate-pulse" style={{ background: '#EEF2F7', width: '100%' }} />
+          </div>
+          <div className="space-y-2 md:col-span-2">
+            <div className="h-3.5 w-24 rounded animate-pulse" style={{ background: '#EEF2F7' }} />
+            <div className="h-10 rounded-xl animate-pulse" style={{ background: '#EEF2F7', width: '100%' }} />
+          </div>
+        </div>
+        <div className="space-y-3">
+          <div className="h-3.5 w-36 rounded animate-pulse" style={{ background: '#EEF2F7' }} />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {[1, 2, 3, 4, 5, 6].map(i => (
+              <div key={i} className="h-6 rounded animate-pulse" style={{ background: '#EEF2F7' }} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="flex gap-3 mt-6">
+        <div className="h-11 w-32 rounded-xl animate-pulse" style={{ background: '#EEF2F7' }} />
+        <div className="h-11 w-20 rounded-xl animate-pulse" style={{ background: '#EEF2F7' }} />
+      </div>
+    </div>
+  );
+}
 
 export default function VideoEditPage() {
   const router = useRouter();
@@ -131,19 +169,26 @@ export default function VideoEditPage() {
     e.currentTarget.style.boxShadow = 'none';
   };
 
-  if (fetching) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-slate-400">Loading...</div>
-      </div>
-    );
-  }
+  if (fetching) return <FormSkeleton />;
 
   return (
     <div className="min-h-screen">
       <div className="flex items-center gap-3 mb-8">
-        <Link href="/admin/videos" className="text-slate-400 hover:text-slate-700 transition-colors cursor-pointer">
-          <ArrowLeft size={20} />
+        <Link
+          href="/admin/videos"
+          className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 hover:text-slate-900 transition-all cursor-pointer shrink-0"
+          style={{ background: '#F8FAFC', border: '1.5px solid #CBD5E1', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
+          title="Back to videos"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = '#F1F5F9';
+            e.currentTarget.style.borderColor = '#94A3B8';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = '#F8FAFC';
+            e.currentTarget.style.borderColor = '#CBD5E1';
+          }}
+        >
+          <ArrowLeft size={18} />
         </Link>
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Edit Video</h1>
@@ -233,9 +278,9 @@ export default function VideoEditPage() {
 
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
-            className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer whitespace-nowrap"
             style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.30)' }}>
-            {loading ? 'Saving...' : 'Save Changes'}
+            {loading ? <><Loader2 size={16} className="animate-spin shrink-0" /> Saving...</> : 'Save Changes'}
           </button>
           <Link href="/admin/videos"
             className="px-6 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"

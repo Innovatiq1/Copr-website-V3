@@ -331,13 +331,14 @@ export default function AdminLoginPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="sb"
+                  className="sb cursor-pointer"
                   style={{
                     width: '100%', padding: '14px 24px',
                     borderRadius: '14px', border: 'none',
                     color: '#FFFFFF', fontSize: '15px', fontWeight: 700,
                     boxShadow: '0 6px 24px rgba(190,18,60,0.30)',
                     marginTop: '4px', letterSpacing: '0.02em',
+                    cursor: 'pointer',
                   }}
                 >
                   {loading ? (

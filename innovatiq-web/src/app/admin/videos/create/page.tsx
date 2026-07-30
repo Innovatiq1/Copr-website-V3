@@ -1,10 +1,10 @@
-﻿'use client';
+'use client';
 
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { API, authHeaders } from '@/lib/adminApi';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Loader2 } from 'lucide-react';
 import { toast } from '@/lib/toast';
 
 const inputStyle: React.CSSProperties = {
@@ -109,8 +109,21 @@ export default function VideoCreatePage() {
   return (
     <div className="min-h-screen">
       <div className="flex items-center gap-3 mb-8">
-        <Link href="/admin/videos" className="text-slate-400 hover:text-slate-700 transition-colors cursor-pointer">
-          <ArrowLeft size={20} />
+        <Link
+          href="/admin/videos"
+          className="w-9 h-9 rounded-xl flex items-center justify-center text-slate-700 hover:text-slate-900 transition-all cursor-pointer shrink-0"
+          style={{ background: '#F8FAFC', border: '1.5px solid #CBD5E1', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}
+          title="Back to videos"
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = '#F1F5F9';
+            e.currentTarget.style.borderColor = '#94A3B8';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = '#F8FAFC';
+            e.currentTarget.style.borderColor = '#CBD5E1';
+          }}
+        >
+          <ArrowLeft size={18} />
         </Link>
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Add Video</h1>
@@ -202,9 +215,9 @@ export default function VideoCreatePage() {
 
         <div className="flex gap-3 mt-6">
           <button type="submit" disabled={loading}
-            className="px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl text-white font-semibold text-sm disabled:opacity-60 cursor-pointer whitespace-nowrap"
             style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 15px rgba(190,18,60,0.25)' }}>
-            {loading ? 'Adding...' : 'Add Video'}
+            {loading ? <><Loader2 size={16} className="animate-spin shrink-0" /> Adding...</> : 'Add Video'}
           </button>
           <Link href="/admin/videos"
             className="px-6 py-3 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"

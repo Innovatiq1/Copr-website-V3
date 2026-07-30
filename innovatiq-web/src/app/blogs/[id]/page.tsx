@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect, use } from 'react';
 import { ThumbsUp, ThumbsDown, ArrowLeft, Share2, Calendar, CheckCircle } from 'lucide-react';
@@ -283,7 +283,7 @@ export default function BlogContentPage({ params }: { params: Promise<{ id: stri
           font-style: italic; color: #4B5563;
         }
         .blog-content a { color: #BE123C; text-decoration: underline; text-underline-offset: 3px; }
-        .blog-content strong { font-weight: 700; color: #111827; }
+        .blog-content strong,.blog-content b { font-weight: 800; color: #0F172A; }
         .blog-content code {
           background: #F1F5F9; padding: 2px 7px; border-radius: 5px;
           font-size: 0.87em; font-family: monospace; color: #9F1239;

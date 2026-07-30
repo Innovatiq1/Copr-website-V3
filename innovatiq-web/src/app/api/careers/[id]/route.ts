@@ -3,6 +3,7 @@ import { unstable_cache, revalidateTag } from 'next/cache';
 import { connectDB } from '@/lib/mongodb';
 import { requireAuth } from '@/lib/auth';
 import Career from '@/models/Career';
+import JobApplication from '@/models/JobApplication';
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
@@ -51,6 +52,7 @@ export async function DELETE(req: NextRequest, { params }: { params: Promise<{ i
     await connectDB();
     const { id } = await params;
     await Career.findByIdAndDelete(id);
+    await JobApplication.deleteMany({ careerId: id });
     revalidateTag('careers');
     revalidateTag(`career-${id}`);
     return NextResponse.json({ message: 'Deleted' });

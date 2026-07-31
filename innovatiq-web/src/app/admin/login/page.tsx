@@ -358,7 +358,7 @@ export default function AdminLoginPage() {
 
               {/* Footer */}
               <div
-                className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center sm:whitespace-nowrap"
+                className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0 text-center sm:whitespace-nowrap"
                 style={{
                   marginTop: '24px', paddingTop: '20px',
                   borderTop: '1px solid #F1F5F9',
@@ -370,7 +370,7 @@ export default function AdminLoginPage() {
                     Authorized personnel only
                   </span>
                 </div>
-                <span style={{ color: '#94A3B8', fontSize: '11px' }} className="hidden sm:inline">&ndash;</span>
+                <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-400 mx-2 align-middle shrink-0" style={{ opacity: 0.65 }} />
                 <span style={{ color: '#64748B', fontSize: '11px', fontWeight: 500 }}>
                   Innovatiq Technologies &copy; {new Date().getFullYear()}
                 </span>

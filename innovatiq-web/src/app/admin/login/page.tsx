@@ -212,13 +212,13 @@ export default function AdminLoginPage() {
 
             {/* ── CARD ── */}
             <div
+              className="p-6 sm:p-10"
               style={{
                 background:    'rgba(255,255,255,0.97)',
                 backdropFilter:'blur(24px) saturate(1.15)',
                 border:        '1px solid rgba(226,232,240,0.85)',
                 boxShadow:     '0 4px 6px rgba(0,0,0,0.04), 0 24px 64px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,1)',
                 borderRadius:  '28px',
-                padding:       '40px',
               }}
             >
               {/* Card header */}
@@ -357,16 +357,23 @@ export default function AdminLoginPage() {
               </form>
 
               {/* Footer */}
-              <div style={{
-                marginTop: '24px', paddingTop: '20px',
-                borderTop: '1px solid #F1F5F9',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-                whiteSpace: 'nowrap',
-              }}>
-                <Shield size={12} color="#94A3B8" style={{ flexShrink: 0 }} />
-                <p style={{ color: '#64748B', fontSize: '11px', fontWeight: 500 }}>
-                  Authorized personnel only &middot; Innovatiq Technologies &copy; {new Date().getFullYear()}
-                </p>
+              <div
+                className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center"
+                style={{
+                  marginTop: '24px', paddingTop: '20px',
+                  borderTop: '1px solid #F1F5F9',
+                }}
+              >
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <Shield size={12} color="#94A3B8" style={{ flexShrink: 0 }} />
+                  <span style={{ color: '#64748B', fontSize: '11px', fontWeight: 500 }}>
+                    Authorized personnel only
+                  </span>
+                </div>
+                <span style={{ color: '#94A3B8', fontSize: '11px' }} className="hidden sm:inline">&middot;</span>
+                <span style={{ color: '#64748B', fontSize: '11px', fontWeight: 500 }}>
+                  Innovatiq Technologies &copy; {new Date().getFullYear()}
+                </span>
               </div>
             </div>
           </div>

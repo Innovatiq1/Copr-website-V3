@@ -64,7 +64,7 @@ export default function EnquiriesPage() {
           <p className="text-slate-600 text-sm font-medium mt-1">View contact form submissions</p>
         </div>
         <button onClick={() => exportToExcel(enquiries.map(e => ({ Name: e.name||e.fullName||'', Email: e.email||'', Phone: e.phone||e.phoneNumber||'', Location: e.location||e.country||'', Company: e.company||e.companyName||'', 'Looking For': e.lookingFor||e.service||'', Message: e.message||'', Date: e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '' })), 'enquiries')}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold cursor-pointer"
+          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold cursor-pointer self-start sm:self-auto"
           style={{ background: 'rgba(16,185,129,0.1)', color: '#059669', border: '1px solid rgba(16,185,129,0.25)' }}>
           <Download size={15} /> Export
         </button>

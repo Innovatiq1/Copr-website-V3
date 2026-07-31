@@ -455,8 +455,11 @@ export default function CareerCreatePage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">Short Description *</label>
-            <textarea value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} required
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-sm font-medium text-slate-700">Short Description *</label>
+              <span className="text-xs font-semibold" style={{ color: shortDescription.length >= 200 ? '#BE123C' : '#94A3B8' }}>{shortDescription.length}/200</span>
+            </div>
+            <textarea value={shortDescription} onChange={(e) => setShortDescription(e.target.value.slice(0, 200))} required
               rows={3} placeholder="Brief job summary..." style={{ ...inputStyle, resize: 'vertical' }}
               onFocus={focusStyle} onBlur={blurStyle} />
           </div>

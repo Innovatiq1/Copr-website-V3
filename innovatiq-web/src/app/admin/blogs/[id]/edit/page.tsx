@@ -473,9 +473,10 @@ const next = historyRef.current[historyIdxRef.current];
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">
-              Short Description * <span className="text-slate-400">({shortDescription.length}/200)</span>
-            </label>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-sm font-medium text-slate-700">Short Description *</label>
+              <span className="text-xs font-semibold" style={{ color: shortDescription.length >= 200 ? '#BE123C' : '#94A3B8' }}>{shortDescription.length}/200</span>
+            </div>
             <textarea value={shortDescription} onChange={e => setShortDescription(e.target.value.slice(0, 200))} required rows={3} placeholder="Brief description..." style={{ ...inputStyle, resize: 'vertical' }} onFocus={onFocus} onBlur={onBlur} />
           </div>
 

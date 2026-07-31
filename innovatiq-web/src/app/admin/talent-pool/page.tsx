@@ -18,8 +18,12 @@ function initials(s: string) { return (s || 'A').split(' ').map(w => w[0]).join(
 function formatExp(exp: string) {
   if (!exp) return '';
   const trimmed = exp.trim();
-  if (/year|yr/i.test(trimmed)) return trimmed;
-  if (/^\d+(\.\d+)?$/.test(trimmed)) return `${trimmed} yrs`;
+  const hadYear = /(years?|yrs?)/i.test(trimmed);
+  const cleaned = trimmed.replace(/\s*(years?|yrs?)\b/gi, '').trim();
+
+  if (hadYear || /^[\d.\-+]+$/.test(cleaned)) {
+    return cleaned ? `${cleaned} yrs` : '';
+  }
   return trimmed;
 }
 
@@ -92,7 +96,7 @@ export default function TalentPoolPage() {
                   Email: p.email || '',
                   Phone: p.phone || '',
                   Skills: p.skills || '',
-                  Experience: p.experience || '',
+                  Experience: p.experience ? formatExp(p.experience) : '',
                   'About / Statement': p.statement || '',
                   'Resume File': p.resumeName || '',
                   'Resume URL': p.resumeName ? `${base}/api/talent-profiles/${p._id}/resume?token=${token}` : '',

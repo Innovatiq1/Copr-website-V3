@@ -64,8 +64,12 @@ function initials(name: string) {
 function formatExp(exp: string) {
   if (!exp) return '';
   const trimmed = exp.trim();
-  if (/year|yr/i.test(trimmed)) return trimmed;
-  if (/^\d+(\.\d+)?$/.test(trimmed)) return `${trimmed} yrs`;
+  const hadYear = /(years?|yrs?)/i.test(trimmed);
+  const cleaned = trimmed.replace(/\s*(years?|yrs?)\b/gi, '').trim();
+
+  if (hadYear || /^[\d.\-+]+$/.test(cleaned)) {
+    return cleaned ? `${cleaned} yrs` : '';
+  }
   return trimmed;
 }
 

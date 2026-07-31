@@ -55,7 +55,7 @@ const PREVIEW_STYLES = `
   .hp ul{margin:.5em 0;padding-left:1.8em;list-style-type:disc!important;}
   .hp ol{margin:.5em 0;padding-left:1.8em;list-style-type:decimal!important;}
   .hp li{margin:.3em 0;line-height:1.7;color:#1E293B;display:list-item!important;font-weight:450;}
-  .hp a{color:#BE123C;text-decoration:underline;cursor:default;pointer-events:none;}
+  .hp a{color:#BE123C;text-decoration:underline;cursor:pointer;font-weight:500;}
   .hp strong,.hp b{font-weight:800;color:#0F172A;}
   .hp em,.hp i{font-style:italic;}
   .hp u{text-decoration:underline;}
@@ -64,7 +64,6 @@ const PREVIEW_STYLES = `
   .hp pre,.hp code{background:#F1F5F9;border-radius:6px;padding:2px 6px;font-family:monospace;font-size:.9em;color:#334155;}
   .hp pre{padding:12px 16px;overflow-x:auto;}
   .hp hr{border:none;border-top:1px solid #E2E8F0;margin:1em 0;}
-  .hp a{pointer-events:none;}
 `;
 
 type DescMode = 'visual' | 'write' | 'preview';

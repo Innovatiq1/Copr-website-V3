@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Toaster } from '@/lib/toast';
 import {
   LayoutDashboard, FileText, Briefcase, Trophy,
-  Video, Users, UserCheck, LogOut, Menu, X, ChevronRight, Bell, Trash2,
+  Video, Users, UserCheck, LogOut, Menu, X, ChevronRight, Bell, Trash2, Settings, Inbox,
 } from 'lucide-react';
 
 interface ActivityItem {
@@ -36,6 +36,8 @@ const navLinks = [
   { label: 'Awards',      icon: Trophy,           href: '/admin/awards' },
   { label: 'Videos',      icon: Video,            href: '/admin/videos' },
   { label: 'Enquiries',   icon: Users,            href: '/admin/enquiries' },
+  { label: 'Popup Leads', icon: Inbox,            href: '/admin/popup-leads' },
+  { label: 'Popup Settings', icon: Settings,      href: '/admin/popup-settings' },
 ];
 
 function getBreadcrumbs(pathname: string) {

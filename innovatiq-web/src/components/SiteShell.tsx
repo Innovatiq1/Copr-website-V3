@@ -6,6 +6,7 @@ import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
 import ScrollReset from './ScrollReset';
 import Chatbot from './Chatbot';
+import LeadPopup from './LeadPopup';
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       {!isAdmin && <Footer />}
       {!isAdmin && <ScrollToTop />}
       {!isAdmin && <Chatbot />}
+      {!isAdmin && <LeadPopup />}
     </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X, CheckCircle2, Eye, EyeOff } from 'lucide-react';
 import { LMS_API_BASE, type LmsCourse } from '@/lib/lms';
 import { markModalOpen, markModalClosed } from '@/lib/blockingModal';
 
@@ -17,6 +17,8 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const [enrollWarning, setEnrollWarning] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -148,6 +150,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                   type="email"
                   required
                   autoComplete="off"
+                  placeholder="you@example.com"
                   value={form.email}
                   onChange={update('email')}
                   className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -161,6 +164,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                     type="text"
                     required
                     autoComplete="off"
+                    placeholder="First name"
                     value={form.firstName}
                     onChange={update('firstName')}
                     className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -172,6 +176,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                     type="text"
                     required
                     autoComplete="off"
+                    placeholder="Last name"
                     value={form.lastName}
                     onChange={update('lastName')}
                     className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -181,28 +186,49 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
 
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Password</label>
-                <input
-                  type="password"
-                  required
-                  minLength={8}
-                  autoComplete="new-password"
-                  placeholder="Min 8 characters"
-                  value={form.password}
-                  onChange={update('password')}
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    required
+                    minLength={8}
+                    autoComplete="new-password"
+                    placeholder="Min 8 characters"
+                    value={form.password}
+                    onChange={update('password')}
+                    className="w-full rounded-xl border border-gray-200 pl-4 pr-11 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(v => !v)}
+                    className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-600 cursor-pointer"
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+                  </button>
+                </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Confirm password</label>
-                <input
-                  type="password"
-                  required
-                  autoComplete="new-password"
-                  value={form.confirmPassword}
-                  onChange={update('confirmPassword')}
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
-                />
+                <div className="relative">
+                  <input
+                    type={showConfirmPassword ? 'text' : 'password'}
+                    required
+                    autoComplete="new-password"
+                    placeholder="Re-enter password"
+                    value={form.confirmPassword}
+                    onChange={update('confirmPassword')}
+                    className="w-full rounded-xl border border-gray-200 pl-4 pr-11 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(v => !v)}
+                    className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-600 cursor-pointer"
+                    aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
+                  >
+                    {showConfirmPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+                  </button>
+                </div>
               </div>
 
               <button

@@ -139,7 +139,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
               </button>
             </div>
           ) : (
-            <form onSubmit={submit} className="space-y-4">
+            <form onSubmit={submit} className="space-y-4" autoComplete="off">
               {error && (
                 <div className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
                   {error}
@@ -151,6 +151,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                 <input
                   type="email"
                   required
+                  autoComplete="off"
                   value={form.email}
                   onChange={update('email')}
                   className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -163,6 +164,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                   <input
                     type="text"
                     required
+                    autoComplete="off"
                     value={form.firstName}
                     onChange={update('firstName')}
                     className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -173,6 +175,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                   <input
                     type="text"
                     required
+                    autoComplete="off"
                     value={form.lastName}
                     onChange={update('lastName')}
                     className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"
@@ -186,6 +189,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                   type="password"
                   required
                   minLength={8}
+                  autoComplete="new-password"
                   placeholder="Min 8 characters"
                   value={form.password}
                   onChange={update('password')}
@@ -198,6 +202,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                 <input
                   type="password"
                   required
+                  autoComplete="new-password"
                   value={form.confirmPassword}
                   onChange={update('confirmPassword')}
                   className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"

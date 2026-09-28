@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { X } from 'lucide-react';
 import { isBlockingModalOpen } from '@/lib/blockingModal';
 
 type PopupField = {
@@ -160,7 +161,7 @@ export default function LeadPopup() {
       style={{ background: 'rgba(15,23,42,0.55)', backdropFilter: 'blur(6px)' }}
     >
       <div
-        className="relative w-full max-w-md rounded-2xl p-6 sm:p-8"
+        className="relative w-full max-w-md rounded-2xl overflow-hidden"
         style={{
           background: 'linear-gradient(145deg, rgba(255,255,255,0.97) 0%, rgba(255,250,251,0.94) 100%)',
           border: '1px solid rgba(190,18,60,0.12)',
@@ -168,13 +169,18 @@ export default function LeadPopup() {
         }}
       >
         {/* Top accent bar, matching the site's crimson gradient */}
-        <div
-          className="absolute top-0 left-0 right-0 h-1.5 rounded-t-2xl"
-          style={{ background: accentGradient }}
-        />
+        <div className="h-1.5 w-full" style={{ background: accentGradient }} />
 
-        {/* Intentionally no close/X button while unsubmitted — popup is mandatory per requirement.
-            It only disappears after successful submission. */}
+        <button
+          type="button"
+          onClick={() => setVisible(false)}
+          aria-label="Close"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+        >
+          <X size={18} />
+        </button>
+
+        <div className="p-6 sm:p-8 pt-7 sm:pt-8">
         {!submitted ? (
           <>
             <h2 className="text-xl font-bold mb-2" style={{ color: '#0F172A' }}>{settings.title}</h2>
@@ -252,6 +258,7 @@ export default function LeadPopup() {
             </button>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

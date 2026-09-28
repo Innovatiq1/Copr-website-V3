@@ -5,11 +5,6 @@ import AnimatedSection from '@/components/AnimatedSection';
 import CourseRegisterModal from './CourseRegisterModal';
 import type { LmsCourse } from '@/lib/lms';
 
-function formatFee(course: LmsCourse) {
-  if (course.feeType !== 'paid' || !course.fees) return 'Free';
-  return `$${course.fees.toLocaleString()}`;
-}
-
 // course.description comes from the external LMS, not our own DB — render as
 // plain text rather than dangerouslySetInnerHTML to avoid stored-XSS risk.
 function stripHtml(html: string) {
@@ -49,13 +44,6 @@ export default function CoursesGrid({ courses, orgName, orgCode }: { courses: Lm
                 ) : (
                   <BookOpen size={40} style={{ color: '#BE123C', opacity: 0.35 }} />
                 )}
-                <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full"
-                  style={{
-                    background: course.feeType === 'paid' ? 'rgba(15,23,42,0.85)' : '#059669',
-                    color: '#FFFFFF',
-                  }}>
-                  {course.feeType === 'paid' ? 'Paid' : 'Free'}
-                </span>
               </div>
 
               <div className="p-5 flex flex-col flex-1">
@@ -69,13 +57,10 @@ export default function CoursesGrid({ courses, orgName, orgCode }: { courses: Lm
                   </p>
                 )}
 
-                <div className="mt-auto flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-                  <div className="flex items-center gap-1.5 text-sm text-gray-500">
-                    <Star size={14} className="text-amber-400 fill-amber-400" />
-                    <span className="font-semibold text-gray-700">{course.rating?.toFixed(1) ?? '0.0'}</span>
-                    <span>({course.reviewCount ?? 0})</span>
-                  </div>
-                  <span className="font-bold" style={{ color: '#BE123C' }}>{formatFee(course)}</span>
+                <div className="mt-auto flex items-center gap-1.5 text-sm text-gray-500 pt-3" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                  <Star size={14} className="text-amber-400 fill-amber-400" />
+                  <span className="font-semibold text-gray-700">{course.rating?.toFixed(1) ?? '0.0'}</span>
+                  <span>({course.reviewCount ?? 0})</span>
                 </div>
 
                 <button

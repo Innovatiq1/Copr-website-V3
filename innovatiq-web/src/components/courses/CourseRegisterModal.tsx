@@ -108,7 +108,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
             <p className="text-xs font-bold uppercase tracking-wide" style={{ color: '#BE123C' }}>Register for course</p>
             <h3 className="font-bold text-gray-900 truncate">{course.title}</h3>
           </div>
-          <button onClick={onClose} className="shrink-0 p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors" aria-label="Close">
+          <button onClick={onClose} className="shrink-0 p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors cursor-pointer" aria-label="Close">
             <X size={18} />
           </button>
         </div>
@@ -132,7 +132,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
               <button
                 type="button"
                 onClick={onClose}
-                className="mt-6 w-full rounded-xl text-white text-sm font-semibold py-3 transition-all"
+                className="mt-6 w-full rounded-xl text-white text-sm font-semibold py-3 transition-all cursor-pointer"
                 style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
               >
                 Close
@@ -217,7 +217,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full rounded-xl text-white text-sm font-semibold py-3 disabled:opacity-60 transition-all hover:-translate-y-0.5"
+                className="w-full rounded-xl text-white text-sm font-semibold py-3 disabled:opacity-60 disabled:cursor-not-allowed transition-all hover:-translate-y-0.5 cursor-pointer"
                 style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 18px rgba(190,18,60,0.30)' }}
               >
                 {submitting ? 'Submitting…' : 'Register'}

@@ -16,6 +16,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  const [enrollWarning, setEnrollWarning] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -46,7 +47,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
     }
     setSubmitting(true);
     try {
-      const res = await fetch(`${LMS_API_BASE}/auth/register/student`, {
+      const registerRes = await fetch(`${LMS_API_BASE}/auth/register/student`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -57,8 +58,33 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
           password: form.password,
         }),
       });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.error || 'Registration failed. Please try again.');
+      const registerData = await registerRes.json().catch(() => ({}));
+      if (!registerRes.ok) throw new Error(registerData?.error || 'Registration failed. Please try again.');
+
+      // Account created. Also enroll them in this specific course so the
+      // request shows up in the org admin's course approvals/learners list,
+      // not just as a standalone account.
+      try {
+        const loginRes = await fetch(`${LMS_API_BASE}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: form.email, password: form.password }),
+        });
+        const loginData = await loginRes.json();
+        if (!loginRes.ok || !loginData?.token) throw new Error('login failed');
+
+        const enrollRes = await fetch(`${LMS_API_BASE}/enrollments/${course.id}/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${loginData.token}`,
+          },
+        });
+        if (!enrollRes.ok) throw new Error('enroll failed');
+      } catch {
+        setEnrollWarning(true);
+      }
+
       setDone(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Registration failed. Please try again.');
@@ -94,9 +120,15 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
                 <CheckCircle2 className="text-emerald-600" size={28} />
               </div>
               <h4 className="text-lg font-bold text-gray-900">Registration submitted!</h4>
-              <p className="text-sm text-gray-600 mt-2">
-                Your enrollment request for <span className="font-semibold">{course.title}</span> has been sent to the organization admin for approval. You&apos;ll be notified by email once it&apos;s approved.
-              </p>
+              {enrollWarning ? (
+                <p className="text-sm text-gray-600 mt-2">
+                  Your account has been created. We couldn&apos;t automatically enroll you in <span className="font-semibold">{course.title}</span> — please log in and register for it from your dashboard to complete enrollment.
+                </p>
+              ) : (
+                <p className="text-sm text-gray-600 mt-2">
+                  Your enrollment request for <span className="font-semibold">{course.title}</span> has been sent to the organization admin for approval. You&apos;ll be notified by email once it&apos;s approved.
+                </p>
+              )}
               <button
                 type="button"
                 onClick={onClose}

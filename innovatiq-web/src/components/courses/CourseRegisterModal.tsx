@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { X, CheckCircle2 } from 'lucide-react';
 import { LMS_API_BASE, type LmsCourse } from '@/lib/lms';
+import { markModalOpen, markModalClosed } from '@/lib/blockingModal';
 
 interface Props {
   course: LmsCourse;
@@ -18,7 +19,11 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
+    markModalOpen();
+    return () => {
+      document.body.style.overflow = '';
+      markModalClosed();
+    };
   }, []);
 
   const update = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>

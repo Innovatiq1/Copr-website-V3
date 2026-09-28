@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { isBlockingModalOpen } from '@/lib/blockingModal';
 
 type PopupField = {
   id: string;
@@ -80,13 +81,32 @@ export default function LeadPopup() {
     return () => { cancelled = true; };
   }, [isAdmin]);
 
-  // Timer: show popup after admin-configured delay
+  // Timer: show popup after admin-configured delay. If another modal (e.g.
+  // course registration) is open when the delay elapses, wait for it to
+  // close first instead of popping up on top of it.
   useEffect(() => {
     if (isAdmin || checking || submitted || !settings?.enabled) return;
 
+    let pollId: ReturnType<typeof setInterval> | undefined;
+    const reveal = () => {
+      if (isBlockingModalOpen()) {
+        pollId = setInterval(() => {
+          if (!isBlockingModalOpen()) {
+            clearInterval(pollId);
+            setVisible(true);
+          }
+        }, 500);
+      } else {
+        setVisible(true);
+      }
+    };
+
     const delayMs = Math.max(0, (settings.delaySeconds ?? 10)) * 1000;
-    const timer = setTimeout(() => setVisible(true), delayMs);
-    return () => clearTimeout(timer);
+    const timer = setTimeout(reveal, delayMs);
+    return () => {
+      clearTimeout(timer);
+      if (pollId) clearInterval(pollId);
+    };
   }, [isAdmin, checking, submitted, settings]);
 
   if (isAdmin || checking || !settings?.enabled || !visible) return null;

@@ -8,11 +8,11 @@ import { getLmsCourses, LMS_ORG_INVITE_CODE } from '@/lib/lms';
 export const metadata: Metadata = {
   title: 'Courses | Innovatiq Technologies',
   description: 'Explore professional development and skills courses offered on the Innovatiq SkillEra Learning Management System.',
-  alternates: { canonical: 'https://innovatiq.com.sg/courses' },
+  alternates: { canonical: 'https://innovatiq.com.sg/skilleracourses' },
   openGraph: {
     title: 'Courses | Innovatiq Technologies',
     description: 'Explore professional development and skills courses offered on the Innovatiq SkillEra Learning Management System.',
-    url: 'https://innovatiq.com.sg/courses',
+    url: 'https://innovatiq.com.sg/skilleracourses',
     siteName: 'Innovatiq Technologies',
     images: [{ url: '/logo/logo.png', width: 1200, height: 630, alt: 'Innovatiq Technologies' }],
     type: 'website',

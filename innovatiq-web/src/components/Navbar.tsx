@@ -184,7 +184,6 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                <Link href="/courses" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Courses</Link>
                 <Link href="/careers" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Careers</Link>
                 <Link href="/contact-us" className="px-4 py-2 rounded-lg font-semibold hover:bg-[rgba(190,18,60,0.08)] transition-all duration-200" style={{ color: '#1a1a1a' }}>Contact</Link>
               </div>
@@ -285,10 +284,6 @@ export default function Navbar() {
               </div>
             </div>
           ))}
-          <Link href="/courses" onClick={closeDrawer}
-            className="block px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
-            Courses
-          </Link>
           <Link href="/careers" onClick={closeDrawer}
             className="block px-3 py-3 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-all" style={{ color: '#1a1a1a' }}>
             Careers

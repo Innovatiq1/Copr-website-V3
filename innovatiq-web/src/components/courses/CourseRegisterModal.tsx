@@ -97,12 +97,8 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       style={{ background: 'rgba(15,15,20,0.55)', backdropFilter: 'blur(4px)' }}
-      onClick={onClose}
     >
-      <div
-        className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl overflow-hidden">
         <div className="flex items-start justify-between gap-4 px-6 py-4" style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
           <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-wide" style={{ color: '#BE123C' }}>Register for course</p>

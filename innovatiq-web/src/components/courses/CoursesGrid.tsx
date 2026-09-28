@@ -11,7 +11,7 @@ function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
-export default function CoursesGrid({ courses, orgName, orgCode }: { courses: LmsCourse[]; orgName?: string; orgCode?: string }) {
+export default function CoursesGrid({ courses, orgCode }: { courses: LmsCourse[]; orgCode?: string }) {
   const [selected, setSelected] = useState<LmsCourse | null>(null);
 
   if (courses.length === 0) {
@@ -80,7 +80,6 @@ export default function CoursesGrid({ courses, orgName, orgCode }: { courses: Lm
       {selected && (
         <CourseRegisterModal
           course={selected}
-          orgName={orgName}
           orgCode={orgCode}
           onClose={() => setSelected(null)}
         />

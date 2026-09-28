@@ -7,12 +7,11 @@ import { markModalOpen, markModalClosed } from '@/lib/blockingModal';
 
 interface Props {
   course: LmsCourse;
-  orgName?: string;
   orgCode?: string;
   onClose: () => void;
 }
 
-export default function CourseRegisterModal({ course, orgName, orgCode, onClose }: Props) {
+export default function CourseRegisterModal({ course, orgCode, onClose }: Props) {
   const [form, setForm] = useState({ email: '', firstName: '', lastName: '', password: '', confirmPassword: '' });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -107,7 +106,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
         <div className="flex items-start justify-between gap-4 px-6 py-4" style={{ borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
           <div className="min-w-0">
             <p className="text-xs font-bold uppercase tracking-wide" style={{ color: '#BE123C' }}>Register for course</p>
-            <h3 className="font-bold text-gray-900 truncate">{course.title}</h3>
+            <h3 className="font-bold text-gray-900">{course.title}</h3>
           </div>
           <button onClick={onClose} className="shrink-0 p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors cursor-pointer" aria-label="Close">
             <X size={18} />
@@ -146,16 +145,6 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
                   {error}
                 </div>
               )}
-
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Organization</label>
-                <input
-                  type="text"
-                  value={orgName || 'Innovatiq'}
-                  disabled
-                  className="w-full rounded-xl border border-gray-200 bg-gray-50 text-gray-500 px-4 py-3 text-sm"
-                />
-              </div>
 
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Email</label>

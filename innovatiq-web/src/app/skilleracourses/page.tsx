@@ -32,7 +32,7 @@ export default async function CoursesPage() {
 
       <section className="relative pt-4 pb-10 md:pt-0 md:pb-20 overflow-hidden" style={{ background: '#FFFFFF' }}>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <CoursesGrid courses={data.courses} orgName={data.org?.name} orgCode={LMS_ORG_INVITE_CODE} />
+          <CoursesGrid courses={data.courses} orgCode={LMS_ORG_INVITE_CODE} />
         </div>
       </section>
     </>

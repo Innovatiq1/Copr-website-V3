@@ -150,7 +150,7 @@ export default function CourseRegisterModal({ course, orgCode, onClose }: Props)
                   type="email"
                   required
                   autoComplete="off"
-                  placeholder="you@example.com"
+                  placeholder="yourname@company.com"
                   value={form.email}
                   onChange={update('email')}
                   className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-rose-500"

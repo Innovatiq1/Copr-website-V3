@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { X, CheckCircle2 } from 'lucide-react';
 import { LMS_API_BASE, type LmsCourse } from '@/lib/lms';
 import { markModalOpen, markModalClosed } from '@/lib/blockingModal';
@@ -93,7 +94,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
     }
   };
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       style={{ background: 'rgba(15,15,20,0.55)', backdropFilter: 'blur(4px)' }}
@@ -226,6 +227,7 @@ export default function CourseRegisterModal({ course, orgName, orgCode, onClose 
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

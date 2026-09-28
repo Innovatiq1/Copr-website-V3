@@ -81,7 +81,7 @@ export default function CoursesGrid({ courses, orgName, orgCode }: { courses: Lm
                 <button
                   type="button"
                   onClick={() => setSelected(course)}
-                  className="mt-4 w-full rounded-xl text-white text-sm font-semibold py-2.5 transition-all hover:-translate-y-0.5"
+                  className="mt-4 w-full rounded-xl text-white text-sm font-semibold py-2.5 transition-all hover:-translate-y-0.5 cursor-pointer"
                   style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', boxShadow: '0 4px 12px rgba(190,18,60,0.30)' }}
                 >
                   Register

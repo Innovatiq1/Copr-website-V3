@@ -1,0 +1,15 @@
+{
+  "name": "Innovatiq ChatBot",
+  "short_name": "Innovatiq ChatBot",
+  "description": "Innovatiq Admin Panel — manage enquiries, leads and live chat on the go.",
+  "start_url": "/admin/dashboard",
+  "scope": "/admin",
+  "display": "standalone",
+  "background_color": "#F0F4F8",
+  "theme_color": "#9F1239",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

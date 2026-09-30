@@ -11,3 +11,4 @@ tunnel.js
 
 # User uploaded files
 innovatiq-web/public/uploads/
+.gitignore

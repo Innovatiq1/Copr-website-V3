@@ -11,3 +11,6 @@ tunnel.js
 
 # User uploaded files
 innovatiq-web/public/uploads/
+.gitignore
+config.bat
+node_modules

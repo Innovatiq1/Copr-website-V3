@@ -4,9 +4,10 @@ import { useEffect, useState, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Toaster } from '@/lib/toast';
+import PushNotificationButton from '@/components/admin/PushNotificationButton';
 import {
   LayoutDashboard, FileText, Briefcase, Trophy,
-  Video, Users, UserCheck, LogOut, Menu, X, ChevronRight, Bell, Trash2, Settings, Inbox,
+  Video, Users, UserCheck, LogOut, Menu, X, ChevronRight, Bell, Trash2, Settings, Inbox, MessageCircle, UserPlus,
 } from 'lucide-react';
 
 interface ActivityItem {
@@ -36,8 +37,10 @@ const navLinks = [
   { label: 'Awards',      icon: Trophy,           href: '/admin/awards' },
   { label: 'Videos',      icon: Video,            href: '/admin/videos' },
   { label: 'Enquiries',   icon: Users,            href: '/admin/enquiries' },
+  { label: 'Live Chat',   icon: MessageCircle,    href: '/admin/live-chat' },
   { label: 'Popup Leads', icon: Inbox,            href: '/admin/popup-leads' },
   { label: 'Popup Settings', icon: Settings,      href: '/admin/popup-settings' },
+  { label: 'Team Members', icon: UserPlus,        href: '/admin/team' },
 ];
 
 function getBreadcrumbs(pathname: string) {
@@ -67,6 +70,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [adminEmail, setAdminEmail] = useState('');
+  const [adminName, setAdminName] = useState('');
   const [notifOpen, setNotifOpen] = useState(false);
   const [activities, setActivities] = useState<ActivityItem[]>([]);
   const [unreadCount, setUnreadCount] = useState(0);
@@ -81,6 +85,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
       try {
         const payload = JSON.parse(atob(token.split('.')[1]));
         if (payload.email) setAdminEmail(payload.email);
+        if (payload.name) setAdminName(payload.name);
       } catch {}
     }
   }, [pathname, router]);
@@ -348,6 +353,8 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
             {/* Right: bell + avatar */}
             <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}>
 
+            <PushNotificationButton />
+
             {/* Bell notification */}
             <div ref={notifRef} style={{ position: 'relative' }}>
               <button
@@ -495,7 +502,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                   transition: 'box-shadow 0.15s',
                 }}
               >
-                A
+                {(adminName || adminEmail || 'A').charAt(0).toUpperCase()}
               </button>
 
               {profileOpen && (
@@ -517,9 +524,9 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
                         background: 'linear-gradient(135deg, #9F1239 0%, #E11D48 100%)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         color: '#FFFFFF', fontSize: '15px', fontWeight: 800,
-                      }}>A</div>
+                      }}>{(adminName || adminEmail || 'A').charAt(0).toUpperCase()}</div>
                       <div style={{ minWidth: 0 }}>
-                        <p style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Admin</p>
+                        <p style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>{adminName || 'Admin'}</p>
                         <p style={{ fontSize: '11.5px', fontWeight: 600, color: '#64748B', marginTop: '1px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {adminEmail || 'admin@innovatiq.com'}
                         </p>

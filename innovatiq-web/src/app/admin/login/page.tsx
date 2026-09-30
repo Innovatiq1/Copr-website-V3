@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, FormEvent, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { API } from '@/lib/adminApi';
 import {
@@ -19,12 +19,23 @@ const FEATURES = [
 
 export default function AdminLoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email,    setEmail]    = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [error,    setError]    = useState('');
   const [loading,  setLoading]  = useState(false);
   const [focused,  setFocused]  = useState<string | null>(null);
+
+  // Surface any error Microsoft's callback redirected back with (e.g. sign-in cancelled).
+  useEffect(() => {
+    const ssoError = searchParams.get('error');
+    if (ssoError === 'not_authorized') {
+      setError('This email is not registered as a team member. Ask an existing admin to add you first.');
+    } else if (ssoError) {
+      setError('Microsoft sign-in failed. Please try again or use your email and password.');
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -355,6 +366,37 @@ export default function AdminLoginPage() {
                   ) : 'Sign In'}
                 </button>
               </form>
+
+              {/* Divider */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '22px 0' }}>
+                <div style={{ flex: 1, height: '1px', background: '#E2E8F0' }} />
+                <span style={{ fontSize: '12px', color: '#94A3B8', fontWeight: 500 }}>OR</span>
+                <div style={{ flex: 1, height: '1px', background: '#E2E8F0' }} />
+              </div>
+
+              {/* Microsoft SSO */}
+              <button
+                type="button"
+                onClick={() => { window.location.href = `${API}/auth/microsoft/login`; }}
+                style={{
+                  width: '100%', padding: '13px 20px',
+                  borderRadius: '14px', border: '1.5px solid #E2E8F0',
+                  background: '#FFFFFF', color: '#334155',
+                  fontSize: '14.5px', fontWeight: 600,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px',
+                  cursor: 'pointer', transition: 'all 0.15s',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#F8FAFC'; e.currentTarget.style.borderColor = '#CBD5E1'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#FFFFFF'; e.currentTarget.style.borderColor = '#E2E8F0'; }}
+              >
+                <svg width="18" height="18" viewBox="0 0 21 21" fill="none">
+                  <rect x="1" y="1" width="9" height="9" fill="#F25022" />
+                  <rect x="11" y="1" width="9" height="9" fill="#7FBA00" />
+                  <rect x="1" y="11" width="9" height="9" fill="#00A4EF" />
+                  <rect x="11" y="11" width="9" height="9" fill="#FFB900" />
+                </svg>
+                Sign in with Microsoft
+              </button>
 
               {/* Footer */}
               <div

@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) return NextResponse.json({ message: 'Invalid password' }, { status: 400 });
 
-    const token = signToken({ id: admin._id });
+    const token = signToken({ id: admin._id.toString(), email: admin.email, name: admin.name });
     return NextResponse.json({ token, admin: { _id: admin._id, email: admin.email, name: admin.name } });
   } catch (err) {
     return NextResponse.json({ message: 'Server error' }, { status: 500 });

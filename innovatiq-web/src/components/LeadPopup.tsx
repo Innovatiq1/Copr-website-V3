@@ -120,6 +120,24 @@ export default function LeadPopup() {
 
       localStorage.setItem(STORAGE_KEY, '1');
       setSubmitted(true);
+
+      // Hand off to the live chat widget: it auto-opens with a message tailored to
+      // whatever the visitor typed in the free-text/description-style field.
+      const descriptionField = sortedFields.find((f) => f.type === 'textarea');
+      const nameField = sortedFields.find((f) => f.id === 'name') || sortedFields.find((f) => f.type === 'text');
+      const emailField = sortedFields.find((f) => f.type === 'email');
+      const phoneField = sortedFields.find((f) => f.type === 'phone');
+      const interestField = sortedFields.find((f) => f.type === 'select');
+
+      window.dispatchEvent(new CustomEvent('iq:popup-submitted', {
+        detail: {
+          name: nameField ? formData[nameField.id] : '',
+          email: emailField ? formData[emailField.id] : '',
+          phone: phoneField ? formData[phoneField.id] : '',
+          interest: interestField ? formData[interestField.id] : '',
+          description: descriptionField ? formData[descriptionField.id] : '',
+        },
+      }));
     } catch {
       setError('Something went wrong. Please try again.');
     } finally {

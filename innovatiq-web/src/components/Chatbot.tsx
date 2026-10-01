@@ -1,10 +1,10 @@
 ﻿'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, ChevronRight } from 'lucide-react';
+import { MessageSquare, X, Send, Mic, MicOff } from 'lucide-react';
 
 interface Message {
-  role: 'bot' | 'user';
+  sender: 'visitor' | 'admin' | 'bot' | 'system';
   text: string;
 }
 
@@ -18,78 +18,235 @@ const INTERESTS = [
   'General Inquiry',
 ];
 
-type Step = 'welcome' | 'chat' | 'contact' | 'done';
+type Step = 'welcome' | 'contact' | 'chat';
+
+const SESSION_KEY = 'iq_chat_session_id';
+const POLL_MS = 4000;
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<Step>('welcome');
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', text: "Hi! I'm the Innovatiq assistant. How can I help you today? Please select your area of interest:" },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [interest, setInterest] = useState('');
   const [input, setInput] = useState('');
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '' });
   const [submitting, setSubmitting] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [unread, setUnread] = useState(false);
+  const [typingName, setTypingName] = useState<string | null>(null);
+  const [listening, setListening] = useState(false);
+  const [voiceSupported, setVoiceSupported] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const sessionIdRef = useRef<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const recognitionRef = useRef<any>(null);
+  const listeningActiveRef = useRef(false);
+
+  // Voice-to-text: converts speech directly into typed text (not an audio recording),
+  // so it reads normally in the emailed chat history and doesn't need anyone to listen
+  // to a clip later. Uses the browser's built-in speech recognition — no API key needed.
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+    setVoiceSupported(true);
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    recognition.onresult = (event: any) => {
+      // Ignore results that arrive after we've already stopped listening (e.g. a
+      // trailing result delivered just after Send was pressed) — otherwise it can
+      // silently repopulate the input right after it was cleared.
+      if (!listeningActiveRef.current) return;
+      let transcript = '';
+      for (let i = 0; i < event.results.length; i++) {
+        transcript += event.results[i][0].transcript;
+      }
+      setInput(transcript);
+    };
+    recognition.onend = () => setListening(false);
+    recognition.onerror = () => setListening(false);
+
+    recognitionRef.current = recognition;
+  }, []);
+
+  const toggleVoice = () => {
+    if (!recognitionRef.current) return;
+    if (listening) {
+      listeningActiveRef.current = false;
+      recognitionRef.current.stop();
+      setListening(false);
+    } else {
+      setInput('');
+      listeningActiveRef.current = true;
+      recognitionRef.current.start();
+      setListening(true);
+    }
+  };
+
+  useEffect(() => {
+    sessionIdRef.current = sessionId;
+  }, [sessionId]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, step]);
 
-  const reset = () => {
-    setStep('welcome');
-    setMessages([{ role: 'bot', text: "Hi! I'm the Innovatiq assistant. How can I help you today? Please select your area of interest:" }]);
-    setInterest('');
-    setInput('');
-    setForm({ name: '', email: '', phone: '', company: '' });
+  // Resume an existing chat session on this browser, if one exists.
+  useEffect(() => {
+    const existing = typeof window !== 'undefined' ? localStorage.getItem(SESSION_KEY) : null;
+    if (existing) {
+      setSessionId(existing);
+      setStep('chat');
+    }
+  }, []);
+
+  // Let the visitor's own tab-close/navigate-away notify the admin that they left,
+  // instead of the conversation just going silent with no explanation.
+  useEffect(() => {
+    const notifyLeave = () => {
+      const id = sessionIdRef.current;
+      if (!id) return;
+      try {
+        navigator.sendBeacon(`/api/chat/${id}/leave`, new Blob([], { type: 'application/json' }));
+      } catch { /* best-effort only */ }
+    };
+    window.addEventListener('beforeunload', notifyLeave);
+    window.addEventListener('pagehide', notifyLeave);
+    return () => {
+      window.removeEventListener('beforeunload', notifyLeave);
+      window.removeEventListener('pagehide', notifyLeave);
+    };
+  }, []);
+
+  const startChatWith = async (details: {
+    name: string; email: string; phone: string; company?: string; interest: string; message?: string; greeting?: string;
+  }) => {
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(details),
+      });
+      const data = await res.json();
+      localStorage.setItem(SESSION_KEY, data.id);
+      setSessionId(data.id);
+      setMessages(data.messages || []);
+      setInput('');
+      setStep('chat');
+    } catch { /* silent */ }
+    setSubmitting(false);
   };
+
+  // Auto-start (and auto-open) a chat when the lead-capture popup is submitted,
+  // using a message tailored to whatever the visitor described they're looking for.
+  useEffect(() => {
+    const handlePopupSubmitted = (e: Event) => {
+      if (sessionIdRef.current) return; // already chatting — don't override an existing conversation
+      const detail = (e as CustomEvent).detail || {};
+      const description = (detail.description || '').trim();
+      const name = detail.name || '';
+
+      const greeting = description
+        ? `Hi, I understand that you are looking for "${description}". I would like to know more about it.`
+        : `Hi, I understand that you are looking for some services or products. I would like to know more.`;
+
+      setOpen(true);
+      startChatWith({
+        name,
+        email: detail.email || '',
+        phone: detail.phone || '',
+        interest: detail.interest || '',
+        greeting,
+      });
+    };
+
+    window.addEventListener('iq:popup-submitted', handlePopupSubmitted);
+    return () => window.removeEventListener('iq:popup-submitted', handlePopupSubmitted);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Poll for new messages (e.g. admin replies) while a session is active.
+  useEffect(() => {
+    if (!sessionId) return;
+
+    const poll = async () => {
+      try {
+        const res = await fetch(`/api/chat/${sessionId}`);
+        if (res.status === 404) {
+          // Admin deleted this conversation — reset so the visitor can start a fresh chat
+          // instead of the widget appearing frozen with no explanation.
+          localStorage.removeItem(SESSION_KEY);
+          setSessionId(null);
+          setMessages([]);
+          setInterest('');
+          setForm({ name: '', email: '', phone: '', company: '' });
+          setStep('welcome');
+          return;
+        }
+        if (!res.ok) return;
+        const data = await res.json();
+        setMessages((prev) => {
+          if (data.messages.length === prev.length) return prev;
+          // If the widget is closed and new admin messages arrived, show the unread dot.
+          const newAdminMsg = data.messages.slice(prev.length).some((m: Message) => m.sender === 'admin');
+          if (newAdminMsg && !open) setUnread(true);
+          return data.messages;
+        });
+        setTypingName(data.adminTyping || null);
+      } catch { /* silent — will retry on next tick */ }
+    };
+
+    poll();
+    pollRef.current = setInterval(poll, POLL_MS);
+    return () => { if (pollRef.current) clearInterval(pollRef.current); };
+  }, [sessionId, open]);
+
+  useEffect(() => {
+    if (open) setUnread(false);
+  }, [open]);
 
   const selectInterest = (i: string) => {
     setInterest(i);
-    setMessages(prev => [
-      ...prev,
-      { role: 'user', text: i },
-      { role: 'bot', text: `Great! You're interested in ${i}. Please type your message or question below and we'll connect you with the right team.` },
-    ]);
-    setStep('chat');
-  };
-
-  const sendMessage = () => {
-    const msg = input.trim();
-    if (!msg) return;
-    setInput('');
-    setMessages(prev => [
-      ...prev,
-      { role: 'user', text: msg },
-      { role: 'bot', text: "Thanks for sharing! To ensure our team can follow up with you, please provide your contact details below." },
-    ]);
     setStep('contact');
   };
 
-  const handleSubmit = async () => {
+  const startChat = async () => {
     if (!form.name.trim() || !form.email.trim()) return;
-    setSubmitting(true);
+    await startChatWith({
+      name: form.name, email: form.email, phone: form.phone, company: form.company,
+      interest, message: input.trim(),
+    });
+  };
+
+  const sendMessage = async () => {
+    const text = input.trim();
+    if (!text || !sessionId) return;
+    // Stop any in-progress voice recognition first — otherwise a late speech
+    // result can silently repopulate the input right after we clear it.
+    // Guard against a late speech-recognition result firing after Send is pressed,
+    // even if it had already auto-ended (state can lag the actual recognition lifecycle).
+    listeningActiveRef.current = false;
+    if (listening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setListening(false);
+    }
+    setInput('');
+    // Optimistic append so the visitor's own message shows instantly.
+    setMessages((prev) => [...prev, { sender: 'visitor', text }]);
     try {
-      await fetch('/api/chatbot', {
+      await fetch(`/api/chat/${sessionId}/message`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          company: form.company,
-          interest,
-          message: messages.filter(m => m.role === 'user').map(m => m.text).join('\n'),
-          chatHistory: messages,
-        }),
+        body: JSON.stringify({ text }),
       });
-    } catch { /* silent */ }
-    setMessages(prev => [
-      ...prev,
-      { role: 'bot', text: `Thank you, ${form.name}! Our team will reach out to you at ${form.email} shortly. Have a great day!` },
-    ]);
-    setStep('done');
-    setSubmitting(false);
+    } catch { /* will still show via next poll retry */ }
   };
 
   return (
@@ -118,7 +275,7 @@ export default function Chatbot() {
         )}
         <button
           onClick={() => setOpen(o => !o)}
-          className="w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+          className="relative w-14 h-14 rounded-full text-white flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
           style={{
             background: 'linear-gradient(145deg, #FB7185 0%, #E11D48 55%, #9F1239 100%)',
             boxShadow:
@@ -127,6 +284,12 @@ export default function Chatbot() {
           aria-label={open ? 'Close chat' : 'Open chat'}
         >
           {open ? <X size={22} /> : <MessageSquare size={22} />}
+          {unread && !open && (
+            <span
+              className="absolute top-0 right-0 w-3.5 h-3.5 rounded-full"
+              style={{ background: '#22C55E', border: '2px solid #fff' }}
+            />
+          )}
         </button>
       </div>
 
@@ -142,10 +305,10 @@ export default function Chatbot() {
               <MessageSquare size={17} className="text-white" />
             </div>
             <div>
-              <p className="text-white font-semibold text-sm">Innovatiq Assistant</p>
+              <p className="text-white font-semibold text-sm">Innovatiq Team</p>
               <p className="text-white/75 text-xs font-semibold flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
-                Online
+                {step === 'chat' ? 'Live chat' : 'Online'}
               </p>
             </div>
             <button
@@ -157,24 +320,18 @@ export default function Chatbot() {
             </button>
           </div>
 
-          {/* Messages area */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3" style={{ background: '#FFFFFF' }}>
-            {messages.map((m, i) => (
-              <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+          {/* Welcome: interest selection */}
+          {step === 'welcome' && (
+            <div className="flex-1 overflow-y-auto p-4" style={{ background: '#FFFFFF' }}>
+              <div className="flex justify-start mb-3">
                 <div
-                  className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed break-words"
-                  style={m.role === 'user'
-                    ? { background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
-                    : { background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
+                  className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed"
+                  style={{ background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
                 >
-                  {m.text}
+                  Hi! I&apos;m from the Innovatiq team. What can we help you with today?
                 </div>
               </div>
-            ))}
-
-            {/* Interest selection buttons */}
-            {step === 'welcome' && (
-              <div className="flex flex-wrap gap-2 mt-1">
+              <div className="flex flex-wrap gap-2">
                 {INTERESTS.map(i => (
                   <button
                     key={i}
@@ -186,11 +343,22 @@ export default function Chatbot() {
                   </button>
                 ))}
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Contact form */}
-            {step === 'contact' && (
-              <div className="space-y-2 mt-1 p-3 rounded-xl" style={{ background: '#F9FAFB', border: '1px solid rgba(0,0,0,0.07)' }}>
+          {/* Contact details before starting the live chat */}
+          {step === 'contact' && (
+            <div className="flex-1 overflow-y-auto p-4 space-y-3" style={{ background: '#FFFFFF' }}>
+              <div className="flex justify-start">
+                <div
+                  className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed"
+                  style={{ background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
+                >
+                  Great, you&apos;re interested in {interest}. Please share your details so our team can connect with you directly.
+                </div>
+              </div>
+
+              <div className="space-y-2 p-3 rounded-xl" style={{ background: '#F9FAFB', border: '1px solid rgba(0,0,0,0.07)' }}>
                 {([
                   { key: 'name', placeholder: 'Your full name *', type: 'text' },
                   { key: 'email', placeholder: 'Email address *', type: 'email' },
@@ -209,55 +377,106 @@ export default function Chatbot() {
                     onBlur={e => (e.target.style.borderColor = 'rgba(0,0,0,0.12)')}
                   />
                 ))}
+                <textarea
+                  placeholder="Your message (optional)"
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  rows={2}
+                  className="w-full px-3 py-2 rounded-lg border text-sm outline-none transition-colors resize-none"
+                  style={{ borderColor: 'rgba(0,0,0,0.12)', color: '#374151', background: '#fff' }}
+                  onFocus={e => (e.target.style.borderColor = '#BE123C')}
+                  onBlur={e => (e.target.style.borderColor = 'rgba(0,0,0,0.12)')}
+                />
                 <button
-                  onClick={handleSubmit}
+                  onClick={startChat}
                   disabled={!form.name.trim() || !form.email.trim() || submitting}
                   className="w-full py-2.5 rounded-lg text-sm font-semibold text-white flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
                 >
-                  {submitting ? 'Sending...' : <><Send size={14} /> Send Message</>}
+                  {submitting ? 'Starting...' : <><Send size={14} /> Start Chat</>}
                 </button>
               </div>
-            )}
-
-            <div ref={bottomRef} />
-          </div>
-
-          {/* Message input */}
-          {step === 'chat' && (
-            <div className="shrink-0 flex gap-2 p-3 border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
-              <input
-                type="text"
-                placeholder="Type your message..."
-                value={input}
-                onChange={e => setInput(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && sendMessage()}
-                className="flex-1 px-4 py-2.5 rounded-xl border text-sm outline-none transition-colors"
-                style={{ borderColor: 'rgba(0,0,0,0.12)', color: '#374151', background: '#fff' }}
-                onFocus={e => (e.target.style.borderColor = '#BE123C')}
-                onBlur={e => (e.target.style.borderColor = 'rgba(0,0,0,0.12)')}
-              />
-              <button
-                onClick={sendMessage}
-                className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105 cursor-pointer"
-                style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
-                aria-label="Send"
-              >
-                <ChevronRight size={18} />
-              </button>
             </div>
           )}
 
-          {step === 'done' && (
-            <div className="shrink-0 p-3 text-center border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
-              <button
-                onClick={() => { reset(); }}
-                className="text-sm font-medium transition-colors hover:underline cursor-pointer"
-                style={{ color: '#BE123C' }}
-              >
-                Start a new conversation
-              </button>
-            </div>
+          {/* Live two-way chat */}
+          {step === 'chat' && (
+            <>
+              <div className="flex-1 overflow-y-auto p-4 space-y-3" style={{ background: '#FFFFFF' }}>
+                {messages.length === 0 && (
+                  <div className="flex justify-start">
+                    <div
+                      className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed"
+                      style={{ background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
+                    >
+                      Thanks! Our team has been notified and will join this chat shortly.
+                    </div>
+                  </div>
+                )}
+                {messages.map((m, i) => (
+                  m.sender === 'system' ? null : (
+                    <div key={i} className={`flex ${m.sender === 'visitor' ? 'justify-end' : 'justify-start'}`}>
+                      <div
+                        className="max-w-[82%] px-4 py-2.5 text-sm leading-relaxed break-words"
+                        style={m.sender === 'visitor'
+                          ? { background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)', color: '#fff', borderRadius: '16px 16px 4px 16px' }
+                          : { background: '#F3F4F6', color: '#374151', borderRadius: '16px 16px 16px 4px' }}
+                      >
+                        {m.text}
+                      </div>
+                    </div>
+                  )
+                ))}
+                {typingName && (
+                  <div className="flex justify-start">
+                    <div
+                      className="px-4 py-2.5 text-sm italic"
+                      style={{ background: '#F3F4F6', color: '#6B7280', borderRadius: '16px 16px 16px 4px' }}
+                    >
+                      Innovatiq is typing...
+                    </div>
+                  </div>
+                )}
+                <div ref={bottomRef} />
+              </div>
+
+              <div className="shrink-0 flex gap-2 p-3 border-t" style={{ borderColor: 'rgba(0,0,0,0.08)', background: '#FAFAFA' }}>
+                <input
+                  type="text"
+                  placeholder={listening ? 'Listening...' : 'Type your message...'}
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && sendMessage()}
+                  className="flex-1 px-4 py-2.5 rounded-xl border text-sm outline-none transition-colors"
+                  style={{ borderColor: listening ? '#BE123C' : 'rgba(0,0,0,0.12)', color: '#374151', background: '#fff' }}
+                  onFocus={e => (e.target.style.borderColor = '#BE123C')}
+                  onBlur={e => (e.target.style.borderColor = listening ? '#BE123C' : 'rgba(0,0,0,0.12)')}
+                />
+                {voiceSupported && (
+                  <button
+                    onClick={toggleVoice}
+                    className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-all hover:scale-105 cursor-pointer"
+                    style={{
+                      background: listening ? 'rgba(190,18,60,0.1)' : '#F3F4F6',
+                      color: listening ? '#BE123C' : '#6B7280',
+                      animation: listening ? 'pulse 1.5s ease-in-out infinite' : 'none',
+                    }}
+                    aria-label={listening ? 'Stop recording' : 'Speak your message'}
+                    title="Voice to text"
+                  >
+                    {listening ? <MicOff size={16} /> : <Mic size={16} />}
+                  </button>
+                )}
+                <button
+                  onClick={sendMessage}
+                  className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center text-white transition-all hover:scale-105 cursor-pointer"
+                  style={{ background: 'linear-gradient(135deg, #9F1239 0%, #BE123C 50%, #E11D48 100%)' }}
+                  aria-label="Send"
+                >
+                  <Send size={16} />
+                </button>
+              </div>
+            </>
           )}
         </div>
       )}

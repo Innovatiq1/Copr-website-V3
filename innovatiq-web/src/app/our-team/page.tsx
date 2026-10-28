@@ -39,7 +39,8 @@ const jsonLd = {
         { '@type': 'Person', name: 'Krishna Das', jobTitle: 'CEO', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
         { '@type': 'Person', name: 'Prashanth', jobTitle: 'Director', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
         { '@type': 'Person', name: 'Srinivasa Rao', jobTitle: 'Business Head India', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
-        { '@type': 'Person', name: 'Sujatha', jobTitle: 'HR Manager', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
+        { '@type': 'Person', name: 'Sujatha', jobTitle: 'Partner, Managed Service Business', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
+        { '@type': 'Person', name: 'Thomas Chee', jobTitle: 'Head of Sales', worksFor: { '@id': 'https://innovatiq.com.sg/#organization' } },
       ],
     },
     {
@@ -106,36 +107,43 @@ const leadership = [
   },
   {
     name: 'Sujatha',
-    role: 'HR Manager',
-    bio: 'Sujatha is an accomplished professional with a wealth of experience in the managed resources business. Currently serving as the Head of Resources Business at Innovatiq, she brings a powerful combination of strategic vision, operational expertise, and leadership acumen to drive business growth and achieve organisational objectives.\n\nWith an MBA degree and 18 years of diverse industry experience, Sujatha possesses a deep understanding of resource management dynamics, talent acquisition, and workforce planning. Her proven track record of delivering results in challenging environments reflects her ability to balance people-first values with sharp business focus.\n\nSujatha champions a culture of inclusivity and professional growth at Innovatiq, ensuring the organisation attracts, develops, and retains the best talent to support its ambitious growth goals.',
-    expertise: ['Resource Management', 'HR Strategy', 'Operational Excellence'],
+    role: 'Partner, Managed Service Business',
+    bio: 'Managed services partnership and service continuity. Sujatha brings 18 years across managed resources, workforce planning, talent acquisition and operational leadership.',
+    expertise: ['Managed Services', 'Workforce Planning', 'Operational Leadership'],
     photo: '/images/aboutUs/ourTeam/Sujatha.jpg',
     accent: '#BE123C',
     linkedin: 'https://www.linkedin.com/in/sujatha-gurunathan-95513819/',
     instagram: 'https://www.instagram.com/sujatha.gurunathan.9/?hl=en',
   },
-];
-
-const teamMembers = [
   {
     name: 'Thomas Chee',
-    role: 'Sr. Sales Account Manager',
+    role: 'Head of Sales',
     bio: 'A dynamic and results-oriented sales leader, Thomas brings extensive experience in driving business growth and fostering long-term client success. With a strong track record in sales and marketing, he has consistently delivered multi-million-dollar revenues and secured key strategic accounts across competitive markets.',
     expertise: ['Strategic Account Management', 'Business Development', 'Team Leadership'],
     photo: '/images/aboutUs/ourTeam/Thomas-1195x1536.png',
     accent: '#BE123C',
-    photoPosition: 'center 15%',
     linkedin: 'https://www.linkedin.com/in/thomas-chee-197b93210/',
     instagram: 'https://www.instagram.com/dracohunk/?hl=en',
   },
+];
+
+const teamMembers = [
   {
-    name: 'Sathish',
-    role: 'Solution Manager',
+    name: 'Sathish Kumar',
+    role: 'Senior Manager, Product & Solution Specialist',
     bio: 'Sathish is a dynamic presales professional with a sharp ability to align technology solutions with business goals. He thrives at the intersection of sales strategy and technical consulting, crafting compelling proposals and delivering impactful solution demonstrations that build lasting stakeholder trust and accelerate business growth.',
     expertise: ['Presales', 'Solution Design', 'Technical Consulting'],
     photo: '/images/aboutUs/ourTeam/sathish.jpg',
     accent: '#BE123C',
     linkedin: 'https://www.linkedin.com/in/satz-m/',
+  },
+  {
+    name: 'Ganesh M',
+    role: 'Product Dev Lead',
+    bio: 'Full-stack product engineering and technical execution. Ganesh brings 6+ years in software development across React, Angular, Node.js, APIs, SaaS applications, AWS deployments, Jenkins CI/CD and production support. Focus areas include product architecture and feature delivery, API integration and deployment automation, and performance, scalability and reliability.',
+    expertise: ['Product Architecture', 'API Integration & Deployment Automation', 'Performance & Scalability'],
+    photo: '/images/aboutUs/ourTeam/Ganesh_M.jpg',
+    accent: '#BE123C',
   },
 ];
 
@@ -281,10 +289,14 @@ export default function TeamPage() {
             ))}
           </div>
 
-          {/* Bottom 2 leaders */}
+          {/* Remaining leaders (an odd last card is centred) */}
           <div className="grid md:grid-cols-2 gap-7 items-start">
-            {leadership.slice(2).map((m, i) => (
-              <AnimatedSection key={m.name} delay={(i + 2) * 100}>
+            {leadership.slice(2).map((m, i, rest) => (
+              <AnimatedSection
+                key={m.name}
+                delay={(i + 2) * 100}
+                className={i === rest.length - 1 && rest.length % 2 === 1 ? 'md:col-span-2 md:w-[calc(50%-0.875rem)] md:mx-auto' : undefined}
+              >
                 <LeadershipCard m={m} />
               </AnimatedSection>
             ))}

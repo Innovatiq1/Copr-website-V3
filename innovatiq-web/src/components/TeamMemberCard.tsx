@@ -40,15 +40,25 @@ export default function TeamMemberCard({
         className="relative shrink-0 overflow-hidden"
         style={{ background: '#E2E8F0', transform: 'translateZ(0)', height: m.photoHeight ?? '17rem' }}
       >
-        <Image
-          src={m.photo}
-          alt={m.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          style={{ objectPosition: m.photoPosition ?? 'center' }}
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          quality={65}
-        />
+        {m.photo ? (
+          <Image
+            src={m.photo}
+            alt={m.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            style={{ objectPosition: m.photoPosition ?? 'center' }}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            quality={65}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 flex items-center justify-center text-6xl font-bold text-white"
+            style={{ background: `linear-gradient(135deg, #9F1239 0%, ${m.accent} 50%, #E11D48 100%)` }}
+            aria-hidden="true"
+          >
+            {m.name.split(' ').map((w) => w[0]).join('').slice(0, 2)}
+          </div>
+        )}
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom, transparent 35%, rgba(0,0,0,0.60) 100%)' }}

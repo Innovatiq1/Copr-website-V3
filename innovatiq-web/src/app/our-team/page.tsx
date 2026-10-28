@@ -142,7 +142,7 @@ const teamMembers = [
     role: 'Product Dev Lead',
     bio: 'Full-stack product engineering and technical execution. Ganesh brings 6+ years in software development across React, Angular, Node.js, APIs, SaaS applications, AWS deployments, Jenkins CI/CD and production support. Focus areas include product architecture and feature delivery, API integration and deployment automation, and performance, scalability and reliability.',
     expertise: ['Product Architecture', 'API Integration & Deployment Automation', 'Performance & Scalability'],
-    photo: '/images/aboutUs/ourTeam/Ganesh_M.jpg',
+    photo: '/images/aboutUs/ourTeam/Ganesh_M_centered.jpg',
     accent: '#BE123C',
   },
 ];
